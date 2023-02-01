@@ -1,0 +1,215 @@
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\E-commerece Admin Panel Front-End.dll.config
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\E-commerece Admin Panel Front-End.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\E-commerece Admin Panel Front-End.pdb
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csc.exe
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csc.exe.config
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csc.rsp
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csi.exe
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csi.exe.config
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csi.rsp
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.AppContext.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Collections.Immutable.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Console.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Globalization.Calendars.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.IO.Compression.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.IO.FileSystem.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Net.Http.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Net.Sockets.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Reflection.Metadata.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.ValueTuple.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Xml.XPath.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\vbc.exe
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\vbc.exe.config
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\vbc.rsp
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\VBCSCompiler.exe
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\VBCSCompiler.exe.config
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\Microsoft.Web.Infrastructure.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Helpers.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Mvc.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Razor.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.Deployment.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.Razor.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Razor.xml
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.xml
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.Deployment.xml
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.Razor.xml
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Helpers.xml
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Mvc.xml
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.CoreCompileInputs.cache
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.CopyComplete
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.pdb
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.AssemblyReference.cache
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\E-commerece Admin Panel Front-End.dll.config
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\E-commerece Admin Panel Front-End.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\E-commerece Admin Panel Front-End.pdb
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csc.exe
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csc.exe.config
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csc.rsp
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csi.exe
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csi.exe.config
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csi.rsp
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.AppContext.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Collections.Immutable.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Console.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Globalization.Calendars.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.IO.Compression.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.IO.FileSystem.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Net.Http.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Net.Sockets.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Reflection.Metadata.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.ValueTuple.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Xml.XPath.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\vbc.exe
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\vbc.exe.config
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\vbc.rsp
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\VBCSCompiler.exe
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\VBCSCompiler.exe.config
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\Microsoft.Web.Infrastructure.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Helpers.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Mvc.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Razor.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.Deployment.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.Razor.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Razor.xml
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.xml
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.Deployment.xml
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.Razor.xml
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Helpers.xml
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Mvc.xml
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.CoreCompileInputs.cache
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.CopyComplete
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.pdb
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.AssemblyReference.cache
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\E-commerece Admin Panel Front-End.dll.config
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\E-commerece Admin Panel Front-End.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\E-commerece Admin Panel Front-End.pdb
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csc.exe
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csc.exe.config
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csc.rsp
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csi.exe
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csi.exe.config
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\csi.rsp
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.AppContext.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Collections.Immutable.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Console.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Globalization.Calendars.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.IO.Compression.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.IO.FileSystem.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Net.Http.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Net.Sockets.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Reflection.Metadata.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.ValueTuple.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Xml.XPath.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\vbc.exe
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\vbc.exe.config
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\vbc.rsp
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\VBCSCompiler.exe
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\roslyn\VBCSCompiler.exe.config
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\Microsoft.Web.Infrastructure.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Helpers.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Mvc.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Razor.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.Deployment.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.Razor.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Razor.xml
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.xml
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.Deployment.xml
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Webpages.Razor.xml
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Helpers.xml
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Mvc.xml
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.CoreCompileInputs.cache
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.CopyComplete
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.dll
+E:\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.pdb

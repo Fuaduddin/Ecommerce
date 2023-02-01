@@ -1,0 +1,153 @@
+/* Contact Details Start */
+.contactdetails
+{
+    display: grid;
+    grid-template-columns: 1fr 2% 1fr 2% 1fr;
+    gap: 3%;
+}
+.contacttitle
+{
+    display: flex;
+    gap: 3%;
+}
+.bewteenline
+{
+    background-color: lightslategray;
+    width: 12%;
+    height: 83%;
+}
+/* Social Media Details Start */
+.social-id-details
+{
+    margin-top: 3%;
+}
+.social-media-details-item
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.social-media-list
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24%;
+    list-style: none;
+}
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  .fa-youtube {
+    background: #bb0000;
+    color: white;
+  }
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+  .fa:hover {
+    opacity: 0.7;
+}
+.fa-instagram:hover,.fa-facebook:hover ,.fa-twitter:hover,.fa-youtube:hover {
+    color: orange;
+}
+
+/* Sending Email Start */
+.contact-email-start
+{
+    margin-top: 5%;
+}
+
+
+/* Media Query Start */
+@media (max-width:575px)
+{
+  .social-media-details-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -18%;
+}
+.social-media-list {
+  /* align-items: center; */
+  /* justify-content: center; */
+  gap: 19%;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+hr.bewteenline {
+  display: none;
+}
+.contactdetails {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3%;
+  margin-bottom: 7%;
+}
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media (max-width:767px) and (min-width:576px)
+{
+  .social-media-details-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -18%;
+}
+.social-media-list {
+  /* align-items: center; */
+  /* justify-content: center; */
+  gap: 19%;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+hr.bewteenline {
+  display: none;
+}
+.contactdetails {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3%;
+  margin-bottom: 7%;
+}
+}
+@media (max-width:991px) and (min-width:766px)
+{
+  .contactdetails {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3%;
+    margin-bottom: 7%;
+}
+hr.bewteenline {
+  display: none;
+}
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media (max-width:1199px) and (min-width:992px)
+{
+   
+}
+/* Desktop View */
+@media (min-width:1200px)
+{
+ 
+
+}

@@ -1,0 +1,73 @@
+﻿@model E_Commerce.Admin.Panel.Models.TestCustomerModel
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+
+                <h1> ADD NEW Category</h1>
+                <div>
+                    <form>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label" for="val-username">
+                                SubCategory Name <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-8">
+                                <input class="form-control" id="sub-category-name" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label" for="val-username">
+                                Category Name <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-8">
+                                <label for="cars">Choose a car:</label>
+                                <select name="cars" id="category-id">
+                                    <option value="1">aaaaaaa</option>
+                                    <option value="2">bbbbbbb</option>
+                                    <option value="3">cccccc</option>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="submit" value="Submit" onclick="addnewitem()">
+                    </form>
+                </div>
+            </center>
+        </div>
+    </div>
+</div>
+
+<script>
+    function addnewitem()
+    {
+        var name = $("#sub-category-name").val();
+        var oppotionvalue = $("#category-id").val();
+        var oppotiontext = $("#category-id").text();
+        var testobj =
+        {
+            SubCategoryName: name,
+            CategoryId: oppotionvalue,
+            CategoryName: oppotiontext
+        }
+        addnewitemajax(testobj);
+    }
+    function addnewitemajax(testobj)
+    {
+        $.ajax({
+            url: "/test/Addcustomerajax",
+            Method: "POST",
+            data: testobj,
+            success: function (data) {
+                data = JSON.parse(data);
+                console.log(data);
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        })
+    }
+</script>

@@ -1,0 +1,875 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- front icon link -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <!-- Boothstrap Css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- Jquery CDN link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <!-- Own Css -->
+    <!--  <link rel="stylesheet" href="index.css"> -->
+    <link href="~/Assets/Own Css/index.css" rel="stylesheet" />
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+<body>
+    <!-- Category Section Start -->
+    <section class="category-section-start">
+        <div class="container">
+            <h2 class="title">Our Category</h2>
+            <div class="category-details-start">
+                <div class="category-details-first show">
+                    <h6 class="category-title">
+                        New arrivals <br>
+                        are now in!
+                    </h6>
+                    <button class="category-button">
+                        Show collection
+                    </button>
+                </div>
+                <div class="category-details-second show">
+                    <h6 class="category-title category-title-2">
+                        Basic t-shirts<br>
+                        $29,99
+                    </h6>
+                    <button class="category-button">
+                        More details
+                    </button>
+                </div>
+                <div class="category-details-third show">
+                    <h6 class="category-title category-title-2">
+                        Sale this <br>
+                        summer
+                    </h6>
+                    <button class="category-button">
+                        VIEW ALL
+                    </button>
+                </div>
+                <div class="category-details-fourth hide">
+                    <h6 class="category-title category-title-2">
+                        Sale this <br>
+                        summer
+                    </h6>
+                    <button class="category-button">
+                        VIEW ALL
+                    </button>
+                </div>
+                <div class="category-details-fifth hide">
+                    <h6 class="category-title">
+                        New arrivals <br>
+                        are now in!
+                    </h6>
+                    <button class="category-button">
+                        Show collection
+                    </button>
+                </div>
+                <div class="category-details-sixth hide">
+                    <h6 class="category-title category-title-2">
+                        Basic t-shirts<br>
+                        $29,99
+                    </h6>
+                    <button class="category-button">
+                        More details
+                    </button>
+                </div>
+            </div>
+            <button class="loadmore-button" onclick="showmoreitems()">
+                More details
+            </button>
+        </div>
+    </section>
+    <!-- Category Section  End -->
+    <!-- Why should you choose us? start -->
+    <section class="Why-should-choose-us">
+        <div class="container">
+            <h2 class="title">Why should you choose us? </h2>
+            <div class="services">
+                <div class="service-details">
+                    <div class="service-icon">
+                        <img src="ImagesALL/noun_delivery_1665162.png">
+                    </div>
+                    <h5 class="service-title"><strong>Free Shipping</strong></h5>
+                    <p class="service-description">
+                        All purchases over $399 are eligible for
+                        free shipping via UPS Pack and Ship.
+                    </p>
+                </div>
+                <div class="service-details">
+                    <div class="service-icon">
+                        <img src="ImagesALL/noun_delivery_1665162.png">
+                    </div>
+                    <h5 class="service-title"><strong>Free Shipping</strong></h5>
+                    <p class="service-description">
+                        All purchases over $399 are eligible for
+                        free shipping via UPS Pack and Ship.
+                    </p>
+                </div>
+                <div class="service-details">
+                    <div class="service-icon">
+                        <img src="ImagesALL/noun_delivery_1665162.png">
+                    </div>
+                    <h5 class="service-title"><strong>Free Shipping</strong></h5>
+                    <p class="service-description">
+                        All purchases over $399 are eligible for
+                        free shipping via UPS Pack and Ship.
+                    </p>
+                </div>
+                <div class="service-details">
+                    <div class="service-icon">
+                        <img src="ImagesALL/noun_delivery_1665162.png">
+                    </div>
+                    <h5 class="service-title"><strong>Free Shipping</strong></h5>
+                    <p class="service-description">
+                        All purchases over $399 are eligible for
+                        free shipping via UPS Pack and Ship.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why should you choose us? end -->
+    <!-- Products in today start -->
+    <section class="Products-in-today">
+        <div class="container">
+            <h2 class="title">Products in today </h2>
+            <div class="product-item-list">
+                <div class="product-first background1">
+                    <h4>Product 1</h4>
+                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
+                    <div class="more-info-button" onmouseover="imagebackgrounddetails(0)" onmouseout="imagebackgrounddetailshide(0)">
+                        <div class="ellipse"></div>
+                        <button class="details-button"><strong>More Info</strong></button>
+                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
+                    </div>
+                </div>
+                <div class="product-first background1">
+                    <h4>Product 1</h4>
+                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
+                    <div class="more-info-button" onmouseover="imagebackgrounddetails(1)" onmouseout="imagebackgrounddetailshide(1)">
+                        <div class="ellipse"></div>
+                        <button class="details-button"><strong>More Info</strong></button>
+                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
+                    </div>
+                </div>
+                <div class="product-first background2">
+                    <h4>Product 1</h4>
+                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
+                    <div class="more-info-button" onmouseover="imagebackgrounddetails(2)" onmouseout="imagebackgrounddetailshide(2)">
+                        <div class="ellipse"></div>
+                        <button class="details-button"><strong>More Info</strong></button>
+                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
+                    </div>
+                </div>
+            </div>
+            <div class="product-item-list-2">
+                <div class="product-big background3">
+                    <h4>Product 1</h4>
+                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
+                    <div class="more-info-button-big" onmouseover="imagebackgrounddetails(3)" onmouseout="imagebackgrounddetailshide(3)">
+                        <div class="ellipse"></div>
+                        <button class="details-button"><strong>More Info</strong></button>
+                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
+                    </div>
+                </div>
+                <div class="product-first background1">
+                    <h4>Product 1</h4>
+                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
+                    <div class="more-info-button" onmouseover="imagebackgrounddetails(4)" onmouseout="imagebackgrounddetailshide(4)">
+                        <div class="ellipse"></div>
+                        <button class="details-button"><strong>More Info</strong></button>
+                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
+                    </div>
+                </div>
+            </div>
+            <div class="product-item-list-3">
+                <div class="product-first background1">
+                    <h4>Product 1</h4>
+                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
+                    <div class="more-info-button" onmouseover="imagebackgrounddetails(5)" onmouseout="imagebackgrounddetailshide(5)">
+                        <div class="ellipse"></div>
+                        <button class="details-button"><strong>More Info</strong></button>
+                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
+                    </div>
+                </div>
+                <div class="product-big background4">
+                    <h4>Product 1</h4>
+                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
+                    <div class="more-info-button-big" onmouseover="imagebackgrounddetails(6)" onmouseout="imagebackgrounddetailshide(6)">
+                        <div class="ellipse"></div>
+                        <button class="details-button"><strong>More Info</strong></button>
+                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  Products in today  end -->
+    <!-- Banner Start -->
+    <section class="banner-section mt-3">
+        <div class="container">
+            <div class="row gap">
+                <div class="col-lg-7 col-md-7 col-sm-12 banner-text">
+                    <h4>
+                        Sneakers Never Run Out Of Style
+                        Get 50% Off Sitewide
+                    </h4>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-12 banner-button">
+                    <button class="banner-button-item">Start Shopping</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner End -->
+    <!-- Recomandation Section Start -->
+    <section class="recomandation-section mt-5 pb-5">
+        <div class="container">
+            <h2 class="title">Recomandated For You </h2>
+            <div class="product-list mb-3">
+                <div class="product showproduct">
+                    <div class="productdetilssection">
+                        <span class="cash">$2.33</span>
+                        <img src="ImagesALL/armchair_PNG7028.png">
+                        <div class="product-details">
+                            <h4> product 1</h4>
+                            <p>product 1</p>
+                        </div>
+                    </div>
+                    <div class="product-detail-button cart-button">
+                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                    </div>
+                </div>
+                <div class="product showproduct">
+                    <span class="cash">$2.33</span>
+                    <img src="ImagesALL/chair.png">
+                    <div class="product-details">
+                        <h4> product 1</h4>
+                        <p>product 1</p>
+                    </div>
+                    <div class="product-detail-button cart-button">
+                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                    </div>
+                </div>
+                <div class="product showproduct">
+                    <span class="cash">$2.33</span>
+                    <img src="ImagesALL/chair-ingrid.png">
+                    <div class="product-details">
+                        <h4> product 1</h4>
+                        <p>product 1</p>
+                    </div>
+                    <div class="product-detail-button cart-button">
+                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                    </div>
+                </div>
+                <div class="product showproduct">
+                    <span class="cash">$2.33</span>
+                    <img src="ImagesALL/main_photo.png">
+                    <div class="product-details">
+                        <h4> product 1</h4>
+                        <p>product 1</p>
+                    </div>
+                    <div class="product-detail-button cart-button">
+                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                    </div>
+                </div>
+                <div class="product hideproduct">
+                    <span class="cash">$2.33</span>
+                    <img src="ImagesALL/photo1.png">
+                    <div class="product-details">
+                        <h4> product 1</h4>
+                        <p>product 1</p>
+                    </div>
+                    <div class="product-detail-button cart-button">
+                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                    </div>
+                </div>
+                <div class="product hideproduct">
+                    <span class="cash">$2.33</span>
+                    <img src="ImagesALL/w-4.png">
+                    <div class="product-details">
+                        <h4> product 1</h4>
+                        <p>product 1</p>
+                    </div>
+                    <div class="product-detail-button cart-button">
+                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                    </div>
+                </div>
+                <div class="product hideproduct">
+                    <span class="cash">$2.33</span>
+                    <img src="ImagesALL/s-1.png">
+                    <div class="product-details">
+                        <h4> product 1</h4>
+                        <p>product 1</p>
+                    </div>
+                    <div class="product-detail-button cart-button">
+                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                    </div>
+                </div>
+                <div class="product hideproduct">
+                    <span class="cash">$2.33</span>
+                    <img src="ImagesALL/w-5.png">
+                    <div class="product-details">
+                        <h4> product 1</h4>
+                        <p>product 1</p>
+                    </div>
+                    <div class="product-detail-button cart-button">
+                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                    </div>
+                </div>
+                <div class="product hideproduct">
+                    <span class="cash">$2.33</span>
+                    <img src="ImagesALL/s-3.png">
+                    <div class="product-details">
+                        <h4> product 1</h4>
+                        <p>product 1</p>
+                    </div>
+                    <div class="product-detail-button cart-button">
+                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                    </div>
+                </div>
+                <div class="product hideproduct">
+                    <span class="cash">$2.33</span>
+                    <img src="ImagesALL/s-4.png">
+                    <div class="product-details">
+                        <h4> product 1</h4>
+                        <p>product 1</p>
+                    </div>
+                    <div class="product-detail-button cart-button">
+                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                    </div>
+                </div>
+                <div class="product hideproduct">
+                    <span class="cash">$2.33</span>
+                    <img src="ImagesALL/w-1.png">
+                    <div class="product-details">
+                        <h4> product 1</h4>
+                        <p>product 1</p>
+                    </div>
+                    <div class="product-detail-button cart-button">
+                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                    </div>
+                </div>
+                <div class="product hideproduct">
+                    <span class="cash">$2.33</span>
+                    <img src="ImagesALL/w-2.png">
+                    <div class="product-details">
+                        <h4> product 1</h4>
+                        <p>product 1</p>
+                    </div>
+                    <div class="product-detail-button cart-button">
+                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                    </div>
+                </div>
+            </div>
+            <button class="loadmore-button" onclick="showmoreproduct()">
+                More details
+            </button>
+        </div>
+    </section>
+    <!-- Recomandation Section End -->
+    <!-- Banner-2 Section Start -->
+    <section class="banner-section mt-3">
+        <div class="container">
+            <div class="row gap">
+                <div class="col-lg-7 col-md-7 col-sm-12 banner-text">
+                    <h4>
+                        Sneakers Never Run Out Of Style
+                        Get 50% Off Sitewide
+                    </h4>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-12 banner-button">
+                    <button class="banner-button-item">Start Shopping</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner-2 Section End -->
+    <!-- Trending Week Start -->
+    <section class="trendingweekcontentstart">
+        <div class="container">
+            <h2 class="title">Trending This Week </h2>
+            <div class="product-list">
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="custom-btn2">
+                <a onclick="nextSlide(1)"><p class="slider-icon">></p></a>
+            </div>
+            <div class="custom-btn">
+                <a onclick="nextSlide(-1)"><p class="slider-icon"> < </p></a>
+            </div>
+        </div>
+    </section>
+    <!-- Trending Week ENd -->
+    <!-- Our Product Start -->
+    <section class="trendingweekcontentstart">
+        <div class="container">
+            <h2 class="title">Our Products </h2>
+            <div class="product-list">
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <img src="ImagesALL/w-2.png">
+                        <div class="trending-product-details">
+                            <h4> product 1</h4>
+                            <p class="cash-details">$2.33</p>
+                        </div>
+                        <div class="product-detail-button cart-button">
+                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
+                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-btn2">
+                <a onclick="nextSlide(1)"><p class="slider-icon">></p></a>
+            </div>
+            <div class="custom-btn">
+                <a onclick="nextSlide(-1)"><p class="slider-icon"> < </p></a>
+            </div>
+        </div>
+    </section>
+    <!-- Our Product  ENd -->
+    <!-- News Latter Start -->
+    <section class="news-latter-start">
+        <div class="container background-image">
+            <div class="row">
+                <div class="col-lg-7 col-md-7">
+                    <h4 class="news-latter-title">
+                        Subscribe to our newsletter and
+                        receive exclusive offers every week
+                    </h4>
+                </div>
+                <div class="col-lg-5 col-md-5">
+                    <form class="">
+                        <input class="Subscribe" type="email" placeholder="Enter your email">
+                        <button class="Subscribe-button"> <strong> Subscribe</strong></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- News Latter ENd -->
+    <!-- Footer Start -->
+    <!-- Footer End -->
+    <!-- Copy Right Start -->
+    <!-- <section class="copyright">
+        <div class="container">
+            <h4 class="copyrightdetails">Copyright ©  <span id="year"></span> All Right Reserved by Fuad Uddin</h4>
+        </div>
+    </section> -->
+    <!-- Copy Right  End -->
+    <!-- Boothstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <!-- Own js -->
+    <script src="JS.js"></script>
+    <!-- Own Js -->
+    <script>
+        function imagebackgrounddetails(number)
+{
+    $(".ellipse").eq(number).css('background-color','orange');
+    $(".details-button").eq(number).css('color','orange');
+    $(".more-details-image").eq(number).fadeOut();
+    $(".more-details-image").eq(number).fadeIn();
+}
+function imagebackgrounddetailshide(number)
+{
+    $(".ellipse").eq(number).css('background-color','lightgray');
+    $(".details-button").eq(number).css('color','black');
+}
+$(".hide").hide();
+$(".hideproduct").hide();
+function showmoreitems()
+{
+    let slides = document.getElementsByClassName("hide");
+    for (i =0; i < slides.length; i++) {
+        $(".hide").eq(i).toggle();
+  }
+
+}
+function showmoreproduct()
+{
+    let slides = document.getElementsByClassName("hideproduct");
+    for (i =0; i < slides.length; i++) {
+        $(".hideproduct").eq(i).toggle();
+  }
+}
+    </script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</body>
+</html>
+

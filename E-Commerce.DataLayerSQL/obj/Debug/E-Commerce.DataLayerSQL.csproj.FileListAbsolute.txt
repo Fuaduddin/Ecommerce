@@ -1,0 +1,41 @@
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayerSQL.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayerSQL.pdb
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.AssemblyReference.cache
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.CoreCompileInputs.cache
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.pdb
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayer.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Model.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Utility.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayer.pdb
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Model.pdb
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Utility.pdb
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.CopyComplete
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.AssemblyReference.cache
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.CoreCompileInputs.cache
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.AssemblyReference.cache
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.CoreCompileInputs.cache
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayerSQL.dll
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayerSQL.pdb
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayer.dll
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Model.dll
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Utility.dll
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayer.pdb
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Model.pdb
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Utility.pdb
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.CopyComplete
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.dll
+E:\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.pdb
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayerSQL.dll
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayerSQL.pdb
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayer.dll
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Model.dll
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Utility.dll
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayer.pdb
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Model.pdb
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Utility.pdb
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.AssemblyReference.cache
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.CoreCompileInputs.cache
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.CopyComplete
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.dll
+E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.pdb

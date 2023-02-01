@@ -1,0 +1,166 @@
+.form-title-details
+{
+    text-align: center;
+    padding: 5% 15% 1% 15%;
+}
+.login-form
+{
+    margin-left: 5%;
+}
+.login-input
+{
+    padding-top: 6%;
+}
+.login-from-input
+{
+    width: 70%;
+    padding: 1% 1% 2% 3%;
+    border-radius: 28px;
+    background: transparent;
+    border: 1px solid #d8d8d8;
+}
+.aboutstart
+{
+    margin-left: 5%;
+}
+.social-button-details,.login-input
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9%; 
+    margin-bottom: 2%;
+}
+.button-link
+{
+    border-radius: 28px;
+    background: transparent;
+    padding: 2% 8% 2% 8%;
+}
+.fa {
+    /* padding: 20px; */
+    font-size: 30px;
+    /* width: 100%; */
+    text-align: center;
+    /* text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%; */
+  }
+  .twitter {
+    background: #55ACEE;
+    color: white;
+    font-size: 25px;
+    border: 2px solid #55ACEE;
+  }
+  .facebook {
+    background: #3B5998;
+    color: white;
+    font-size: 25px;
+    border: 2px solid #3B5998;
+  }
+  .fa:hover {
+    opacity: 0.7;
+}
+.facebook:hover ,.twitter:hover {
+    color: orange;
+
+}
+.loginbutton
+{
+    background: #FBB03B;
+    color: white;
+    font-size: 30px;
+    border: 2px solid #FBB03B;
+}
+
+
+/* Media Query Start */
+@media (max-width:575px)
+{
+    .twitter {
+        background: #55ACEE;
+        color: white;
+        font-size: 20px;
+        border: 2px solid #55ACEE;
+    }
+    .facebook {
+        background: #3B5998;
+        color: white;
+        font-size: 20px;
+        border: 2px solid #3B5998;
+    }
+    .loginbutton {
+        background: #FBB03B;
+        color: white;
+        font-size: 20px;
+        border: 2px solid #FBB03B;
+    }
+    .social-button-details, .login-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3%;
+        margin-bottom: 2%;
+    }
+    .fa {
+        /* padding: 20px; */
+        font-size: 15px;
+        /* width: 100%; */
+        text-align: center;
+    }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media (max-width:767px) and (min-width:576px)
+{
+    .twitter {
+        background: #55ACEE;
+        color: white;
+        font-size: 20px;
+        border: 2px solid #55ACEE;
+    }
+    .facebook {
+        background: #3B5998;
+        color: white;
+        font-size: 20px;
+        border: 2px solid #3B5998;
+    }
+    .loginbutton {
+        background: #FBB03B;
+        color: white;
+        font-size: 20px;
+        border: 2px solid #FBB03B;
+    }
+}
+@media (max-width:991px) and (min-width:766px)
+{
+    .twitter {
+        background: #55ACEE;
+        color: white;
+        font-size: 20px;
+        border: 2px solid #55ACEE;
+    }
+    .facebook {
+        background: #3B5998;
+        color: white;
+        font-size: 20px;
+        border: 2px solid #3B5998;
+    }
+    .loginbutton {
+        background: #FBB03B;
+        color: white;
+        font-size: 20px;
+        border: 2px solid #FBB03B;
+    }
+    
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media (max-width:1199px) and (min-width:992px)
+{
+   
+}
+/* Desktop View */
+@media (min-width:1200px)
+{
+ 
+
+}

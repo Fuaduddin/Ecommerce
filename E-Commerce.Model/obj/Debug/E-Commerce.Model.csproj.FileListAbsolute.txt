@@ -1,0 +1,24 @@
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Commerce.Model.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Commerce.Model.pdb
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.CoreCompileInputs.cache
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.dll
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.pdb
+E:\Fuad Uddin Traning Period\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.AssemblyReference.cache
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Commerce.Model.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Commerce.Model.pdb
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.CoreCompileInputs.cache
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.dll
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.pdb
+E:\Old Staff\E-commerece\Dotnet Protfolios\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.AssemblyReference.cache
+E:\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Commerce.Model.dll
+E:\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Commerce.Model.pdb
+E:\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.CoreCompileInputs.cache
+E:\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.dll
+E:\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.pdb
+E:\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.AssemblyReference.cache
+E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Commerce.Model.dll
+E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Commerce.Model.pdb
+E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.AssemblyReference.cache
+E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.CoreCompileInputs.cache
+E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.dll
+E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.pdb

@@ -1,0 +1,117 @@
+.circle
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: orange;
+    width: 18%;
+    /* height: 54%; */
+    height: 216px;
+    border-radius: 50%;
+    color: white;
+    font-size: 150px;
+}
+.check-mark
+{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 25%;
+}
+.back-to-home-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1%;
+}
+p.circle-short-details {
+    padding: 0% 32% 0% 32%;
+    font-size: 25px;
+    line-height: 30px;
+}
+.description-circule {
+    text-align: center;
+    padding-top: 2%;
+}
+button.back-to-home {
+    padding: 2% 5% 2% 5%;
+    border-radius: 24.5px;
+    text-align: center;
+    background: orange;
+    color: white;
+    border: 2px solid orange;
+    font-size: 20px;
+}
+h5.circle-title {
+    font-size: 30px;
+    line-height: 35px;
+}
+
+/* Media Query Start */
+@media (max-width:575px)
+{
+    .circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: orange;
+        width: 52%;
+        /* height: 54%; */
+        height: 216px;
+        border-radius: 50%;
+        color: white;
+        font-size: 152px;
+    }
+    p.circle-short-details {
+        padding: 0% 2% 0% 7%;
+        font-size: 17px;
+        line-height: 30px;
+    }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media (max-width:767px) and (min-width:576px)
+{
+    .circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: orange;
+        width: 45%;
+        /* height: 54%; */
+        height: 216px;
+        border-radius: 50%;
+        color: white;
+        font-size: 150px;
+    }
+}
+@media (max-width:991px) and (min-width:766px)
+{
+    p.circle-short-details {
+        padding: 0% 8% 0% 6%;
+        font-size: 25px;
+        line-height: 30px;
+    }
+    .circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: orange;
+        width: 33%;
+        /* height: 54%; */
+        height: 216px;
+        border-radius: 50%;
+        color: white;
+        font-size: 150px;
+    }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media (max-width:1199px) and (min-width:992px)
+{
+   
+}
+/* Desktop View */
+@media (min-width:1200px)
+{
+ 
+
+}
