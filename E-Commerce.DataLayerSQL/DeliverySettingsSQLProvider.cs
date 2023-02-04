@@ -12,22 +12,22 @@ namespace E_Commerce.DataLayerSQL
 {
    public class DeliverySettingsSQLProvider
     {
-        public long AddNewDeliveryDeliveryCharge(DeliveryCharge category)
+        public long AddNewDeliveryDeliveryCharge(DeliveryCharge deliverycharge)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
                 long id = 0;
-                SqlCommand command = new SqlCommand(StoredProcedured.AddCategory, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.AddDeliveryCharge, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                SqlParameter returnvalue = new SqlParameter("@" + "CategoryId", SqlDbType.Int);
+                SqlParameter returnvalue = new SqlParameter("@" + "DeliveryChargeid", SqlDbType.Int);
                 returnvalue.Direction = ParameterDirection.Output;
                 command.Parameters.Add(returnvalue);
-                foreach (var Categories in category.GetType().GetProperties())
+                foreach (var charge in deliverycharge.GetType().GetProperties())
                 {
-                    if (Categories.Name != "CategoryId")
+                    if (charge.Name != "DeliveryChargeid")
                     {
-                        string name = Categories.Name;
-                        var value = Categories.GetValue(category, null);
+                        string name = charge.Name;
+                        var value = charge.GetValue(deliverycharge, null);
                         command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                     }
                 }
@@ -35,7 +35,7 @@ namespace E_Commerce.DataLayerSQL
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
-                    id = (int)command.Parameters["@CategoryId"].Value;
+                    id = (int)command.Parameters["@DeliveryChargeid"].Value;
                 }
                 catch (Exception ex)
                 {
@@ -53,15 +53,15 @@ namespace E_Commerce.DataLayerSQL
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoredProcedured.GetAllCategory, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.GetAllDeliveryCharge, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 try
                 {
                     connection.Open();
                     SqlDataReader Datareader = command.ExecuteReader();
-                    List<DeliveryCharge> categoryList = new List<DeliveryCharge>();
-                    categoryList = UtilityManager.DataReaderMapToList<DeliveryCharge>(Datareader);
-                    return categoryList;
+                    List<DeliveryCharge> deliverychargeList = new List<DeliveryCharge>();
+                    deliverychargeList = UtilityManager.DataReaderMapToList<DeliveryCharge>(Datareader);
+                    return deliverychargeList;
                 }
                 catch (Exception ex)
                 {
@@ -73,14 +73,14 @@ namespace E_Commerce.DataLayerSQL
                 }
             }
         }
-        public bool DeleteDeliveryCharge(int categoryid)
+        public bool DeleteDeliveryCharge(int deliverychargeid)
         {
             bool IsDeleted = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoredProcedured.DeleteCategory, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.DeleteDeliveryCharge, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@CategoryId", categoryid));
+                command.Parameters.Add(new SqlParameter("@DeliveryChargeid", deliverychargeid));
                 try
                 {
                     connection.Open();
@@ -99,20 +99,20 @@ namespace E_Commerce.DataLayerSQL
                 return IsDeleted;
             }
         }
-        public DeliveryCharge GetSingleCategory(int categoryid)
+        public DeliveryCharge GetSingleCategory(int deliverychargeid)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleCategory, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.GetAllDeliveryCharge, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@CategoryId", categoryid));
+                command.Parameters.Add(new SqlParameter("@DeliveryChargeid", deliverychargeid));
                 try
                 {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    DeliveryCharge category = new DeliveryCharge();
-                    category = UtilityManager.DataReaderMap<CategoryModel>(reader);
-                    return category;
+                    DeliveryCharge charge = new DeliveryCharge();
+                    charge = UtilityManager.DataReaderMap<DeliveryCharge>(reader);
+                    return charge;
                 }
                 catch (Exception ex)
                 {
@@ -124,17 +124,17 @@ namespace E_Commerce.DataLayerSQL
                 }
             }
         }
-        public bool UpdateDeliveryCharge(DeliveryCharge category)
+        public bool UpdateDeliveryCharge(DeliveryCharge deliveryCharge)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
                 bool updated = true;
-                SqlCommand command = new SqlCommand(StoredProcedured.UpdateCategory, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.UpdateDeliveryCharge, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                foreach (var Categories in category.GetType().GetProperties())
+                foreach (var charge in deliveryCharge.GetType().GetProperties())
                 {
-                    string name = Categories.Name;
-                    var value = Categories.GetValue(category, null);
+                    string name = charge.Name;
+                    var value = charge.GetValue(deliveryCharge, null);
                     command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                 }
                 try

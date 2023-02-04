@@ -2047,9 +2047,9 @@
       <Project>{bcea8d27-69ff-49fe-bb34-13b6db6bfcc5}</Project>
       <Name>E-Commerce.BusinessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\E-commerce.Deliver\E-commerce.Deliver.csproj">
+    <ProjectReference Include="..\E-commerce.Deliver\E-commerce.Deliver.Supplier.csproj">
       <Project>{6c0e9627-84b3-47b5-b130-996a3a5f3f95}</Project>
-      <Name>E-commerce.Deliver</Name>
+      <Name>E-commerce.Deliver.Supplier</Name>
     </ProjectReference>
     <ProjectReference Include="..\E-Commerce.Model\E-Commerce.Model.csproj">
       <Project>{7c029d4a-4fe5-4f87-973e-17b849c3ee27}</Project>
