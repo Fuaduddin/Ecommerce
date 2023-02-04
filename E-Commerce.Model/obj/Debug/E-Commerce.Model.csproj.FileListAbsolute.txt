@@ -18,7 +18,6 @@ E:\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model
 E:\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.AssemblyReference.cache
 E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Commerce.Model.dll
 E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Commerce.Model.pdb
-E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.AssemblyReference.cache
 E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.CoreCompileInputs.cache
 E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.dll
 E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.pdb

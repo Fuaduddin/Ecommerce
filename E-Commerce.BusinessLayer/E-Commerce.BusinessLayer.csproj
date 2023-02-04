@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryManager.cs" />
-    <Compile Include="DeliveryManager.cs" />
+    <Compile Include="DeliverySettingsManager.cs" />
     <Compile Include="ImageGalleryManager.cs" />
     <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
