@@ -48,7 +48,7 @@
     <Compile Include="CategoryModel.cs" />
     <Compile Include="CustomerModel.cs" />
     <Compile Include="CustomerViewModel.cs" />
-    <Compile Include="DeliveryChargeModel.cs" />
+    <Compile Include="DeliverySettings.cs" />
     <Compile Include="EmailModel.cs" />
     <Compile Include="ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

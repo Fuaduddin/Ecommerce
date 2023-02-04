@@ -160,3 +160,5 @@ E:\Official Projects\WebApplication1\E-commerce.Web\obj\Debug\E-commerce.Web.csp
 E:\Official Projects\WebApplication1\E-commerce.Web\obj\Debug\E-commerce.Web.csproj.CoreCompileInputs.cache
 E:\Official Projects\WebApplication1\E-commerce.Web\obj\Debug\E-commerce.Web.dll
 E:\Official Projects\WebApplication1\E-commerce.Web\obj\Debug\E-commerce.Web.pdb
+E:\Personal\Official Projects\WebApplication1\E-commerce.Web\obj\Debug\E-commerce.Web.csproj.AssemblyReference.cache
+E:\Personal\Official Projects\WebApplication1\E-commerce.Web\obj\Debug\E-commerce.Web.csproj.CoreCompileInputs.cache

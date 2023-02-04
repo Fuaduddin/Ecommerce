@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="CategorySQLProvider.cs" />
     <Compile Include="CommonUtility.cs" />
-    <Compile Include="DeliverySQLProvider.cs" />
+    <Compile Include="DeliverySettingsSQLProvider.cs" />
     <Compile Include="ImageGallrySQLProvider.cs" />
     <Compile Include="ProductSQLProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
