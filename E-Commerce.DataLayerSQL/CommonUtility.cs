@@ -14,6 +14,8 @@ namespace E_Commerce.Utility
 
     public static class StoredProcedured
     {
+        // Super Admin and Admin
+
         //Category
 
         public static string AddCategory = "SpCategory_AddCategory";
@@ -49,6 +51,13 @@ namespace E_Commerce.Utility
         public static string UpdateImageGallery = "Sp_UpdateSubcategory";
         public static string DeleteImageGallery = "SP_DeleteImageGallary";
         public static string GetSingleImageGallery = "SP_GetSingleImageGallary";
+
+        // Delivery Charge
+        public static string AddDeliveryCharge = "AddNewDeliveryCharge";
+        public static string UpdateDeliveryCharge = "Sp_UpdateDeliveryCharge";
+        public static string DeleteDeliveryCharge = "Sp_DeleteDeliveryCharge";
+        public static string GetSingleDeliveryCharge = "Sp_GetSingleDeliveryCharge";
+        public static string GetAllDeliveryCharge = "Sp_GetAllDeliveryCharge";
 
     }
 

@@ -65,7 +65,6 @@ E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.
 E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Helpers.xml
 E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Mvc.xml
 E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.Supplier.csproj.AssemblyReference.cache
 E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.Supplier.csproj.CoreCompileInputs.cache
 E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.Supplier.csproj.CopyComplete
 E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.dll

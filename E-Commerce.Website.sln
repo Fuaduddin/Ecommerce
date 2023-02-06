@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Commerce.DataLayerSQL", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Commerce.DataLayer", "E-Commerce.DataLayer\E-Commerce.DataLayer.csproj", "{B2B80181-DE8D-4B00-A3AD-335DCF0E0E41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-commerce.Deliver", "E-commerce.Deliver\E-commerce.Deliver.csproj", "{6C0E9627-84B3-47B5-B130-996A3A5F3F95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-commerce.Deliver.Supplier", "E-commerce.Deliver\E-commerce.Deliver.Supplier.csproj", "{6C0E9627-84B3-47B5-B130-996A3A5F3F95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

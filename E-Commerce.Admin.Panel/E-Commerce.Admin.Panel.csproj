@@ -4987,7 +4987,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\DeliveryController.cs" />
+    <Compile Include="Controllers\DeliverySettingsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
     <Compile Include="Global.asax.cs">
@@ -5270,6 +5270,9 @@
     <Content Include="Views\View.cshtml" />
     <Content Include="Views\Product\GetAllProduct.cshtml" />
     <Content Include="Views\Delivery\AddZone.cshtml" />
+    <Content Include="Views\DeliverySettings\AddDeliveryCost.cshtml" />
+    <Content Include="Views\DeliverySettings\AddArea.cshtml" />
+    <Content Include="Views\DeliverySettings\AddZone.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5281,7 +5284,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\DeliverySettings\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\E-Commerce.BusinessLayer\E-Commerce.BusinessLayer.csproj">
