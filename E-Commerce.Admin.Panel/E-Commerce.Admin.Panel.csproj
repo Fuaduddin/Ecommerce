@@ -4986,10 +4986,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminDashboardController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\DeliveryManController.cs" />
     <Compile Include="Controllers\DeliverySettingsController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
+    <Compile Include="Controllers\SuperAdminDashboardController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -5284,6 +5291,13 @@
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\AdminDashboard\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Customer\" />
+    <Folder Include="Views\DeliveryMan\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\SuperAdminDashboard\" />
+    <Folder Include="Views\Supplier\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\E-Commerce.BusinessLayer\E-Commerce.BusinessLayer.csproj">
