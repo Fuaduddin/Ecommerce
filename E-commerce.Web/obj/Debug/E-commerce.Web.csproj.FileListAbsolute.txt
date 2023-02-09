@@ -163,6 +163,7 @@ E:\Official Projects\WebApplication1\E-commerce.Web\obj\Debug\E-commerce.Web.pdb
 E:\Personal\Official Projects\WebApplication1\E-commerce.Web\obj\Debug\E-commerce.Web.csproj.AssemblyReference.cache
 E:\Personal\Official Projects\WebApplication1\E-commerce.Web\obj\Debug\E-commerce.Web.csproj.CoreCompileInputs.cache
 <<<<<<< HEAD
+<<<<<<< HEAD
 E:\Personal\Official Projects\WebApplication1\E-commerce.Web\bin\E-commerce.Web.dll.config
 E:\Personal\Official Projects\WebApplication1\E-commerce.Web\bin\E-commerce.Web.dll
 E:\Personal\Official Projects\WebApplication1\E-commerce.Web\bin\E-commerce.Web.pdb
@@ -249,5 +250,7 @@ E:\Personal\Official Projects\WebApplication1\E-commerce.Web\bin\E-Commerce.Util
 E:\Personal\Official Projects\WebApplication1\E-commerce.Web\obj\Debug\E-commerce.Web.csproj.CopyComplete
 E:\Personal\Official Projects\WebApplication1\E-commerce.Web\obj\Debug\E-commerce.Web.dll
 E:\Personal\Official Projects\WebApplication1\E-commerce.Web\obj\Debug\E-commerce.Web.pdb
+=======
+>>>>>>> eb07d2c22cc4e8b77e6fd6e2b693c4a37cf05791
 =======
 >>>>>>> eb07d2c22cc4e8b77e6fd6e2b693c4a37cf05791

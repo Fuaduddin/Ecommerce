@@ -280,6 +280,10 @@ E:\Personal\Official Projects\WebApplication1\WebApplication1\bin\System.Web.Hel
 E:\Personal\Official Projects\WebApplication1\WebApplication1\bin\System.Web.Mvc.xml
 E:\Personal\Official Projects\WebApplication1\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+E:\Personal\Official Projects\WebApplication1\WebApplication1\obj\Debug\Front-End E-commerce.csproj.AssemblyReference.cache
+>>>>>>> eb07d2c22cc4e8b77e6fd6e2b693c4a37cf05791
 =======
 E:\Personal\Official Projects\WebApplication1\WebApplication1\obj\Debug\Front-End E-commerce.csproj.AssemblyReference.cache
 >>>>>>> eb07d2c22cc4e8b77e6fd6e2b693c4a37cf05791
