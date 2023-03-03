@@ -10,6 +10,7 @@ namespace E_Commerce.BusinessLayer
 {
     public class DeliverySettingsManager
     {
+        //DeliveryCost
         public static long AddNewDeliveryCost(DeliveryCharge charge)
         {
             DeliverySettingsSQLProvider provider = new DeliverySettingsSQLProvider();
@@ -40,36 +41,38 @@ namespace E_Commerce.BusinessLayer
             var Categoriesd = provider.DeleteDeliveryCharge(categoryId);
             return Categoriesd;
         }
-        public static long AddNewArea(CategoryModel category)
+        //Area
+        public static long AddNewArea(Area area)
         {
-            CategorySQLProvider provider = new CategorySQLProvider();
-            var Categorytid = provider.AddNewCategory(category);
+            DeliverySettingsSQLProvider provider = new DeliverySettingsSQLProvider();
+            var Categorytid = provider.AddNewArea(area);
             return Categorytid;
         }
-        public static List<CategoryModel> GetAllArea()
+        public static List<Area> GetAllArea()
         {
-            CategorySQLProvider provider = new CategorySQLProvider();
-            var Categoriesd = provider.ViewAllCategory();
+            DeliverySettingsSQLProvider provider = new DeliverySettingsSQLProvider();
+            var Categoriesd = provider.ViewAllArea();
             return Categoriesd;
         }
-        public static bool UpdateArea(CategoryModel category)
+        public static bool UpdateArea(Area area)
         {
-            CategorySQLProvider provider = new CategorySQLProvider();
-            var Categoriesd = provider.UpdateCategory(category);
+            DeliverySettingsSQLProvider provider = new DeliverySettingsSQLProvider();
+            var Categoriesd = provider.UpdateArea(area);
             return Categoriesd;
         }
-        public static CategoryModel GetSingleArea(int categoryId)
+        public static Area GetSingleArea(int areaid)
         {
-            CategorySQLProvider provider = new CategorySQLProvider();
-            var Categoriesd = provider.GetSingleCategory(categoryId);
+            DeliverySettingsSQLProvider provider = new DeliverySettingsSQLProvider();
+            var Categoriesd = provider.GetSingleArea(areaid);
             return Categoriesd;
         }
-        public static bool DeleteArea(int categoryId)
+        public static bool DeleteArea(int areaid)
         {
-            CategorySQLProvider provider = new CategorySQLProvider();
-            var Categoriesd = provider.DeleteCategory(categoryId);
+            DeliverySettingsSQLProvider provider = new DeliverySettingsSQLProvider();
+            var Categoriesd = provider.DeleteArea(areaid);
             return Categoriesd;
         }
+        // All Zone
         public static long AddNewZone(CategoryModel category)
         {
             CategorySQLProvider provider = new CategorySQLProvider();

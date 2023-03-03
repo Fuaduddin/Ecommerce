@@ -19,7 +19,7 @@ namespace E_Commerce.Model
         public Area area { get; set; }
         public Zone zone { get; set; }
 
-        // All Lists
+        // All Model Lists
         public List<ProductModel> ProductList { get; set; }
         //public List<ProductModel> ProductSearchList { get; set; }
         public List<DeliveryCharge> deliverychargeList { get; set; }

@@ -24,7 +24,7 @@ namespace E_Commerce.Admin.Panel.Controllers
           
             if (charge.DeliveryChargeid > 0)
             {
-                bool updte =  DeliverySettingsManager.UpdateDeliveryCost(charge);
+                bool updated =  DeliverySettingsManager.UpdateDeliveryCost(charge);
                 return View("AddDeliveryCost");
             }
             else
@@ -61,45 +61,80 @@ namespace E_Commerce.Admin.Panel.Controllers
         }
         public ActionResult AddArea()
         {
-
-            return View();
+            AdminViewModel area = new AdminViewModel();
+            area.area = new Area();
+            return View(area);
         }
         [HttpPost]
-        public ActionResult AddArea(Area delivery)
+        public ActionResult AddArea(Area area) 
         {
-
+            if (area.ZoneId>0)
+            {
+                bool updated = DeliverySettingsManager.UpdateArea(area);
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    long added = DeliverySettingsManager.AddNewArea(area);
+                }
+                return View();
+            }
+          
+        }
+        public ActionResult DeleteArea(int id)
+        {
+            if (id<0)
+            {
+                bool deleted = DeliverySettingsManager.DeleteArea(id);
+            }
             return View();
         }
-        public ActionResult DeleteArea()
+        public ActionResult GetSingleArea(int id)
         {
-
-            return View();
-        }
-        public ActionResult GetSingleArea()
-        {
-
+            AdminViewModel area = new AdminViewModel();
+            area.area = DeliverySettingsManager.GetSingleArea(id);
             return View();
         }
         public ActionResult AddZone()
         {
-
-            return View();
+            AdminViewModel zone = new AdminViewModel();
+            zone.zone = new Zone();
+            return View(zone);
         }
         [HttpPost]
-        public ActionResult AddZone(Zone delivery)
+        public ActionResult AddZone(Zone zone)
         {
-
+            if (zone.Placeid>0)
+            {
+              //  bool updated = DeliverySettingsManager.UpdateZone();
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    //long addded = DeliverySettingsManager.AddNewZone(zone);
+                  
+                }
+                return View();
+            }
+           
+        }
+        public ActionResult DeleteZone(int id)
+        {
+            if (id>0)
+            {
+                bool deleted = DeliverySettingsManager.DeleteZone(id);
+            }
             return View();
         }
-        public ActionResult DeleteZone(Zone delivery)
+        public ActionResult GetsingleZone(int id)
         {
-
-            return View();
-        }
-        public ActionResult GetsingleZone(Zone delivery)
-        {
-
-            return View();
+            AdminViewModel zone = new AdminViewModel();
+         //   zone.zone = DeliverySettingsManager.GetSingleZone(id);
+            return View(zone);
         }
     }
 }

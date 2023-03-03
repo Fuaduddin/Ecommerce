@@ -11,10 +11,8 @@ namespace E_Commerce.Model
     {
         [Key]
         public int ZoneId { get; set; }
-        [Required(ErrorMessage = "Please Enter Devision Name")]
-        public string DevisionName { get; set; }
-        [Required(ErrorMessage = "Please Enter Area Name")]
-        public string AreaName { get; set; }
+        [Required(ErrorMessage = "Please Enter Zone Name")]
+        public string ZoneName { get; set; }
         [Required(ErrorMessage = "Please Enter Delivery Charge")]
         public int DeliverCharge { get; set; } 
     }

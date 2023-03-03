@@ -280,7 +280,6 @@ E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\
 E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Helpers.xml
 E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Mvc.xml
 E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.AssemblyReference.cache
 E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.CoreCompileInputs.cache
 E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.CopyComplete
 E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.dll

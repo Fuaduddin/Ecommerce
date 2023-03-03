@@ -4977,6 +4977,7 @@
     <Content Include="Assests\plugins\x-editable\dist\bootstrap3-editable\img\loading.gif" />
     <Content Include="Assests\plugins\x-editable\dist\bootstrap3-editable\js\bootstrap-editable.min.js" />
     <Content Include="Assests\plugins\xml\plugin.js" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Html\app-calender.html" />
     <Content Include="Html\app-profile.html" />
@@ -5314,6 +5315,9 @@
     <Content Include="Assests\plugins\typeahedjs\dist\nfl.json" />
     <Content Include="Assests\plugins\typeahedjs\dist\nhl.json" />
     <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

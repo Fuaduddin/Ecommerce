@@ -69,3 +69,4 @@ E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-com
 E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.Supplier.csproj.CopyComplete
 E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.dll
 E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.pdb
+E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.Supplier.csproj.AssemblyReference.cache
