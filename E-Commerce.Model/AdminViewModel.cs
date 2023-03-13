@@ -23,11 +23,12 @@ namespace E_Commerce.Model
         public List<ProductModel> ProductList { get; set; }
         //public List<ProductModel> ProductSearchList { get; set; }
         public List<DeliveryCharge> deliverychargeList { get; set; }
-        public List<Area> zoneList { get; set; }
-        public List<Zone> areaList { get; set; }
+        public List<Zone> zoneList { get; set; }
+        public List<Area> areaList { get; set; }
         public List<CategoryModel> CategoryList { get; set; }
         public List<SubCategoryModel> SubCategoryList { get; set; }
         public List<viewsubcategory> viewsubcategorydetails { get; set; }
+        public List<viewZone> viewzone { get; set; }
 
         //public RoleModel role { get; set; }
         //public List<RoleModel> rolelist { get; set; }

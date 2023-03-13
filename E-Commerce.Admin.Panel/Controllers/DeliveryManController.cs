@@ -9,7 +9,12 @@ namespace E_Commerce.Admin.Panel.Controllers
     public class DeliveryManController : Controller
     {
         // GET: DeliveryMan
-        public ActionResult Index()
+        public ActionResult AddNewDeliveryMan()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddNewDeliveryMan()
         {
             return View();
         }

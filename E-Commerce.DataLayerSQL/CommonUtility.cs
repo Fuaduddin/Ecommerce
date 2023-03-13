@@ -59,6 +59,18 @@ namespace E_Commerce.Utility
         public static string GetSingleDeliveryCharge = "Sp_GetSingleDeliveryCharge";
         public static string GetAllDeliveryCharge = "Sp_GetAllDeliveryCharge";
 
+        // Zone
+        public static string AddZone = "AddNewZone";
+        public static string UpdateZone = "sp_UpdateZone";
+        public static string DeleteZone = "Sp_DeleteZone";
+        public static string GetSingleZone = "Sp_GetSingleZone";
+        public static string GetAllZone = "GetAllZone";
+        public static string GetSingleZoneAllArea = "Sp_GetSingleZoneAllArea";
+
+        // Area
+        public static string AddArea = "Sp_AddNewArea";
+        public static string DeleteArea = "Sp_DeleteArea";
+        public static string GetAllArea = "Sp_GetAllArea";
     }
 
 }

@@ -99,11 +99,11 @@ namespace E_Commerce.DataLayerSQL
                 return IsDeleted;
             }
         }
-        public DeliveryCharge GetSingleCategory(int deliverychargeid)
+        public DeliveryCharge GetSingleDelivery(int deliverychargeid)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoredProcedured.GetAllDeliveryCharge, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleDeliveryCharge, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@DeliveryChargeid", deliverychargeid));
                 try
@@ -154,23 +154,23 @@ namespace E_Commerce.DataLayerSQL
                 return updated;
             }
         }
-        // area back-end work  need to be modified 
-        public long AddNewArea(Area area)
+        // zone
+        public long AddNewZone(Zone zone)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
                 long id = 0;
-                SqlCommand command = new SqlCommand(StoredProcedured.AddDeliveryCharge, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.AddZone, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                SqlParameter returnvalue = new SqlParameter("@" + "DeliveryChargeid", SqlDbType.Int);
+                SqlParameter returnvalue = new SqlParameter("@" + "Placeid", SqlDbType.Int);
                 returnvalue.Direction = ParameterDirection.Output;
                 command.Parameters.Add(returnvalue);
-                foreach (var charge in area.GetType().GetProperties())
+                foreach (var charge in zone.GetType().GetProperties())
                 {
-                    if (charge.Name != "DeliveryChargeid")
+                    if (charge.Name != "Placeid")
                     {
                         string name = charge.Name;
-                        var value = charge.GetValue(area, null);
+                        var value = charge.GetValue(zone, null);
                         command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                     }
                 }
@@ -178,7 +178,175 @@ namespace E_Commerce.DataLayerSQL
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
-                    id = (int)command.Parameters["@DeliveryChargeid"].Value;
+                    id = (int)command.Parameters["@Placeid"].Value;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                return id;
+            }
+        }
+        public List<viewZone> ViewAllZone()
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetAllZone, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    connection.Open();
+                    SqlDataReader Datareader = command.ExecuteReader();
+                    List<viewZone> deliverychargeList = new List<viewZone>();
+                    deliverychargeList = UtilityManager.DataReaderMapToList<viewZone>(Datareader);
+                    return deliverychargeList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public bool DeleteZone(int areaid)
+        {
+            bool IsDeleted = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.DeleteZone, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@Placeid", areaid));
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    IsDeleted = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                return IsDeleted;
+            }
+        }
+        public Zone GetSingleZone(int areaid)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleZone, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@Placeid", areaid));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    Zone charge = new Zone();
+                    charge = UtilityManager.DataReaderMap<Zone>(reader);
+                    return charge;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public List<Area> GetSingleZoneAllArea(int areaid)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleZoneAllArea, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@Placeid", areaid));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader Datareader = command.ExecuteReader();
+                    List<Area> deliverychargeList = new List<Area>();
+                    deliverychargeList = UtilityManager.DataReaderMapToList<Area>(Datareader);
+                    return deliverychargeList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public bool UpdateZone(Zone area)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                bool updated = true;
+                SqlCommand command = new SqlCommand(StoredProcedured.UpdateZone, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                foreach (var charge in area.GetType().GetProperties())
+                {
+                    string name = charge.Name;
+                    var value = charge.GetValue(area, null);
+                    command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                }
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    updated = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                return updated;
+            }
+        }
+        //area
+        public long AddNewArea(Area zone)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                long id = 0;
+                SqlCommand command = new SqlCommand(StoredProcedured.AddArea, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlParameter returnvalue = new SqlParameter("@" + "ZoneId", SqlDbType.Int);
+                returnvalue.Direction = ParameterDirection.Output;
+                command.Parameters.Add(returnvalue);
+                foreach (var charge in zone.GetType().GetProperties())
+                {
+                    if (charge.Name != "ZoneId" && charge.Name != "PlaceName")
+                    {
+                        string name = charge.Name;
+                        var value = charge.GetValue(zone, null);
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    }
+                }
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    id = (int)command.Parameters["@ZoneId"].Value;
                 }
                 catch (Exception ex)
                 {
@@ -196,7 +364,7 @@ namespace E_Commerce.DataLayerSQL
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoredProcedured.GetAllDeliveryCharge, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.GetAllArea, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 try
                 {
@@ -221,9 +389,9 @@ namespace E_Commerce.DataLayerSQL
             bool IsDeleted = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoredProcedured.DeleteDeliveryCharge, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.DeleteArea, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@DeliveryChargeid", areaid));
+                command.Parameters.Add(new SqlParameter("@ZoneId", areaid));
                 try
                 {
                     connection.Open();
@@ -240,61 +408,6 @@ namespace E_Commerce.DataLayerSQL
                 }
 
                 return IsDeleted;
-            }
-        }
-        public Area GetSingleArea(int areaid)
-        {
-            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-            {
-                SqlCommand command = new SqlCommand(StoredProcedured.GetAllDeliveryCharge, connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@DeliveryChargeid", areaid));
-                try
-                {
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    Area charge = new Area();
-                    charge = UtilityManager.DataReaderMap<Area>(reader);
-                    return charge;
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Exception Adding Data. " + ex.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-        public bool UpdateArea(Area area)
-        {
-            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-            {
-                bool updated = true;
-                SqlCommand command = new SqlCommand(StoredProcedured.UpdateDeliveryCharge, connection);
-                command.CommandType = CommandType.StoredProcedure;
-                foreach (var charge in area.GetType().GetProperties())
-                {
-                    string name = charge.Name;
-                    var value = charge.GetValue(area, null);
-                    command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
-                }
-                try
-                {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    updated = false;
-                    throw new Exception("Exception Adding Data. " + ex.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
-                return updated;
             }
         }
     }

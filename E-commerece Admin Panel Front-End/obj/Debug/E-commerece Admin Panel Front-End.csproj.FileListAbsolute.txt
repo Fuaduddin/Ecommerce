@@ -284,3 +284,4 @@ E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\
 E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.CopyComplete
 E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.dll
 E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.pdb
+E:\Personal\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.AssemblyReference.cache

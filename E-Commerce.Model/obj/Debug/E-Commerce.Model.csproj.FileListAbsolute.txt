@@ -21,3 +21,4 @@ E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Comme
 E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.CoreCompileInputs.cache
 E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.dll
 E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.pdb
+E:\Personal\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.AssemblyReference.cache
