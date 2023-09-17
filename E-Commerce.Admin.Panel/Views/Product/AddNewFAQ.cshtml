@@ -1,0 +1,213 @@
+﻿@model E_Commerce.Model.AdminViewModel
+@{
+    ViewBag.Title = "AddNewFAQ";
+    Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+}
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+                @using (Html.BeginForm("AddNewFAQ", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <h1> ADD NEW Frequently Asked Question</h1>
+                    <br />
+                    <div class="">
+                        <a id="addmorebutton" class="btn btn-success">+ ADD MORE FAQ</a>
+                    </div>
+                    <br />
+                    <input type="hidden" name="productid" value="@ViewBag.productid" id="productid" />
+                    <div id="questioncontainer">
+                        @if (Model.FAQ.FAQid > 0)
+                        {
+                            foreach (var faq in Model.FAQList)
+                            {
+
+                                <div class="faqquestion">
+                                    
+                                    <div class="deletebuttoncontainer">
+                                        <span class="deletebuttonwithvalue">X</span>
+                                        <input type="hidden" id="idvalue" name="id" value="@Model.FAQ.FAQid">
+                                    </div>
+                                    <div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-username">
+                                                Question<span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <input type="text" name="question" class="from-control" placeholder="Please Enter Your Question" value="@Model.FAQ.FAQQuestion" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-username">
+                                                Answer <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-8">
+                                                <textarea rows="5" name="answer" class="from-control" placeholder="Please Enter Your Answer" value="@Model.FAQ.FAQAns" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+                        else
+                        {
+                            <div class="faqquestion">
+                                
+                                <div class="deletebuttoncontainer">
+                                    <span class="deletebutton">X</span>
+                                </div>
+                                <div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label" for="val-username">
+                                            Question<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-lg-8">
+                                            <input type="text" name="question" class="from-control" placeholder="Please Enter Your Question" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label" for="val-username">
+                                            Answer <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-lg-8">
+                                            <textarea rows="5" name="answer" class="from-control" placeholder="Please Enter Your Answer" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                    if (Model.FAQList != null)
+                    {
+                        <center class="addbutton">
+                            <div class="form-group row">
+                                <div class="col-lg-8 add-btn">
+                                    <button type="submit" value="Update" class="btn btn-light">Update</button>
+
+                                </div>
+                            </div>
+                        </center>
+                    }
+                    else
+                    {
+                        <center class="addbutton">
+                            <div class="form-group row">
+                                <div class="col-lg-8 add-btn">
+                                    <button type="submit" value="Add" class="btn btn-light">Add</button>
+
+                                </div>
+                            </div>
+                        </center>
+                    }
+                }
+                @if (ViewData["Message"] != null)
+                {
+                    <h5 class="confirmationmessage">@ViewData["Message"]</h5>
+                }
+            </center>
+        </div>
+    </div>
+</div>
+<script>
+
+    const deletebutton = document.querySelectorAll(".deletebutton");
+    const deletebuttonwithvalue = document.querySelectorAll(".deletebuttonwithvalue");
+    deletebuttonwithvalue.forEach((deleteid, index) => {
+        deleteid.addEventListener("click", () => {
+            var id = {
+                id: $("#idvalue").eq(index).val()
+            }
+            $.ajax({
+                url: "/Product/DeleteFaq",
+                method: "Post",
+                data: id,
+                success: function (data) {
+                    if (data == true) {
+                        $(".faqquestion").eq(index).hide();
+                    }
+                }
+            });
+        });
+    });
+    deletebutton.forEach((button, index) => {
+        button.addEventListener("click", () => {
+            $(".faqquestion").eq(index).hide();
+        });
+    });
+    $("#addmorebutton").click(function () {
+            var element = "";
+            element += `
+                      <div class="faqquestion">
+                         
+                                <div class="deletebuttoncontainer">
+                                    <span class="deletebutton">X</span>
+                                </div>
+                                <div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label" for="val-username">
+                                            Question<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-lg-8">
+                                            <input type="text" name="question" class="from-control" placeholder="Please Enter Your Question" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label" for="val-username">
+                                            Answer <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-lg-8">
+                                            <textarea rows="5" name="answer" class="from-control" placeholder="Please Enter Your Answer" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                    `;
+        $("#questioncontainer .faqquestion").append().after(element);
+
+        // faqcontainer.appendChild(element);
+    });
+</script>
+<style>
+    input.from-control {
+        width: 100%;
+        height: 100%;
+    }
+
+    textarea.from-control {
+        width: 100%;
+    }
+
+    a#addmorebutton {
+        color: white;
+    }
+    .faqquestion {
+        display: grid;
+        /* justify-content: center; */
+        grid-template-columns: .5fr 3fr;
+    }
+    .deletebuttoncontainer {
+        display: flex;
+        justify-content: center;
+        margin-left: 30%;
+        margin-top: 10%;
+    }
+    span.deletebutton {
+        font-size: 40px;
+        text-align: center;
+        /* margin-top: 27%; */
+        color: red;
+    }
+</style>

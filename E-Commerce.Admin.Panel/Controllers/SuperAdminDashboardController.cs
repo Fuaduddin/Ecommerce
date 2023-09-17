@@ -9,9 +9,14 @@ namespace E_Commerce.Admin.Panel.Controllers
     public class SuperAdminDashboardController : Controller
     {
         // GET: SuperAdminDashboard
-        public ActionResult Index()
+        public ActionResult DashBoard()
         {
             return View();
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("login", "login");
         }
     }
 }

@@ -1,0 +1,215 @@
+﻿@using E_Commerce.Model;
+@{
+    ViewBag.Title = "_SupplierLayout";
+    AdminModel admin = (AdminModel)Session["AdminDetails"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ADMIN PANEL</title>
+    <!-- Pignose Calender -->
+    <link href="~/Assests/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <!-- Chartist -->
+    <link rel="stylesheet" href="~/Assests/plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="~/Assests/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <!-- Custom Stylesheet -->
+    <link href="~/Assests/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!--*******************
+    Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+    Preloader end
+    ********************-->
+    <!--**********************************
+        Sidebar start
+    ***********************************-->
+    <div class="nk-sidebar">
+        <div class="userdetails">
+
+            <div class="">
+
+                <img src="@admin.AdminProfilePic" class="rounded-circle" alt="img">
+            </div>
+            <div class="">
+                <h4>@admin.AdminName</h4>
+                <h4>@admin.UserName</h4>
+                <h4>@admin.AdminOfficialId</h4>
+            </div>
+        </div>
+        <div class="nk-nav-scroll">
+            <ul class="metismenu" id="menu">
+                <li class="nav-label">Dashboard</li>
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-speedometer menu-icon"></i><span class="nav-text">Category and Sub Category</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("CATEGORY SETTINGS", "AddCategory", "Category")
+                        <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                    </ul>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("SUB CATEGORY SETTINGS", "AddSubCategory", "SubCategory")
+                        <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                    </ul>
+                </li>
+        
+                <li class="mega-menu mega-menu-sm">
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">PRODUCTS SETTINGS</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("ADD NEW PRODUCT", "AddNewProduct", "Product")
+                    </ul>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("VIEW ALL PRODUCT", "GetAllProduct", "Category")
+                    </ul>
+                </li>
+                <li class="mega-menu mega-menu-sm">
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">ORDERS</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                    </ul>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                    </ul>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                    </ul>
+                </li>
+                <li class="mega-menu mega-menu-sm">
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">CONTACT SETTINGS</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("APPOINTMENT SETTINGS", "ViewAllAppointment", "Contact")
+                        <br />
+                        <span class="items" id="totalAppointment"></span>
+                    </ul>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("EMAIL SETTINGS", "ViewAllEmail", "Contact")
+                        <br />
+                        <span class="items" id="totalemail"></span>
+                    </ul>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("REVIEW SETTINGS", "ViewAllReview", "Contact")
+                    </ul>
+                </li>
+                <li class="mega-menu mega-menu-sm">
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">STAFF SETTINGS</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                    </ul>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                    </ul>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                    </ul>
+                </li>
+                <li class="mega-menu mega-menu-sm">
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">SUPPLIER SETTINGS</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                    </ul>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                    </ul>
+                    <ul aria-expanded="false">
+                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                    </ul>
+                </li>
+                <li class="mega-menu mega-menu-sm">
+                    @Html.ActionLink("Log Out", "LogOut", "Login")
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function contactcount() {
+            let totalappointment = document.getElementsByClassName("countAppointment");
+            let totalamil = document.getElementsByClassName("countemail");
+            if (totalappointment != null || totalamil != null) {
+                if (totalamil == null && totalappointment != null) {
+                    document.getElementById("totalAppointment").innerText = totalappointment.length;
+                }
+                else if (totalappointment == null && totalamil != null) {
+                    document.getElementById("totalemail").innerText = totalamil.length;
+                }
+                else {
+                    document.getElementById("totalAppointment").innerText = totalappointment.length;
+                    document.getElementById("totalemail").innerText = totalamil.length;
+                }
+            }
+
+        }
+        contactcount();
+    </script>
+    <!--**********************************
+        Sidebar end
+    ***********************************-->
+    <style>
+        .userdetails {
+            margin-left: 19%;
+        }
+
+        .rounded-circle {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+    <div class="content-body">
+        <div class="container-fluid mt-3">
+            @RenderBody();
+        </div>
+    </div>
+    <script src="~/Assests/plugins/common/common.min.js"></script>
+    <script src="~/Assests/js/custom.min.js"></script>
+    <script src="~/Assests/js/settings.js"></script>
+    <script src="~/Assests/js/gleek.js"></script>
+    <script src="~/Assests/js/styleSwitcher.js"></script>
+
+    <!-- Chartjs -->
+    <script src="~/Assests/plugins/chart.js/Chart.bundle.min.js"></script>
+    <!-- Circle progress -->
+    <script src="~/Assests/plugins/circle-progress/circle-progress.min.js"></script>
+    <!-- Datamap -->
+    <script src="~/Assests/plugins/d3v3/index.js"></script>
+    <script src="~/Assests/plugins/topojson/topojson.min.js"></script>
+    <script src="~/Assests/plugins/datamaps/datamaps.world.min.js"></script>
+    <!-- Morrisjs -->
+    <script src="~/Assests/plugins/raphael/raphael.min.js"></script>
+    <script src="~/Assests/plugins/morris/morris.min.js"></script>
+    <!-- Pignose Calender -->
+    <script src="~/Assests/plugins/moment/moment.min.js"></script>
+    <script src="~/Assests/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <!-- ChartistJS -->
+    <script src="~/Assests/plugins/chartist/js/chartist.min.js"></script>
+    <script src="~/Assests/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+    <script src="~/Assests/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+
+    <script src="~/Assests/js/dashboard/dashboard-1.js"></script>
+</body>
+
+</html>

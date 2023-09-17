@@ -1,4 +1,4 @@
-﻿
+﻿@model E_Commerce.Model.AdminViewModel
 @{
     ViewBag.Title = "GetAllProduct";
     Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
@@ -8,42 +8,71 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">SubCategory List</h4>
+                <h4 class="card-title">Product List</h4>
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered zero-configuration">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>SubCategory Name</th>
-                                <th>Category Name</th>
+                                <th>Product ID</th>
+                                <th>Product Image</th>
+                                <th>Product Name</th>
+                                <th>Product Quantity</th>
+                                <th>Category & Sub Category Name</th>
                                 <th>Delete</th>
                                 <th>Update</th>
                                 <th>Single Details</th>
+                                <th>Supply Product</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var subcategory in Model.viewsubcategorydetails)
+                            @foreach (var product in Model.ProductList)
                             {
-                                <tr>
-                                    <td>
-                                        @i
-                                    </td>
-                                    <td>
-                                        @subcategory.SubCategoryName
-                                    </td>
-                                    <td>
-                                        @subcategory.Categoryname
-                                    </td>
-                                    <td>
-                                        <button onclick="showmodal(@subcategory.SubCategoryId)" class="btn btn-danger">Delete</button>
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Update", "GetSingleSubCategory", new { Id = subcategory.SubCategoryId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Update", "GetSingleSubCategory", new { Id = subcategory.SubCategoryId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @i
+                                </td>
+                                <td>
+                                    @product.ProdcutItemId
+                                </td>
+                                <td>
+                                    <img src="@product.ProductImage" width="100" height="100" alt="">
+                                </td>
+                                <td>
+                                    @product.ProductName
+                                </td>
+                                <td>
+                                    @if (product.ProductQuantity > 0)
+                                    {
+                                        @product.ProductQuantity
+                                    }
+                                    else
+                                    {
+                                        <span>Out Of Stock</span>
+                                    }
+
+                                </td>
+                                <td>
+
+                                    Category Name: @product.CategoryName <br />
+                                    SubCategory Name:  @product.SubCategoryName
+                                </td>
+                                <td>
+                                    <button onclick="showmodal(@product.ProductId)" class="btn btn-danger">Delete</button>
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Delete", "DeleteProduct", "Product", new { Id = product.ProductId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Update", "GetSingleProduct", "Product", new { Id = product.ProductId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Single Details", "GetSingleProduct", "Product", new { Id = product.ProductId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Assing Supplier", "AssignSupplier", "Assignment", new { Id = product.ProductId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                </td>
+                            </tr>
                                 i++;
                             }
                         </tbody>
@@ -83,14 +112,14 @@
     }
 </div>
 <script>
-// Get the modal
+    // Get the modal
     $(document).ready(function () {
         $('#open-CategoryDelete').click(function () {
             /* $('#bookId').val($(this).data('id'));*/
             var inputF = document.getElementById("categoryid");
             let dataId = $(this).attr("data-id");
-            inputF.setAttribute('value',dataId);
-           /* document.getElementById("categoryid").innerHTML = dataId;*/
+            inputF.setAttribute('value', dataId);
+            /* document.getElementById("categoryid").innerHTML = dataId;*/
             $('#id01').fadeIn();
         });
     });

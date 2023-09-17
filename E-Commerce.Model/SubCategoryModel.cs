@@ -25,7 +25,6 @@ namespace E_Commerce.Model
         public string SubCategoryName { get; set; }
         [Required(ErrorMessage = "Please Select a Category")]
         public string Categoryname { get; set; }
-        public int CategoryId { get; set; }
 
     }
 }

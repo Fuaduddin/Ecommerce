@@ -33,8 +33,10 @@ namespace E_Commerce.Model
         public int ProductDepth { get; set; }
         [Required(ErrorMessage = "Please Enter Product Freshness Duration")]
         public int ProductFreshnessDuration { get; set; }
-        public SubCategoryModel Subcategory { get; set; }
-        public int SubcategoryId { get; set; }
+        public int SubCategoryId { get; set; }
         public int CategoryId { get; set; }
+        public DateTime AddedDate { get; set; }
+        public string SubCategoryName { get; set; }
+        public string CategoryName { get; set; }
     }
 }

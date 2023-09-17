@@ -26,31 +26,33 @@
                 {
                     <h1> ADD NEW PRODUCT</h1>
                     <!-- One "tab" for each step in the form: -->
-                    <div class="tab"><b>Product Details</b>
-                        <p>
-                            <label class="text-field"><b>Product ID</b></label>
-                            @Html.TextBoxFor(Model => Model.Product.ProdcutItemId, new { @class = "form-control", @placeholder = productguid, @Value = productguid, ReadOnly = "true" })
-                        </p>
-                        <p>
-                            <label class="text-field"><b>Product Name</b></label>
-                            @Html.TextBoxFor(Model => Model.Product.ProductName, new { @class = "form-control", @placeholder = "Product Name" })
-                            @Html.ValidationMessageFor(Model => Model.Product.ProductName)
-                        </p>
-                        <p>
-                            <label class="text-field"><b>Product Description</b></label>
-                            @Html.TextAreaFor(Model => Model.Product.ProductDescription, new { @class = "form-control", @id = "val-suggestions", @rows = "5", @placeholder = "Product Details", type = "text", })
-                            @Html.ValidationMessageFor(Model => Model.Product.ProductDescription, "", new { @class = "text-danger" })
-                        </p>
-                        <p>
-                            <label class="text-field"><b>Product Primary Image</b></label><br/>
-                            @if (Model.Product != null && Model.Product.ProductImage != null)
-                            {
-                                <img src="@Model.Product.ProductImage" class="new-contact__img" alt="" width="100" height="100">
-                                <br />
-                            }
-                            <input type="file" name="File" id="files" class = "form-control"/>
-                        </p>
-                    </div>
+            <div class="tab">
+                <b>Product Details</b>
+                @Html.HiddenFor(Model => Model.Product.ProductId)
+                <p>
+                    <label class="text-field"><b>Product ID</b></label>
+                    @Html.TextBoxFor(Model => Model.Product.ProdcutItemId, new { @class = "form-control", @placeholder = productguid, @Value = productguid, ReadOnly = "true" })
+                </p>
+                <p>
+                    <label class="text-field"><b>Product Name</b></label>
+                    @Html.TextBoxFor(Model => Model.Product.ProductName, new { @class = "form-control", @placeholder = "Product Name" })
+                    @Html.ValidationMessageFor(Model => Model.Product.ProductName)
+                </p>
+                <p>
+                    <label class="text-field"><b>Product Description</b></label>
+                    @Html.TextAreaFor(Model => Model.Product.ProductDescription, new { @class = "form-control", @id = "val-suggestions", @rows = "5", @placeholder = "Product Details", type = "text", })
+                    @Html.ValidationMessageFor(Model => Model.Product.ProductDescription, "", new { @class = "text-danger" })
+                </p>
+                <p>
+                    <label class="text-field"><b>Product Primary Image</b></label><br />
+                    @if (Model.Product != null && Model.Product.ProductImage != null)
+                    {
+                        <img src="@Model.Product.ProductImage" class="new-contact__img" alt="" width="100" height="100">
+                        <br />
+                    }
+                    <input type="file" name="File" id="files" class="form-control" />
+                </p>
+            </div>
                     <div class="tab">
                         <b>Product Specification</b>
                         <div class="d-md-flex-row ">
@@ -113,12 +115,12 @@
                         </div>
                         <p>
                             <label class="text-field"><b>Category Name</b></label>
-                            @Html.DropDownListFor(model => model.Product.CategoryId, new SelectList(Model.CategoryList, "CategoryId", "CategoryName"), new { @class = "form-control", id = "val" })
-                            @Html.ValidationMessageFor(model => model.Product.SubcategoryId, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(model=>model.Product.CategoryId, new SelectList(Model.CategoryList, "CategoryId", "CategoryName","Select Category"), new { @class = "form-control", id = "val" })
+                            @Html.ValidationMessageFor(model => model.Product.SubCategoryId, "", new { @class = "text-danger" })
                         </p>
                         <p>
                             <label class="text-field"><b>SubCategory Name</b></label>
-                            <select name="subcategory-items" class = "form-control" id="subcategory-items">
+                            <select name="subcategoryitems" class = "form-control" id="subcategory-items">
                                 <option class="subcategory-item">Select Subcategory</option>
                             </select>
                         </p>

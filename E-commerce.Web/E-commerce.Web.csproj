@@ -45,8 +45,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DataVisualization.Design" />
     <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.DynamicData.Design" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -142,10 +152,12 @@
     <Content Include="Assets\188 Aranoz shop DOC\syntax-highlighter\styles\shThemeMDUltra.css" />
     <Content Include="Assets\188 Aranoz shop DOC\syntax-highlighter\styles\shThemeMidnight.css" />
     <Content Include="Assets\188 Aranoz shop DOC\syntax-highlighter\styles\shThemeRDark.css" />
+    <Content Include="Assets\CartJS\CartOrder.js" />
     <Content Include="Assets\css\all.css" />
     <Content Include="Assets\css\animate.css" />
     <Content Include="Assets\css\aos.css" />
     <Content Include="Assets\css\bootstrap.min.css" />
+    <Content Include="Assets\css\cart.css" />
     <Content Include="Assets\css\flaticon.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
     <Content Include="Assets\css\lightslider.min.css" />
@@ -1611,6 +1623,8 @@
     <Content Include="Assets\ImagesALL\Warstwa 0.png" />
     <Content Include="Assets\ImagesALL\Слой 2%402x.png" />
     <Content Include="Assets\ImagesALL\Слой 2.png" />
+    <Content Include="Assets\image\favicon.png" />
+    <Content Include="Assets\image\logo.png" />
     <Content Include="Assets\img\about_img.png" />
     <Content Include="Assets\img\about_img_1.png" />
     <Content Include="Assets\img\about_shape.png" />
@@ -1629,7 +1643,9 @@
     <Content Include="Assets\img\b1.jpg" />
     <Content Include="Assets\img\b2.jpg" />
     <Content Include="Assets\img\b3.jpg" />
+    <Content Include="Assets\img\banner\BackgroundImage.png" />
     <Content Include="Assets\img\banner\banner-bg.jpg" />
+    <Content Include="Assets\img\banner\banner.png" />
     <Content Include="Assets\img\banner_bg.png" />
     <Content Include="Assets\img\banner_img.png" />
     <Content Include="Assets\img\blog\add.jpg" />
@@ -1926,10 +1942,31 @@
     <Content Include="Assets\js\swiper_custom.js" />
     <Content Include="Assets\js\theme.js" />
     <Content Include="Assets\js\waypoints.min.js" />
+    <Content Include="Assets\OtherCSS\all.css" />
+    <Content Include="Assets\OtherCSS\animate.css" />
+    <Content Include="Assets\OtherCSS\aos.css" />
+    <Content Include="Assets\OtherCSS\bootstrap.min.css" />
+    <Content Include="Assets\OtherCSS\flaticon.css" />
+    <Content Include="Assets\OtherCSS\font-awesome.min.css" />
+    <Content Include="Assets\OtherCSS\lightslider.min.css" />
+    <Content Include="Assets\OtherCSS\magnific-popup.css" />
+    <Content Include="Assets\OtherCSS\nice-select.css" />
+    <Content Include="Assets\OtherCSS\owl.carousel.min.css" />
+    <Content Include="Assets\OtherCSS\price_rangs.css" />
+    <Content Include="Assets\OtherCSS\slick-theme.min.css" />
+    <Content Include="Assets\OtherCSS\slick.css" />
+    <Content Include="Assets\OtherCSS\slick.min.css" />
+    <Content Include="Assets\OtherCSS\style.css" />
+    <Content Include="Assets\OtherCSS\swiper.min.css" />
+    <Content Include="Assets\OtherCSS\themify-icons.css" />
+    <Content Include="Assets\Own Css\cart.css" />
     <Content Include="Assets\Own Css\category.css" />
     <Content Include="Assets\Own Css\confermationpage.css" />
     <Content Include="Assets\Own Css\contact.css" />
+    <Content Include="Assets\Own Css\index.css" />
     <Content Include="Assets\Own Css\login.css" />
+    <Content Include="Assets\Own Css\responsiveweb.css" />
+    <Content Include="Assets\Own Css\SingleProductDetails.css" />
     <Content Include="Assets\webfonts\fa-brands-400.svg" />
     <Content Include="Assets\webfonts\fa-regular-400.svg" />
     <Content Include="Assets\webfonts\fa-solid-900.svg" />
@@ -1940,9 +1977,10 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\cartController.cs" />
+    <Compile Include="Controllers\CustomerDashBoardController.cs" />
     <Compile Include="Controllers\indexController.cs" />
     <Compile Include="Controllers\loginController.cs" />
-    <Compile Include="Controllers\productController.cs" />
+    <Compile Include="Controllers\ProductFrontEndController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2017,16 +2055,24 @@
     <Content Include="Assets\webfonts\fa-solid-900.woff2" />
     <Content Include="Assets\Json File\bd-divisions.json" />
     <Content Include="Assets\Json File\bd-districts.json" />
+    <Content Include="Assets\OtherCSS\style.map" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\Layout\_FrontEndLayout.cshtml" />
     <Content Include="Views\index\Index.cshtml" />
-    <Content Include="Views\product\categoryproduct.cshtml" />
-    <Content Include="Views\product\singleproduct.cshtml" />
     <Content Include="Views\cart\cart.cshtml" />
     <Content Include="Views\cart\confirmation.cshtml" />
     <Content Include="Views\login\login.cshtml" />
     <Content Include="Views\login\registration.cshtml" />
     <Content Include="Views\index\contact.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\cart\TrackOrder.cshtml" />
+    <Content Include="Views\Shared\Layout\_CustomerDashBoardLayout.cshtml" />
+    <Content Include="Views\CustomerDashBoard\DashBoard.cshtml" />
+    <Content Include="Views\ProductFrontEnd\categoryproduct.cshtml" />
+    <Content Include="Views\ProductFrontEnd\singleproduct.cshtml" />
+    <Content Include="Views\CustomerDashBoard\ViewRecentOrderDetails.cshtml" />
+    <Content Include="Views\CustomerDashBoard\ViewAllOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2036,6 +2082,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\NewFolder1\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -2054,6 +2101,10 @@
     <ProjectReference Include="..\E-Commerce.Model\E-Commerce.Model.csproj">
       <Project>{7c029d4a-4fe5-4f87-973e-17b849c3ee27}</Project>
       <Name>E-Commerce.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\E-Commerce.Utility\E-Commerce.Utility.csproj">
+      <Project>{2a4f5b46-f288-441c-9619-861018c908ae}</Project>
+      <Name>E-Commerce.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

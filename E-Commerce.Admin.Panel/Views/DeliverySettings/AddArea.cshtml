@@ -1,5 +1,4 @@
-﻿@using System.Security.Cryptography.X509Certificates
-@model E_Commerce.Model.AdminViewModel
+﻿@model E_Commerce.Model.AdminViewModel
 
 @{
     ViewBag.Title = "AddCategory";
@@ -14,7 +13,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
 </head>
 <div class="container-fluid">
     <div class="row">
@@ -29,7 +27,7 @@
                                 Zone Name <span class="text-danger">*</span>
                             </label>
                             <div class="col-lg-8">
-                                @Html.DropDownListFor(model => model.area.Placeid, new SelectList(Model.viewzone, "Placeid", "PlaceName"), new { @class = "form-control", @id = "val-skill", onchange= "Getdivisionname(this.selectedIndex)"})
+                                @Html.DropDownListFor(model => model.area.Placeid, new SelectList(Model.viewzone, "Placeid", "PlaceName", "Select"), new { @class = "form-control", @id = "val-skill", onchange = "Getdivisionname(this.selectedIndex)" })
                                 @Html.ValidationMessageFor(model => model.area.Placeid, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -38,7 +36,7 @@
                                 Select Districts or Area <span class="text-danger">*</span>
                             </label>
                             <div class="col-lg-8">
-                                <select name="districts" id="districts" class = "form-control">
+                                <select name="districts" id="districts" class="form-control">
                                     <option value="">Select Your District</option>
                                 </select>
                             </div>
@@ -66,65 +64,106 @@
                         }
                     </div>
                 }
-
+                @if (ViewData["Message"] != null)
+                {
+                    <h5 class="confirmationmessage" style="color:red">@ViewData["Message"]</h5>
+                }
             </center>
         </div>
     </div>
 </div>
- <div class="row">
+<div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Category List</h4>
+                <h4 class="card-title">Area List</h4>
                 <div class="table-responsive">
+
+                    <div id="deleteallbutton" style="display:none;">
+                        <div class="">
+                            <button type="submit" value="Add" class="btn btn-danger"> Delete All </button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="mb-3" id="searchitem">
+                        <div class="">
+                            <input type="text" class="form-control searchitemid" id="searchitemcategory" placeholder="Search...." aria-describedby="emailHelp">
+                        </div>
+                        <div class="">
+                            <select class="form-select" id="filteritem" aria-label="Default select example">
+                                <option value="10" selected>10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                            </select>
+                        </div>
+                    </div>
                     <div>
                         <div class=""></div>
                     </div>
-                    <table class="table table-striped table-bordered zero-configuration" id="table">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Area or Division Name</th>
-                                <th>Zone Name</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var area in Model.areaList)
-                            {
-                                <tr class="hide-row">
-                                    <td>
-                                        @i
-                                    </td>
-                                    <td>
-                                        @area.DevisionName
-                                    </td>
-                                    <td>
-                                        @area.PlaceName
-                                    </td>
-                                    <td>
-                                        <button onclick="showmodal(@area.ZoneId)" class="btn btn-danger">Delete</button>
-                                    </td>
+                    @using (Html.BeginForm("MultiedeleteArea", "DeliverySettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <table class="table table-striped table-bordered zero-configuration" id="table">
+                            <thead>
+                                <tr>
+                                    <th> <input type="checkbox" id="multiedelete"></th>
+                                    <th>No</th>
+                                    <th>Area or Division Name</th>
+                                    <th>Zone Name</th>
+                                    <th>Delete</th>
                                 </tr>
-                                i++;
-                            }
+                            </thead>
+                            <tbody>
+                                @foreach (var area in Model.areaList)
+                                {
+                                    <tr class="hide-row">
+                                        <td>
+                                            <input type="checkbox" class="multiedeleteitem" name="multidelete" value="@area.ZoneId">
+                                        </td>
+                                        <td>
+                                            @i
+                                        </td>
+                                        <td>
+                                            @area.DevisionName
+                                        </td>
+                                        <td>
+                                            @area.PlaceName
+                                        </td>
+                                        <td>
+                                            <button onclick="showmodal(@area.ZoneId)" class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                        <div id="id01" class="modal multideleteconfirmation" style="display: none;">
+                            <span class="close" title="Close Modal">×</span>
+                            <div class="container multideleteconfirmation-container">
+                                <p>Are you sure you want to delete all the Area?</p>
+                                <div class="clearfix">
+                                    <button type="button" id="close-CategoryDelete" , onclick="closemenu()" class="btn btn-danger">Cancel</button>
+                                    <input type="submit" value="Delete" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    }
                     <div class="pagination-table-nav">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                                 <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                               @for (var j = 1; j <= Model.totalpage; j++)
+                                @for (var j = 1; j <= Model.totalpage; j++)
                                 {
                                     <li class="page-item">
-                                        <a class="page-link" onclick="showdata(@j)">@j</a>
+                                        <a class="page-link paginationindex" onclick="showdata(@j)">@j</a>
                                     </li>
                                 }
                                 <li class="page-item"><a class="page-link" href="#">Next</a></li>
                             </ul>
                         </nav>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -169,6 +208,211 @@
     </div>
 </div>
 <script>
+    var pageindex = 1;
+    var pagesize = 10;
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    //btn.onclick = function () {
+    ///   modal.style.display = "block";
+    //}
+
+    $(document).ready(function () {
+        $('span.close').click(function () {
+            modal.style.display = "none";
+        });
+    });
+    // When the user clicks on <span> (x), close the modal
+    // span.onclick = function () {
+    //   modal.style.display = "none";
+    //  }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    $(".multiedeleteitem").change(function () {
+        debugger
+        var j = 0;
+        var check = $(".multiedeleteitem");
+        var multiedelete = document.getElementsByClassName("multiedeleteitem");
+        for (i = 0; i <= multiedelete.length; i++) {
+            if (check.eq(i).is(':checked') == true) {
+                j++;
+            }
+        }
+        if (i > 0) {
+            $("#deleteallbutton").css("display", "block");
+        }
+        else {
+            $("#deleteallbutton").css("display", "none");
+        }
+    })
+    function showmodal(n) {
+        document.getElementById('id01').style.display = 'block';
+        $("#categoryid").val(n)
+    }
+    function closemenu() {
+        $("#id01").hide();
+    }
+    function showdata(n) {
+        //  var name = $("#sub-category-name").val();
+        //  var oppotionvalue = $("#category-id").val();
+        //  var oppotiontext = $("#category-id").text();
+        pageindex = n;
+        var showdata =
+        {
+            pageindex: pageindex,
+            pagesize: pagesize
+        }
+        showdataview(showdata);
+    }
+    function showdataview(showdatavalue) {
+        var showdata =
+        {
+            pageindex: showdatavalue,
+            pagesize: pagesize
+        }
+        if (showdata != null) {
+         //   $(".hide-row").empty();
+            $.ajax({
+                url: "/DeliverySettings/Getpaginatiotabledataarea",
+                Method: "POST",
+                data: showdata,
+                success: function (data) {
+                    $('.hide-row').empty();
+                    data = JSON.parse(data);
+                    var serialno = pagesize + 1;
+                    var element = ""
+                    $.each(data, function (i) {
+                        element += `
+                                      <tr class="hide-row">
+                                        <td>
+                                            <input type="checkbox" class="multiedeleteitem" name="multidelete" value="${data[i].areaList.ZoneId}">
+                                        </td>
+                                        <td>
+                                            ${serialno}
+                                        </td>
+                                        <td>
+                                           ${data[i].areaList.DevisionName}
+                                        </td>
+                                        <td>
+                                              ${data[i].areaList.PlaceName}
+                                        </td>
+                                        <td>
+                                            <button onclick="showmodal(${data[i].areaList.ZoneId})" class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                    `;
+                        $("#table").append(element);
+                        serialno++;
+                        var element = "";
+                    });
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            });
+        }
+    }
+    let showindex = 5;
+    function showdataindex(index) {
+        $(".paginationindex").hide();
+        if (index != null || index != "") {
+            showindex = showindex + (index);
+        }
+        for (var i = showdata - 5; i < index; i++) {
+            $(".paginationindex").eq(i).show();
+        }
+    }
+    $("#searchitemcategory").keyup(function () {
+        $(".hide-row-search").empty();
+        var serachvalue = $("#searchitemcategory").val();
+        var showdata =
+        {
+            serachvalue: serachvalue
+        }
+        if (serachvalue != "") {
+            $.ajax({
+                url: "/DeliverySettings/Searchdatarea",
+                Method: "POST",
+                data: showdata,
+                success: function (data) {
+                    $('.hide-row').empty();
+                    data = JSON.parse(data);
+                    var serialno = pagesize + 1;
+                    var element = ""
+                    $.each(data, function (i) {
+                        element += `
+                                      <tr class="hide-row-search">
+                                        <td>
+                                            <input type="checkbox" class="multiedeleteitem" name="multidelete" value="${data[i].areaList.ZoneId}">
+                                        </td>
+                                        <td>
+                                            ${serialno}
+                                        </td>
+                                        <td>
+                                           ${data[i].areaList.DevisionName}
+                                        </td>
+                                        <td>
+                                              ${data[i].areaList.PlaceName}
+                                        </td>
+                                        <td>
+                                            <button onclick="showmodal(${data[i].areaList.ZoneId})" class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                    `;
+                        $("#table").append(element);
+                        serialno++;
+                        var element = "";
+                    });
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            });
+                }
+        else {
+            $('.hide-row').show();
+            $(".hide-row-search").empty();
+        }
+
+    });
+</script>
+
+<script>
+    $(".checkconfirmation").click(function () {
+        $(".multideleteconfirmation").toggle();
+    });
+    $("#multiedelete").change(function () {
+        var multiedelete = document.getElementsByClassName("multiedeleteitem");
+        var multiedeleteischecked = $("#multiedelete");
+        if (multiedeleteischecked.is(':checked') == true) {
+            $("#deleteallbutton").css("display", "block");
+
+            for (i = 0; i <= multiedelete.length; i++) {
+                $(".multiedeleteitem").eq(i).attr('checked', true);
+            }
+        }
+        else {
+            $("#deleteallbutton").css("display", "none");
+            for (i = 0; i <= multiedelete.length; i++) {
+                $(".multiedeleteitem").eq(i).attr('checked', false);
+            }
+        }
+
+    });
     // making custom dropdown using json data
     const data = [
         {
@@ -738,7 +982,8 @@
     ];
     $("#val-skill").change(function () {
         var id = "";
-       // var division = document.getElementById("val-skill");
+        // var division = document.getElementById("val-skill");
+        debugger
         var divisionname = $("#val-skill option:selected").text();
         $('#districts').empty();
         $.each(data, function (i, option) {
@@ -752,111 +997,7 @@
             }
         });
     });
-</script>
-<script>
-    // Get the modal
-    var modal = document.getElementById("myModal");
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal
-    //btn.onclick = function () {
-    ///   modal.style.display = "block";
-    //}
-
-    $(document).ready(function () {
-        $('span.close').click(function () {
-            modal.style.display = "none";
-        });
-    });
-    // When the user clicks on <span> (x), close the modal
-    // span.onclick = function () {
-    //   modal.style.display = "none";
-    //  }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
-
-<script>
-    var pageindex = 1;
-    var pagesize = 10;
-    function showmodal(n)
-    {
-        document.getElementById('id01').style.display = 'block';
-        $("#categoryid").val(n)
-    }
-    function closemenu()
-    {
-        $("#id01").hide();
-    }
-    function showdata(n) {
-      //  var name = $("#sub-category-name").val();
-      //  var oppotionvalue = $("#category-id").val();
-      //  var oppotiontext = $("#category-id").text();
-        pageindex = n;
-        var showdata =
-        {
-            pageindex: pageindex,
-            pagesize: pagesize
-        }
-        showdataview(showdata);
-    }
-    function showdataview(showdata) {
-        $.ajax({
-            url: "/Category/Getpaginatiotabledata",
-            Method: "POST",
-            data: showdata,
-            success: function (data) {
-                $('.hide-row').empty();
-                data = JSON.parse(data);
-                var serialno = pagesize + 1;
-                var element=""
-                $.each(data, function (i) {
-                    element += `
-                <tr class="hide-row">
-                     <td>
-                        ${serialno}
-                    </td>
-                     <td>
-                       <img src="${data[i].CategoryImage}" width="100" height="100" alt="">
-                    </td>
-                     <td>
-                       ${data[i].CategoryName}
-                    </td>
-                    <td>
-                        ${data[i].CategoryDescription}
-                    </td>
-                    <td>
-                        <button id="open-CategoryDelete" data-toggle="modal" data-id="  ${data[i].CategoryId}" class="btn btn-danger">Delete</button>
-                    </td>
-                    <td>
-                        Html.ActionLink("Update", "GetSingleCategory", new { Id =  data[i].CategoryId }, new { title = "Edit Item", class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                    </td>
-                     <td>
-                      <button id="myBtn" class = "btn btn-success" onclick="finddata(${data[i].CategoryId})">Category Details</button>
-                    </td>
-                </tr>
-                    `;
-                    $("#table").append(element);
-                    serialno++;
-                    var element = "";
-                });
-            },
-            error: function () {
-                alert('Failed to receive the Data');
-                console.log('Failed ');
-            }
-        })
-    }
 </script>
 
 

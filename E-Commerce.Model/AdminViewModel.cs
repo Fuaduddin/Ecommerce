@@ -13,13 +13,37 @@ namespace E_Commerce.Model
         // All Single Model
         public ProductModel Product { get; set; }
         public CategoryModel Category { get; set; }
-        public int totalpage { get; set; }
+       
         public SubCategoryModel SubCategory { get; set; }
         public DeliveryCharge deliverycharge{ get; set; }
         public Area area { get; set; }
         public Zone zone { get; set; }
+        public DeliveryManModel DeliveryMane { get; set; }
+        public UserModel User { get; set; }
+        public SupplierModel Supplier { get; set; }
+        public AdminModel Admin { get; set; }
+        public DeliveryManModel DeliveryMan { get; set; }
+        //public UserModel User { get; set; }
+        public AppointmentModel Appointment { get; set; }
+        public AdminAssignmentModel AdminAssignment { get; set; }
+        public SupplierAssignmentModel SupplierAssignment { get; set; }
+        public DeliveryManAssignmentModel DeliverymanAssignment { get; set; }
+        public FAQModel FAQ { get; set; }
+
+
 
         // All Model Lists
+        public List<FAQModel> FAQList { get; set; }
+        public List<ReviewModel> ReviewList { get; set; }
+        public List<DeliveryManModel> DeliveryManList { get; set; }
+        public List<ViewSupplierAssignmentModel> ViewSupplierAssignmentList { get; set; }
+        public List<AdminAssignmentModel> AdminAssignmentList { get; set; }
+        public List<DeliveryManAssignmentModel> DeliverymanAssignmentList { get; set; }
+        public List<AppointmentModel> AppointmentList { get; set; }
+        public List<AdminModel> AdminList { get; set; }
+        public List<SupplierModel> SupplierList { get; set; }
+        public List<EmailModel> EmailList { get; set; }
+        public List<DeliveryManModel> DeliveryManeList { get; set; }
         public List<ProductModel> ProductList { get; set; }
         //public List<ProductModel> ProductSearchList { get; set; }
         public List<DeliveryCharge> deliverychargeList { get; set; }
@@ -41,6 +65,7 @@ namespace E_Commerce.Model
         public int TotalProduct { get; set; }
         public int TotalOrder { get; set; }
         public int TotalCustomer { get; set; }
+        public int totalpage { get; set; }
 
         // Image
         [Required(ErrorMessage = "Please Upload a Image")]

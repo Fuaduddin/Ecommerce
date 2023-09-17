@@ -109,20 +109,21 @@ namespace E_Commerce.DataLayerSQL.Properties
                 }
             }
         }
-        public List<SubCategoryModel> GetAllSelectedSubCategory(int categoryid)
+        public List<viewsubcategory> SearchSubCategory(string SearchKeyword)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoredProcedured.GetAllSelectedSubCategory, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.GetSubCategorySearch, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@CategoryId", categoryid));
+                command.Parameters.Add(new SqlParameter("@SearchKeyword", SearchKeyword));
+                command.CommandType = CommandType.StoredProcedure;
                 try
                 {
                     connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    List<SubCategoryModel> category = new List<SubCategoryModel>();
-                    category = UtilityManager.DataReaderMapToList<SubCategoryModel>(reader);
-                    return category;
+                    SqlDataReader Datareader = command.ExecuteReader();
+                    List<viewsubcategory> subcategoryList = new List<viewsubcategory>();
+                    subcategoryList = UtilityManager.DataReaderMapToList<viewsubcategory>(Datareader);
+                    return subcategoryList;
                 }
                 catch (Exception ex)
                 {
@@ -134,6 +135,7 @@ namespace E_Commerce.DataLayerSQL.Properties
                 }
             }
         }
+
         public bool DeleteSubCategory(int subcategoryid)
         {
             bool IsDeleted = true;
@@ -185,5 +187,54 @@ namespace E_Commerce.DataLayerSQL.Properties
                 }
             }
         }
-    }
+        public List<SubCategoryModel> GetAllSelectedSubCategory(int subcategoryid)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetAllSelectedSubCategory, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@CategoryId", subcategoryid));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader Datareader = command.ExecuteReader();
+                    List<SubCategoryModel> subcategoryList = new List<SubCategoryModel>();
+                    subcategoryList = UtilityManager.DataReaderMapToList<SubCategoryModel>(Datareader);
+                    return subcategoryList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public int GettotalProduct(int SubCategoryId)
+          {
+          using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+           {
+          SqlCommand command = new SqlCommand(StoredProcedured.GetSubcategorytotalproduct, connection);
+           command.CommandType = CommandType.StoredProcedure;
+          command.Parameters.Add(new SqlParameter("@SubCategoryId", SubCategoryId));
+               try
+               {
+           connection.Open();
+                    int category = command.ExecuteNonQuery();
+              return category;
+   }
+            catch (Exception ex)
+           {
+       throw new Exception("Exception Adding Data. " + ex.Message);
+}
+       finally
+   {
+  connection.Close();
+            }
+       }
+   }
+
+   } 
 }

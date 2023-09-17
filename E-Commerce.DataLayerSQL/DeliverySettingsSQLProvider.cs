@@ -10,7 +10,7 @@ using E_Commerce.Utility;
 
 namespace E_Commerce.DataLayerSQL
 {
-   public class DeliverySettingsSQLProvider
+    public class DeliverySettingsSQLProvider
     {
         public long AddNewDeliveryDeliveryCharge(DeliveryCharge deliverycharge)
         {
@@ -61,6 +61,31 @@ namespace E_Commerce.DataLayerSQL
                     SqlDataReader Datareader = command.ExecuteReader();
                     List<DeliveryCharge> deliverychargeList = new List<DeliveryCharge>();
                     deliverychargeList = UtilityManager.DataReaderMapToList<DeliveryCharge>(Datareader);
+                    return deliverychargeList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public List<DeliveryCharge> SearchDeliveryCost(string SearchKeyword)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.SearchDeliveryCharge, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@DeliveryChargeTitle", SearchKeyword));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<DeliveryCharge> deliverychargeList = new List<DeliveryCharge>();
+                    deliverychargeList = UtilityManager.DataReaderMapToList<DeliveryCharge>(reader);
                     return deliverychargeList;
                 }
                 catch (Exception ex)

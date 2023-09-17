@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -17,43 +18,75 @@ namespace E_Commerce.Admin.Panel.Controllers
         {
             AdminViewModel category = new AdminViewModel();
             category.Category = new CategoryModel();
-            //IEnumerable<CategoryModel> categorylist= CategoryManager.GetAllCategory();
-            category.CategoryList = perpageshowdata( 1, 10);
-            category.totalpage = pagecount( 10);
-            // category.CategoryList = CategoryManager.GetAllCategory();
-            return View(category);
+           // IEnumerable<CategoryModel> categorylist= CategoryManager.GetAllCategory();
+           category.CategoryList = perpageshowdata(1,10);
+           category.totalpage = pagecount(10);
+           category.CategoryList = CategoryManager.GetAllCategory();
+            return View("AddCategory", category);
         }
         [HttpPost]
         public ActionResult AddCategory(CategoryModel category, HttpPostedFileBase File)
         {
+            AdminViewModel categorys = new AdminViewModel();
             if (category.CategoryId > 0)
             {
-                AdminViewModel categorys = new AdminViewModel();
+               
                 if (File != null)
                 {
                     category.CategoryImage = UploadImage(File);
                 }
 
-                CategoryManager.UpdateCategory(category);
-                categorys.CategoryList = perpageshowdata(1, 10);
-                categorys.totalpage = pagecount(10);
-                categorys.Category = new CategoryModel();
-                return View(categorys);
+                if(CategoryManager.UpdateCategory(category))
+                {
+                    ViewData["Message"] = "Your data have been Updated";
+                    ModelState.Clear();
+                }
+                else
+                {
+                    ViewData["Message"] = "Your data have not been Updated";
+                }
             }
             else
             {
-                AdminViewModel categorys = new AdminViewModel();
                 category.CategoryImage = UploadImage(File);
-                var categoryid = CategoryManager.AddNewCategory(category);
-                categorys.CategoryList = perpageshowdata(1, 10);
-                categorys.totalpage = pagecount(10);
-                if (categoryid > 0)
+                if (CategoryManager.AddNewCategory(category) > 0)
                 {
-                    categorys.Category = new CategoryModel();
-                    return View("AddCategory", categorys);
+                    ViewData["Message"] = "Your data have been added";
+                    ModelState.Clear();
+                }
+                else
+                {
+                    ViewData["Message"] = "Your data have not been added";
                 }
             }
-            return View();
+            categorys.Category = new CategoryModel();
+            categorys.CategoryList = perpageshowdata(1, 10);
+            categorys.totalpage = pagecount(10);
+            return View("AddCategory", categorys);
+        }
+        public ActionResult Multiedelete(int [] multidelete)
+        {
+            int i = 0;
+            if(multidelete != null)
+            {
+                foreach (int multid in multidelete)
+                {
+                    CategoryManager.DeleteCategory(multid);
+                    i++;
+                }
+            }
+            if(multidelete.Length==i)
+            {
+                ViewData["Message"] = "Your data have  been deleted";
+            }
+            else
+            {
+                ViewData["Message"] = "Your data not have  been deleted";
+            }
+            AdminViewModel category = new AdminViewModel();
+            category.CategoryList = perpageshowdata(1, 10);
+            category.totalpage = pagecount(10);
+            return View("AddCategory", category);
         }
         public ActionResult GetSingleCategory(int Id)
         {
@@ -64,11 +97,18 @@ namespace E_Commerce.Admin.Panel.Controllers
             return View("AddCategory", category);
         }
    
-        public ActionResult DeleteCategory(string Id)
+        public ActionResult DeleteCategory(string id)
         {
             AdminViewModel category = new AdminViewModel();
-            int CategoryId=Int32.Parse(Id);
-            var categorydelete = CategoryManager.DeleteCategory(CategoryId);
+            int CategoryId=Int32.Parse(id);
+            if(CategoryManager.DeleteCategory(CategoryId))
+            {
+                ViewData["Message"] = "Your data have  been deleted";
+            }
+            else
+            {
+                ViewData["Message"] = "Your data not have  been deleted";
+            }
             category.CategoryList = perpageshowdata(1, 10);
             category.totalpage = pagecount(10);
             return View("AddCategory", category);
@@ -92,6 +132,7 @@ namespace E_Commerce.Admin.Panel.Controllers
             }
             return savepath;
         }
+        // Pagination,search,single details, ajax
         public int pagecount(int perpagedata)
         {
             IEnumerable<CategoryModel> category = CategoryManager.GetAllCategory();
@@ -106,10 +147,18 @@ namespace E_Commerce.Admin.Panel.Controllers
 
         public JsonResult Getpaginatiotabledata(int pageindex, int pagesize)
         {
-            List<CategoryModel> categorylist = perpageshowdata(pageindex, pagesize);
+            AdminViewModel categorylist = new AdminViewModel();
+            categorylist.CategoryList = perpageshowdata(pageindex, pagesize);
+            categorylist.totalpage = pagecount(pagesize);
             var result = JsonConvert.SerializeObject(categorylist);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
+        public JsonResult Searchdata(string serachvalue)
+        {
+            List<CategoryModel> categorylist = CategoryManager.SearchCategory(serachvalue);
+            var result = JsonConvert.SerializeObject(categorylist);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+   
     }
 }

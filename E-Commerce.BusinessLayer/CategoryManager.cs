@@ -40,5 +40,12 @@ namespace E_Commerce.BusinessLayer
             var Categoriesd = provider.DeleteCategory(categoryId);
             return Categoriesd;
         }
+        public static List<CategoryModel> SearchCategory(string serachvalue)
+        {
+           CategorySQLProvider provider = new CategorySQLProvider();
+            var Categoriesd = provider.SearchCategory(serachvalue);
+            return Categoriesd;
+        }
+
     }
 }

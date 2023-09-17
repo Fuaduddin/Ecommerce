@@ -1,0 +1,140 @@
+﻿@using E_Commerce.Model;
+@{
+    ViewBag.Title = "_SupplierLayout";
+    DeliveryManModel deliveryman = (DeliveryManModel)Session["DeliveryManDetails"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Delivery Man PANEL</title>
+    <!-- Pignose Calender -->
+    <link href="~/Assests/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <!-- Chartist -->
+    <link rel="stylesheet" href="~/Assests/plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="~/Assests/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <!-- Custom Stylesheet -->
+    <link href="~/Assests/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!--*******************
+    Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+    Preloader end
+    ********************-->
+    <!--*******************
+    User Details start
+    ********************-->
+    <!--*******************
+    User Details End
+     ********************-->
+    <!--**********************************
+        Sidebar start
+    ***********************************-->
+    <div class="nk-sidebar">
+        <div class="userdetails">
+
+            <div class="">
+
+                <img src="@deliveryman.DeliveryManeProfilePic" class="rounded-circle" alt="img">
+            </div>
+            <div class="">
+                <h4>@deliveryman.DeliveryManeName</h4>
+                <h4>@deliveryman.UserName</h4>
+                <h4>@deliveryman.DeliveryManeOfficialId</h4>
+            </div>
+        </div>
+        <div class="nk-nav-scroll">
+            <ul class="metismenu" id="menu">
+                <li class="nav-label">Dashboard</li>
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-speedometer menu-icon"></i><span class="nav-text">Delivery Assignment</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li>
+                            @Html.ActionLink("Complete Assignment", "Complete Assignment", "Category")
+                        </li>
+                        <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                    </ul>
+                    <ul aria-expanded="false">
+                        <li>
+                            @Html.ActionLink("Recently Added Assignment", "", "Product")
+                        </li>
+                        <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                    </ul>
+                    <ul aria-expanded="false">
+                        <li>
+                            @Html.ActionLink("All Delivery List", "", "Product")
+                        </li>
+                        <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                    </ul>
+                </li>
+                <li class="mega-menu mega-menu-sm">
+                    @Html.ActionLink("Log Out", "LogOut", "Login")
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--**********************************
+        Sidebar end
+    ***********************************-->
+    <style>
+        .userdetails {
+            margin-left: 19%;
+        }
+
+        .rounded-circle {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+    <div class="content-body">
+        <div class="container-fluid mt-3">
+            @RenderBody();
+        </div>
+    </div>
+    <script src="~/Assests/plugins/common/common.min.js"></script>
+    <script src="~/Assests/js/custom.min.js"></script>
+    <script src="~/Assests/js/settings.js"></script>
+    <script src="~/Assests/js/gleek.js"></script>
+    <script src="~/Assests/js/styleSwitcher.js"></script>
+
+    <!-- Chartjs -->
+    <script src="~/Assests/plugins/chart.js/Chart.bundle.min.js"></script>
+    <!-- Circle progress -->
+    <script src="~/Assests/plugins/circle-progress/circle-progress.min.js"></script>
+    <!-- Datamap -->
+    <script src="~/Assests/plugins/d3v3/index.js"></script>
+    <script src="~/Assests/plugins/topojson/topojson.min.js"></script>
+    <script src="~/Assests/plugins/datamaps/datamaps.world.min.js"></script>
+    <!-- Morrisjs -->
+    <script src="~/Assests/plugins/raphael/raphael.min.js"></script>
+    <script src="~/Assests/plugins/morris/morris.min.js"></script>
+    <!-- Pignose Calender -->
+    <script src="~/Assests/plugins/moment/moment.min.js"></script>
+    <script src="~/Assests/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <!-- ChartistJS -->
+    <script src="~/Assests/plugins/chartist/js/chartist.min.js"></script>
+    <script src="~/Assests/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+    <script src="~/Assests/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+
+    <script src="~/Assests/js/dashboard/dashboard-1.js"></script>
+</body>
+
+</html>
+

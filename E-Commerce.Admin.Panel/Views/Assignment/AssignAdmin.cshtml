@@ -1,0 +1,104 @@
+﻿@model E_Commerce.Model.AdminViewModel
+
+@{
+    ViewBag.Title = "UpdateAppointment";
+    Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+                @if (ViewData["Message"] != null)
+                {
+                    <h5 class="confirmationmessage" style="color:red">@ViewData["Message"]</h5>
+                }
+                @using (Html.BeginForm("AssignAdmin", "Assignment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(model => model.Appointment.AppointmentId)
+
+                    <h1> Assign Appointment</h1>
+                    <div>
+                        @Html.HiddenFor(Model => Model.Appointment.AppointmentId)
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label" for="val-username">
+                                Appointment Subject <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-8">
+                                @Html.TextBoxFor(Model => Model.Appointment.AppointmentSubject, new { @class = "form-control", @placeholder = "Category Name" })
+                                @Html.ValidationMessageFor(Model => Model.Appointment.AppointmentSubject)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label" for="val-username">
+                                Appointment Message <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-8">
+                                @Html.TextAreaFor(model => model.Appointment.AppointmentMessage, new { @class = "form-control", @id = "val-suggestions", @rows = "5", @placeholder = "Category Details", type = "text", })
+                                @Html.ValidationMessageFor(model => model.Appointment.AppointmentMessage, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label" for="val-username">
+                                Appointment Subject <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-8">
+                                @Html.TextBoxFor(Model => Model.Appointment.AppointmentSubject, new { @class = "form-control", @placeholder = "Category Name" })
+                                @Html.ValidationMessageFor(Model => Model.Appointment.AppointmentSubject)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label" for="val-username">
+                                Customer Name <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-8">
+                                @Html.TextBoxFor(Model => Model.Appointment.CustomerName, new { @class = "form-control", @placeholder = "Category Name" })
+                                @Html.ValidationMessageFor(Model => Model.Appointment.CustomerName)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label" for="val-username">
+                                Customer Phone Number <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-8">
+                                @Html.TextBoxFor(Model => Model.Appointment.CustomerPhoneNumber, new { @class = "form-control", @placeholder = "Category Name" })
+                                @Html.ValidationMessageFor(Model => Model.Appointment.CustomerPhoneNumber)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label" for="val-username">
+                                Customer Email <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-8">
+                                @Html.TextBoxFor(Model => Model.Appointment.CustomerEmail, new { @class = "form-control", @placeholder = "Category Name" })
+                                @Html.ValidationMessageFor(Model => Model.Appointment.CustomerEmail)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label" for="val-username">
+                                Assign To <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-lg-8">
+                                @Html.DropDownListFor(model => model.AdminAssignment.AdminId, new SelectList(Model.AdminList, "AdminId", "AdminName", "Select"), new { @class = "form-control", @id = "val-skill" })
+                                @Html.ValidationMessageFor(model => model.AdminAssignment.AdminId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <center>
+                            <div class="form-group row">
+                                <div class="col-lg-8 add-btn">
+                                    <input type="submit" value="ASSIGN" class="btn btn-light" />
+                                </div>
+                            </div>
+                        </center>
+                      
+                    </div>
+                }
+                @if (ViewData["Message"] != null)
+                {
+                    <h5 class="confirmationmessage" style="color:red;">@ViewData["Message"]</h5>
+                }
+            </center>
+        </div>
+    </div>
+</div>
+

@@ -30,22 +30,35 @@ namespace E_Commerce.BusinessLayer
             var data = provider.ViewAllSubCategory();
             return data;
         }
-        public static SubCategoryModel  GetSingleSubCategory( int id)
+        public static SubCategoryModel GetSingleSubCategory( int id)
         {
             SubCategorySQLProvicer provider = new SubCategorySQLProvicer();
             var data = provider.GetSingleSubCategory(id);
             return data;
         }
+   
+        public static bool DeleteSubCategory(int id)
+        {
+            SubCategorySQLProvicer provider = new SubCategorySQLProvicer();
+            var data = provider.DeleteSubCategory(id);
+            return data;
+        }
+       public static int GettotalProduct(int id)
+         {
+          SubCategorySQLProvicer provider = new SubCategorySQLProvicer();
+            var data = provider.GettotalProduct(id);
+           return data;
+       }
         public static List<SubCategoryModel> GetAllSelectedSubCategory(int id)
         {
             SubCategorySQLProvicer provider = new SubCategorySQLProvicer();
             var data = provider.GetAllSelectedSubCategory(id);
             return data;
         }
-        public static bool DeleteSubCategory(int id)
+        public static List<viewsubcategory> SearchSubCategory(string SearchKeyword)
         {
             SubCategorySQLProvicer provider = new SubCategorySQLProvicer();
-            var data = provider.DeleteSubCategory(id);
+            var data = provider.SearchSubCategory(SearchKeyword);
             return data;
         }
     }

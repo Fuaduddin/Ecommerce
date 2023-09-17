@@ -22,12 +22,13 @@ namespace E_Commerce.DataLayerSQL
                 SqlParameter returnvalue = new SqlParameter("@" + "ProductId", SqlDbType.Int);
                 returnvalue.Direction = ParameterDirection.Output;
                 command.Parameters.Add(returnvalue);
-                foreach (var Product in product.GetType().GetProperties())
+                foreach (var Productitem in product.GetType().GetProperties())
                 {
-                    if (Product.Name != "ProductId")
+                    var name = Productitem.Name;
+                    if (name != "ProductId" && name != "CategoryName" && name != "SubCategoryName")
                     {
-                        var name = Product.Name;
-                        var value = Product.GetValue(product, null);
+                        
+                        var value = Productitem.GetValue(product, null);
                         command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                     }
                 }
@@ -62,8 +63,12 @@ namespace E_Commerce.DataLayerSQL
                 foreach (var Product in product.GetType().GetProperties())
                 {
                     var name = Product.Name;
-                    var value = Product.GetValue(Product, null);
-                    command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    if (name != "AddedDate")
+                    {
+                        var value = Product.GetValue(Product, null);
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    }
+                        
                 }
 
                 try
@@ -83,18 +88,81 @@ namespace E_Commerce.DataLayerSQL
 
                 return IsUpdated;
             }
-            //public bool DeleteProduct(int productid)
-            //{
+        }
+            public bool DeleteProduct(int productid)
+            {
+                bool IsDeleted = true;
+                using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+                {
+                    SqlCommand command = new SqlCommand(StoredProcedured.DeleteProduct, connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@ProductId", productid));
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        IsDeleted = false;
+                        throw new Exception("Exception Adding Data. " + ex.Message);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
 
-            //}
-            //public List<ProductModel> GetAllProduct()
-            //{
-
-            //}
-            //public ProductModel GetSingleProduct(int productid)
-            //{
-
-            //}
+                    return IsDeleted;
+                }
+            }
+            public List<ProductModel> GetAllProduct()
+           {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetAllProduct, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    connection.Open();
+                    SqlDataReader Datareader = command.ExecuteReader();
+                    List<ProductModel> subcategoryList = new List<ProductModel>();
+                    subcategoryList = UtilityManager.DataReaderMapToList<ProductModel>(Datareader);
+                    return subcategoryList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public ProductModel GetSingleProduct(int productid)
+            {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleProduct, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ProductId", productid));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader Datareader = command.ExecuteReader();
+                    ProductModel subcategoryList = new ProductModel();
+                    subcategoryList = UtilityManager.DataReaderMap<ProductModel>(Datareader);
+                    return subcategoryList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
         }
     }
 }

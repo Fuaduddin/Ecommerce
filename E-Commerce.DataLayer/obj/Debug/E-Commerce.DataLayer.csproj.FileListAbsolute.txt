@@ -42,3 +42,36 @@ E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-C
 E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.csproj.CopyComplete
 E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.dll
 E:\Personal\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.pdb
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.DataLayer.dll
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.DataLayer.pdb
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.Model.dll
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.Utility.dll
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.Model.pdb
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.Utility.pdb
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.csproj.AssemblyReference.cache
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.csproj.CoreCompileInputs.cache
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.csproj.CopyComplete
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.dll
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.pdb
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.DataLayer.dll
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.DataLayer.pdb
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.Model.dll
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.Utility.dll
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.Model.pdb
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.Utility.pdb
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.csproj.AssemblyReference.cache
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.csproj.CoreCompileInputs.cache
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.csproj.CopyComplete
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.dll
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.DataLayer.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.DataLayer.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.Model.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.Utility.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.Model.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayer\bin\Debug\E-Commerce.Utility.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.csproj.AssemblyReference.cache
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.csproj.CoreCompileInputs.cache
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.csproj.CopyComplete
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayer\obj\Debug\E-Commerce.DataLayer.pdb

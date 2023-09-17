@@ -1,0 +1,344 @@
+﻿@model E_Commerce.Model.AdminViewModel
+
+@{
+    ViewBag.Title = "AddNewProduct";
+    Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+    var deliverymanofficialid = Guid.NewGuid();
+}
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Jquery CDN link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+</head>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+                @using (Html.BeginForm("AddNewDeliveryMan", "StaffSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <h1> ADD NEW DELIVERY MAN</h1>
+                    <!-- One "tab" for each step in the form: -->
+                    <b>Delivery Man Details</b>
+                    <div class="tab">
+                        @Html.HiddenFor(Model => Model.DeliveryMane.DeliverManId)
+                        @Html.HiddenFor(Model => Model.User.UserId)
+                        @Html.HiddenFor(Model => Model.DeliveryMane.UserType, new { @Value = "Delivery Man", id = "usertype" })
+                        <p>
+                            <label class="text-field"><b>Delivery Man Official  ID</b></label>
+                            @Html.TextBoxFor(Model => Model.DeliveryMane.DeliveryManeOfficialId, new { @class = "form-control", @placeholder = deliverymanofficialid, @Value = deliverymanofficialid, ReadOnly = "true" })
+                        </p>
+                        <p>
+                            <label class="text-field"><b>Delivery Man Name</b></label>
+                            @Html.TextBoxFor(Model => Model.DeliveryMane.DeliveryManeName, new { @class = "form-control", @placeholder = "Name" })
+                            @Html.ValidationMessageFor(Model => Model.DeliveryMane.DeliveryManeName)
+                        </p>
+                        <p>
+                            <label class="text-field"><b>Delivery Man Date of Birth</b></label>
+
+                            @Html.HiddenFor(Model => Model.DeliveryMane.DeliveryManeDateofBirth, new { @class = "form-control", type = "date", id = "BirthDate" })
+                            @Html.ValidationMessageFor(Model => Model.DeliveryMane.DeliveryManeDateofBirth, "", new { @class = "text-danger" })
+                            <span id="BirthDate-validation-error" class="error" for="DOB" style="display: none"> Age must be greater than 18 years old</span>
+                        </p>
+                        <p>
+                            <label class="text-field"><b>Delivery Man Gender</b></label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input checkvalue sending-value-input" type="radio" name="gender" id="exampleRadios2" value="Female">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Female
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input checkvalue sending-value-input" type="radio" name="gender" id="exampleRadios2" value="Male" required>
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Male
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            @Html.HiddenFor(Model => Model.DeliveryMane.DeliveryManeGender, new { @class = "form-control", id = "deliverymangender" })
+                            @Html.ValidationMessageFor(Model => Model.DeliveryMane.DeliveryManeDateofBirth, "", new { @class = "text-danger" })
+                        </p>
+                    </div>
+                    <div class="tab">
+                        <b>Delivery Man Contact Information</b>
+                        <br />
+                        <br />
+                        <div class="d-md-flex-row ">
+                            <div class="d-inline-flex justify-content-around col-12">
+                                <div class="col-6">
+                                    <label class="text-field"><b>Delivery Man Present Address</b></label>
+                                    @Html.TextAreaFor(Model => Model.DeliveryMane.DeliveryManePresentAddress, new { @class = "form-control", rows = "3", @placeholder = "Present Address", id = "presentaddress" })
+                                    @Html.ValidationMessageFor(Model => Model.DeliveryMane.DeliveryManePresentAddress)
+
+                                </div>
+                                <div class="col-6">
+                                    <label class="text-field"><b>Delivery Man Permanent Address</b></label>
+                                    <br />
+                                    <div class="">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" id="permanentaddress" for="exampleCheck1">Same as Present Address </label>
+                                        @Html.TextAreaFor(Model => Model.DeliveryMane.DeliveryManePermanentAddress, new { @class = "form-control", rows = "3", @placeholder = "Permanent Address", id = "permanentaddressvalue" })
+                                        @Html.ValidationMessageFor(Model => Model.DeliveryMane.DeliveryManePermanentAddress)
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="d-inline-flex justify-content-around col-12">
+                                <div class="col-6">
+                                    <label class="text-field"><b>Delivery Man Email</b></label>
+                                    @Html.TextBoxFor(Model => Model.DeliveryMane.DeliveryManeEmail, new { @class = "form-control", type = "email", id = "email" })
+                                    @Html.ValidationMessageFor(Model => Model.DeliveryMane.DeliveryManeEmail)
+                                    <span id="email-validation-error" class="error" for="last_Name" style="display: none"> Please Enter a Valid Email</span>
+                                </div>
+                                <div class="col-6">
+                                    <label class="text-field"><b>Delivery Man  Phone Number</b></label> <br />
+                                    @Html.TextBoxFor(Model => Model.DeliveryMane.DeliveryManePhoneNumber, new { @class = "form-control", type = "number", id = "phonenumbercheck" })
+                                    @Html.ValidationMessageFor(Model => Model.DeliveryMane.DeliveryManePhoneNumber)
+
+
+                                    <span id="phonenumber-validation-error" class="error" for="last_Name" style="display: none"> Please Enter a Valid Phone Number</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="tab">
+                        <b>Delivery Man Area and Zone Appointment Details:</b>
+                        <br />
+                        <br />
+                        <div class="d-inline-flex justify-content-around col-12">
+
+                            <div class="col-6">
+                                <label class="text-field"><b>Zone Name</b></label>
+
+                                @Html.DropDownListFor(model => model.DeliveryMane.DeliveryManeZoneName, new SelectList(Model.viewzone, "Placeid", "PlaceName","Select Zone"), new { @class = "form-control", id = "val-skill" })
+                                @Html.ValidationMessageFor(model => model.DeliveryMane.DeliveryManeZoneName, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="col-6">
+                                <label class="text-field"><b>Area Name</b></label>
+                                <select name="subcategory-items" class="form-control" id="subcategory-items">
+                                    <option class="subcategory-item">Select Area</option>
+                                </select>
+                                @Html.HiddenFor(Model => Model.DeliveryMane.DeliveryManeAreaName, new { @class = "form-control", type = "hidden", id = "deliverymanarea" })
+                                @Html.ValidationMessageFor(Model => Model.DeliveryMane.DeliveryManeAreaName)
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="tab">
+                        <b>Delivery Man User Details:</b>
+                        <br />
+                        <br />
+                        <div class="d-flex justify-content-around">
+                            <div class="col-6">
+                                <label class="text-field"><b>Delivery Man User Name</b></label>
+                                @Html.TextBoxFor(Model => Model.User.UserName, new { @class = "form-control", type = "text", id = "deliverymanusername" })
+                                @Html.ValidationMessageFor(Model => Model.User.UserName)
+                                <span id="username-validation-error" class="error" for="last_Name" style="display: none"> User Name is already existed</span>
+
+                            </div>
+                            <div class="col-6">
+                                <label class="text-field"><b>Delivery Man User Password</b></label>
+                                @Html.TextBoxFor(Model => Model.User.UserPassword, new { @class = "form-control", type = "text", id = "passwordcheck" })
+                                @Html.ValidationMessageFor(Model => Model.User.UserPassword)
+                                <span id="username-password-validation-error" class="error" for="last_Name" style="display: none"> User Name is already existed</span>
+
+                            </div>
+                        </div>
+
+                        <p>
+                            <label class="text-field"><b>Delivery Man Image</b></label><br />
+                            @if (Model.DeliveryMane != null && Model.DeliveryMane.DeliveryManeProfilePic != null)
+                            {
+                                <img src="@Model.DeliveryMane.DeliveryManeProfilePic" class="new-contact__img" alt="" width="100" height="100">
+                                <br />
+                            }
+                            <input type="file" name="File" id="files" class="form-control" />
+                        </p>
+                    </div>
+                    if (Model.Product != null && Model.Product.ProductId > 0)
+                    {
+                        <div>
+                            <div style="float:right;">
+                                <input type="submit" id="submitbutton" value="Update" class="btn btn-light" />
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <div style="float:right;">
+                                <input type="submit" value="Add" class="btn btn-light" />
+                            </div>
+                        </div>
+                    }
+                }
+                @if (ViewData["Message"] != null)
+                {
+                    <h5 class="confirmationmessage" style="color:red">@ViewData["Message"]</h5>
+                }
+            </center>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#deliverymanusername").change(function () {
+        var username = {
+            username: $("#deliverymanusername").val()
+        }
+        $.ajax({
+            url: "/StaffSettings/CheckUserId",
+            method: "Post",
+            data: username,
+            success: function (data) {
+                var value = JSON.parse(data);
+                if (value == true) {
+                    $("#username-validation-error").css("display", "block");
+                }
+                else {
+                    $("#username-validation-error").css("display", "none");
+                }
+            }
+        });
+    });
+    $("#passwordcheck").change(function () {
+        var password = $("#passwordcheck").val();
+        if (password.length < 8) {
+            $("#username-password-validation-error").css("display", "block");
+        }
+        else {
+            $("#username-password-validation-error").css("display", "none");
+        }
+    });
+    $('input[type=radio][name=gender]').change(function () {
+        var gender = this.value;
+        $("#deliverymangender").val(gender);
+    });
+    $("#BirthDate").change(function () {
+        debugger
+        var userinput = $("#BirthDate").val();
+        var userDOB = new Date(userinput);
+        var diff_ms = Date.now() - userDOB.getTime();
+        var age_dt = new Date(diff_ms);
+        var userage = Math.abs(age_dt.getUTCFullYear() - 1970);
+        if (userage < 18) {
+            $("#BirthDate-validation-error").css("display", "block");
+        }
+        else {
+            $("#BirthDate-validation-error").css("display", "none");
+           
+        }
+    });
+    $("#phonenumbercheck").change(function () {
+        var userinput = $("#phonenumbercheck").val().toString();
+        if (userinput.length < 11) {
+            $("#phonenumber-validation-error").css("display", "block");
+        }
+        else if (userinput == null) {
+            $("#phonenumber-validation-error").css("display", "none");
+        }
+        else if (userinput.length > 11){
+            $("#phonenumber-validation-error").css("display", "block");
+        }
+        else {
+            $("#phonenumber-validation-error").css("display", "none");
+        }
+    });
+    $("#email").change(function () {
+        var userinput = $("#email").val();
+        var regex = /^([a-zA-Z0-9_\.\-\+])+\@@(([a-zA>-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (!regex.test(userinput)) {
+            $("#email-validation-error").css("display", "block");
+        }
+        else if (userinput == null) {
+            $("#email-validation-error").css("display", "none");
+        }
+        else {
+            $("#email-validation-error").css("display", "none");
+        }
+    });
+    $('#exampleCheck1').change(function () {
+        debugger
+        if (this.checked) {
+            var presentaddress = $("#presentaddress").val();
+            $("#permanentaddressvalue").val(presentaddress);
+        }
+        else {
+            $("#permanentaddressvalue").val("");
+        }
+    });
+    $('.subcategory-item').change(function () {
+        let nummloss = $(".subcategory-item option:selected").val();
+        $("#deliverymanarea").val(nummloss);
+    });
+    $("#val-skill").change(function () {
+        var categoryvalue = {
+            zoneid: $("#val-skill").val()
+        }
+        $.ajax({
+            url: "/StaffSettings/GetSelectedArea",
+            method: "Post",
+            data: categoryvalue,
+            success: function (data) {
+                $('.subcategory-item').empty();
+                var value = JSON.parse(data);
+                var i = 0;
+                $(function () {
+                    $.each(value, function (i) {
+                        var optionvalue = value[i];
+                        $('#subcategory-items').append($('<option/>').attr("value", optionvalue.Placeid).text(optionvalue.PlaceName));
+                        i++;
+                    });
+                });
+            }
+        });
+    });
+</script>
+<style>
+    .error{
+        color: red;
+    }
+    .unit {
+        float: right;
+        position: relative;
+        left: 13%;
+        top: -26%;
+        width: 20%;
+        height: 50px;
+    }
+
+    .text-field {
+        float: left;
+    }
+
+    .imagefile {
+        float: left;
+    }
+
+    .amount {
+        float: right;
+        position: relative;
+        left: 12%;
+        top: -28%;
+        width: 20%;
+        height: 50px;
+    }
+</style>
+

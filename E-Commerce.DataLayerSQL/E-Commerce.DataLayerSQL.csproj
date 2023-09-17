@@ -43,13 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssignmentAppointSQLProvider.cs" />
     <Compile Include="CategorySQLProvider.cs" />
     <Compile Include="CommonUtility.cs" />
+    <Compile Include="ContactSQLProvider.cs" />
+    <Compile Include="CustomerSQLProvider.cs" />
     <Compile Include="DeliverySettingsSQLProvider.cs" />
+    <Compile Include="E-commereceWebSQLProvider.cs" />
     <Compile Include="ImageGallrySQLProvider.cs" />
+    <Compile Include="OrderSQLProvider.cs" />
     <Compile Include="ProductSQLProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaffSettingSQLProvider.cs" />
     <Compile Include="SubCategorySQLProvicer.cs" />
+    <Compile Include="SupplierDeliveryManDashBoardSQLProvider.cs" />
+    <Compile Include="AdninandSuperAdminDashBoardSQLProvider.cs" />
+    <Compile Include="UserModelSQLProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\E-Commerce.DataLayer\E-Commerce.DataLayer.csproj">

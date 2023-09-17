@@ -1,4 +1,9 @@
-﻿
+﻿@model E_Commerce.Model.CustomerViewModel
+@{
+
+    Layout = "~/Views/Shared/Layout/_FrontEndLayout.cshtml";
+
+}
 @{
     ViewBag.Title = "login";
 }
@@ -28,7 +33,7 @@
 </head>
 <body>
     <!-- Login Page Start -->
-    <section>
+    <section class="tab-version">
         <div class="container">
             <div class="form-title-details">
                 <h2 class="login-title">Log in</h2>
@@ -37,21 +42,31 @@
                 </p>
             </div>
             <div class="aboutstart">
-                <form class="login">
+                @if (ViewData["Message"] != null)
+                {
+                    <h5 class="confirmationmessage" style="color:red">@ViewData["Message"]</h5>
+                }
+
+                @using (Html.BeginForm("login", "login", FormMethod.Post, new { enctype = "multipart/form-data", @class = "login" }))
+                {
                     <div class="login-input">
-                        <input class="login-from-input" type="text" placeholder="User Name">
+                        @Html.TextBoxFor(Model => Model.user.UserName, new { @class = "login-from-input", @placeholder = "Enter Your User Name" })
+                        @Html.ValidationMessageFor(Model => Model.user.UserName)
                     </div>
                     <div class="login-input">
-                        <input class="login-from-input" type="text" placeholder="User Name">
+                        @Html.TextBoxFor(Model => Model.user.UserPassword, new { @class = "login-from-input", @placeholder = "Enter Your Password" })
+                        @Html.ValidationMessageFor(Model => Model.user.UserPassword)
+
                     </div>
                     <div class="social-button-details">
-                        <button class="button-link facebook"><i class="fa fa-facebook"></i> Facebook</button>
-                        <button class="button-link twitter"><i class="fa fa-twitter"></i> Facebook</button>
+                        <a class="button-link facebook"><i class="fa fa-facebook"></i> Facebook</a>
+                        <a class="button-link twitter"><i class="fa fa-twitter"></i> Twitter</a>
                     </div>
                     <div class="login-input">
-                        <button class="button-link loginbutton"><i></i> Facebook</button>
+                        <button class="button-link loginbutton" type="submit"> Login</button>
                     </div>
-                </form>
+                }
+
             </div>
         </div>
     </section>
@@ -62,7 +77,7 @@
         <div class=" login-form-details">
 
         </div>
-        
+
     </section>
     <!-- Login Page End -->
 </body>

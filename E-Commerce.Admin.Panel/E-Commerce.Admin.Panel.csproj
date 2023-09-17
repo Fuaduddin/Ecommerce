@@ -45,8 +45,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
@@ -4986,17 +4986,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminDashboardController.cs" />
+    <Compile Include="Controllers\AssignmentController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
-    <Compile Include="Controllers\DeliveryManController.cs" />
     <Compile Include="Controllers\DeliverySettingsController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\StaffSettingsController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
     <Compile Include="Controllers\SuperAdminDashboardController.cs" />
-    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -5276,10 +5276,30 @@
     <Content Include="Views\Product\AddNewProduct.cshtml" />
     <Content Include="Views\View.cshtml" />
     <Content Include="Views\Product\GetAllProduct.cshtml" />
-    <Content Include="Views\Delivery\AddZone.cshtml" />
     <Content Include="Views\DeliverySettings\AddDeliveryCost.cshtml" />
     <Content Include="Views\DeliverySettings\AddArea.cshtml" />
     <Content Include="Views\DeliverySettings\AddZone.cshtml" />
+    <Content Include="Views\StaffSettings\AddNewDeliveryMan.cshtml" />
+    <Content Include="Views\Contact\ViewAllEmail.cshtml" />
+    <Content Include="Views\AdminDashboard\DashBoard.cshtml" />
+    <Content Include="Views\SuperAdminDashboard\DashBoard.cshtml" />
+    <Content Include="Views\StaffSettings\AddNewAdmin.cshtml" />
+    <Content Include="Views\Contact\ViewAllAppointment.cshtml" />
+    <Content Include="Views\StaffSettings\AddNewSupplier.cshtml" />
+    <Content Include="Views\StaffSettings\ViewAllSupplier.cshtml" />
+    <Content Include="Views\StaffSettings\ViewAllAdmin.cshtml" />
+    <Content Include="Views\Assignment\AssignAdmin.cshtml" />
+    <Content Include="Views\Assignment\AssignSupplier.cshtml" />
+    <Content Include="Views\Assignment\AssignDeliveryMan.cshtml" />
+    <Content Include="Views\StaffSettings\ViewAllDeliveryMan.cshtml" />
+    <Content Include="Views\Assignment\ViewAllAssignAdmin.cshtml" />
+    <Content Include="Views\Assignment\ViewAllAssignSupplier.cshtml" />
+    <Content Include="Views\Shared\_AdminLayouty.cshtml" />
+    <Content Include="Views\Contact\ViewAllReview.cshtml" />
+    <Content Include="Views\Product\AddNewFAQ.cshtml" />
+    <Content Include="Views\AdminDashboard\ViewAllCompleteAssignment.cshtml" />
+    <Content Include="Views\AdminDashboard\ViewAllDueAssignment.cshtml" />
+    <Content Include="Views\AdminDashboard\UpdateAssignment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5291,13 +5311,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\AdminDashboard\" />
-    <Folder Include="Views\Admin\" />
     <Folder Include="Views\Customer\" />
-    <Folder Include="Views\DeliveryMan\" />
     <Folder Include="Views\Order\" />
-    <Folder Include="Views\SuperAdminDashboard\" />
-    <Folder Include="Views\Supplier\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\E-Commerce.BusinessLayer\E-Commerce.BusinessLayer.csproj">

@@ -1,0 +1,218 @@
+﻿@model E_Commerce.Model.AdminViewModel
+
+@{
+    ViewBag.Title = "AddNewProduct";
+    Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+    var productguid = Guid.NewGuid();
+}
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Jquery CDN link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+</head>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+                @if (ViewData["Message"] != null)
+                {
+                    <h5 class="confirmationmessage" style="color:red">@ViewData["Message"]</h5>
+                }
+                @using (Html.BeginForm("AssignSupplier", "Assignment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <h1> ADD NEW PRODUCT</h1>
+                    <!-- One "tab" for each step in the form: -->
+            <div class="tab">
+                @Html.HiddenFor(Model => Model.Product.ProductId)
+                <b>Product Details</b>
+                <p>
+                    <label class="text-field"><b>Product ID</b></label>
+                    @Html.TextBoxFor(Model => Model.Product.ProdcutItemId, new { @class = "form-control", @placeholder = productguid, @Value = productguid, ReadOnly = "true" })
+                </p>
+                <p>
+                    <label class="text-field"><b>Product Name</b></label>
+                    @Html.TextBoxFor(Model => Model.Product.ProductName, new { @class = "form-control", @placeholder = "Product Name" })
+                    @Html.ValidationMessageFor(Model => Model.Product.ProductName)
+                </p>
+                <p>
+                    <label class="text-field"><b>Product Description</b></label>
+                    @Html.TextAreaFor(Model => Model.Product.ProductDescription, new { @class = "form-control", @id = "val-suggestions", @rows = "5", @placeholder = "Product Details", type = "text", })
+                    @Html.ValidationMessageFor(Model => Model.Product.ProductDescription, "", new { @class = "text-danger" })
+                </p>
+                <p>
+                    <label class="text-field"><b>Product Primary Image</b></label><br />
+                    @if (Model.Product != null && Model.Product.ProductImage != null)
+                    {
+                        <img src="@Model.Product.ProductImage" class="new-contact__img" alt="" width="100" height="100">
+                        <br />
+                    }
+                    <input type="file" name="File" id="files" class="form-control" />
+                </p>
+            </div>
+                    <div class="tab">
+                        <b>Product Specification</b>
+                        <div class="d-md-flex-row ">
+                            <div class="d-inline-flex justify-content-around col-12">
+                                <div class="col-4">
+                                    <label class="text-field"><b>Product Width</b></label>
+                                    @Html.TextBoxFor(Model => Model.Product.ProductWidth, new { @class = "form-control", type = "number" })
+                                    @Html.ValidationMessageFor(Model => Model.Product.ProductWidth)
+                                    <span class="unit"><b>CM</b></span>
+                                </div>
+                                <div class="col-4">
+                                    <label class="text-field"><b>Product Height</b></label>
+                                    @Html.TextBoxFor(Model => Model.Product.ProductHeight, new { @class = "form-control", type = "number" })
+                                    @Html.ValidationMessageFor(Model => Model.Product.ProductHeight)
+                                    <span class="unit"><b>CM</b></span>
+                                </div>
+                                <div class="col-4">
+                                    <label class="text-field"><b>Product Depth</b></label>
+                                    @Html.TextBoxFor(Model => Model.Product.ProductDepth, new { @class = "form-control", type = "number" })
+                                    @Html.ValidationMessageFor(Model => Model.Product.ProductDepth)
+                                    <span class="unit"><b>CM</b></span>
+                                </div>
+                            </div>
+                            <div class="d-inline-flex justify-content-around col-12">
+                                <div class="col-4">
+                                    <label class="text-field"><b>Product Weight</b></label>
+                                    @Html.TextBoxFor(Model => Model.Product.ProductWeight, new { @class = "form-control", type = "number" })
+                                    @Html.ValidationMessageFor(Model => Model.Product.ProductWeight)
+                                    <span class="unit"><b>KG</b></span>
+                                </div>
+                                <div class="col-4">
+                                    <label class="text-field"><b>Product Freshness Duration</b></label>
+                                    @Html.TextBoxFor(Model => Model.Product.ProductFreshnessDuration, new { @class = "form-control", type = "number" })
+                                    @Html.ValidationMessageFor(Model => Model.Product.ProductFreshnessDuration)
+                                    <span class="unit"><b>Days</b></span>
+                                </div>
+                                <div class="col-4">
+                                    <label class="text-field"><b>Product Color</b></label>
+                                    @Html.TextBoxFor(Model => Model.Product.ProductColor, new { @class = "form-control", @placeholder = "Product Color" })
+                                    @Html.ValidationMessageFor(Model => Model.Product.ProductColor)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab">
+                        <b>Product Category,Price and Quantity:</b>
+                        <div class="d-flex justify-content-around">
+                            <div class="col-6">
+                                <label class="text-field"><b>Product Price</b></label>
+                                @Html.TextBoxFor(Model => Model.Product.ProductPrice, new { @class = "form-control", type = "number" })
+                                @Html.ValidationMessageFor(Model => Model.Product.ProductPrice)
+                                <span class="amount"><b>TK</b></span>
+                            </div>
+                            <div class="col-6">
+                                <label class="text-field"><b>Product Quantity</b></label>
+                                @Html.TextBoxFor(Model => Model.Product.ProductQuantity, new { @class = "form-control", type = "number" })
+                                @Html.ValidationMessageFor(Model => Model.Product.ProductQuantity)
+                                <span class="amount"><b>Unit</b></span>
+                            </div>
+                        </div>
+
+                        @if (Model.Product != null && Model.Product.ProductId == 0)
+                        {
+                            <p>
+                                <label class="text-field"><b>Product Details Image</b></label><br />
+                                <input type="file" name="Files" id="files" class="form-control" multiple />
+                            </p>
+                        }
+                    </div>
+                    <div class="tab">
+                        <b>Supplier Details:</b>
+                        <div class="d-flex justify-content-around">
+                            <div class="col-6">
+                                <label class="text-field"><b>Total Product Amount</b></label>
+                                @Html.TextBoxFor(Model => Model.SupplierAssignment.TotalAmount, new { @class = "form-control", type = "number" })
+                                @Html.ValidationMessageFor(Model => Model.SupplierAssignment.TotalAmount)
+                               
+                            </div>
+                            <div class="col-6">
+                                <label class="text-field"><b>Suppliers</b></label>
+                                @Html.DropDownListFor(Model => Model.SupplierAssignment.SupplierId, new SelectList(Model.SupplierList, "SupplierId","SupplierName"), new { @class = "form-control", @id = "val-skill" })
+                                @Html.ValidationMessageFor(Model => Model.SupplierAssignment.SupplierId, "", new { @class = "text-danger" })
+                                
+                            </div>
+                        </div>  
+                    </div>
+                    if (Model.SupplierAssignment != null && Model.SupplierAssignment.SupplierId > 0)
+                    {
+                        <div>
+                            <div style="float:right;">
+                                <input type="submit" id="submitbutton" value="Update" class="btn btn-light" />
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <div style="float:right;">
+                                <input type="submit" value="Add" class="btn btn-light" />
+                            </div>
+                        </div>
+                    }
+                }
+            </center>
+        </div>
+    </div>
+</div>
+<script>
+    $("#val").change(function () {
+        var categoryvalue = {
+            categoryid: $("#val").val()
+            }
+        $.ajax({
+            url: "/Product/Getselectedsubcategory",
+            method: "Post",
+            data: categoryvalue,
+            success: function (data) {
+                $('.subcategory-item').empty();
+                var value = JSON.parse(data);
+                var i = 0;
+                $(function () {
+                    $.each(value, function (i) {
+                        var optionvalue = value[i];
+                        $('#subcategory-items').append($('<option/>').attr("value", optionvalue.SubCategoryId).text(optionvalue.SubCategoryName));
+                        i++;
+                    });
+                });
+            }
+        });
+    });
+</script>
+<style>
+    .unit {
+        float: right;
+        position: relative;
+        left: 13%;
+        top: -26%;
+        width: 20%;
+        height: 50px;
+    }
+
+    .text-field {
+        float: left;
+    }
+
+    .imagefile {
+        float: left;
+    }
+
+    .amount {
+        float: right;
+        position: relative;
+        left: 12%;
+        top: -28%;
+        width: 20%;
+        height: 50px;
+    }
+</style>
+

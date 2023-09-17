@@ -1,0 +1,371 @@
+﻿@model E_Commerce.Model.AdminViewModel
+
+@{
+    ViewBag.Title = "AddNewProduct";
+    Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+    var supplierofficialid = Guid.NewGuid();
+}
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+                @using (Html.BeginForm("AddNewSupplier", "StaffSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <h1> ADD NEW Supplier</h1>
+                    <!-- One "tab" for each step in the form: -->
+                    <b>Supplier Details</b>
+                    <div class="tab">
+                        @Html.HiddenFor(Model => Model.Supplier.SupplierId)
+                        @Html.HiddenFor(Model => Model.User.UserId)
+                        @Html.HiddenFor(Model => Model.Supplier.UserId)
+                        @Html.HiddenFor(Model => Model.User.UserType, new { @Value = "Supplier", id = "usertype" })
+                        <p>
+                            <label class="text-field"><b>Supplier Official  ID</b></label>
+                            @if (Model.Supplier.SupplierId > 0)
+                            {
+                                @Html.TextBoxFor(Model => Model.Supplier.SupplierOfficialId, new { @class = "form-control", ReadOnly = "true" })
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(Model => Model.Supplier.SupplierOfficialId, new { @class = "form-control", @placeholder = supplierofficialid, @Value = supplierofficialid, ReadOnly = "true" })
+                            }
+
+                        </p>
+                        <p>
+                            <label class="text-field"><b>Supplier Name</b></label>
+                            @Html.TextBoxFor(Model => Model.Supplier.SupplierName, new { @class = "form-control", @placeholder = "Name" })
+                            @Html.ValidationMessageFor(Model => Model.Supplier.SupplierName)
+                        </p>
+                        <p>
+                            <label class="text-field"><b>Supplier Date of Birth</b></label>
+                            @if (Model.Supplier.SupplierId > 0 && Model.Supplier.SupplierDateofBirth != null)
+                            {
+                                @Html.DisplayFor(Model => Model.Supplier.SupplierDateofBirth, "ShortDateTime")
+                            }
+                            @Html.HiddenFor(Model => Model.Supplier.SupplierDateofBirth, new { @class = "form-control", type = "date", id = "BirthDate" })
+                            @Html.ValidationMessageFor(Model => Model.Supplier.SupplierDateofBirth, "", new { @class = "text-danger" })
+                            <span id="BirthDate-validation-error" class="error" for="DOB" style="display: none"> Age must be greater than 18 years old</span>
+                        </p>
+                        <p>
+                            <label class="text-field"><b>Supplier Gender</b></label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    @Html.RadioButtonFor(Model => Model.Supplier.SupplierGender, "Male", new { @class = "form-control", id = "deliverymangender" })
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Female
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    @Html.RadioButtonFor(Model => Model.Supplier.SupplierGender, "Female", new { @class = "form-control", id = "deliverymangender" })
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Male
+                                    </label>
+                                </div>
+                                @Html.ValidationMessageFor(Model => Model.Supplier.SupplierGender, "", new { @class = "text-danger" })
+                            </div>
+
+                        </p>
+                    </div>
+                    <div class="tab">
+                        <b>Supplier Contact Information</b>
+                        <br />
+                        <br />
+                        <div class="d-md-flex-row ">
+                            <div class="d-inline-flex justify-content-around col-12">
+                                <div class="col-6">
+                                    <label class="text-field"><b>Supplier Present Address</b></label>
+                                    @Html.TextAreaFor(Model => Model.Supplier.SupplierPresentAddress, new { @class = "form-control", rows = "3", @placeholder = "Present Address", id = "presentaddress" })
+                                    @Html.ValidationMessageFor(Model => Model.Supplier.SupplierPresentAddress)
+                                </div>
+                                <div class="col-6">
+                                    <label class="text-field"><b>Supplier Permanent Address</b></label>
+                                    <br />
+                                    <div class="">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" id="permanentaddress" for="exampleCheck1">Same as Present Address </label>
+                                        @Html.TextAreaFor(Model => Model.Supplier.SupplierPermanentAddress, new { @class = "form-control", rows = "3", @placeholder = "Permanent Address", id = "permanentaddressvalue" })
+                                        @Html.ValidationMessageFor(Model => Model.Supplier.SupplierPermanentAddress)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-inline-flex justify-content-around col-12">
+                                <div class="col-6">
+                                    <label class="text-field"><b>Supplier Email</b></label>
+                                    @Html.TextBoxFor(Model => Model.Supplier.SupplierEmail, new { @class = "form-control", type = "email", id = "email" })
+                                    @Html.ValidationMessageFor(Model => Model.Supplier.SupplierEmail)
+                                    <span id="email-validation-error" class="error" for="last_Name" style="display: none"> Please Enter a Valid Email</span>
+                                </div>
+                                <div class="col-6">
+                                    <label class="text-field"><b>Supplier  Phone Number</b></label> <br />
+                                    @Html.TextBoxFor(Model => Model.Supplier.SupplierPhoneNumber, new { @class = "form-control", type = "text", id = "phonenumbercheck" })
+                                    @Html.ValidationMessageFor(Model => Model.Supplier.SupplierPhoneNumber)
+                                    <span id="phonenumber-validation-error" class="error" for="last_Name" style="display: none"> Please Enter a Valid Phone Number</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="tab">
+                        <b>Supplier Product Details:</b>
+                        <br />
+                        <br />
+                        <div class="d-inline-flex justify-content-around col-12">
+                            <div class="col-6">
+                                <label class="text-field"><b>Category Name</b></label>
+                                @Html.DropDownListFor(Model => Model.Supplier.CategoryId, new SelectList(Model.CategoryList, "CategoryId", "CategoryName", "Select"), new { @class = "form-control", @id = "val-skill" })
+                                @Html.ValidationMessageFor(Model => Model.Supplier.CategoryId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="tab">
+                        <b>Supplier User Details:</b>
+                        <br />
+                        <br />
+                        <div class="d-flex justify-content-around">
+                            @if (Model.Supplier.SupplierId > 0)
+                            {
+                            <div class="col-6">
+                                <label class="text-field"><b>Supplier User Name</b></label>
+                                @Html.TextBoxFor(Model => Model.Supplier.UserName, new { @class = "form-control", type = "text", id = "deliverymanusername" })
+                                @Html.ValidationMessageFor(Model => Model.Supplier.UserName)
+                                <span id="username-password-validation-error" class="error" for="last_Name" style="display: none"> User Name is already existed</span>
+                            </div>
+                            <div class="col-6">
+                                <label class="text-field"><b>Supplier Man User Password</b></label>
+                                @Html.TextBoxFor(Model => Model.Supplier.UserPassword, new { @class = "form-control", type = "text", id = "passwordcheck" })
+                                @Html.ValidationMessageFor(Model => Model.Supplier.UserPassword)
+                                <span id="username-password-validation-error" class="error" for="last_Name" style="display: none"> Password Must Contain at Least 8 digit</span>
+                            </div>
+                            }
+                            else
+                            {
+                                <div class="col-6">
+                                    <label class="text-field"><b>Admin User Name</b></label>
+                                    @Html.TextBoxFor(Model => Model.User.UserName, new { @class = "form-control", type = "text", id = "deliverymanusername" })
+                                    @Html.ValidationMessageFor(Model => Model.User.UserName)
+                                    <span id="username-validation-error" class="error" for="last_Name" style="display: none"> User Name is already existed</span>
+                                </div>
+                                <div class="col-6">
+                                    <label class="text-field"><b>Admin Man User Password</b></label>
+                                    @Html.TextBoxFor(Model => Model.User.UserPassword, new { @class = "form-control", type = "text", id = "passwordcheck" })
+                                    @Html.ValidationMessageFor(Model => Model.User.UserPassword)
+                                    <span id="username-password-validation-error" class="error" for="last_Name" style="display: none"> User Name is already existed</span>
+                                </div>
+                            }
+                        </div>
+                        <p>
+                            <label class="text-field"><b>Supplier Image</b></label><br />
+                            @if (Model.Supplier != null && Model.Supplier.SupplierProfilePic != null)
+                            {
+                                <img src="@Model.Supplier.SupplierProfilePic" class="new-contact__img" alt="" width="100" height="100">
+                                <br />
+                            }
+                            <input type="file" name="File" id="files" class="form-control" />
+                        </p>
+                    </div>
+
+                      
+
+                    if (Model.Supplier != null && Model.Supplier.SupplierId > 0)
+                    {
+                        <div>
+                            <div style="float:right;">
+                                <input type="submit" id="submitbutton" value="Update" class="btn btn-light" />
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <div style="float:right;">
+                                <input type="submit" value="Add" class="btn btn-light" />
+                            </div>
+                        </div>
+                    }
+                }
+                @if (ViewData["Message"] != null)
+                {
+                    <h5 class="confirmationmessage" style="color:red">@ViewData["Message"]</h5>
+                }
+            </center>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $("#deliverymanusername").change(function () {
+        var username = {
+            username: $("#deliverymanusername").val()
+        }
+        $.ajax({
+            url: "/StaffSettings/CheckUserId",
+            method: "Post",
+            data: username,
+            success: function (data) {
+                var value = JSON.parse(data);
+                if (value == true) {
+                    $("#username-validation-error").css("display", "block");
+                }
+                else {
+                    $("#username-validation-error").css("display", "none");
+                }
+            }
+        });
+    });
+    $("#passwordcheck").change(function () {
+        var password = $("#passwordcheck").val();
+        if (password.length < 8) {
+            $("#username-password-validation-error").css("display", "block");
+        }
+        else {
+            $("#username-password-validation-error").css("display", "none");
+        }
+    })
+    $('input[type=radio][name=gender]').change(function () {
+        var gender = this.value;
+        $("#deliverymangender").val(gender);
+    });
+    $("#BirthDate").change(function () {
+        debugger
+        var userinput = $("#BirthDate").val();
+        var userDOB = new Date(userinput);
+        var diff_ms = Date.now() - userDOB.getTime();
+        var age_dt = new Date(diff_ms);
+        var userage = Math.abs(age_dt.getUTCFullYear() - 1970);
+        if (userage < 18) {
+            $("#BirthDate-validation-error").css("display", "block");
+        }
+        else {
+            $("#BirthDate-validation-error").css("display", "none");
+
+        }
+    });
+    $("#phonenumbercheck").change(function () {
+        var userinput = $("#phonenumbercheck").val().toString();
+        if (userinput.length < 11) {
+            $("#phonenumber-validation-error").css("display", "block");
+        }
+        else if (userinput == null) {
+            $("#phonenumber-validation-error").css("display", "none");
+        }
+        else if (userinput.length > 11){
+            $("#phonenumber-validation-error").css("display", "block");
+        }
+        else {
+            $("#phonenumber-validation-error").css("display", "none");
+        }
+    });
+    $("#email").change(function () {
+        var userinput = $("#email").val();
+        var regex = /^([a-zA-Z0-9_\.\-\+])+\@@(([a-zA>-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (!regex.test(userinput)) {
+            $("#email-validation-error").css("display", "block");
+        }
+        else if (userinput == null) {
+            $("#email-validation-error").css("display", "none");
+        }
+        else {
+            $("#email-validation-error").css("display", "none");
+        }
+    });
+    $('#exampleCheck1').change(function () {
+        debugger
+        if (this.checked) {
+            var presentaddress = $("#presentaddress").val();
+            $("#permanentaddressvalue").val(presentaddress);
+        }
+        else {
+            $("#permanentaddressvalue").val("");
+        }
+    });
+    $('.subcategory-item').change(function () {
+        let nummloss = $(".subcategory-item option:selected").val();
+        $("#deliverymanarea").val(nummloss);
+    });
+    $("#val").change(function () {
+        var categoryvalue = {
+            zoneid: $("#val").val()
+        }
+        $.ajax({
+            url: "/StaffSettings/Getselectedarea",
+            method: "Post",
+            data: categoryvalue,
+            success: function (data) {
+                $('.subcategory-item').empty();
+                var value = JSON.parse(data);
+                var i = 0;
+                $(function () {
+                    $.each(value, function (i) {
+                        var optionvalue = value[i];
+                        $('#subcategory-items').append($('<option/>').attr("value", optionvalue.ZoneId).text(optionvalue.DevisionName));
+                        i++;
+                    });
+                });
+            }
+        });
+    });
+</script>
+<script>
+    $("#val-skill").change(function () {
+        var id = "";
+        // var division = document.getElementById("val-skill");
+        debugger
+        var divisionname = $("#val-skill option:selected").text();
+        $('#districts').empty();
+        $.each(data, function (i, option) {
+            if (option.name == divisionname) {
+                id = option.id;
+            }
+        });
+        $.each(districts, function (i, district) {
+            if (district.division_id == id) {
+                $('#subcategory-items').append($('<option/>').attr("value", district.name).text(district.name));
+            }
+        });
+    });
+</script>
+<style>
+    .error {
+        color: red;
+    }
+
+    .unit {
+        float: right;
+        position: relative;
+        left: 13%;
+        top: -26%;
+        width: 20%;
+        height: 50px;
+    }
+
+    .text-field {
+        float: left;
+    }
+
+    .imagefile {
+        float: left;
+    }
+
+    .amount {
+        float: right;
+        position: relative;
+        left: 12%;
+        top: -28%;
+        width: 20%;
+        height: 50px;
+    }
+</style>
+

@@ -20,3 +20,21 @@ E:\Personal\Official Projects\WebApplication1\E-Commerce.Utility\bin\Debug\E-Com
 E:\Personal\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.csproj.CoreCompileInputs.cache
 E:\Personal\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.dll
 E:\Personal\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.pdb
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\bin\Debug\E-Commerce.Utility.dll
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\bin\Debug\E-Commerce.Utility.pdb
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.csproj.AssemblyReference.cache
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.csproj.CoreCompileInputs.cache
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.dll
+E:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.pdb
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\bin\Debug\E-Commerce.Utility.dll
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\bin\Debug\E-Commerce.Utility.pdb
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.csproj.AssemblyReference.cache
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.csproj.CoreCompileInputs.cache
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.dll
+D:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\bin\Debug\E-Commerce.Utility.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\bin\Debug\E-Commerce.Utility.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.csproj.CoreCompileInputs.cache
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.csproj.AssemblyReference.cache

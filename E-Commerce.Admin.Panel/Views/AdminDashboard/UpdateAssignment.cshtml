@@ -1,0 +1,124 @@
+﻿@model E_Commerce.Model.AdminViewModel
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Jquery CDN link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+</head>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+                @if (ViewData["Message"] != null)
+                {
+                    <h5 class="confirmationmessage" style="color:red">@ViewData["Message"]</h5>
+                }
+                @using (Html.BeginForm("UpdateAssignment", "AdminDashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <h1> Supplier Assignment Details</h1>
+                    <!-- One "tab" for each step in the form: -->
+                    @Html.HiddenFor(Model => Model.AdminAssignment.AssigentmentAppointmentId)
+                    <div class="tab">
+                        <b>Customer Details</b>
+                        <p>
+                            @Model.AdminAssignment.CustomerName
+                        </p>
+                        <p>
+                            @Model.AdminAssignment.CustomerPhoneNumber
+                        </p>
+                        <p>
+                            @Model.AdminAssignment.CustomerEmail
+                        </p>
+                    </div>
+                    <div class="tab">
+                        <b>Appointment Details</b>
+                        <div class="d-md-flex-row ">
+                            <p>
+                                Subject: @Model.AdminAssignment.AppointmentSubject
+                            </p>
+                            <p>
+                                @Model.AdminAssignment.AppointmentMessage
+                            </p>
+                            <p>
+                               Make Appointment: @Model.AdminAssignment.AppointDate
+                            </p>
+                            <p>
+                               Assignment Assigned: @Model.AdminAssignment.AssigentmentAppointmentDate
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tab">
+                        <b>Fixed Appointment Date:</b>
+                        @Html.HiddenFor(Model => Model.AdminAssignment.AdminName)
+                        @if (Model.AdminAssignment.AssingedUpdate == 0 && Model.AdminAssignment.AssigentmentFixedDate == null)
+                        {
+                            <b>Total Cost:</b>
+                            <div class="d-flex justify-content-around">
+                                @Html.EditorFor(Model => Model.AdminAssignment.AssigentmentFixedDate, new { @class = "form-control", type = "date", @placeholder = "Price" })
+                                @Html.ValidationMessageFor(Model => Model.AdminAssignment.AssigentmentFixedDate)
+
+                            </div>
+                        }
+                        else
+                        {
+                            <p>Fixed Date: @Model.AdminAssignment.AssigentmentFixedDate </p> <br />
+                            @Html.EditorFor(Model => Model.AdminAssignment.AssigentmentFixedDate, new { @class = "form-control", type = "date", @placeholder = "Price" })
+                            @Html.ValidationMessageFor(Model => Model.AdminAssignment.AssigentmentFixedDate)
+                            <b>Complete Assingment and Payment is Completed</b>
+                            @Html.RadioButtonFor(Model => Model.AdminAssignment.AssigentmentUpdate, 1)
+                        }
+
+                    </div>
+
+                    <div>
+                        <div style="float:right;">
+                            <input type="submit" id="submitbutton" value="Update" class="btn btn-light" />
+                        </div>
+                    </div>
+
+
+                }
+            </center>
+        </div>
+    </div>
+</div>
+<style>
+    .unit {
+        float: right;
+        position: relative;
+        left: 13%;
+        top: -26%;
+        width: 20%;
+        height: 50px;
+    }
+
+    .text-field {
+        float: left;
+    }
+
+    .imagefile {
+        float: left;
+    }
+
+    .amount {
+        float: right;
+        position: relative;
+        left: 12%;
+        top: -28%;
+        width: 20%;
+        height: 50px;
+    }
+</style>
+
+
+
+
+

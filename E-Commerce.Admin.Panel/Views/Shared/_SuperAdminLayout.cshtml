@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,6 +35,17 @@
         Sidebar start
     ***********************************-->
     <div class="nk-sidebar">
+        <div class="userdetails">
+
+            <div class="">
+
+                <img src="~/Assests/images/user/1.jpg" class="rounded-circle" alt="img">
+            </div>
+            <div class="">
+                <h4>Fuad Uddin</h4>
+                <h4>User Name: Fuad</h4>
+            </div>
+        </div>
         <div class="nk-nav-scroll">
             <ul class="metismenu" id="menu">
                 <li class="nav-label">Dashboard</li>
@@ -42,15 +54,11 @@
                         <i class="icon-speedometer menu-icon"></i><span class="nav-text">Category and Sub Category</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li>
-                            @Html.ActionLink("CATEGORY SETTINGS", "AddCategory", "Category")
-                        </li>
+                        @Html.ActionLink("CATEGORY SETTINGS", "AddCategory", "Category")
                         <!-- <li><a href="./index-2.html">Home 2</a></li> -->
                     </ul>
                     <ul aria-expanded="false">
-                        <li>
-                            @Html.ActionLink("SUB CATEGORY SETTINGS", "", "Product")
-                        </li>
+                        @Html.ActionLink("SUB CATEGORY SETTINGS", "AddSubCategory", "SubCategory")
                         <!-- <li><a href="./index-2.html">Home 2</a></li> -->
                     </ul>
                 </li>
@@ -59,13 +67,13 @@
                         <i class="icon-globe-alt menu-icon"></i><span class="nav-text">DELIVERY SETTINGS</span>
                     </a>
                     <ul aria-expanded="false">
-                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddDeliveryCost", "DeliverySettings")
                     </ul>
                     <ul aria-expanded="false">
-                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                        @Html.ActionLink("ZONE SETTINGS", "AddZone", "DeliverySettings")
                     </ul>
                     <ul aria-expanded="false">
-                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                        @Html.ActionLink("AREA SETTINGS", "AddArea", "DeliverySettings")
                     </ul>
                 </li>
                 <li class="mega-menu mega-menu-sm">
@@ -73,13 +81,10 @@
                         <i class="icon-globe-alt menu-icon"></i><span class="nav-text">PRODUCTS SETTINGS</span>
                     </a>
                     <ul aria-expanded="false">
-                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                        @Html.ActionLink("ADD NEW PRODUCT", "AddNewProduct", "Product")
                     </ul>
                     <ul aria-expanded="false">
-                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
-                    </ul>
-                    <ul aria-expanded="false">
-                        @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                        @Html.ActionLink("VIEW ALL PRODUCT", "GetAllProduct", "Category")
                     </ul>
                 </li>
                 <li class="mega-menu mega-menu-sm">
@@ -110,6 +115,9 @@
                     </a>
                     <ul aria-expanded="false">
                         @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
+                        <br />
+                        <span class="items" id="totalAppointment"></span>
+                        <span class="items" id="totalemail"></span>
                     </ul>
                     <ul aria-expanded="false">
                         @Html.ActionLink("DELIVERY CHARGE SETTINGS", "AddCategory", "Category")
@@ -138,9 +146,39 @@
             </ul>
         </div>
     </div>
+    <script>
+        function contactcount() {
+            let totalappointment = document.getElementsByClassName("countAppointment");
+            let totalamil = document.getElementsByClassName("countemail");
+            if (totalappointment != null || totalamil != null) {
+                if (totalamil == null && totalappointment != null) {
+                    document.getElementById("totalAppointment").innerText = totalappointment.length;
+                }
+                else if (totalappointment == null && totalamil != null) {
+                    document.getElementById("totalemail").innerText = totalamil.length;
+                }
+                else {
+                    document.getElementById("totalAppointment").innerText = totalappointment.length;
+                    document.getElementById("totalemail").innerText = totalamil.length;
+                }
+            }
+
+        }
+        contactcount();
+    </script>
     <!--**********************************
         Sidebar end
     ***********************************-->
+    <style>
+        .userdetails {
+            margin-left: 19%;
+        }
+
+        .rounded-circle {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
     <div class="content-body">
         <div class="container-fluid mt-3">
             @RenderBody();

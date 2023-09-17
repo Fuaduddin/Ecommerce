@@ -70,3 +70,157 @@ E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-com
 E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.dll
 E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.pdb
 E:\Personal\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.Supplier.csproj.AssemblyReference.cache
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-commerce.Deliver.dll.config
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-commerce.Deliver.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-commerce.Deliver.pdb
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\csc.exe
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\csc.exe.config
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\csc.rsp
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\csi.exe
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\csi.exe.config
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\csi.rsp
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.AppContext.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Collections.Immutable.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Console.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Globalization.Calendars.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.IO.Compression.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.IO.FileSystem.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Net.Http.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Net.Sockets.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Reflection.Metadata.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.ValueTuple.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Xml.XPath.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\vbc.exe
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\vbc.exe.config
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\vbc.rsp
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\VBCSCompiler.exe
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\VBCSCompiler.exe.config
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\Microsoft.Web.Infrastructure.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Helpers.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Mvc.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Razor.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Webpages.Deployment.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Webpages.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Webpages.Razor.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Razor.xml
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Webpages.xml
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Webpages.Deployment.xml
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Webpages.Razor.xml
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Helpers.xml
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Mvc.xml
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.Supplier.csproj.AssemblyReference.cache
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.Supplier.csproj.CoreCompileInputs.cache
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.Supplier.csproj.CopyComplete
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.dll
+D:\Protfolios\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-commerce.Deliver.dll.config
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-commerce.Deliver.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-commerce.Deliver.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\csc.exe
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\csc.exe.config
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\csc.rsp
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\csi.exe
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\csi.exe.config
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\csi.rsp
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.AppContext.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Collections.Immutable.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Console.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Globalization.Calendars.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.IO.Compression.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.IO.FileSystem.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Net.Http.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Net.Sockets.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Reflection.Metadata.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.ValueTuple.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Xml.XPath.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\vbc.exe
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\vbc.exe.config
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\vbc.rsp
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\VBCSCompiler.exe
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\roslyn\VBCSCompiler.exe.config
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-Commerce.BusinessLayer.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-Commerce.Model.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-Commerce.Utility.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\Microsoft.Web.Infrastructure.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\Newtonsoft.Json.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Helpers.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Mvc.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Razor.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Webpages.Deployment.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Webpages.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Webpages.Razor.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-Commerce.DataLayerSQL.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-Commerce.BusinessLayer.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-Commerce.Model.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-Commerce.Utility.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\Newtonsoft.Json.xml
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Razor.xml
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Webpages.xml
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Webpages.Deployment.xml
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Webpages.Razor.xml
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Helpers.xml
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\System.Web.Mvc.xml
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\bin\E-Commerce.DataLayerSQL.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.Supplier.csproj.AssemblyReference.cache
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.Supplier.csproj.CoreCompileInputs.cache
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.Supplier.csproj.CopyComplete
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.dll
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerce.Deliver\obj\Debug\E-commerce.Deliver.pdb

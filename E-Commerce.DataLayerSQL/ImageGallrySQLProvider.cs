@@ -19,11 +19,11 @@ namespace E_Commerce.DataLayerSQL
             {
                 SqlCommand command = new SqlCommand(StoredProcedured.AddImageGallery, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                SqlParameter returnvalue = new SqlParameter("@" + "GalleryId", SqlDbType.Int);
+                SqlParameter returnvalue = new SqlParameter("@" + "ImageGalleryId", SqlDbType.Int);
                 returnvalue.Direction = ParameterDirection.Output;
                 command.Parameters.Add(returnvalue);
-                command.Parameters.Add("@" + "Images", image);
-                command.Parameters.Add("@" + "ProductId", id);
+                command.Parameters.Add(new SqlParameter("@Images",image));
+                command.Parameters.Add(new SqlParameter("@ProductId",id));
                 try
                 {
                     connection.Open();
@@ -42,13 +42,86 @@ namespace E_Commerce.DataLayerSQL
 
             return ids;
         }
-        //public bool DeleteImages(int productid)
-        //{
+        public bool DeleteImages(int productid)
+        {
+            bool IsDeleted = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.DeleteImageGallery, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ImageGalleryId", productid));
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    IsDeleted = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
 
-        //}
-        //public List<ProductImageGallery> GetSingleProductAllImage(int id)
-        //{
-
-        //}
+                return IsDeleted;
+            }
+        }
+        public bool  UpdateSingleProductAllImage(ImageGallery images)
+        {
+            bool updated = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.UpdateImageGallery, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                foreach (var charge in images.GetType().GetProperties())
+                {
+                    string name = charge.Name;
+                    var value = charge.GetValue(images, null);
+                    command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                }
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    updated = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }  
+            return updated;
+        }
+        public List<ImageGallery> GetSingleProductAllImage(int productid)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleProductAllImage, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ProductId", productid));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader Datareader = command.ExecuteReader();
+                    List<ImageGallery> subcategoryList = new List<ImageGallery>();
+                    subcategoryList = UtilityManager.DataReaderMapToList<ImageGallery>(Datareader);
+                    return subcategoryList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

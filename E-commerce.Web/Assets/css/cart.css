@@ -1,0 +1,168 @@
+.cart-header-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.form-title {
+    font-size: 28px;
+    line-height: 35px;
+    text-align: center;
+}
+hr.process-line {
+    margin-top: 65%;
+    width: 155%;
+    margin-left: -31%;
+}
+.icon
+{
+    font-size: 35px;
+    color: red;
+}
+
+hr.process-line {
+    margin-top: 82%;
+    width: 155%;
+    margin-left: 0%;
+}
+.cart-from-steps {
+    display: grid;
+    grid-template-columns: 1fr 25% 1fr 25% 1fr;
+    gap: 22%;
+}
+.steps {
+    border-radius: 30px;
+    border: 2px solid red;
+    width: 155%;
+    /* height: 100%; */
+    padding: 31% 0% 19% 29%;
+}
+
+.media-body {
+    margin-left: -20%;
+    font-size: 21px;
+    line-height: 20px;
+    padding-top: 3%;
+}
+.product-image
+{
+    width: 26%;
+}
+.media {
+    display: flex;
+}
+.cart_inner .table tbody tr td .product_count  input  {
+    width: 111px;
+    padding-left: 3px;
+    height: 42px;
+    outline: none;
+    box-shadow: none;
+    border-radius: 10px;
+}
+.shipping_box  input  {
+    width: 111px;
+    padding-left: 3px;
+    height: 42px;
+    outline: none;
+    box-shadow: none;
+    border-radius: 10px;
+}
+.fa-icons
+{
+    font-size: 25px;
+    color: gray;
+}
+
+.fa-icon
+{
+    font-size: 25px;
+    color: gray;
+}
+input.input-number {
+    text-align: center;
+}
+.btn_1 {
+    margin-left: 5%;
+    padding: 2% 3% 2% 2%;
+    border-radius: 5px;
+}
+input.cupon {
+    width: 40%;
+}
+
+.activefromitem
+{
+    background-color: orange;
+    border: 2px solid orange;
+    font-size: 35px;
+}
+.bottom-part
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.payment-method-items
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3%;
+}
+img.payment-image {
+    width: 50%;
+}
+.payment-method {
+    text-align: center;
+    padding: 11% 6% 11% 6%;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+}
+.payment-method-title {
+    font-size: 30px;
+    line-height: 40px;
+    text-align: center;
+}
+p.payment-method-details {
+    font-size: 23px;
+    line-height: 30px;
+}
+.cart-item-details {
+    margin-top: 6%;
+}
+.bottom-part
+{
+    margin-top: 8%;  
+}
+.payment-details
+{
+    padding-top: 8%;  
+}
+/* .completedsteps
+{
+    font-size: 35px;
+    color: orange !important;
+} */
+.summary-details-cash
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3%;
+}
+.payment-image-small
+{
+    width: 100%;
+}
+.customer-selected-method
+{
+    text-align: center;
+    padding: 11% 6% 11% 6%;
+    border: 2px solid orange;
+    border-radius: 10px;
+}
+.change-button
+{
+    padding: 4% 10% 4% 10%;
+    border: 2px solid orange;
+    background: orange;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+}

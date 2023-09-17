@@ -44,16 +44,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminModel.cs" />
     <Compile Include="AdminViewModel.cs" />
+    <Compile Include="AssignmentModel.cs" />
     <Compile Include="CategoryModel.cs" />
+    <Compile Include="DashBoardModel.cs" />
+    <Compile Include="EmailModel.cs" />
     <Compile Include="CustomerModel.cs" />
     <Compile Include="CustomerViewModel.cs" />
+    <Compile Include="DeliveryManModel.cs" />
     <Compile Include="DeliverySettings.cs" />
-    <Compile Include="EmailModel.cs" />
+    <Compile Include="ImageGallery.cs" />
+    <Compile Include="OrderModel.cs" />
     <Compile Include="ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubCategoryModel.cs" />
-    <Compile Include="ZoneModel.cs" />
+    <Compile Include="SupplierandDeliveryManViewModel.cs" />
+    <Compile Include="SupplierModel.cs" />
+    <Compile Include="UserModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

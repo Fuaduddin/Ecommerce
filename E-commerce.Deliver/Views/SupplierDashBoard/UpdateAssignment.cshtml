@@ -1,0 +1,153 @@
+﻿@model E_Commerce.Model.SupplierandDeliveryManViewModel
+
+@{
+    ViewBag.Title = "UpdateAssignment";
+    Layout = "~/Views/Shared/_DeliveryManLayout.cshtml";
+}
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Jquery CDN link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+</head>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+                @if (ViewData["Message"] != null)
+                {
+                    <h5 class="confirmationmessage" style="color:red">@ViewData["Message"]</h5>
+                }
+                @using (Html.BeginForm("UpdateAssignment", "SupplierDashBoard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <h1> Supplier Assignment Details</h1>
+                    <!-- One "tab" for each step in the form: -->
+                    @Html.HiddenFor(Model=>Model.UpdateAssignment.AssigentmentSupplierId)
+                    <div class="tab">
+                        <b>Product Details</b>
+                        <p>
+                            @Model.UpdateAssignment.ProdcutItemId
+                        </p>
+                        <p>
+                            @Model.UpdateAssignment.ProductName
+                        </p>
+                        <p>
+                            @Model.UpdateAssignment.ProductDescription
+                        </p>
+                        <p>
+                            <img src="@Model.UpdateAssignment.ProductImage" class="new-contact__img" alt="" width="100" height="100">
+                        </p>
+                    </div>
+                    <div class="tab">
+                        <b>Product Specification</b>
+                        <div class="d-md-flex-row ">
+                            <div class="d-inline-flex justify-content-around col-12">
+                                <div class="col-4">
+                                    @Model.UpdateAssignment.ProductWidth
+                                    <span class="unit"><b>CM</b></span>
+                                </div>
+                                <div class="col-4">
+                                    @Model.UpdateAssignment.ProductHeight
+                                    <span class="unit"><b>CM</b></span>
+                                </div>
+                                <div class="col-4">
+                                    @Model.UpdateAssignment.ProductDepth
+                                    <span class="unit"><b>CM</b></span>
+                                </div>
+                            </div>
+                            <div class="d-inline-flex justify-content-around col-12">
+                                <div class="col-4">
+                                    @Model.UpdateAssignment.ProductWeight
+                                    <span class="unit"><b>KG</b></span>
+                                </div>
+                                <div class="col-4">
+                                    @Model.UpdateAssignment.ProductFreshnessDuration
+                                    <span class="unit"><b>Days</b></span>
+                                </div>
+                                <div class="col-4">
+                                    @Model.UpdateAssignment.ProductColor
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab">
+                        <b>Product Category and Quantity:</b>
+                        <div class="d-flex justify-content-around">
+                            <div class="col-6">
+                                @Model.UpdateAssignment.CategoryName
+                            </div>
+                            <div class="col-6">
+                                @Model.UpdateAssignment.TotalAmount
+                                <span class="amount"><b>Unit</b></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab">
+                        @if (Model.UpdateAssignment.AssignmentUpdate == 0 && Model.UpdateAssignment.AssignmentTotalCost<=0)
+                        {
+                            <b>Total Cost:</b>
+                            <div class="d-flex justify-content-around">
+                                @Html.TextBoxFor(Model => Model.UpdateAssignment.AssignmentTotalCost, new { @class = "form-control", type="number", @placeholder = "Price" })
+                                @Html.ValidationMessageFor(Model => Model.UpdateAssignment.AssignmentTotalCost)
+
+                            </div>
+                        }
+                        else
+                        {
+                        <p>Total Cost: @Model.UpdateAssignment.AssignmentTotalCost </p> <br />
+                            <b>Complete Assingment and Payment is Completed</b>
+                            @Html.RadioButtonFor(Model=> Model.UpdateAssignment.AssignmentUpdate,1)
+                        }
+
+                    </div>
+                   
+                        <div>
+                            <div style="float:right;">
+                                <input type="submit" id="submitbutton" value="Update" class="btn btn-light" />
+                            </div>
+                        </div>
+                    
+                 
+                }
+            </center>
+        </div>
+    </div>
+</div>
+<style>
+    .unit {
+        float: right;
+        position: relative;
+        left: 13%;
+        top: -26%;
+        width: 20%;
+        height: 50px;
+    }
+
+    .text-field {
+        float: left;
+    }
+
+    .imagefile {
+        float: left;
+    }
+
+    .amount {
+        float: right;
+        position: relative;
+        left: 12%;
+        top: -28%;
+        width: 20%;
+        height: 50px;
+    }
+</style>
+
+
+

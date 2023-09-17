@@ -22,17 +22,23 @@ namespace E_Commerce.BusinessLayer
             var products = provider.UpdateProduct(product);
             return products;
         }
-        //public static bool DeleteProduct(int productid)
-        //{
-
-        //}
-        ////public static ProductModel GetSingleProduct(int productid)
-        ////{
-
-        ////}
-        ////public static List<ProductModel> GetAllProduct()
-        ////{
-
-        ////}
+       public static bool DeleteProduct(int productid)
+        {
+            ProductSQLProvider provider = new ProductSQLProvider();
+            var products = provider.DeleteProduct(productid);
+            return products;
+        }
+        public static ProductModel GetSingleProduct(int productid)
+        {
+            ProductSQLProvider provider = new ProductSQLProvider();
+            var products = provider.GetSingleProduct(productid);
+            return products;
+        }
+        public static List<ProductModel> GetAllProduct()
+        {
+            ProductSQLProvider provider = new ProductSQLProvider();
+            var products = provider.GetAllProduct();
+            return products;
+        }
     }
 }

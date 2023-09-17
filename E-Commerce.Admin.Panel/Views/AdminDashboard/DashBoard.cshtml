@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "DashBoard";
+    Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+}
+
+<head>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+<!--Dash Board Start-->
+<section class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div class="completeassng">
+                    <h5 class="totalheading">Complete Assignment</h5>
+                    <div class="details">
+                        <div>
+                            <i class='fas fa-edit' style='font-size:36px'></i>
+                        </div>
+                        <div>
+                            <h6>Total: 60</h6>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="Todayassng">
+                    <h5 class="totalheading">Today Assignment</h5>
+                    <div class="details">
+                        <div>
+                            <i class='fas fa-toolbox' style='font-size:36px'></i>
+                        </div>
+                        <div>
+                            <h6>Total: 60</h6>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="Dueassng">
+                    <h5 class="totalheading">Due Assignment</h5>
+                    <div class="details">
+                        <div>
+                            <i class='fas fa-truck-pickup' style='font-size:36px'></i>
+                        </div>
+                        <div>
+                            <h6>Total: 60</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .completeassng {
+        background-color: lightgreen;
+        border: 1px solid lightgreen;
+        border-radius: 10px;
+        width: 250px;
+        height: 150px;
+    }
+
+    .Todayassng {
+        background-color: lightblue;
+        border: 1px solid lightblue;
+        border-radius: 10px;
+        width: 250px;
+        height: 150px;
+    }
+
+    .Dueassng {
+        background-color: lightcoral;
+        border: 1px solid lightcoral;
+        border-radius: 10px;
+        width: 250px;
+        height: 150px;
+    }
+
+    .details {
+        margin-top: 10%;
+        padding: 9% 9% 9% 9%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        gap: 3%;
+    }
+
+    .totalheading {
+        text-align: center;
+        font-size: 18px;
+        line-height: 15px;
+        color: white;
+        margin-top: 6%;
+    }
+</style>
+

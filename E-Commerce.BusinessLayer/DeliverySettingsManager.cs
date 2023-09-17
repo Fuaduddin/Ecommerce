@@ -41,6 +41,12 @@ namespace E_Commerce.BusinessLayer
             var Categoriesd = provider.DeleteDeliveryCharge(categoryId);
             return Categoriesd;
         }
+        public static List<DeliveryCharge> SearchDeliveryCost(string SearchKeyword)
+        {
+            DeliverySettingsSQLProvider provider = new DeliverySettingsSQLProvider();
+            var Categoriesd = provider.SearchDeliveryCost(SearchKeyword);
+            return Categoriesd;
+        }
         //Zone
         public static long AddNewZone(Zone area)
         {

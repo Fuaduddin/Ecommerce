@@ -1,11 +1,14 @@
-﻿
+﻿@model E_Commerce.Model.CustomerViewModel
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout/_FrontEndLayout.cshtml";
+    string imageurldomain = "https://localhost:44338";
+    var i = 0;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,73 +24,99 @@
     </script>
     <!-- Own Css -->
     <!--  <link rel="stylesheet" href="index.css"> -->
-    <link href="~/Assets/Own Css/index.css" rel="stylesheet" />
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body>
+    <!-- banner part start-->
+    <section class="banner_part">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="banner_slider owl-carousel">
+                        @if (Model.LetestProductList != null)
+                        {
+                            foreach (var slider in Model.LetestProductList.Take(4))
+                            {
+                                var Imageurl = imageurldomain + @slider.ProductImage;
+                                <div class="single_banner_slider">
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-8">
+                                            <div class="banner_text">
+                                                <div class="banner_text_iner">
+                                                    <h1>
+                                                        @slider.ProductName
+                                                    </h1>
+                                                    <p>
+                                                        @slider.ProductDescription
+                                                    </p>
+                                                    @Html.ActionLink("buy now", "singleproduct", "ProductFrontEnd", new { Id = slider.ProductId }, new { @class = "btn_2" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="banner_img d-none d-lg-block">
+                                            <img src="@Imageurl" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                        <!-- <div class="single_banner_slider">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-8">
+                                    <div class="banner_text">
+                                        <div class="banner_text_iner">
+                                            <h1>Cloth $ Wood Sofa</h1>
+                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
+                                                suspendisse ultrices gravida. Risus commodo viverra</p>
+                                            <a href="#" class="btn_2">buy now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="banner_img d-none d-lg-block">
+                                    <img src="img/banner_img.png" alt="">
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="slider-counter"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner part start-->
     <!-- Category Section Start -->
     <section class="category-section-start">
         <div class="container">
             <h2 class="title">Our Category</h2>
             <div class="category-details-start">
-                <div class="category-details-first show">
-                    <h6 class="category-title">
-                        New arrivals <br>
-                        are now in!
-                    </h6>
-                    <button class="category-button">
-                        Show collection
-                    </button>
-                </div>
-                <div class="category-details-second show">
-                    <h6 class="category-title category-title-2">
-                        Basic t-shirts<br>
-                        $29,99
-                    </h6>
-                    <button class="category-button">
-                        More details
-                    </button>
-                </div>
-                <div class="category-details-third show">
-                    <h6 class="category-title category-title-2">
-                        Sale this <br>
-                        summer
-                    </h6>
-                    <button class="category-button">
-                        VIEW ALL
-                    </button>
-                </div>
-                <div class="category-details-fourth hide">
-                    <h6 class="category-title category-title-2">
-                        Sale this <br>
-                        summer
-                    </h6>
-                    <button class="category-button">
-                        VIEW ALL
-                    </button>
-                </div>
-                <div class="category-details-fifth hide">
-                    <h6 class="category-title">
-                        New arrivals <br>
-                        are now in!
-                    </h6>
-                    <button class="category-button">
-                        Show collection
-                    </button>
-                </div>
-                <div class="category-details-sixth hide">
-                    <h6 class="category-title category-title-2">
-                        Basic t-shirts<br>
-                        $29,99
-                    </h6>
-                    <button class="category-button">
-                        More details
-                    </button>
-                </div>
+                @if (Model.CategoryList != null)
+                {
+
+                    foreach (var category in Model.CategoryList)
+                    {
+
+                        var Imageurl = imageurldomain + @category.CategoryImage;
+                        <div class="category-details @(i < 5 ? "show" : "hide") " style="background-image: url(@Imageurl);">
+                            <h6 class="category-title">
+                                @category.CategoryName
+                            </h6>
+                            <p>
+                                @category.CategoryDescription
+                            </p>
+                            @Html.ActionLink("More details", "categoryproduct", "ProductFrontEnd", new { Id = category.CategoryId }, new { @class = "category-button" })
+                        </div>
+                        i++;
+                    }
+
+                }
             </div>
-            <button class="loadmore-button" onclick="showmoreitems()">
-                More details
-            </button>
+            @if (i >= 5)
+            {
+                <button class="loadmore-button" onclick="showmoreitems()">
+                    More details
+                </button>
+            }
         </div>
     </section>
     <!-- Category Section  End -->
@@ -98,7 +127,7 @@
             <div class="services">
                 <div class="service-details">
                     <div class="service-icon">
-                        <img src="ImagesALL/noun_delivery_1665162.png">
+                        <img src="~/Assets/ImagesALL/noun_delivery_1665162.png">
                     </div>
                     <h5 class="service-title"><strong>Free Shipping</strong></h5>
                     <p class="service-description">
@@ -108,7 +137,7 @@
                 </div>
                 <div class="service-details">
                     <div class="service-icon">
-                        <img src="ImagesALL/noun_delivery_1665162.png">
+                        <img src="~/Assets/ImagesALL/noun_delivery_1665162.png">
                     </div>
                     <h5 class="service-title"><strong>Free Shipping</strong></h5>
                     <p class="service-description">
@@ -118,7 +147,7 @@
                 </div>
                 <div class="service-details">
                     <div class="service-icon">
-                        <img src="ImagesALL/noun_delivery_1665162.png">
+                        <img src="~/Assets/ImagesALL/noun_delivery_1665162.png">
                     </div>
                     <h5 class="service-title"><strong>Free Shipping</strong></h5>
                     <p class="service-description">
@@ -128,7 +157,7 @@
                 </div>
                 <div class="service-details">
                     <div class="service-icon">
-                        <img src="ImagesALL/noun_delivery_1665162.png">
+                        <img src="~/Assets/ImagesALL/noun_delivery_1665162.png">
                     </div>
                     <h5 class="service-title"><strong>Free Shipping</strong></h5>
                     <p class="service-description">
@@ -144,75 +173,74 @@
     <section class="Products-in-today">
         <div class="container">
             <h2 class="title">Products in today </h2>
-            <div class="product-item-list">
-                <div class="product-first background1">
-                    <h4>Product 1</h4>
-                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
-                    <div class="more-info-button" onmouseover="imagebackgrounddetails(0)" onmouseout="imagebackgrounddetailshide(0)">
-                        <div class="ellipse"></div>
-                        <button class="details-button"><strong>More Info</strong></button>
-                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
-                    </div>
-                </div>
-                <div class="product-first background1">
-                    <h4>Product 1</h4>
-                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
-                    <div class="more-info-button" onmouseover="imagebackgrounddetails(1)" onmouseout="imagebackgrounddetailshide(1)">
-                        <div class="ellipse"></div>
-                        <button class="details-button"><strong>More Info</strong></button>
-                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
-                    </div>
-                </div>
-                <div class="product-first background2">
-                    <h4>Product 1</h4>
-                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
-                    <div class="more-info-button" onmouseover="imagebackgrounddetails(2)" onmouseout="imagebackgrounddetailshide(2)">
-                        <div class="ellipse"></div>
-                        <button class="details-button"><strong>More Info</strong></button>
-                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
-                    </div>
-                </div>
-            </div>
-            <div class="product-item-list-2">
-                <div class="product-big background3">
-                    <h4>Product 1</h4>
-                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
-                    <div class="more-info-button-big" onmouseover="imagebackgrounddetails(3)" onmouseout="imagebackgrounddetailshide(3)">
-                        <div class="ellipse"></div>
-                        <button class="details-button"><strong>More Info</strong></button>
-                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
-                    </div>
-                </div>
-                <div class="product-first background1">
-                    <h4>Product 1</h4>
-                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
-                    <div class="more-info-button" onmouseover="imagebackgrounddetails(4)" onmouseout="imagebackgrounddetailshide(4)">
-                        <div class="ellipse"></div>
-                        <button class="details-button"><strong>More Info</strong></button>
-                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
-                    </div>
-                </div>
-            </div>
-            <div class="product-item-list-3">
-                <div class="product-first background1">
-                    <h4>Product 1</h4>
-                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
-                    <div class="more-info-button" onmouseover="imagebackgrounddetails(5)" onmouseout="imagebackgrounddetailshide(5)">
-                        <div class="ellipse"></div>
-                        <button class="details-button"><strong>More Info</strong></button>
-                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
-                    </div>
-                </div>
-                <div class="product-big background4">
-                    <h4>Product 1</h4>
-                    <img src="ImagesALL/chair-ingrid.png" class="product-image">
-                    <div class="more-info-button-big" onmouseover="imagebackgrounddetails(6)" onmouseout="imagebackgrounddetailshide(6)">
-                        <div class="ellipse"></div>
-                        <button class="details-button"><strong>More Info</strong></button>
-                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
-                    </div>
-                </div>
-            </div>
+            @if (Model.LetestProductList != null)
+            {
+                var totalitem = 0;
+                for (var j = 0; j <= 3; j++)
+                {
+                    if (j == 1)
+                    {
+
+                        <div class="product-item-list">
+                            @foreach (var todayproduct in Model.LetestProductList.Take(3))
+                            {
+                                var Imageurl = imageurldomain + @todayproduct.ProductImage;
+                                <div class="product-first background1">
+                                    <h4>@todayproduct.ProductName</h4>
+                                    <img src="@Imageurl" class="product-image">
+                                    <div class="more-info-button" onmouseover="imagebackgrounddetails(@totalitem)" onmouseout="imagebackgrounddetailshide(@totalitem)">
+                                        <div class="ellipse"></div>
+                                        <button class="details-button"><strong>More Info</strong></button>
+                                        <img src="~/Assets/ImagesALL/moredetailsarrow.png" class="more-details-image">
+                                    </div>
+                                </div>
+                                totalitem++;
+                            }
+                        </div>
+                    }
+                    if (j == 2)
+                    {
+                        var firstitem = 0;
+                        <div class="product-item-list-2">
+                            @foreach (var todayproduct in Model.LetestProductList.Skip(3).Take(2))
+                            {
+                                var Imageurl = imageurldomain + @todayproduct.ProductImage;
+                                <div class="@(firstitem==0 ? "product-big background3" : "product-first background1")">
+                                    <h4>Product 1</h4>
+                                    <img src="@Imageurl" class="product-image">
+                                    <div class="more-info-button-big" onmouseover="imagebackgrounddetails(@totalitem)" onmouseout="imagebackgrounddetailshide(@totalitem)">
+                                        <div class="ellipse"></div>
+                                        <button class="details-button"><strong>More Info</strong></button>
+                                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
+                                    </div>
+                                </div>
+                                totalitem++;
+                            }
+                        </div>
+                    }
+                    if (j == 3)
+                    {
+                        var firstitem = 0;
+                        <div class="product-item-list-3">
+                            @foreach (var todayproduct in Model.LetestProductList.Skip(5).Take(2))
+                            {
+                                var Imageurl = imageurldomain + @todayproduct.ProductImage;
+                                <div class="@(firstitem==0 ? "product-first background1" : "product-big background4")">
+                                    <h4>Product 1</h4>
+                                    <img src="@Imageurl" class="product-image">
+                                    <div class="more-info-button" onmouseover="imagebackgrounddetails(@totalitem)" onmouseout="imagebackgrounddetailshide(@totalitem)">
+                                        <div class="ellipse"></div>
+                                        <button class="details-button"><strong>More Info</strong></button>
+                                        <img src="ImagesALL/moredetailsarrow.png" class="more-details-image">
+                                    </div>
+                                </div>
+                                totalitem++;
+                            }
+                        </div>
+                    }
+                }
+
+            }
         </div>
     </section>
 
@@ -240,156 +268,37 @@
         <div class="container">
             <h2 class="title">Recomandated For You </h2>
             <div class="product-list mb-3">
-                <div class="product showproduct">
-                    <div class="productdetilssection">
-                        <span class="cash">$2.33</span>
-                        <img src="ImagesALL/armchair_PNG7028.png">
-                        <div class="product-details">
-                            <h4> product 1</h4>
-                            <p>product 1</p>
+                @if (Model.LetestProductList != null)
+                {
+
+                    foreach (var latestproduct in Model.LetestProductList)
+                    {
+                        var Imageurl = imageurldomain + @latestproduct.ProductImage;
+                        <div class="product @(i < 5 ? "showproduct" : "hideproduct") " id="product-@latestproduct.ProductId">
+                            <div class="productdetilssection">
+                                <span class="cash" id="product-cash-@latestproduct.ProductId">$@latestproduct.ProductPrice</span>
+                                <img src="@Imageurl" id="@latestproduct.ProductId">
+                                <div class="product-details">
+                                    <h4 id="product-Name-@latestproduct.ProductId">@latestproduct.ProductName</h4>
+                                    <p>@latestproduct.ProductDescription</p>
+                                </div>
+                            </div>
+                            <div class="product-detail-button cart-button">
+                                <button class="details-button" onclick="addtocart(@latestproduct.ProductId)"><strong>+ ADD TO CART</strong></button>
+                                @Html.ActionLink("Single Details", "singleproduct", "ProductFrontEnd", new { Id = latestproduct.ProductId }, new { @class = "details-button" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="product-detail-button cart-button">
-                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                    </div>
-                </div>
-                <div class="product showproduct">
-                    <span class="cash">$2.33</span>
-                    <img src="ImagesALL/chair.png">
-                    <div class="product-details">
-                        <h4> product 1</h4>
-                        <p>product 1</p>
-                    </div>
-                    <div class="product-detail-button cart-button">
-                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                    </div>
-                </div>
-                <div class="product showproduct">
-                    <span class="cash">$2.33</span>
-                    <img src="ImagesALL/chair-ingrid.png">
-                    <div class="product-details">
-                        <h4> product 1</h4>
-                        <p>product 1</p>
-                    </div>
-                    <div class="product-detail-button cart-button">
-                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                    </div>
-                </div>
-                <div class="product showproduct">
-                    <span class="cash">$2.33</span>
-                    <img src="ImagesALL/main_photo.png">
-                    <div class="product-details">
-                        <h4> product 1</h4>
-                        <p>product 1</p>
-                    </div>
-                    <div class="product-detail-button cart-button">
-                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                    </div>
-                </div>
-                <div class="product hideproduct">
-                    <span class="cash">$2.33</span>
-                    <img src="ImagesALL/photo1.png">
-                    <div class="product-details">
-                        <h4> product 1</h4>
-                        <p>product 1</p>
-                    </div>
-                    <div class="product-detail-button cart-button">
-                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                    </div>
-                </div>
-                <div class="product hideproduct">
-                    <span class="cash">$2.33</span>
-                    <img src="ImagesALL/w-4.png">
-                    <div class="product-details">
-                        <h4> product 1</h4>
-                        <p>product 1</p>
-                    </div>
-                    <div class="product-detail-button cart-button">
-                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                    </div>
-                </div>
-                <div class="product hideproduct">
-                    <span class="cash">$2.33</span>
-                    <img src="ImagesALL/s-1.png">
-                    <div class="product-details">
-                        <h4> product 1</h4>
-                        <p>product 1</p>
-                    </div>
-                    <div class="product-detail-button cart-button">
-                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                    </div>
-                </div>
-                <div class="product hideproduct">
-                    <span class="cash">$2.33</span>
-                    <img src="ImagesALL/w-5.png">
-                    <div class="product-details">
-                        <h4> product 1</h4>
-                        <p>product 1</p>
-                    </div>
-                    <div class="product-detail-button cart-button">
-                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                    </div>
-                </div>
-                <div class="product hideproduct">
-                    <span class="cash">$2.33</span>
-                    <img src="ImagesALL/s-3.png">
-                    <div class="product-details">
-                        <h4> product 1</h4>
-                        <p>product 1</p>
-                    </div>
-                    <div class="product-detail-button cart-button">
-                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                    </div>
-                </div>
-                <div class="product hideproduct">
-                    <span class="cash">$2.33</span>
-                    <img src="ImagesALL/s-4.png">
-                    <div class="product-details">
-                        <h4> product 1</h4>
-                        <p>product 1</p>
-                    </div>
-                    <div class="product-detail-button cart-button">
-                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                    </div>
-                </div>
-                <div class="product hideproduct">
-                    <span class="cash">$2.33</span>
-                    <img src="ImagesALL/w-1.png">
-                    <div class="product-details">
-                        <h4> product 1</h4>
-                        <p>product 1</p>
-                    </div>
-                    <div class="product-detail-button cart-button">
-                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                    </div>
-                </div>
-                <div class="product hideproduct">
-                    <span class="cash">$2.33</span>
-                    <img src="ImagesALL/w-2.png">
-                    <div class="product-details">
-                        <h4> product 1</h4>
-                        <p>product 1</p>
-                    </div>
-                    <div class="product-detail-button cart-button">
-                        <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                        <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                    </div>
-                </div>
+                        i++;
+                    }
+                }
             </div>
-            <button class="loadmore-button" onclick="showmoreproduct()">
-                More details
-            </button>
+            @if (i >= 5)
+            {
+                <button class="loadmore-button" onclick="showmoreproduct()">
+                    More details
+                </button>
+            }
+
         </div>
     </section>
     <!-- Recomandation Section End -->
@@ -415,214 +324,29 @@
         <div class="container">
             <h2 class="title">Trending This Week </h2>
             <div class="product-list">
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
 
+                @if (Model.ProductList != null)
+                {
+                    var j = 0;
+                    foreach (var trendingproduct in Model.ProductList)
+                    {
+                        var Imageurl = imageurldomain + @trendingproduct.ProductImage;
+                        <div class="product Trending  @(j > 4 ? "" : "hideTrending")">
+                            <div class="">
+                                <img src="@Imageurl">
+                                <div class="trending-product-details">
+                                    <h4 id="product-Name-@trendingproduct.ProductId">@trendingproduct.ProductName</h4>
+                                    <p class="cash-details">$@trendingproduct.ProductPrice</p>
+                                </div>
+                                <div class="product-detail-button cart-button">
+                                    <button class="details-button" onclick="addtocart(@trendingproduct.ProductId)"><strong>+ ADD TO CART</strong></button>
+                                    @Html.ActionLink("Single Details", "singleproduct", "ProductFrontEnd", new { Id = trendingproduct.ProductId }, new { @class = "details-button" })
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-
-                        </div>
-                    </div>
-                </div> -->
+                        j++;
+                    }
+                }
             </div>
             <div class="custom-btn2">
                 <a onclick="nextSlide(1)"><p class="slider-icon">></p></a>
@@ -638,168 +362,32 @@
         <div class="container">
             <h2 class="title">Our Products </h2>
             <div class="product-list">
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
+                @if (Model.ProductList != null)
+                {
+                    foreach (var ourproduct in Model.ProductList)
+                    {
+                        var Imageurl = imageurldomain + @ourproduct.ProductImage;
+                        <div class="product OurProducts">
+                            <div class="">
+                                <img src="@Imageurl">
+                                <div class="trending-product-details">
+                                    <h4 id="product-Name-@ourproduct.ProductId">@ourproduct.ProductName</h4>
+                                    <p class="cash-details">$@ourproduct.ProductPrice</p>
+                                </div>
+                                <div class="product-detail-button cart-button">
+                                    <button class="details-button" onclick="addtocart(@ourproduct.ProductId)"><strong>+ ADD TO CART</strong></button>
+                                    @Html.ActionLink("Single Details", "singleproduct", "ProductFrontEnd", new { Id = ourproduct.ProductId }, new { @class = "details-button" })
+                                </div>
+                            </div>
                         </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="">
-                        <img src="ImagesALL/w-2.png">
-                        <div class="trending-product-details">
-                            <h4> product 1</h4>
-                            <p class="cash-details">$2.33</p>
-                        </div>
-                        <div class="product-detail-button cart-button">
-                            <button class="details-button"><strong>+ ADD TO CART</strong></button>
-                            <!-- <img src="ImagesALL/moredetailsarrow.png" class="more-details-image"> -->
-                        </div>
-                    </div>
-                </div>
+                    }
+                }
             </div>
-            <div class="custom-btn2">
-                <a onclick="nextSlide(1)"><p class="slider-icon">></p></a>
+            <div class="custom-btn3">
+                <a onclick="nextslideitem(8)"><p class="slider-icon">></p></a>
             </div>
-            <div class="custom-btn">
-                <a onclick="nextSlide(-1)"><p class="slider-icon"> < </p></a>
+            <div class="custom-btn4">
+                <a onclick="nextslideitem(-8)"><p class="slider-icon"> < </p></a>
             </div>
         </div>
     </section>
@@ -837,38 +425,203 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <!-- Own js -->
     <script src="JS.js"></script>
-    <!-- Own Js -->
-    <script>
-        function imagebackgrounddetails(number)
-{
-    $(".ellipse").eq(number).css('background-color','orange');
-    $(".details-button").eq(number).css('color','orange');
-    $(".more-details-image").eq(number).fadeOut();
-    $(".more-details-image").eq(number).fadeIn();
-}
-function imagebackgrounddetailshide(number)
-{
-    $(".ellipse").eq(number).css('background-color','lightgray');
-    $(".details-button").eq(number).css('color','black');
-}
-$(".hide").hide();
-$(".hideproduct").hide();
-function showmoreitems()
-{
-    let slides = document.getElementsByClassName("hide");
-    for (i =0; i < slides.length; i++) {
-        $(".hide").eq(i).toggle();
-  }
 
-}
-function showmoreproduct()
-{
-    let slides = document.getElementsByClassName("hideproduct");
-    for (i =0; i < slides.length; i++) {
-        $(".hideproduct").eq(i).toggle();
-  }
-}
+    <script>
+        var trendingslide = 4;
+        var OurProductsslide = 8;
+        function nextslideitem(n) {
+            debugger
+            const totaltrendingproduct = $(".OurProducts");
+            for (var i = 0; i < totaltrendingproduct.length; i++) {
+                $(".OurProducts").eq(i).addClass("OurProductshide");
+            }
+            trendingslide = trendingslide + (n);
+            if (trendingslide > totaltrendingproduct.length) {
+                OurProductsslide = 8;
+            }
+            for (var j = trendingslide - 8; j < trendingslide; j++) {
+                var transform = "translateY(" + 100 * j + "%)";
+                $(".OurProducts").eq(i).css("transform", transform);
+                $(".OurProducts").eq(j).removeClass("OurProductshide");
+            }
+        }
+        function nextSlide(n) {
+            debugger
+            const totaltrendingproduct = $(".Trending");
+            for (var i = 0; i < totaltrendingproduct.length; i++) {
+                $(".Trending").eq(i).addClass("hideTrending");
+            }
+            trendingslide = trendingslide + (n);
+            if (trendingslide > totaltrendingproduct.length) {
+                trendingslide = 1;
+            }
+            for (var j = trendingslide - 4; j < trendingslide; j++) {
+                var transform = "translateY(" + 100 * j + "%)";
+                $(".Trending").eq(i).css("transform", transform);
+                $(".Trending").eq(j).removeClass("hideTrending");
+            }
+        }
+        function imagebackgrounddetails(number) {
+            $(".ellipse").eq(number).css('background-color', 'orange');
+            $(".details-button").eq(number).css('color', 'orange');
+            $(".more-details-image").eq(number).fadeOut();
+            $(".more-details-image").eq(number).fadeIn();
+        }
+        function imagebackgrounddetailshide(number) {
+            $(".ellipse").eq(number).css('background-color', 'lightgray');
+            $(".details-button").eq(number).css('color', 'black');
+        }
+
+        $(".hide").hide();
+        $(".hideproduct").hide();
+        function showmoreitems() {
+            let slides = document.getElementsByClassName("hide");
+            for (i = 0; i < slides.length; i++) {
+                $(".hide").eq(i).toggle();
+            }
+
+        }
+        function showmoreproduct() {
+            let slides = document.getElementsByClassName("hideproduct");
+            for (i = 0; i < slides.length; i++) {
+                $(".hideproduct").eq(i).toggle();
+            }
+        }
     </script>
+    <!-- Cart Js here-->
+    <script src="~/Assets/CartJS/CartOrder.js"></script>
+    <style>
+        .product-first h4 {
+            font-size: 20px;
+        }
+
+        .custom-btn4 {
+            position: absolute;
+            top: 50% !important;
+            right: 83% !important;
+        }
+
+        .custom-btn3 {
+            position: absolute;
+            top: 50% !important;
+            left: 86% !important;
+        }
+
+        .OurProductshide {
+            display: none;
+        }
+
+        .background-image {
+            background-image: url(/Assets/img/banner/BackgroundImage.png) !important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 5% 5% 5% 5%;
+        }
+
+        .product-details {
+            text-align: left;
+            font-size: 12px;
+            line-height: 30px;
+        }
+
+        .trending-product-details h4 {
+            text-align: center;
+            font-size: 17px;
+            line-height: 30px;
+        }
+
+
+        .product-details h4 {
+            text-align: left;
+            font-size: 20px;
+            line-height: 40px;
+        }
+
+        .banner-section {
+            background-image: url(/Assets/img/banner/banner.png) !important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            gap: 5%;
+        }
+
+        .banner-text h4 {
+            color: white;
+        }
+
+        .hideTrending {
+            display: none;
+        }
+
+        .custom-btn2 {
+            position: absolute;
+            top: 32% !important;
+            left: 86% !important;
+        }
+
+        .custom-btn {
+            position: absolute;
+            top: 32% !important;
+            right: 83% !important;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 2%;
+            /* justify-content: center; */
+            /* display: flex; */
+            /* align-items: center; */
+            margin-left: 8%;
+        }
+
+        .cart-button {
+            /* margin-left: 5%; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 25%;
+        }
+
+        .custom-btn2 {
+            position: absolute;
+            top: 35%;
+            left: 90%;
+        }
+
+        .custom-btn {
+            position: absolute;
+            top: 35%;
+            right: 90%;
+        }
+
+        .product {
+            background-image: url(ImagesALL/product-bg.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding-bottom: 5%;
+            border-radius: 3%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            position: relative;
+            width: 90%;
+            height: 100%;
+        }
+
+        .banner_part .single_banner_slider .banner_img {
+            position: absolute;
+            /* right: -21px; */
+            left: 41%;
+            top: 19%;
+        }
+
+        .owl-carousel .owl-item img {
+            width: 55% !important;
+        }
+
+        .product-details h4, p {
+            text-align: center !important;
+        }
+    </style>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </body>
 </html>

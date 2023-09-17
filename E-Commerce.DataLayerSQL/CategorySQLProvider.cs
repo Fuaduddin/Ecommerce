@@ -73,6 +73,32 @@ namespace E_Commerce.DataLayerSQL
                 }
             }
         }
+        public List<CategoryModel> SearchCategory(string searchitem)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetCategorySearch, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@CategoryName", searchitem));
+                command.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    connection.Open();
+                    SqlDataReader Datareader = command.ExecuteReader();
+                    List<CategoryModel> categoryList = new List<CategoryModel>();
+                    categoryList = UtilityManager.DataReaderMapToList<CategoryModel>(Datareader);
+                    return categoryList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
         public bool DeleteCategory(int categoryid)
         {
             bool IsDeleted = true;

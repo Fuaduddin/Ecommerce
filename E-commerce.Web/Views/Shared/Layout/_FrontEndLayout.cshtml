@@ -1,21 +1,44 @@
-﻿<!doctype html>
+﻿@using E_Commerce.BusinessLayer;
+@using E_Commerce.Model;
+@{
+    CustomerViewModel navbarmenu = new CustomerViewModel();
+    navbarmenu.viewsubcategorydetails = SubCategoryManager.GetAllSubCategory();
+    navbarmenu.CategoryList = CategoryManager.GetAllCategory();
+}
+
+<!doctype html>
 <html lang="zxx">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Aranoz</title>
+    <link rel="icon" href="~/Assets/image/favicon.png">
     <!-- front icon link -->
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
-    <!-- Boothstrap Css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> </script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="~/Assets/css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="~/Assets/css/owl.carousel.min.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="~/Assets/css/all.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="~/Assets/css/flaticon.css">
+    <link rel="stylesheet" href="~/Assets/css/themify-icons.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="~/Assets/css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="/Assets/css/style.css">
     <!-- Jquery CDN link -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
@@ -24,16 +47,17 @@
     <!-- <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="confermationpage.css">  -->
     <link href="~/Assets/Own Css/confermationpage.css" rel="stylesheet" />
-    <link href="~/Assets/Own Css/index.css" rel="stylesheet" />
+    <link href="/Assets/Own Css/index.css" rel="stylesheet" />
+    <link href="~/Assets/Own Css/responsiveweb.css" rel="stylesheet" />
 </head>
 <body>
     <!--::header part start::-->
-    <header class="main_menu home_menu">
+    <header class="main_menu home_menu ">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-12">
+                <div class="col-lg-12 cartdetails">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html"> <img src="img/logo.png" alt="logo"> </a>
+                        <a class="navbar-brand" href="index.html"> <img src="~/Assets/image/logo.png" alt="logo"> </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
@@ -43,70 +67,72 @@
                         <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Home</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1"
-                                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Shop
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                        <a class="dropdown-item" href="category.html"> shop category</a>
-                                        <a class="dropdown-item" href="single-product.html">product details</a>
+                                    @Html.ActionLink("Home", "Index", "index", new { @class = "nav-link" })
 
-                                    </div>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
-                                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        pages
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                        <a class="dropdown-item" href="login.html"> login</a>
-                                        <a class="dropdown-item" href="tracking.html">tracking</a>
-                                        <a class="dropdown-item" href="checkout.html">product checkout</a>
-                                        <a class="dropdown-item" href="cart.html">shopping cart</a>
-                                        <a class="dropdown-item" href="confirmation.html">confirmation</a>
-                                        <a class="dropdown-item" href="elements.html">elements</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_2"
-                                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        blog
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                        <a class="dropdown-item" href="blog.html"> blog</a>
-                                        <a class="dropdown-item" href="single-blog.html">Single blog</a>
-                                    </div>
-                                </li>
-
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Contact</a>
+                                    @Html.ActionLink("All Product", "categoryproduct", "product", new { @class = "nav-link" })
+
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_2"
+                                       role="button" data-toggle="dropdown" aria-expanded="false">
+                                        Category Wise Product
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        @if (navbarmenu.CategoryList != null)
+                                        {
+                                            foreach (var category in navbarmenu.CategoryList)
+                                            {
+                                                <li>
+
+                                                    <a class="dropdown-item" href="/ProductFrontEnd/categoryproduct/@category.CategoryId"> @category.CategoryName</a>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    @Html.ActionLink("Track Your Order", "TrackOrder", "product", new { @class = "nav-link" })
+
+                                </li>
+                                <li class="nav-item">
+                                    @Html.ActionLink("Login", "login", "login", new { @class = "nav-link" })
+
+                                </li>
+                                <li class="nav-item">
+                                    @Html.ActionLink("Contact", "contact", "index", new { @class = "nav-link" })
+
                                 </li>
                             </ul>
                         </div>
                         <div class="hearer_icon d-flex">
                             <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
                             <a href=""><i class="ti-heart"></i></a>
-                            <div class="dropdown cart">
-                                <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                            <div class="dropdown">
+                                <a class="" href="#" id="navbarDropdown3" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-cart-plus"></i>
+                                    <i class="fas fa-cart-plus">
+                                        <span class="items" id="items">0</span>
+                                    </i>
                                 </a>
-                                <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <div class="single_product">
-
-                                    </div>
-                                </div> -->
-
                             </div>
                         </div>
                     </nav>
+                    <div class="cart cartitemlist" id="cart-item" style="display:none;">
+                        <div class="cart-item-details">
+                            <ul class="cart-list-item" id="cart-list-item">
+                            </ul>
+                        </div>
+                        <div class="total-cost" id="total-cost">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="search_input" id="search_input_box">
+
+        <div class="search_input" id="search_input_box" style="display:none;">
             <div class="container ">
                 <form class="d-flex justify-content-between search-inner">
                     <input type="text" class="form-control" id="search_input" placeholder="Search Here">
@@ -123,7 +149,7 @@
         <div class="container">
             <div class="footerpart">
                 <div class="rightsidecontent">
-                    <img src="images/footer-logo.webp">
+                    <img src="~/Assets/images/footer-logo.webp">
                     <p class="shortdescriptionfooter">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                     </p>
@@ -165,6 +191,8 @@
     </section>
     <!-- Copy Right  End -->
     <!-- jquery plugins here-->
+    <!-- Cart Js here-->
+    <script src="~/Assets/CartJS/CartOrder.js"></script>
     <!-- jquery -->
     <script src="~/assets/js/jquery-1.12.1.min.js"></script>
     <!-- popper js -->
@@ -189,11 +217,521 @@
     <script src="~/assets/js/jquery.form.js"></script>
     <script src="~/assets/js/jquery.validate.min.js"></script>
     <script src="~/assets/js/mail-script.js"></script>
-    <!-- custom js -->
-<script src="~/assets/js/custom.js"></script>
-<script>
-    document.getElementById("year").innerHTML = new Date().getFullYear();
-</script>
+
+    <!-- Cart Js here-->
+    <script src="~/Assets/CartJS/CartOrder.js"></script>
+
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+
+    <style>
+        .removeAll {
+            padding: 3%;
+            width: 38%;
+            background-color: red;
+            color: white;
+        }
+
+        button.checkout {
+            padding: 3%;
+            width: 38%;
+            background-color: green;
+            color: white;
+        }
+
+        .cart-button-cancle {
+            display: flex;
+            /* justify-content: space-between; */
+            justify-content: center;
+            gap: 5%;
+        }
+
+        div#total-cost {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: 7%;
+            /* gap: 12%; */
+        }
+
+        .items {
+            /* margin-top: 12%; */
+            position: absolute;
+            /* top: 5%; */
+            margin: -48%;
+            right: 0;
+            font-size: 18px;
+            background-color: red;
+            color: white;
+        }
+
+        .cart-list-item {
+            padding: 6%;
+        }
+
+        .input-number-cart {
+            width: 90px;
+            padding: 0% 3% 9% 2%;
+            margin-left: 0%;
+            /* background: transparent; */
+            border: none;
+            text-align: center;
+            color: black;
+            height: 37px;
+        }
+
+        .single-product-button-cart {
+            width: 80%;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .multiplesign {
+            margin-top: 5%;
+            font-size: 25px;
+        }
+
+        span.small-inumber-decrement-cart {
+            font-size: 29px;
+            text-align: center;
+            /* margin-bottom: 4%; */
+            margin-top: -5%;
+            margin-right: -25%;
+            z-index: 2;
+        }
+
+        span.small-number-increment-cart {
+            font-size: 29px;
+            text-align: center;
+            /* margin-bottom: 4%; */
+            margin-top: -5%;
+            margin-left: -25%;
+        }
+
+        p.total-price {
+            margin-top: 12px;
+        }
+
+        .small-number-increment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: 3%;
+            font-size: 30px;
+            top: -16%;
+        }
+
+        .small-inumber-decrement {
+            position: absolute;
+            left: 9%;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -21%;
+        }
+
+        .product-image img {
+            max-width: 74%;
+            height: 24px;
+        }
+
+        .product-item-details {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .cartitemlist {
+            float: right !important;
+            position: absolute;
+            right: 0 !important;
+            left: 90% !important;
+            background-color: lightgray;
+            width: 30% !important;
+            top: 70% !important;
+        }
+
+        .product-name {
+            text-align: left !important;
+        }
+
+        .cartdetails {
+            position: relative;
+        }
+
+        footer.footersection {
+            background-color: lightgray;
+            padding: 2%;
+            margin-top: 2%;
+        }
+
+        .footerpart {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+            .footerpart p {
+                text-align: left !important;
+            }
+
+        h6.footertitle {
+            font-size: 20px;
+            line-height: 18px;
+        }
+
+        a.footerlink {
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            /* gap: 2%; */
+            justify-content: space-evenly;
+        }
+
+        h6.copyrightdetails {
+            text-align: center;
+            color: white;
+        }
+
+        section.copyright {
+            background-color: black;
+        }
+
+        .dropdown-menu li {
+            position: relative;
+        }
+
+        .dropdown-menu .dropdown-submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: -7px;
+        }
+
+        .dropdown-menu .dropdown-submenu-left {
+            right: 100%;
+            left: auto;
+        }
+
+        .dropdown-menu > li:hover > .dropdown-submenu {
+            display: block;
+        }
+    </style>
+    <style>
+        .cart-button {
+            flex-direction: column;
+        }
+
+        a.details-button {
+            text-decoration: none;
+            font-size: 17px;
+        }
+    </style>
+    <!-- custom cart js -->
+    <script>
+        $("#cart-item").hide();
+        let busketitem = JSON.parse(localStorage.getItem("basket")) || [];
+        document.getElementById("items").innerText = busketitem.length;
+        let addtocart = (id) => {
+            let productName = "product-Name-" + id;
+            let productPrice = "product-cash-" + id;
+            let productiamge = document.getElementById(id);
+            let productprice = document.getElementById(productPrice).innerHTML.split('$');
+            let searchitem = busketitem.find((x) => x.id === id);
+            if (searchitem == undefined && $("#input-number").val() == null) {
+                busketitem.push({
+                    id: id,
+                    productImage: productiamge.src,
+                    productname: document.getElementById(productName).innerHTML,
+                    productprice: parseInt(document.getElementById(productPrice).innerHTML.split('$')[1]),
+                    totalitem: 1
+                });
+            }
+            else if (searchitem == undefined && $("#input-number").val() != null) {
+                busketitem.push({
+                    id: id,
+                    productImage: productiamge.src,
+                    productname: document.getElementById(productName).innerHTML,
+                    productprice: productprice[1],
+                    totalitem: parseInt($("#input-number").val())
+                });
+            }
+            else {
+                busketitem.totalitem = parseInt($("#input-number").val());
+            }
+            document.getElementById("items").innerText = busketitem.length;
+            localStorage.setItem("basket", JSON.stringify(busketitem));
+            // console.log(busketitem);
+        }
+        let cartitemadded = (id) => {
+            let finditem = busketitem.find((x) => x.id === id);
+            finditem.totalitem = finditem.totalitem + 1;
+            let productid = "#input-number-" + id;
+            $(productid).val(finditem.totalitem);
+            var total = (finditem.totalitem * finditem.productPrice).toString();
+            console.log("$" + total.toString());
+            document.getElementById("product-price-update").innerHTML = "$" + total.toString();
+            totalcalculation();
+            localStorage.setItem("basket", JSON.stringify(busketitem));
+        }
+        let cartitemdecrement = (id) => {
+            let finditem = busketitem.find(x => x.id === id);
+            console.log(finditem)
+            finditem.totalitem = finditem.totalitem - 1;
+            let productid = "#input-number-" + id;
+            $(productid).val(finditem.totalitem);
+            document.getElementById("product-price-update").innerHTML = "$" + (finditem.totalitem * finditem.productPrice).toString();
+            totalcalculation();
+            localStorage.setItem("basket", JSON.stringify(busketitem));
+        }
+        let increment = () => {
+            let increment = parseInt($("#input-number").val());
+            increment + 1;
+            $("#input-number").val(increment);
+
+        }
+        let decrement = () => {
+            let decrement = parseInt($("#input-number").val());
+            decrement - 1;
+            $("#input-number").val(decrement);
+        }
+        $("#navbarDropdown3").click(() => {
+            $("#cart-item").toggle();
+            document.getElementById("cart-list-item").innerHTML = busketitem.map(function (element) {
+                let { id, productImage, productname, productprice, totalitem } = element;
+                return `
+                                <li>
+                                <div class="product-item-details">
+                                    <div class="">
+                                        <img src="${productImage}"  class="product-image"/>
+                                    </div>
+                                    <div >
+                                        <p class="product-name">
+                                        ${productname}
+                                        </p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="single-product-button-cart">
+                                            <span class="small-inumber-decrement-cart"  onclick="cartitemdecrement(${parseInt(id)})" >- </span>
+                                            <input class="input-number-cart" id="input-number-${parseInt(id)}" type="number" value="${parseInt(totalitem)}">
+                                            <span class="small-number-increment-cart" onclick="cartitemadded(${parseInt(id)})">+</span>
+                                            <span class="multiplesign">*</span>
+                                        </div>
+                                        <p class="total-price" id="product-price-update">
+                                        ${productprice}
+                                        </p>
+                                    </div>
+                                </div>
+                                </li>
+                              `;
+            }).join("");
+            totalcalculation();
+        });
+
+        let totalcalculation = () => {
+            let totalcost = 0;
+            busketitem.map(function (element) {
+                let { productprice, totalitem } = element;
+                totalcost = totalcost + (productprice * totalitem);
+            });
+            console.log(totalcost);
+            document.getElementById("total-cart").innerHTML = "$" + totalcost;
+            document.getElementById("total-cost").innerHTML = `
+                            <h4>Total Bill : $ ${totalcost}</h4>
+                            <div class="cart-button-cancle">
+                            <a class="btn checkout" href="/cart/cart">Checkout</a>
+                            <button onclick="clearCart()" class="removeAll">Clear Cart</button>
+                            </div>
+`
+                ;
+            return totalcost;
+        }
+
+
+        // Cart Page
+        let cartlist = () => {
+            document.getElementById("cart-product-list").innerHTML = busketitem.map(function (element) {
+                let { id, productImage, productname, productprice, totalitem } = element;
+                return `
+                                <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="${productImage}" class="product-image" alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <p>${productname}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>$${productprice}.00</h5>
+                                </td>
+                                <td>
+                                    <div class="product_count">
+                                        <span class="input-number-decrement" onclick="cartitemadded(${id})"> <i class="fa fa-plus fa-icon"></i></span>
+                                        <input class="input-number" type="text" value="${totalitem}" min="0" max="10">
+                                        <span class="input-number-increment" onclick="cartitemdecrement(${id})"> <i class="fa fa-minus fa-icons"></i></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 id="product-price-update">$${totalitem * productprice}.00</h5>
+                                </td>
+                                <td>
+                                <button id="delete-item" onclick="removeItem(${id})">Remove</button>
+                                </td>
+                            </tr>
+                              `;
+            }).join("");
+            totalcalculation();
+        }
+        let summarylist = () => {
+            document.getElementById("cart-product-list").innerHTML = busketitem.map(function (element) {
+                let { id, productImage, productname, productprice, totalitem } = element;
+                return `
+                                <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="${productImage}" class="product-image" alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <p>${productname}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>$${productprice}.00</h5>
+                                </td>
+                                <td>
+                                    <div class="product_count">
+                                        <span class="input-number-decrement" onclick="cartitemadded(${id})"> <i class="fa fa-plus fa-icon"></i></span>
+                                        <input class="input-number" type="text" value="${totalitem}" min="0" max="10">
+                                        <span class="input-number-increment" onclick="cartitemdecrement(${id})"> <i class="fa fa-minus fa-icons"></i></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 id="product-price-update">$${totalitem * productprice}.00</h5>
+                                </td>
+                                <td>
+                                <button id="delete-item" onclick="removeItem(${id})">Remove</button>
+                                </td>
+                            </tr>
+                              `;
+            }).join("");
+            totalcalculation();
+        }
+        let removeItem = (id) => {
+            let selectedItem = id;
+            // console.log(selectedItem.id);
+            busketitem = busketitem.filter((x) => x.id !== selectedItem.id);
+            //generateCartItems();
+            totalcalculation();
+            localStorage.setItem("basket", JSON.stringify(busketitem));
+        };
+
+        let clearCart = () => {
+            busketitem = [];
+            //  generateCartItems();
+            localStorage.setItem("basket", JSON.stringify(busketitem));
+        };
+        // Order summary and Order Set Details
+        const paymentmethod = document.querySelectorAll(".payment-method");
+        const deliverycharge = document.querySelectorAll(".amount-charge");
+        paymentmethod.forEach((paymentitem, index) => {
+            paymentitem[index].addEventListener("click", () => {
+                $("#paymentvalue").val(deliverycharge[index].innerHTML);
+                $(".payment-image-summary").src = $(".payment-image").eq(index).src;
+                $(".amount-charge-cart").innerText = $(".amount-charge").eq(index).innerText;
+                $(".payment-method-details-cart").innerText = $(".payment-method-details").eq(index).innerText;
+            })
+        })
+        let cartsummaryform = () => {
+            document.getElementById("cart-product-list-cart").innerHTML = busketitem.map(function (element) {
+                let { id, productImage, productname, productprice, totalitem } = element;
+                return `
+                                <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="${productImage}" class="product-image" alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <p>${productname}</p>
+                                        </div>
+                                    </div>
+                                    <input id="product-Count-update" value="${id}" type="hidden" readonly />
+                                </td>
+                                <td>
+                                    <input id="product-Price-update" value="${productprice}" readonly />
+                                </td>
+                                <td>
+                                    <div class="product_count">
+                                        <input id="product-Count-update" value="${totalitem}" readonly />
+                                    </div>
+                                </td>
+                                <td>
+                                     <h5>$${totalitem * productprice}.00</h5>
+                                </td>
+                            </tr>
+                              `;
+            }).join("");
+
+        }
+
+
+        // Track Order
+        let trackorder = () => {
+            let orderid = $("#order").val();
+            $("#trackoderdetails").toggle();
+            $.ajax({
+                url: "/cart/GetOrderDetails",
+                Method: "POST",
+                data: orderid,
+                success: function (data) {
+                    data = JSON.parse(data);
+                    document.getElementById("cart-product-list-track").innerHTML = $.each(data, function (i) {
+                        element += `
+                                    <tr>
+                                    <td>
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img src="${productImage}" class="product-image" alt="" />
+                                            </div>
+                                            <div class="media-body">
+                                                <p>${productname}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5>$${productprice}.00</h5>
+                                    </td>
+                                    <td>
+                                        <div class="product_count">
+                                            <span></span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h5 id="product-price-update">$${totalitem * productprice}.00</h5>
+                                    </td>
+                                </tr>
+                                    `;
+                    }).join("");
+
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            })
+        }
+
+
+        // Global Function
+        cartlist();
+    </script>
+
 </body>
 
 </html>

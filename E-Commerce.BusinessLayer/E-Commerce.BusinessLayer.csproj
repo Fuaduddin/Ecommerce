@@ -42,12 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssignmentManager.cs" />
     <Compile Include="CategoryManager.cs" />
+    <Compile Include="ContactManager.cs" />
+    <Compile Include="CustomerManager.cs" />
     <Compile Include="DeliverySettingsManager.cs" />
+    <Compile Include="E-commereceWebManager.cs" />
     <Compile Include="ImageGalleryManager.cs" />
+    <Compile Include="LoginManager.cs" />
+    <Compile Include="OrderManager.cs" />
     <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaffSettingsManager.cs" />
     <Compile Include="SubCategoryManager.cs" />
+    <Compile Include="DashBoardManager.cs" />
+    <Compile Include="UserSettingManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\E-Commerce.DataLayerSQL\E-Commerce.DataLayerSQL.csproj">

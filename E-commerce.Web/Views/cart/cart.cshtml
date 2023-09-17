@@ -1,350 +1,473 @@
-﻿
+﻿@model E_Commerce.Model.CustomerViewModel
 @{
-    ViewBag.Title = "cart";
+    Layout = "~/Views/Shared/Layout/_FrontEndLayout.cshtml";
 }
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- front icon link -->
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
     <!-- Boothstrap Css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Assets/css/style.css">
     <!-- Jquery CDN link -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     </script>
+    
+
     <!-- Own Css -->
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="/Assets/css/index.css">
+    <link rel="stylesheet" href="/Assets/css/cart.css">
 </head>
 <body>
     <!-- Shopping Cart Start -->
-    <section class="shopping-cart-start">
-        <div class="container">
-            <div class="row">
-                <div class="cart-header-item">
-                    <div class="cart-from-title">
-                        <h4 class="form-title" id="shopping-cart">Shopping Cart</h4>
-                        <h4 class="form-title" id="shopping-address">Address data and type of delivery</h4>
-                        <h4 class="form-title" id="shopping-summary">Summary</h4>
+    @if (ViewData["Message"] != null)
+    {
+        <p class="confirmationmsg">@ViewData["Message"]</p>
+    }
+    @using (Html.BeginForm("cart", "cart", FormMethod.Post, new { enctype = "multipart/form-data", @class = "login" }))
+    {
+        <section class="shopping-cart-start">
+            <div class="container">
+                <div class="row">
+                    <div class="cart-header-item">
+                        <div class="cart-from-title">
+                            <h4 class="form-title" id="shopping-cart">Shopping Cart</h4>
+                            <h4 class="form-title" id="shopping-address">Address data and type of delivery</h4>
+                            <h4 class="form-title" id="shopping-summary">Summary</h4>
+                        </div>
+                        <div class="cart-from-steps">
+                            <div class="steps">
+                                <i class="fa fa-shopping-cart icon activecolor"></i>
+                            </div>
+                            <hr class="process-line">
+                            <div class="steps">
+                                <i class='fas fa-shipping-fast icon'></i>
+                            </div>
+                            <hr class="process-line">
+                            <div class="steps">
+                                <i class="fa fa-list-alt icon activecolor"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="cart-from-steps">
-                        <div class="steps">
-                            <i class="fa fa-shopping-cart icon activecolor"></i>
-                        </div>
-                        <hr class="process-line">
-                        <div class="steps">
-                            <i class='fas fa-shipping-fast icon'></i>
-                        </div>
-                        <hr class="process-line">
-                        <div class="steps">
-                            <i class="fa fa-list-alt icon activecolor"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="cart-item-details">
-                    <div class="cart_inner">
-                        <div class="table-responsive activecolor">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Product</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="media">
-                                                <div class="d-flex">
-                                                    <img src="ImagesALL/chair.png" class="product-image" alt="" />
-                                                </div>
-                                                <div class="media-body">
-                                                    <p>Minimalistic shop for multipurpose use</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5>$360.00</h5>
-                                        </td>
-                                        <td>
-                                            <div class="product_count">
-                                                <span class="input-number-decrement" onclick="cartitem(1)"> <i class="fa fa-plus fa-icon"></i></span>
-                                                <input class="input-number" type="text" value="1" min="0" max="10">
-                                                <span class="input-number-increment" onclick="cartitem(-1)"> <i class="fa fa-minus fa-icons"></i></span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5>$720.00</h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="media">
-                                                <div class="d-flex">
-                                                    <img src="ImagesALL/chair.png" class="product-image" alt="" />
-                                                </div>
-                                                <div class="media-body">
-                                                    <p>Minimalistic shop for multipurpose use</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5>$360.00</h5>
-                                        </td>
-                                        <td>
-                                            <div class="product_count">
-                                                <span class="input-number-decrement" onclick="cartitem(1)"> <i class="fa fa-plus fa-icon"></i></span>
-                                                <input class="input-number" type="text" value="1" min="0" max="10">
-                                                <span class="input-number-increment" onclick="cartitem(-1)"> <i class="fa fa-minus fa-icons"></i></span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5>$720.00</h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="media">
-                                                <div class="d-flex">
-                                                    <img src="ImagesALL/chair.png" class="product-image" alt="" />
-                                                </div>
-                                                <div class="media-body">
-                                                    <p>Minimalistic shop for multipurpose use</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5>$360.00</h5>
-                                        </td>
-                                        <td>
-                                            <div class="product_count">
-                                                <span class="input-number-decrement" onclick="cartitem(1)"> <i class="fa fa-plus fa-icon"></i></span>
-                                                <input class="input-number" type="text" value="1" min="0" max="10">
-                                                <span class="input-number-increment" onclick="cartitem(-1)"> <i class="fa fa-minus fa-icons"></i></span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5>$720.00</h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="shipping_box">
-                                                <input type="text" class="cupon" placeholder="Add Cupon" />
-                                                <button class="btn_1" href="#">Get Your Discount</button>
-                                            </div>
-                                        </td>
-                                        <td></td>
-                                        <td>
-                                            <h5>Subtotal</h5>
-                                        </td>
-                                        <td>
-                                            <h5>$2160.00</h5>
-                                        </td>
-                                        <td></td>
+                    <div class="cart-item-details">
+                        <div class="cart_inner">
+                            <div class="table-responsive activecolor">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart-product-list">
+                                    </tbody>
+                                </table>
 
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="cart_inner">
-                        <div class="d-md-flex">
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <h1 class="payment-method-title">Delivery Address</h1>
-                                <form class="">
-                                    <h1>form </h1>
-                                </form>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <h1 class="payment-method-title">Payment Method</h1>
+                        </div>
+                        <div class="cart_inner">
+                            <div class="d-md-flex">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <h1 class="payment-method-title">Delivery Address</h1>
+                                        <div class="login-input">
+                                            <label class="col-lg-4 col-form-label" for="val-username">
+                                                Zone Name <span class="text-danger">*</span>
+                                            </label>
+                                            @Html.DropDownListFor(Model => Model.Cart.Shipment.ZoneName, new SelectList(Model.viewzoneList, "Placeid", "PlaceName"), new { @class = "form-control check", id = "val", onchange = "authentication()" })
+                                            @Html.ValidationMessageFor(Model => Model.Cart.Shipment.ZoneName, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="login-input">
+                                            <label class="col-lg-4 col-form-label" for="val-username">
+                                                Select Districts <span class="text-danger">*</span>
+                                            </label>
+                                            @Html.DropDownListFor(Model => Model.Cart.Shipment.AreaName, new SelectList(Model.areaList, "ZoneId", "DevisionName"), new { @class = "form-control check", id = "areaname", onchange = "authentication()" })
+                                            @Html.ValidationMessageFor(Model => Model.Cart.Shipment.AreaName, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="login-input">
+                                            <label class="col-lg-4 col-form-label" for="val-username">
+                                                Address<span class="text-danger">*</span>
+                                            </label>
+                                            @Html.TextAreaFor(Model => Model.Cart.Shipment.ShipmentAddress, new { @class = "form-control adressbox check", id = "adressbox" })
+                                        </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <h1 class="payment-method-title">Payment Method</h1>
+                                    <div class="payment-method-items">
+                                        @if (Model.PaymentMethodList != null)
+                                        {
+                                            foreach (var paymentmethod in Model.PaymentMethodList)
+                                            {
+                                                <button class="payment-method" type="button">
+                                                    <div>
+                                                        <div class="payment-details">
+                                                            <h6 class="payment-method-title"><span class="amount-charge">@paymentmethod.DeliveryChargeAmount</span>taka</h6>
+                                                            <p class="payment-method-details">
+                                                                @paymentmethod.DeliveryChargeTitle
+                                                            </p>
+                                                        </div>
+                                                        <p style="display:none;">@paymentmethod.DeliveryChargeid</p>
+                                                    </div>
+                                                </button>
+                                            }
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart_inner">
+
+                            <!-- //  Html.HiddenFor(model => model.Cart.Order.CustomerID, new { class = "form-control", id = "paymentvalue", value = Model.Customer.CustomerId })-->
+                            <div class="summary-details-cash">
                                 <div class="payment-method-items">
-                                    <div class="payment-method" onclick="selectpaymentmethod(0)">
-                                        <img src="ImagesALL/DPD_logo(red)2015.png" class="payment-image" alt="" />
-                                        <div class="payment-details">
-                                            <h6 class="payment-method-title">50 taka</h6>
-                                            <p class="payment-method-details">
-                                                Cash on delivery
-                                            </p>
-                                        </div>
+                                    @if (Model.PaymentMethodList != null)
+                                    {
+                                        foreach (var paymentmethod in Model.PaymentMethodList)
+                                        {
+                                            <button type="button" class="payment-method-items-method">
+                                                <div class="payment-method-items-method-details">
+                                                    <h6 class="payment-method-title"><span class="amount-charge">@paymentmethod.DeliveryChargeAmount</span>taka</h6>
+                                                    <p class="payment-method-details">
+                                                        @paymentmethod.DeliveryChargeTitle
+                                                    </p>
+                                                    <p style="display:none;" class="deliverychargeid">@paymentmethod.DeliveryChargeid</p>
+                                                </div>
+                                            </button>
+                                        }
+
+                                    }
+                                </div>
+                                <div id="payment-method-container">
+                                    <div class="payment-method-selected" id="payment-method-selected">
                                     </div>
-                                    <div class="payment-method" onclick="selectpaymentmethod(1)">
-                                        <img src="ImagesALL/Group 2670.png" class="payment-image" alt="" />
-                                        <div class="payment-details">
-                                            <h6 class="payment-method-title">100 taka</h6>
-                                            <p class="payment-method-details">
-                                                Payment in advance
-                                            </p>
-                                        </div>
+                                    <button class="change-button" type="button">Change</button>
+                                    @Html.HiddenFor(Model => Model.Cart.Payment.PaymentMethod, new { @class = "form-control check", id = "paymentvalue", @readonly = "readonly" })
+                                </div>
+                                <div class="customer-delivery-address">
+                                    <div class="login-input">
+                                        <label class="col-lg-4 col-form-label" for="val-username">
+                                            Zone Name <span class="text-danger">*</span>
+                                        </label>
+                                        @Html.DropDownListFor(Model => Model.Cart.Shipment.ZoneName, new SelectList(Model.viewzoneList, "Placeid", "PlaceName"), new { @class = "form-control check", id = "val", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(Model => Model.Cart.Shipment.ZoneName, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="payment-method" onclick="selectpaymentmethod(2)">
-                                        <img src="ImagesALL/Group 2445.png" class="payment-image" alt="" />
-                                        <div class="payment-details">
-                                            <h6 class="payment-method-title">30 taka</h6>
-                                            <p class="payment-method-details">
-                                                Personal collection
-                                            </p>
-                                        </div>
+                                    <div class="login-input">
+                                        <label class="col-lg-4 col-form-label" for="val-username">
+                                            Districts <span class="text-danger">*</span>
+                                        </label>
+                                        @Html.DropDownListFor(Model => Model.Cart.Shipment.AreaName, new SelectList(Model.areaList, "ZoneId", "DevisionName"), new { @class = "form-control check", id = "val", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(Model => Model.Cart.Shipment.ZoneName, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="payment-method" onclick="selectpaymentmethod(3)">
-                                        <img src="ImagesALL/Group 2745.png" class="payment-image" alt="" />
-                                        <div class="payment-details">
-                                            <h6 class="payment-method-title">30 taka</h6>
-                                            <p class="payment-method-details">
-                                                Personal collection
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="payment-method" onclick="selectpaymentmethod(4)">
-                                        <img src="ImagesALL/Group 2746.png" class="payment-image" alt="" />
-                                        <div class="payment-details">
-                                            <h6 class="payment-method-title">30 taka</h6>
-                                            <p class="payment-method-details">
-                                                Personal collection
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="payment-method" onclick="selectpaymentmethod(5)">
-                                        <img src="ImagesALL/Gruppe 2384.png" class="payment-image" alt="" />
-                                        <div class="payment-details">
-                                            <h6 class="payment-method-title">30 taka</h6>
-                                            <p class="payment-method-details">
-                                                Personal collection
-                                            </p>
-                                        </div>
+                                    <div class="login-input">
+                                        <label class="col-lg-4 col-form-label" for="val-username">
+                                            Address<span class="text-danger">*</span>
+                                        </label>
+                                        @Html.TextAreaFor(Model => Model.Cart.Shipment.ShipmentAddress, new { @class = "form-control", @readonly = "readonly" , id="customerfulladdress"})
+
                                     </div>
                                 </div>
                             </div>
+                            <div class="table-responsive activecolor mt-5" id="cartsummary">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart-product-list-cart">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-flex cart-total-container">
+                                <div class="">
+                                    @Html.HiddenFor(Model => Model.Cart.Payment.Amount, new { @class = "form-control", id = "amountvalue" })
+                                </div>
+                            </div>
+                           
                         </div>
+
                     </div>
-                    <div class="cart_inner">
-                        <div class="summary-details-cash">
-                            <div class="payment-method-items">
-                                <div class="payment-method" onclick="selectpaymentmethod(0)">
-                                    <img src="ImagesALL/DPD_logo(red)2015.png" class="payment-image-small" alt="" />
-                                </div>
-                                <div class="payment-method" onclick="selectpaymentmethod(1)">
-                                    <img src="ImagesALL/Group 2670.png" class="payment-image-small" alt="" />
-                                </div>
-                                <div class="payment-method" onclick="selectpaymentmethod(2)">
-                                    <img src="ImagesALL/Group 2445.png" class="payment-image-small" alt="" />
-                                </div>
-                                <div class="payment-method" onclick="selectpaymentmethod(3)">
-                                    <img src="ImagesALL/Group 2745.png" class="payment-image-small" alt="" />
-                                </div>
-                                <div class="payment-method" onclick="selectpaymentmethod(4)">
-                                    <img src="ImagesALL/Group 2746.png" class="payment-image-small" alt="" />
-                                </div>
-                                <div class="payment-method" onclick="selectpaymentmethod(5)">
-                                    <img src="ImagesALL/Gruppe 2384.png" class="payment-image-small" alt="" />
-                                </div>
-                            </div>
-                            <div class="customer-selected-method">
-                                <div class="payment-method-selected" onclick="selectpaymentmethod(5)">
-                                    <img src="ImagesALL/Gruppe 2384.png" class="payment-image" alt="" />
-                                    <div class="payment-details">
-                                        <h6 class="payment-method-title">30 taka</h6>
-                                        <p class="payment-method-details">
-                                            Personal collection
-                                        </p>
-                                    </div>
-                                    <button class="change-button" href="#">Change</button>
-                                </div>
-                            </div>
-                            <div class="customer-delivery-address">
-                                <div class="payment-method" onclick="selectpaymentmethod(5)">
-                                    <img src="ImagesALL/Gruppe 2384.png" class="payment-image" alt="" />
-                                    <div class="payment-details">
-                                        <h6 class="payment-method-title">30 taka</h6>
-                                        <p class="payment-method-details">
-                                            Personal collection
-                                        </p>
-                                    </div>
-                                    <button class="change-button" href="#">Change</button>
-                                </div>
-                            </div>
+
+                    <div class="d-flex cart-total-container mt-5">
+                        <div class="shipping_box">
+                            <input type="text" class="cupon" id="cuponinput" placeholder="Add Cupon" />
+                            <button class="btn_1" id="cupponbutton" type="button" onclick="totalcalculation()">Get Your Discount</button>
+                        </div>
+                        <div class="">
+                            <h5>Subtotal</h5> <br />
+                            <h5 id="total-cart">
+                            </h5>
+                            @Html.HiddenFor(Model => Model.Cart.Order.TotalPrice, new { @class = "form-control", id = "TotalPricevalue" })
                         </div>
                     </div>
                     <div class="bottom-part">
                         <div class="back">
-                            <button class="btn_1" href="#" onclick="cartitem(-1)">Back</button>
+                            <button class="btn_1" type="button" onclick="cartitem(-1)">Back</button>
                         </div>
                         <div class="checkout_btn_inner float-right">
-                            <button class="btn_1" href="#">Continue Shopping</button>
-                            <button class="btn_1" href="#" id="procedbutton" onclick="cartitem(1)">Proceed to checkout</button>
-                            <button class="btn_1" id="btn_1_submit" href="#">ADD Order</button>
+                            <button class="btn_1"  type="button">Continue Shopping</button>
+                            <button class="btn_1"  id="procedbutton" onclick="cartitem(1)" type="button">Proceed to checkout</button>
+                            <button type="submit" value="Add" class="btn_1" id="btn_1_submit">ADD Order</button>
                         </div>
                     </div>
+
                 </div>
             </div>
-    </section>
-    <script>
-  var i=1;
-  $(".form-title").hide();
-  $(".cart_inner").hide();
-  var activetab= document.getElementsByClassName("steps");
-  var icon= document.getElementsByClassName("fa");
-  activetab[0].classList.add("activefromitem");
-  $("#btn_1_submit").hide();
-  $(".cart_inner").hide();
-  $(".form-title").eq(0).show();
-   $(".cart_inner").eq(0).show();
-  function cartitem(n)
-  {
-    var steps= document.getElementsByClassName("steps");
-    var steptitle=document.getElementsByClassName("form-title");
-    var icon= document.getElementsByClassName("fa");
-    i=i+(n);
-    for(s=0; s<3; s++)
-    {
-      steps[s].classList.remove("activefromitem");
+        </section>
     }
-    for(s=0; s<i; s++)
-    {
-      steps[s].classList.add("activefromitem");
-    }
-    $(".form-title").hide();
-   $(".form-title").eq(i-1).show();
-   $(".cart_inner").hide();
-   $(".cart_inner").eq(i-1).show();
-   if(i==3)
-   {
-    $("#btn_1_submit").show();
-    $("#procedbutton").hide();
-   }
-   else
-   {
-    $("#procedbutton").show();
-    $("#btn_1_submit").hide();
-   }
-  }
-  function selectpaymentmethod(n)
-  {
-    for(s=0; s<6; s++)
-    {
-      $(".payment-method").eq(s).css("border-color", "lightgray");
-    }
-    $(".payment-method").eq(n).css("border-color", "orange");
-  }
-    </script>
+        <script>
 
-    <!-- Boothstrap js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-</body>
-</html>
+            const faqgallery = document.querySelectorAll(".payment-method");
+            const paymentmethod = document.querySelectorAll(".payment-method-items-method");
 
+            faqgallery.forEach((faq, index) => {
+                faq.addEventListener("click", () => {
+                    for (s = 0; s < faqgallery.length; s++) {
+                        $(".payment-method").eq(s).css("border-color", "lightgray");
+                    }
+                    $(".payment-method").eq(index).css("border-color", "orange");
+                    $(".amount-charge").innerHTML;
+                });
+            });
+            paymentmethod.forEach((faq, index) => {
+                faq.addEventListener("click", () => {
+                    for (s = 0; s < 6; s++) {
+                        $(".payment-method").eq(s).css("border-color", "lightgray");
+                    }
+                    $(".payment-method").eq(index).css("border-color", "orange");
+                });
+            });
+       
+            // From Steps Start
+       
+            // Intial Hide
+            $("#btn_1_submit").hide();
+            // Constant item
+            let stepsno = 0;
+            const activetab = document.querySelectorAll(".steps");
+            const icon = document.querySelectorAll(".fa");
+            const stepstitle = document.querySelectorAll(".form-title");
+            const stepscontainer = document.querySelectorAll(".cart_inner");
+            stepscontainer.forEach((steps,index) => {
+                steps.classList.add("hidestepscontainer");
+                stepstitle[index].classList.add("hidestepscontainer");
+            });
+
+            // Intial Show
+            activetab[stepsno].classList.add("activefromitem");
+            stepstitle[stepsno].classList.remove("hidestepscontainer");
+            stepscontainer[stepsno].classList.remove("hidestepscontainer");
+            function cartitem(n) {
+                
+                if (stepsno < 0) {
+                    stepsno = 0;
+                }
+                else {
+                    stepsno = stepsno + (n);
+                }
+                if (stepsno < 2 && stepsno > 0|| stepsno == 2 || stepsno == 0) {
+                    activetab.forEach((activetab,index) => {
+                        activetab.classList.remove("activefromitem");
+                        stepstitle[index].classList.add("hidestepscontainer");
+                        stepscontainer[index].classList.add("hidestepscontainer");
+                    });
+                    // show steps wise layer
+                    activetab.forEach((activetab, index) => {
+                        if (index < stepsno || index == stepsno) {
+                            activetab.classList.add("activefromitem");
+                            stepstitle[stepsno].classList.remove("hidestepscontainer");
+                            stepscontainer[stepsno].classList.remove("hidestepscontainer");
+                        }
+                    });
+                    if (stepsno == 2) {
+                        $("#btn_1_submit").show();
+                        $("#procedbutton").hide();
+                        summarylist();
+                        checkbusket();
+                    }
+                    else {
+                        $("#procedbutton").show();
+                        $("#btn_1_submit").hide();
+                    }
+                    
+                }
+            }
+           // From Steps End
+            let busketitemlistcart = JSON.parse(localStorage.getItem("basket"));
+            if (busketitemlistcart == null) {
+                $("#procedbutton").attr('disabled', 'disabled');
+            }
+            function authentication() {
+                debugger
+                let procedbutton = document.getElementById("procedbutton");
+                let zonename = document.getElementById("val");
+                let areaname = document.getElementById("areaname");
+                let address = $("#adressbox").val();
+                let paymentmethod = $("#paymentvalue").val();
+                if (areaname.value == null || zonename.value == null || address == "" || paymentmethod == null) {
+                    $("#procedbutton").attr('disabled', 'disabled');
+                }
+                else {
+                    procedbutton.removeAttribute("disabled");
+                }
+            }
+            const button = document.querySelector("#procedbutton");
+            button.addEventListener("click", () => {
+                authentication();
+            });
+            const check = document.querySelectorAll(".check");
+            check.forEach((faq) => {
+                faq.addEventListener("change", () => {
+                    authentication();
+                });
+            });
+        </script>
+        <!-- Cuppon Calculation-->
+        <script>
+            function busketitemlist() {
+                let busketitemlist = JSON.parse(localStorage.getItem("basket"));
+                $.each(busketitemlist, function (i) {
+                    element += `
+<tr id="product-id-${busketitemlist[i].id}">
+<td>
+                    <div class="media">
+                        <div class="d-flex">
+                            <img src="${busketitemlist[i].productImage}" class="product-image" alt="" />
+                        </div>
+                        <div class="media-body">
+                            <p>${busketitemlist[i].productname}</p>
+                        </div>
+                    </div>
+</td>
+<td>
+                    <h5>$<span id="product-price-${busketitemlist[i].id}">${busketitemlist[i].productprice}</spna>.00</h5>
+</td>
+<td>
+                    <div class="product_count">
+                        <span class="input-number-decrement" onclick="cartitemadded(${busketitemlist[i].id})"> <i class="fa fa-plus fa-icon"></i></span>
+                        <input class="input-number" type="text" value="${busketitemlist[i].totalitem}" min="0" max="10">
+                        <span class="input-number-increment" onclick="cartitemdecrement(${busketitemlist[i].id})"> <i class="fa fa-minus fa-icons"></i></span>
+                    </div>
+</td>
+<td>
+                    <h5 id="product-price-update-${busketitemlist[i].id}">$${busketitemlist[i].totalitem * busketitemlist[i].productprice}.00</h5>
+</td>
+<td>
+<button id="delete-item" onclick="cartitemlist(${busketitemlist[i].id})">Remove</button>
+</td>
+</tr>
+                                    `;
+                    $("#cart-product-list").append(element);
+                    // serialno++;
+                    var element = "";
+                });
+                let totalcost = 0;
+                $.each(busketitemlist, function (i) {
+                    totalcost = totalcost + (busketitemlist[i].productprice * busketitemlist[i].totalitem);
+                });
+                $("#TotalPricevalue").val(totalcost);
+                document.getElementById("total-cart").innerHTML = "$" + totalcost;
+            }
+            //  console.log(busketitemlist);
+            busketitemlist();
+        </script>
+        <script>
+
+
+
+        </script>
+        <!-- Cart Js here-->
+        <script src="~/Assets/CartJS/CartOrder.js"></script>
+
+        <style>
+            .payment-method-title {
+                font-size: 24px !important;
+                line-height: 40px !important;
+                text-align: center;
+            }
+            p.payment-method-details {
+                font-size: 19px !important;
+                line-height: 25px !important;
+            }
+            button#delete-item {
+                width: 90px;
+                /* height: 5%; */
+                padding: 6% 4%;
+                color: white;
+                background-color: red;
+            }
+            button.payment-method-items-method {
+                width: 130px;
+            }
+            .payment-method-items-method {
+                text-align: center;
+                padding: 7% 6% 7% 6% !important;
+                border: 2px solid lightgray;
+                border-radius: 10px;
+            }
+            button.change-button {
+                margin-left: 3% !important;
+                margin-top: 2% !important;
+            }
+            .summary-details-cash {
+                display: grid;
+                grid-template-columns: .5fr 1fr 2fr !important;
+                gap: 2% !important;
+            }
+            .hidestepscontainer{
+                display:none;
+            }
+            #payment-method-container {
+                margin-left: 8%;
+            }
+
+            .payment-method-items-method {
+                text-align: center;
+                padding: 11% 6% 11% 6%;
+                border: 2px solid lightgray;
+                border-radius: 10px;
+            }
+
+            button.change-button {
+                margin-left: 12%;
+                margin-top: 0%;
+            }
+
+            .shipping_box {
+                display: inline-flex;
+            }
+
+            .cart-total-container {
+                justify-content: space-between;
+            }
+
+            #product-Count-update, #product-Price-update {
+                border: none;
+            }
+
+            input.cupon {
+                width: 48%;
+                height: 52px;
+            }
+
+            .shopping-cart-start {
+                padding: 8%;
+            }
+
+            select#val, select#districts {
+                display: unset !important;
+            }
+
+            .nice-select.form-control {
+                display: none;
+            }
+
+            .adressbox {
+                height: 200px;
+            }
+        </style>
+    </body>

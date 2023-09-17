@@ -1,0 +1,245 @@
+﻿@model E_Commerce.Model.CustomerViewModel
+    @{ 
+        Layout = "~/Views/Shared/Layout/_FrontEndLayout.cshtml";
+    }
+<head>
+    <!-- Jquery CDN link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Own Css -->
+    <link rel="stylesheet" href="~/Assets/Own Css/index.css">
+    <link rel="stylesheet" href="~/Assets/Own Css/SingleProductDetails.css">
+</head>
+<div class="col-lg-5 col-md-5 col-sm-12 details">
+
+    <div id="confiramtionmsg" style="display:none;">
+        <span>
+            Your Review havebeen added !!!
+        </span>
+    </div>
+    <h4 class="form-subtitle">Add a Review</h4>
+    <div class="rating-part">
+        <input class="input-item" type="hidden" id="product-id" value="">
+        <div class="rating-star">
+            <span class="fa fa-star ratingstaruser"></span>
+            <span class="fa fa-star ratingstaruser"></span>
+            <span class="fa fa-star ratingstaruser"></span>
+            <span class="fa fa-star ratingstaruser"></span>
+            <span class="fa fa-star ratingstaruser"></span>
+        </div>
+        <div class="comment">
+            <h6 class="comment-rating" id="comment-rating"></h6>
+            <input class="input-item" type="hidden" id="rating">
+        </div>
+    </div>
+    <form class="">
+        <div class="input-field">
+            <input class="input-item" type="text" id="name" placeholder="Your Full Name">
+        </div>
+        <div class="input-field">
+            <input class="input-item" type="email" id="email" placeholder="Your Email Address">
+        </div>
+        <div class="input-field">
+            <textarea class="teview-item" id="review" placeholder="Review"></textarea>
+        </div>
+        <button id="submit-button" class="review-button" value="submit">Submit Now</button>
+    </form>
+
+</div>
+<style>
+    .single-product-details {
+        margin-top: 7%;
+    }
+
+    .tab-filter-button {
+        margin-left: 0% !important;
+    }
+
+    .tab-bar-items {
+        margin-left: 0% !important;
+    }
+</style>
+
+<script>
+    // Image Gallery Start
+    const imagegallery = document.querySelectorAll("#product-other-images .product-imageitem img");
+    const showimage = document.querySelector(".primary-image img");
+    imagegallery.forEach((img, index) => {
+        img.addEventListener("click", () => {
+            showimage.src = img[index].src;
+        });
+    });
+    // FAQ Start
+    $(".faq-detals").hide();
+    $(".fa-angle-double-down").hide();
+    $(".fa-angle-double-down").hide();
+    const faqgallery = document.querySelectorAll(".faq-items .item");
+    faqgallery.forEach((faq, index) => {
+        faq.addEventListener("click", () => {
+            $(".fa-angle-double-right").eq(index).toggle();
+            $(".fa-angle-double-down").eq(index).toggle();
+            $(".faq-detals").eq(index).slideToggle();
+        });
+    });
+    // Star Rating
+    const starrating = document.querySelectorAll(".rating-star span");
+    const test = document.getElementsByClassName("ratingstaruser");
+    starrating.forEach((rating, index) => {
+        rating.addEventListener("click", () => {
+            for (i = 0; i < index; i++) {
+                test[i].classList.add("activestarratinguser");
+            }
+            if (index == 0) {
+                document.getElementById("comment-rating").innerHTML = "Very Poor";
+                $(".rating").value(1);
+            }
+            if (index == 1) {
+                document.getElementById("comment-rating").innerHTML = "Poor";
+                $(".rating").value(2);
+            }
+            if (index == 2) {
+                document.getElementById("comment-rating").innerHTML = "Normal";
+                $(".rating").value(3);
+            }
+            if (index == 3) {
+                $(".rating").value(4);
+                document.getElementById("comment-rating").innerHTML = "Good";
+            }
+            if (index == 4) {
+                $(".rating").value(5);
+                document.getElementById("comment-rating").innerHTML = "Excelent";
+            }
+        });
+    });
+    // Submit Review
+    $("#submit-button").click(function () {
+        debugger
+        //let review = {};
+        //review.Review = $("#review").val();
+        //review.ProductId = $("#product-id").val();
+        //review.TotalRating = $("#rating").val();
+        //review.CustomerName = $("#name").val();
+        //review.CustomerEmail = $("#email").val();
+        var review = $("#review").val();
+        var productId = $("#product-id").val();
+        var totalRating = $("#rating").val();
+        var customerName = $("#name").val();
+        var customerEmail = $("#email").val();
+        var Review =
+        {
+            Review: review,
+            ProductId: productId ,
+            TotalRating: totalRating ,
+            CustomerName: customerName,
+            CustomerEmail: customerEmail
+        }
+        //  let reviewdetails = JSON.parse(review);
+        console.log(Review);
+        if (Review != null) {
+            $.ajax({
+                url: "/ProductFrontEnd/SubmitReview",
+                Method: "POST",
+                 data: '{Review: ' + JSON.stringify(Review) + '}',
+                // data: {reviewvalue:review},
+               // data: Review,
+                success: function (data) {
+                    if (JSON.parse(data) == true) {
+                        $('#confiramtionmsg').css("display", "block");
+                    }
+                    else {
+                        $('#confiramtionmsg').css("display", "hide");
+                    }
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    $('#confiramtionmsg').css("display", "hide");
+                    console.log('Failed ');
+                }
+            })
+        }
+        else {
+            $('#confiramtionmsg').css("display", "hide");
+        }
+    });
+
+    // SLider
+
+    let slide = 3;
+    var slidenostart = 1;
+    for (i = 0; i < slide; i++) {
+        $(".product-imageitem").eq(i).show();
+        if (slidenostart == 1) {
+            $(".product-other-images li").eq(i).addClass("slideno1");
+        }
+        if (slidenostart == 2) {
+            $(".product-other-images li").eq(i).addClass("slideno2");
+        }
+        if (slidenostart == 3) {
+            $(".product-other-images li").eq(i).addClass("slideno3");
+        }
+        slidenostart++;
+    }
+
+    var slidelengh = $(".product-other-images li");
+    for (i = 3; i < slidelengh.length; i++) {
+        $(".product-other-images li").eq(i).hide();
+    }
+
+    var i = 1;
+    function totalitem(n) {
+        i = i + (n);
+        document.getElementById("input-number").value = i;
+    }
+
+    $("#product-reviews").show();
+    function showtabitems(id) {
+        var tabbutton = "#" + id.getAttribute("data-tab-details");
+        var buttonid = id.innerHTML;
+        var element = document.getElementsByClassName("filter-button");
+        for (i = 0; i < 4; i++) {
+            element[i].classList.remove("active-filter-button");
+            // element[i].classList.
+        }
+        $(".hideshowitem").hide();
+        id.classList.add("active-filter-button");
+        $(tabbutton).fadeIn();
+    }
+    function workingslide(n) {
+        //  var slidelengh= $(".product-other-images li");
+        var slidenostartno = 1;
+        slide = slide + (n);
+        if (slide > slidelengh.length) {
+            slide = 1;
+        }
+        // if(slide<3)
+        // {
+        //   slide=1;
+        // }
+        for (i = 0; i < slidelengh.length; i++) {
+            $(".product-other-images li").eq(i).hide();
+            $(".product-other-images li").eq(i).removeClass("slideno1");
+            $(".product-other-images li").eq(i).removeClass("slideno2");
+            $(".product-other-images li").eq(i).removeClass("slideno3");
+        }
+        for (i = slide - 3; i < slide; i++) {
+
+            $(".product-other-images li").eq(i).show();
+            if (slidenostartno == 1) {
+                $(".product-other-images li").eq(i).addClass("slideno1");
+            }
+            if (slidenostartno == 2) {
+                $(".product-other-images li").eq(i).addClass("slideno2");
+            }
+            if (slidenostartno == 3) {
+                $(".product-other-images li").eq(i).addClass("slideno3");
+            }
+            slidenostartno++;
+        }
+    }
+    // Primary Condition
+</script>
+<!-- Boothstrap js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+<!--Own Js-->
+<script src="~/CartJS/Cart.js"></script>

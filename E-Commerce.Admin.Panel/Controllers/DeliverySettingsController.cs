@@ -28,42 +28,101 @@ namespace E_Commerce.Admin.Panel.Controllers
           
             if (charge.deliverycharge.DeliveryChargeid > 0)
             {
-                bool updated =  DeliverySettingsManager.UpdateDeliveryCost(charge.deliverycharge);
-                AdminViewModel deliverycharge = new AdminViewModel();
-                deliverycharge.deliverychargeList = perpageshowdata(1, 10);
-                deliverycharge.totalpage = pagecount(10);
-                deliverycharge.deliverycharge = new DeliveryCharge();
-                return View("AddDeliveryCost", deliverycharge);
+                if(DeliverySettingsManager.UpdateDeliveryCost(charge.deliverycharge))
+                {
+                    ViewData["Message"] = "Your data have been Updated";
+                    ModelState.Clear();
+                }
+                else
+                {
+                    ViewData["Message"] = "Your data have not been Updated";
+                }
+                //AdminViewModel deliverycharge = new AdminViewModel();
+                //deliverycharge.deliverychargeList = perpageshowdata(1, 10);
+                //deliverycharge.totalpage = pagecount(10);
+                //deliverycharge.deliverycharge = new DeliveryCharge();
+                //return View("AddDeliveryCost", deliverycharge);
             }
             else
             {
-                    AdminViewModel deliverycharge = new AdminViewModel();
-                    deliverycharge.deliverychargeList = perpageshowdata(1, 10);
-                    deliverycharge.totalpage = pagecount(10);
-                    charge.deliverycharge.PreviousDeliveryChargeAmount = 0;
-                    deliverycharge.deliverycharge = new DeliveryCharge();
-                    long add = DeliverySettingsManager.AddNewDeliveryCost(charge.deliverycharge);
-                    return View("AddDeliveryCost", deliverycharge);
+                if (DeliverySettingsManager.AddNewDeliveryCost(charge.deliverycharge)>0)
+                {
+                    ViewData["Message"] = "Your data have been Added";
+                    ModelState.Clear();
+                }
+                else
+                {
+                    ViewData["Message"] = "Your data have not been Added";
+                }
+                    //AdminViewModel deliverycharge = new AdminViewModel();
+                    //deliverycharge.deliverychargeList = perpageshowdata(1, 10);
+                    //deliverycharge.totalpage = pagecount(10);
+                    //charge.deliverycharge.PreviousDeliveryChargeAmount = 0;
+                    //deliverycharge.deliverycharge = new DeliveryCharge();
+                    //return View("AddDeliveryCost", deliverycharge);
             }
-          
+            AdminViewModel deliverycharge = new AdminViewModel();
+            deliverycharge.deliverychargeList = perpageshowdata(1, 10);
+            deliverycharge.totalpage = pagecount(10);
+            charge.deliverycharge.PreviousDeliveryChargeAmount = 0;
+            deliverycharge.deliverycharge = new DeliveryCharge();
+            return View("AddDeliveryCost", deliverycharge);
+
+        }
+        public ActionResult Multiedelete(int[] multidelete)
+        {
+            int i = 0;
+            AdminViewModel delivery = new AdminViewModel();
+            if (multidelete != null)
+            {
+                foreach (int multid in multidelete)
+                {
+                    DeliverySettingsManager.DeleteDeliveryCost(multid);
+                    i++;
+                }
+            }
+            if(multidelete.Length==i)
+            {
+                ViewData["Message"] = "Your data have  been Deleted";
+                //delivery.deliverychargeList = perpageshowdata(1, 10);
+                //delivery.totalpage = pagecount(10);
+                //delivery.deliverycharge = new DeliveryCharge();
+            }
+            else
+            {
+                ViewData["Message"] = "Your data have not been Deleted";
+                //delivery.deliverychargeList = perpageshowdata(1, 10);
+                //delivery.totalpage = pagecount(10);
+                //delivery.deliverycharge = new DeliveryCharge();
+            }
+            delivery.deliverychargeList = perpageshowdata(1, 10);
+            delivery.totalpage = pagecount(10);
+            delivery.deliverycharge = new DeliveryCharge();
+            return View("AddDeliveryCost", delivery);
         }
         public ActionResult DeletedDeliveryCost(int id)
         {
             if (DeliverySettingsManager.DeleteDeliveryCost(id))
             {
-                AdminViewModel deliverycharge = new AdminViewModel();
-                deliverycharge.deliverychargeList = perpageshowdata(1, 10);
-                deliverycharge.totalpage = pagecount(10);
-                return View("AddDeliveryCost", deliverycharge);
+                ViewData["Message"] = "Your data have been Deleted";
+                //AdminViewModel deliverycharge = new AdminViewModel();
+                //deliverycharge.deliverychargeList = perpageshowdata(1, 10);
+                //deliverycharge.totalpage = pagecount(10);
+                //return View("AddDeliveryCost", deliverycharge);
             }
             else
             {
-                AdminViewModel deliverycharge = new AdminViewModel();
-                deliverycharge.deliverychargeList = perpageshowdata(1, 10);
-                deliverycharge.totalpage = pagecount(10);
-                return View("AddDeliveryCost", deliverycharge);
+                ViewData["Message"] = "Your data have not been Deleted";
+                //AdminViewModel deliverycharge = new AdminViewModel();
+                //deliverycharge.deliverychargeList = perpageshowdata(1, 10);
+                //deliverycharge.totalpage = pagecount(10);
+                //return View("AddDeliveryCost", deliverycharge);
             }
-          
+            AdminViewModel deliverycharge = new AdminViewModel();
+            deliverycharge.deliverychargeList = perpageshowdata(1, 10);
+            deliverycharge.totalpage = pagecount(10);
+            return View("AddDeliveryCost", deliverycharge);
+
         }
         public ActionResult GetSingleDeliveryChargeDeliveryCost(int id)
         {
@@ -90,7 +149,15 @@ namespace E_Commerce.Admin.Panel.Controllers
             List<DeliveryCharge> deliverychargelist = perpageshowdata(pageindex, pagesize);
             var result = JsonConvert.SerializeObject(deliverychargelist);
             return Json(result, JsonRequestBehavior.AllowGet);
+
         }
+        public JsonResult SearchDeliveryCharge(string SearchKeyword)
+        {
+            List<DeliveryCharge> categorylist = DeliverySettingsManager.SearchDeliveryCost(SearchKeyword);
+            var result = JsonConvert.SerializeObject(categorylist);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         //Zone
         public ActionResult AddZone()
         {
@@ -107,35 +174,102 @@ namespace E_Commerce.Admin.Panel.Controllers
             if (zone.Placeid > 0)
             {
                 zone.PlaceName = division;
-                bool updated = DeliverySettingsManager.UpdateZone(zone);
-                AdminViewModel zoneitem = new AdminViewModel();
-                zoneitem.zone = new Zone();
-                zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
-                zoneitem.totalpage = pagecountzone(10);
-                zoneitem.viewzone = perpageshowdatazone(1, 10);
-                return View("AddZone", zoneitem);
+                if(DeliverySettingsManager.UpdateZone(zone))
+                {
+                    ViewData["Message"] = "Your data have been Updated";
+                    ModelState.Clear();
+                    //zoneitem.zone = new Zone();
+                    //zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
+                    //zoneitem.totalpage = pagecountzone(10);
+                    //zoneitem.viewzone = perpageshowdatazone(1, 10);
+                }
+                else
+                {
+                    ViewData["Message"] = "Your data have not been Updated";
+                    //ModelState.Clear();
+                    //zoneitem.zone = new Zone();
+                    //zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
+                    //zoneitem.totalpage = pagecountzone(10);
+                    //zoneitem.viewzone = perpageshowdatazone(1, 10);
+                }
             }
             else
             {
-
                 zone.PlaceName = division;
-                long addded = DeliverySettingsManager.AddNewZone(zone);
-                AdminViewModel zoneitem = new AdminViewModel();
-                zoneitem.zone = new Zone();
-                zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
-                zoneitem.totalpage = pagecountzone(10);
-                zoneitem.viewzone = perpageshowdatazone(1, 10);
-                return View("AddZone", zoneitem);
+               // AdminViewModel zoneitem = new AdminViewModel();
+                if (DeliverySettingsManager.AddNewZone(zone) > 0)
+                {
+                    ViewData["Message"] = "Your data have  been Added";
+                    //ModelState.Clear();
+                    //zoneitem.zone = new Zone();
+                    //zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
+                    //zoneitem.totalpage = pagecountzone(10);
+                    //zoneitem.viewzone = perpageshowdatazone(1, 10);
+                    ModelState.Clear();
+                }
+                else
+                {
+                    ViewData["Message"] = "Your data have not been Added";
+                    //ModelState.Clear();
+                    //zoneitem.zone = new Zone();
+                    //zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
+                    //zoneitem.totalpage = pagecountzone(10);
+                    //zoneitem.viewzone = perpageshowdatazone(1, 10);
+                }
             }
+            AdminViewModel zoneitem = new AdminViewModel();
+            zoneitem.zone = new Zone();
+            zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
+            zoneitem.totalpage = pagecountzone(10);
+            zoneitem.viewzone = perpageshowdatazone(1, 10);
+            return View("AddZone", zoneitem);
 
+        }
+        public ActionResult MultiedeleteZone(int[] multidelete)
+        {
+            int i = 0;
+            AdminViewModel delivery = new AdminViewModel();
+            if (multidelete != null)
+            {
+                foreach (int multid in multidelete)
+                {
+                    DeliverySettingsManager.DeleteZone(multid);
+                    i++;
+                }
+            }
+            if(multidelete.Length==i)
+            {
+                ViewData["Message"] = "Your data have  been Deleted";
+                //delivery.deliverychargeList = perpageshowdata(1, 10);
+                //delivery.totalpage = pagecount(10);
+            }
+           else
+            {
+                ViewData["Message"] = "Your data have not been Deleted";
+                //delivery.deliverychargeList = perpageshowdata(1, 10);
+                //delivery.totalpage = pagecount(10);
+            }
+            delivery.deliverychargeList = perpageshowdata(1, 10);
+            delivery.totalpage = pagecount(10);
+            return View("AddZone", delivery);
         }
         public ActionResult DeleteZone(int id)
         {
-            if (id > 0)
-            {
-                bool deleted = DeliverySettingsManager.DeleteZone(id);
-            }
             AdminViewModel zoneitem = new AdminViewModel();
+            if(DeliverySettingsManager.DeleteZone(id))
+            {
+                ViewData["Message"] = "Your data have  been Deleted";
+                //zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
+                //zoneitem.totalpage = pagecountzone(10);
+                //zoneitem.viewzone = perpageshowdatazone(1, 10);
+            }
+            else
+            {
+                ViewData["Message"] = "Your data have not been Deleted";
+                //zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
+                //zoneitem.totalpage = pagecountzone(10);
+                //zoneitem.viewzone = perpageshowdatazone(1, 10);
+            }
             zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
             zoneitem.totalpage = pagecountzone(10);
             zoneitem.viewzone = perpageshowdatazone(1, 10);
@@ -168,6 +302,12 @@ namespace E_Commerce.Admin.Panel.Controllers
             var result = JsonConvert.SerializeObject(deliverychargelist);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult SearchZone(string SearchKeyword)
+        {
+            List<DeliveryCharge> categorylist = DeliverySettingsManager.SearchDeliveryCost(SearchKeyword);
+            var result = JsonConvert.SerializeObject(categorylist);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         //area
         public ActionResult AddArea()
         {
@@ -181,43 +321,108 @@ namespace E_Commerce.Admin.Panel.Controllers
         [HttpPost]
         public ActionResult AddArea(Area area, string districts)
         {
+            //area.DevisionName = districts;
+            //AdminViewModel areaitem = new AdminViewModel();
+            if(DeliverySettingsManager.AddNewArea(area)>0)
+            {
+                ViewData["Message"] = "Your data have been Added";
+                ModelState.Clear();
+                //areaitem.areaList = perpageshowdataarea(1, 10);
+                //areaitem.totalpage = pagecountarea(10);
+                //areaitem.viewzone = DeliverySettingsManager.GetAllZone();
+            }
+            else
+            {
+                ViewData["Message"] = "Your data have not been Added";
+                //ModelState.Clear();
+                //areaitem.areaList = perpageshowdataarea(1, 10);
+                //areaitem.totalpage = pagecountarea(10);
+                //areaitem.viewzone = DeliverySettingsManager.GetAllZone();
+            }
             area.DevisionName = districts;
-            long added = DeliverySettingsManager.AddNewArea(area);
             AdminViewModel areaitem = new AdminViewModel();
             areaitem.areaList = perpageshowdataarea(1, 10);
             areaitem.totalpage = pagecountarea(10);
             areaitem.viewzone = DeliverySettingsManager.GetAllZone();
             return View("AddArea", areaitem);
         }
-            public ActionResult DeleteArea(int id)
-          { 
-              if (id>0) 
-              {
-               bool deleted = DeliverySettingsManager.DeleteArea(id);
-              }
-            AdminViewModel areaitem = new AdminViewModel();
-            areaitem.areaList = perpageshowdataarea(1, 10);
-            areaitem.totalpage = pagecountarea(10);
-            areaitem.viewzone = DeliverySettingsManager.GetAllZone();
-            return View("AddArea", areaitem);
-        }
-            public int pagecountarea(int perpagedata)
+        public ActionResult MultiedeleteArea(int[] multidelete)
         {
-            IEnumerable<Area> deliverycharge = DeliverySettingsManager.GetAllArea();
-            return Convert.ToInt32(Math.Ceiling(deliverycharge.Count() / (double)perpagedata));
+            int i = 0;
+            AdminViewModel delivery = new AdminViewModel();
+            if (multidelete != null)
+            {
+                foreach (int multid in multidelete)
+                {
+                    DeliverySettingsManager.DeleteArea(multid);
+                    i++;
+                }
+            }
+            if(multidelete.Length==i)
+            {
+                ViewData["Message"] = "Your data have been Deleted";
+                //delivery.deliverychargeList = perpageshowdata(1, 10);
+                //delivery.totalpage = pagecount(10);
+            }
+            else
+            {
+                ViewData["Message"] = "Your data have not been Deleted";
+                //delivery.deliverychargeList = perpageshowdata(1, 10);
+                //delivery.totalpage = pagecount(10);
+            }
+            delivery.deliverychargeList = perpageshowdata(1, 10);
+            delivery.totalpage = pagecount(10);
+            return View("AddArea", delivery);
+        }
+        public ActionResult DeleteArea(int id)
+          {
+            //AdminViewModel areaitem = new AdminViewModel();
+            if(DeliverySettingsManager.DeleteArea(id))
+            {
+                ViewData["Message"] = "Your data have been Deleted";
+                //areaitem.areaList = perpageshowdataarea(1, 10);
+                //areaitem.totalpage = pagecountarea(10);
+                //areaitem.viewzone = DeliverySettingsManager.GetAllZone();
+            }
+            else
+            {
+                ViewData["Message"] = "Your data have not been Deleted";
+                //areaitem.areaList = perpageshowdataarea(1, 10);
+                //areaitem.totalpage = pagecountarea(10);
+                //areaitem.viewzone = DeliverySettingsManager.GetAllZone();
+            }
+            AdminViewModel areaitem = new AdminViewModel();
+            areaitem.areaList = perpageshowdataarea(1, 10);
+            areaitem.totalpage = pagecountarea(10);
+            areaitem.viewzone = DeliverySettingsManager.GetAllZone();
+            return View("AddArea", areaitem);
+        }
+        // For Area Filter, Pagenation,Search etc
+        public int pagecountarea(int perpagedata)
+        {
+            IEnumerable<Area> area = DeliverySettingsManager.GetAllArea();
+            return Convert.ToInt32(Math.Ceiling(area.Count() / (double)perpagedata));
         }
 
         public List<Area> perpageshowdataarea(int pageindex, int pagesize)
         {
-            IEnumerable<Area> deliverycharge = DeliverySettingsManager.GetAllArea();
-            return deliverycharge.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+            IEnumerable<Area> area = DeliverySettingsManager.GetAllArea();
+            return area.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
         }
 
         public JsonResult Getpaginatiotabledataarea(int pageindex, int pagesize)
         {
-            List<Area> deliverychargelist = perpageshowdataarea(pageindex, pagesize);
-            var result = JsonConvert.SerializeObject(deliverychargelist);
+            AdminViewModel arealist = new AdminViewModel();
+            arealist.areaList = perpageshowdataarea(pageindex, pagesize);
+            arealist.totalpage = pagecountarea(pagesize);
+            var result = JsonConvert.SerializeObject(arealist);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+        //public JsonResult Searchdatarea(string serachvalue)
+        //{
+        //    List<Area> categorylist = DeliverySettingsManager.se(serachvalue);
+        //    var result = JsonConvert.SerializeObject(categorylist);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
     }
 }
