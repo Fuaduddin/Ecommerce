@@ -23,7 +23,8 @@ namespace E_Commerce.Model
         public int CustomerID { get; set; }
         public int OrderDeliveryUpdate { get; set; }
         public string OrderOfficialId { get; set; }
-    }
+		public string CustomerName { get; set; }
+	}
     public class ShipmentModel
     {
         [Key]
@@ -35,7 +36,9 @@ namespace E_Commerce.Model
         public int OrderId { get; set; }
         public int ShipmentUpdate { get; set; }
         public DateTime ShipmentItemPickedUpDate { get; set; }
-    }
+		public string PlaceName { get; set; }
+		public string DevisionName { get; set; }
+	}
     public class OrderItemModel
     {
         [Key]
@@ -44,7 +47,8 @@ namespace E_Commerce.Model
         public int Quantity { get; set; }
         public int ProductPrice { get; set; }
         public int OrderId { get; set; }
-    }
+		public string ProductName { get; set; }
+	}
     public class Payment
     {
         [Key]

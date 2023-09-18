@@ -14,19 +14,15 @@ namespace E_commerce.Web.Controllers
         // GET: cart
         public ActionResult cart()
         {
-          //  CustomerModel customer = 
             CustomerViewModel cart = new CustomerViewModel();
             cart.viewzoneList = DeliverySettingsManager.GetAllZone();
             cart.PaymentMethodList = DeliverySettingsManager.GetAllDeliveryCost();
             cart.areaList = DeliverySettingsManager.GetAllArea();
             cart.Customer= (CustomerModel)Session["CustomerDetails"];
             cart.Cart = new CartModel();
-            //cart.Cart.Payment = new Payment();
-            //cart.Cart.Shipment = new ShipmentModel();
-            //cart.Cart.Payment = new Payment();
-            //cart.Cart.Shipment = new ShipmentModel();
             return View(cart);
         }
+
         [HttpPost]
         public ActionResult cart(CartModel cart,int [] Productitem, int [] Quantityitem, int[] ProductPriceitem)
         {
@@ -74,26 +70,17 @@ namespace E_commerce.Web.Controllers
         {
             CustomerViewModel trackorder = new CustomerViewModel();
             trackorder.Cart=new CartModel();
-			trackorder.Cart.Order=new OrderModel();
 			return View("TrackOrder", trackorder);
         }
         [HttpPost]
-        public ActionResult TrackOrder(string OrderId)
+        public ActionResult TrackOrder(string order)
         {
             CustomerViewModel trackorder = new CustomerViewModel();
-            trackorder.Cart.Order = OrderManager.GetSIngleOrder(OrderId);
+            trackorder.Cart.Order = OrderManager.GetSIngleOrder(order);
             trackorder.Cart.Shipment = OrderManager.GetSIngleShipment(trackorder.Cart.Order.OrderId);
             trackorder.Cart.Payment = OrderManager.GetSInglePayment(trackorder.Cart.Order.OrderId);
             trackorder.Cart.OrderItem = OrderManager.GetSIngleOrderItem(trackorder.Cart.Order.OrderId);
             return View("TrackOrder", trackorder);
-        }
-        public JsonResult GetOrderDetails(string orderid)
-        {
-            var output = "";
-            //   List<Area> categorylist = DeliverySettingsManager.GetSingleZoneAllArea(zoneid);
-            //    string result = JsonConvert.SerializeObject(categorylist);
-                return Json(output, JsonRequestBehavior.AllowGet);
-            //return output;
         }
         /// Ajax Code
         public JsonResult GetAreaName(int zoneid)

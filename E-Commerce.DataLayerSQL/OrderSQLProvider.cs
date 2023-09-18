@@ -25,7 +25,7 @@ namespace E_Commerce.DataLayerSQL
                 command.Parameters.Add(returnvalue);
                 foreach (var charge in order.GetType().GetProperties())
                 {
-                    if (charge.Name != "OrderId")
+                    if (charge.Name != "OrderId" && charge.Name != "CustomerName")
                     {
                         string name = charge.Name;
                         var value = charge.GetValue(order, null);
@@ -62,7 +62,8 @@ namespace E_Commerce.DataLayerSQL
                 command.Parameters.Add(returnvalue);
                 foreach (var charge in shipment.GetType().GetProperties())
                 {
-                    if (charge.Name != "ShipmentId" && charge.Name != "ShipmentItemPickedUpDate")
+                    if (charge.Name != "ShipmentId" && charge.Name != "ShipmentItemPickedUpDate" 
+                        && charge.Name != "PlaceName" && charge.Name != "DevisionName")
                     {
                         string name = charge.Name;
                         var value = charge.GetValue(shipment, null);
@@ -99,7 +100,7 @@ namespace E_Commerce.DataLayerSQL
                 command.Parameters.Add(returnvalue);
                 foreach (var charge in OrderItem.GetType().GetProperties())
                 {
-                    if (charge.Name != "OrderItemId")
+                    if (charge.Name != "OrderItemId" && charge.Name != "ProductName")
                     {
                         string name = charge.Name;
                         var value = charge.GetValue(OrderItem, null);
