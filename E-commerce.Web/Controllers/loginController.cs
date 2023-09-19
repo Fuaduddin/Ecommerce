@@ -33,24 +33,16 @@ namespace E_commerce.Web.Controllers
                 model.UserTotalLogin = model.UserTotalLogin + 1;
                 if(LoginManager.UpdateUser(model))
                 {
-                    //Session["CustomerDetails"]= new CustomerModel();
-                    //var CustomerList=CustomerManager.
-                    //var Customer= CustomerList.Where(x => x.UserId == model.UserId).ToList();
-                    //Session["CustomerDetails"]=(CustomerModel)Customer[0];
-
-                    return RedirectToAction("DashBoard", "CustomerDashBoard");
+                    //Session["CustomerDetails"] = new CustomerModel();
+                    //var CustomerList = CustomerManager.
+                    //var Customer = CustomerList.Where(x => x.UserId == model.UserId).ToList();
+                    //Session["CustomerDetails"] = (CustomerModel)Customer[0];
+                    //return RedirectToAction("DashBoard", "CustomerDashBoard");
                 }      
             }
             else if (user.UserPassword == SuperAdminUserPassword && user.UserName == SuperAdminUserName)
             {
                 return RedirectToAction("DashBoard", "SuperAdminDashboard");
-                //model.UserLastLogin = DateTime.Now;
-                //model.UserTotalLogin = model.UserTotalLogin + 1;
-                //if (LoginManager.UpdateUser(model))
-                //{
-                //    Session["SuperAdminDetails"] = CustomerManager.GetSingleCustomer(model.UserId);
-                //    return RedirectToAction("DashBoard", "SuperAdminDashboard");
-                //}
             }
             else if (password == user.UserPassword && model.UserType == "Delivery Man")
             {
@@ -77,7 +69,6 @@ namespace E_commerce.Web.Controllers
                     Session["SupplierDetails"] = (SupplierModel)Supplier[0];
                     return RedirectToAction("DashBoard", "SupplierDashBoard");
                 }
-
             }
             else if (password == user.UserPassword && model.UserType == "Admin")
             {
@@ -91,7 +82,6 @@ namespace E_commerce.Web.Controllers
                     Session["AdminDetails"] = (AdminModel)Admin[0];
                     return RedirectToAction("DashBoard", "AdminDashboard");
                 }
-               
             }
             else
             {
@@ -109,30 +99,37 @@ namespace E_commerce.Web.Controllers
             return View("registration", customer);
         }
         [HttpPost]
-        public ActionResult registration(int districts, CustomerModel customer,UserModel user)
+        public ActionResult registration(int districts, CustomerModel customer,UserModel user, string confirmpass)
         {
-            user.UserPassword = PasswordEncrypt(user.UserPassword);
-            user.UserLastLogin= DateTime.Now;
-            var userdetails = UserSettingManager.AddNewUser(user);
-            customer.UserId = userdetails;
-            customer.CustomerArea = districts;
-
-            if (CustomerManager.AddNewCustomer(customer) > 0)
+            if(user.UserPassword == confirmpass)
             {
-                ViewData["Message"] = "Account Has Been Created";
-                ModelState.Clear();
-                return View("login");
+                user.UserPassword = PasswordEncrypt(user.UserPassword);
+                user.UserLastLogin = DateTime.Now;
+                var userdetails = UserSettingManager.AddNewUser(user);
+                customer.UserId = userdetails;
+                customer.CustomerArea = districts;
+                if (CustomerManager.AddNewCustomer(customer) > 0)
+                {
+                    ViewData["Message"] = "Account Has Been Created";
+                    ModelState.Clear();
+                    return View("login");
+                }
+                else
+                {
+                    ViewData["Message"] = "Error !!!";
+                    return View("registration");
+                }
             }
             else
             {
-                ViewData["Message"] = "Error !!!";
+                ViewData["Message"] = "Your Password Doesnot Match";
                 return View("registration");
             }
         }
         public JsonResult GetSelectedArea(int zoneid)
         {
-            List<Area> categorylist = DeliverySettingsManager.GetAllArea();
-            var output = categorylist.Where(x => x.Placeid == zoneid).ToList();
+            List<Area> Arealist = DeliverySettingsManager.GetAllArea();
+            var output = Arealist.Where(x => x.Placeid == zoneid).ToList();
             string result = JsonConvert.SerializeObject(output);
             return Json(result, JsonRequestBehavior.AllowGet);
         }

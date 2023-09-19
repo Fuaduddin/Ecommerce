@@ -16,35 +16,36 @@ namespace E_Commerce.BusinessLayer
             var Categorytid = provider.AddNewCustomer(customer);
             return Categorytid;
         }
-        public static List<CategoryModel> GetAllCategory()
+        public static List<CustomerModel> GetAllCustomer()
         {
-            CategorySQLProvider provider = new CategorySQLProvider();
-            var Categoriesd = provider.ViewAllCategory();
+            CustomerSQLProvider provider = new CustomerSQLProvider();
+            var Categoriesd = provider.ViewAllCustomer();
             return Categoriesd;
         }
-        public static bool UpdateCategory(CategoryModel category)
+        public static bool UpdateCustomer(CustomerModel category)
         {
-            CategorySQLProvider provider = new CategorySQLProvider();
-            var Categoriesd = provider.UpdateCategory(category);
+            CustomerSQLProvider provider = new CustomerSQLProvider();
+            var Categoriesd = provider.UpdateCustomer(category);
             return Categoriesd;
         }
-        public static CategoryModel GetSingleCustomer(int categoryId)
+        public static CustomerModel GetSingleCustomer(int categoryId)
         {
-            CategorySQLProvider provider = new CategorySQLProvider();
-            var Categoriesd = provider.GetSingleCategory(categoryId);
+            CustomerSQLProvider provider = new CustomerSQLProvider();
+            var Categoriesd = provider.GetSingleCustomer(categoryId);
             return Categoriesd;
         }
-        public static bool DeleteCategory(int categoryId)
+        public static bool DeleteCustomer(int categoryId)
         {
-            CategorySQLProvider provider = new CategorySQLProvider();
-            var Categoriesd = provider.DeleteCategory(categoryId);
+            CustomerSQLProvider provider = new CustomerSQLProvider();
+            var Categoriesd = provider.DeleteCustomer(categoryId);
             return Categoriesd;
         }
-        public static List<CategoryModel> SearchCategory(string serachvalue)
-        {
-            CategorySQLProvider provider = new CategorySQLProvider();
-            var Categoriesd = provider.SearchCategory(serachvalue);
-            return Categoriesd;
-        }
+
+        //public static List<CategoryModel> SearchCustomer(string serachvalue)
+        //{
+        //    CustomerSQLProvider provider = new CustomerSQLProvider();
+        //    var Categoriesd = provider.SearchCategory(serachvalue);
+        //    return Categoriesd;
+        //}
     }
 }

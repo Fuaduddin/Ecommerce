@@ -18,6 +18,7 @@ namespace E_Commerce.Model
         public FAQModel FAQ { get; set; }
         public ShipmentModel shipment { get; set; }
         public CartModel Cart { get; set; }
+        public DashBoardModel DashBoard { get; set; }
 
 
         // List

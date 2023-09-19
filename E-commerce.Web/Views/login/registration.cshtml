@@ -70,7 +70,7 @@
                         </select>
                         @Html.HiddenFor(Model => Model.Customer.CustomerArea, new { @class = "form-control", type = "hidden", id = "deliverymanarea" })
                         @Html.ValidationMessageFor(Model => Model.Customer.CustomerArea)
-       
+
                     </div>
                     <div class="login-input">
                         <label class="text-field"><b>Customer User Name</b></label>
@@ -82,7 +82,10 @@
                         @Html.TextBoxFor(Model => Model.user.UserPassword, new { @class = "login-from-input form-control", @placeholder = "Enter Your password" })
                         @Html.ValidationMessageFor(Model => Model.user.UserPassword)
                     </div>
-
+                    <div class="login-input">
+                        <label class="text-field"><b>Confirmation Password</b></label>
+                        <input class="login-from-input form-control" placeholder = "Enter Your Confirm password" name="confirmpass" required/>
+                    </div>
                     <div class="social-button-details">
                         <button class="button-link facebook"><i class="fa fa-facebook"></i> Facebook</button>
                         <button class="button-link twitter"><i class="fa fa-twitter"></i> Twitter</button>

@@ -13,7 +13,6 @@ namespace E_Commerce.Model
         // All Single Model
         public ProductModel Product { get; set; }
         public CategoryModel Category { get; set; }
-       
         public SubCategoryModel SubCategory { get; set; }
         public DeliveryCharge deliverycharge{ get; set; }
         public Area area { get; set; }
@@ -53,6 +52,12 @@ namespace E_Commerce.Model
         public List<SubCategoryModel> SubCategoryList { get; set; }
         public List<viewsubcategory> viewsubcategorydetails { get; set; }
         public List<viewZone> viewzone { get; set; }
+        public List<CustomerModel> CustomerList { get; set; }
+
+
+
+
+
 
         //public RoleModel role { get; set; }
         //public List<RoleModel> rolelist { get; set; }

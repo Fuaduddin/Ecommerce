@@ -21,7 +21,7 @@ namespace E_commerce.Web.Controllers
             //supplierdetails.DueAssng = DashBoardManager.GettotalDueAssing(supplier.SupplierId);
             //supplierdetails.TotalAssng = DashBoardManager.GettotalAssignAssing(supplier.SupplierId);
             //return View("DashBoard", supplierdetails);
-            return View();
+            return View("DashBoard");
         }
         public ActionResult ViewRecentOrderDetails()
         {
@@ -61,6 +61,18 @@ namespace E_commerce.Web.Controllers
             Session.Clear();
             return RedirectToAction("login", "login");
         }
+
+        // Common For Every Indivual Customer
+
+        private DashBoardModel UserDashboardDetails(int CustomerID)
+        {
+            DashBoardModel dashboard = new DashBoardModel();
+
+            return dashboard;
+        }
+
+
+
 
         }
     }
