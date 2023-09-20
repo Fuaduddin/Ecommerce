@@ -27,45 +27,41 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var product in Model.ProductList)
+                            @foreach (var order in Model.CustomerWiseOrderList)
                             {
                                 <tr>
                                     <td>
                                         @i
                                     </td>
                                     <td>
-                                        @product.ProdcutItemId
+                                        @order.Order.OrderOfficialId
                                     </td>
                                     <td>
-                                        
+                                        @order.Order.OrderAddedDate
                                     </td>
                                     <td>
-                                       
+                                        @order.Order.TotalPrice
                                     </td>
                                     <td>
-
+                                        <span><i><b>Zone: </b></i></span>  @order.Shipment.DevisionName <br />
+                                        <span><i><b>Area: </b></i></span>  @order.Shipment.PlaceName <br />
+                                        <span><i><b>Full Address: </b></i></span>  @order.Shipment.ShipmentAddress <br />
                                     </td>
                                     <td>
-                                        <button onclick="showmodal(@product.ProductId)" class="btn btn-danger">Delete</button>
+                                        <button onclick="showmodal(@order.Order.OrderId)" class="btn btn-danger">Delete</button>
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Delete", "DeleteProduct", "Product", new { Id = product.ProductId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                        @Html.ActionLink("Delete", "CancleOrder", "CustomerDashBoard", new { Id = @order.Order.OrderId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Update", "GetSingleProduct", "Product", new { Id = product.ProductId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Single Details", "GetSingleProduct", "Product", new { Id = product.ProductId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Assing Supplier", "AssignSupplier", "Assignment", new { Id = product.ProductId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                        @Html.ActionLink("Single Details", "GetSingleProduct", "Product", new { Id = @order.Order.OrderId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
                                     </td>
                                 </tr>
                                 i++;
                             }
                         </tbody>
                     </table>
-                    <div class="pagination-table-nav">
+                    @*<div class="pagination-table-nav">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                                 <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -78,7 +74,7 @@
                                 <li class="page-item"><a class="page-link" href="#">Next</a></li>
                             </ul>
                         </nav>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
@@ -86,11 +82,11 @@
 </div>
 <div id="id01" class="modal">
     <span class="close" title="Close Modal">×</span>
-    @using (Html.BeginForm("DeleteSubCategory", "SubCategory", FormMethod.Post, new { @class = "modal-content" }))
+    @using (Html.BeginForm("CancleOrder", "CustomerDashBoard", FormMethod.Post, new { @class = "modal-content" }))
     {
         <div class="container">
-            <h1>Delete Category</h1>
-            <p>Are you sure you want to delete this Category?</p>
+            <h1>Cancle Order</h1>
+            <p>Are you sure you want to delete this Order?</p>
             <input type="hidden" name="id" id="categoryid" />
             <div class="clearfix">
                 <button type="button" id="close-CategoryDelete" , class="btn btn-danger">Cancel</button>

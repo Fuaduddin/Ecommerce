@@ -34,7 +34,7 @@ D:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-C
 D:\Protfolios\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.pdb
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\bin\Debug\E-Commerce.Utility.dll
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\bin\Debug\E-Commerce.Utility.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.csproj.AssemblyReference.cache
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.csproj.CoreCompileInputs.cache
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.dll
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.pdb
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Utility\obj\Debug\E-Commerce.Utility.csproj.AssemblyReference.cache

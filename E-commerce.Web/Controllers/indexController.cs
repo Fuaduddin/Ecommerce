@@ -21,10 +21,13 @@ namespace E_commerce.Web.Controllers
         }
         public ActionResult contact()
         {
-            return View();
+            CustomerViewModel contact = new CustomerViewModel();
+            contact.Email=new EmailModel();
+            contact.Appointment=new AppointmentModel();
+            return View("contact", contact);
         }
         [HttpPost]
-        public ActionResult contact( EmailModel email)
+        public ActionResult contact(EmailModel email)
         {
            email.SentDate= DateTime.Now;
            email.Updatemessage = 0;
@@ -32,14 +35,14 @@ namespace E_commerce.Web.Controllers
           if(sentemail>0)
            {
                 ModelState.Clear();
-               ViewData["Message"] = "We will contact with you shortly";
+                ViewData["Message"] = "We will contact with you shortly";
            }
             return View();
         }
         [HttpPost]
         public ActionResult AddnewAppopintment(AppointmentModel appointment)
         {
-           appointment.AppointDate =DateTime.Now;
+            appointment.AppointDate =DateTime.Now;
             appointment.AssingedUpdate = 0;
             var sentemail = ContactManager.AddNewAppointment(appointment);
             if (sentemail > 0)

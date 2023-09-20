@@ -35,5 +35,6 @@ namespace E_Commerce.Model
         public List<ImageGallery> Imagegallery { get; set; }
         public List<ReviewModel> ReviewList { get; set; }
         public List<SubCategoryModel> SubCategoryList { get; set; }
+        public List<CartModel> CustomerWiseOrderList { get; set; }
     }
 }

@@ -33,11 +33,11 @@ namespace E_commerce.Web.Controllers
                 model.UserTotalLogin = model.UserTotalLogin + 1;
                 if(LoginManager.UpdateUser(model))
                 {
-                    //Session["CustomerDetails"] = new CustomerModel();
-                    //var CustomerList = CustomerManager.
-                    //var Customer = CustomerList.Where(x => x.UserId == model.UserId).ToList();
-                    //Session["CustomerDetails"] = (CustomerModel)Customer[0];
-                    //return RedirectToAction("DashBoard", "CustomerDashBoard");
+                    Session["CustomerDetails"] = new CustomerModel();
+                    var CustomerList = CustomerManager.GetAllCustomer();
+                    var Customer = CustomerList.Where(x => x.UserId == model.UserId).ToList();
+                    Session["CustomerDetails"] = (CustomerModel)Customer[0];
+                    return RedirectToAction("DashBoard", "CustomerDashBoard");
                 }      
             }
             else if (user.UserPassword == SuperAdminUserPassword && user.UserName == SuperAdminUserName)
@@ -126,14 +126,14 @@ namespace E_commerce.Web.Controllers
                 return View("registration");
             }
         }
-        public JsonResult GetSelectedArea(int zoneid)
+        private JsonResult GetSelectedArea(int zoneid)
         {
             List<Area> Arealist = DeliverySettingsManager.GetAllArea();
             var output = Arealist.Where(x => x.Placeid == zoneid).ToList();
             string result = JsonConvert.SerializeObject(output);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-		public string PasswordEncrypt(string Password)
+        private string PasswordEncrypt(string Password)
 		{
 			string encryptedpassword;
 			if (!string.IsNullOrEmpty(Password))
@@ -147,7 +147,7 @@ namespace E_commerce.Web.Controllers
 			}
 			return encryptedpassword;
 		}
-		public string PasswordDencrypt(string Password)
+		private string PasswordDencrypt(string Password)
 		{
 			string encryptedpassword;
 			if (!string.IsNullOrEmpty(Password))

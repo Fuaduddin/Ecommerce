@@ -30,7 +30,7 @@ namespace E_commerce.Web.Controllers
             cart.Order.OrderDeliveryUpdate = 0;
             cart.Order.OrderOfficialId = Guid.NewGuid().ToString();
             var customerid = (CustomerModel)Session["CustomerDetails"];
-			cart.Order.CustomerID = customerid.CustomerId;
+            cart.Order.CustomerID = customerid.CustomerId;
             cart.Order.OrderAddedDate = DateTime.Now;
             long orderid = OrderManager.AddNewOrder(cart.Order);
             long shipment = 0;
@@ -41,9 +41,10 @@ namespace E_commerce.Web.Controllers
                 cart.Shipment.ShipmentAddedDate = DateTime.Now;
                 cart.Shipment.ShipmentUpdate = 0;
                 cart.Payment.OrderId= (int)orderid;
+                cart.Payment.Amount = cart.Order.TotalPrice;
                 shipment = OrderManager.AddNewShipment(cart.Shipment);
                 Payment = OrderManager.AddNewPayment(cart.Payment);
-                for (var n=0;n<=Productitem.Length;n++)
+                for (var n=0;n<Productitem.Length;n++)
                 {
                     OrderItemModel orderitem = new OrderItemModel
                     {
@@ -76,6 +77,7 @@ namespace E_commerce.Web.Controllers
         public ActionResult TrackOrder(string order)
         {
             CustomerViewModel trackorder = new CustomerViewModel();
+            trackorder.Cart = new CartModel();
             trackorder.Cart.Order = OrderManager.GetSIngleOrder(order);
             trackorder.Cart.Shipment = OrderManager.GetSIngleShipment(trackorder.Cart.Order.OrderId);
             trackorder.Cart.Payment = OrderManager.GetSInglePayment(trackorder.Cart.Order.OrderId);

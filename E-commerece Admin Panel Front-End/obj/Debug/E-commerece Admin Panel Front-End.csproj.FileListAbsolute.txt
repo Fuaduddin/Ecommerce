@@ -424,8 +424,8 @@ D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerece Admin 
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Helpers.xml
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\System.Web.Mvc.xml
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.AssemblyReference.cache
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.CoreCompileInputs.cache
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.CopyComplete
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.dll
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.pdb
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-commerece Admin Panel Front-End\obj\Debug\E-commerece Admin Panel Front-End.csproj.AssemblyReference.cache

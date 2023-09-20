@@ -24,7 +24,8 @@ namespace E_Commerce.Model
         public int OrderDeliveryUpdate { get; set; }
         public string OrderOfficialId { get; set; }
 		public string CustomerName { get; set; }
-	}
+        public string CustomerPhoneNumber { get; set; }
+    }
     public class ShipmentModel
     {
         [Key]
@@ -53,10 +54,11 @@ namespace E_Commerce.Model
     {
         [Key]
         public int PaymentId { get; set; }
-        public DateTime PaymentDate { get; set; }
+        public DateTime OrderPaymentDate { get; set; }
         public int PaymentMethod { get; set; }
         public int Amount { get; set; }
         public int OrderId { get; set; }
+        public string DeliveryChargeTitle { get; set; }
     }
     //public class TrackOrder
     //{

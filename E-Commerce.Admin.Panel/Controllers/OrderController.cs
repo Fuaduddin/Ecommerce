@@ -9,7 +9,11 @@ namespace E_Commerce.Admin.Panel.Controllers
     public class OrderController : Controller
     {
         // GET: Order
-        public ActionResult Index()
+        public ActionResult ViewAllOrder()
+        {
+            return View();
+        }
+        public ActionResult CancleOrder()
         {
             return View();
         }

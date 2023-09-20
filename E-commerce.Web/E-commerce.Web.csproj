@@ -2071,7 +2071,6 @@
     <Content Include="Views\CustomerDashBoard\DashBoard.cshtml" />
     <Content Include="Views\ProductFrontEnd\categoryproduct.cshtml" />
     <Content Include="Views\ProductFrontEnd\singleproduct.cshtml" />
-    <Content Include="Views\CustomerDashBoard\ViewRecentOrderDetails.cshtml" />
     <Content Include="Views\CustomerDashBoard\ViewAllOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

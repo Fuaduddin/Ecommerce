@@ -36,7 +36,7 @@ D:\Protfolios\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Com
 D:\Protfolios\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.pdb
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Commerce.Model.dll
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Model\bin\Debug\E-Commerce.Model.pdb
+D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.AssemblyReference.cache
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.CoreCompileInputs.cache
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.dll
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.pdb
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.Model\obj\Debug\E-Commerce.Model.csproj.AssemblyReference.cache

@@ -3,6 +3,7 @@ using E_Commerce.Utility;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,7 @@ namespace E_Commerce.DataLayerSQL
                 command.Parameters.Add(returnvalue);
                 foreach (var charge in order.GetType().GetProperties())
                 {
-                    if (charge.Name != "OrderId" && charge.Name != "CustomerName")
+                    if (charge.Name != "OrderId" && charge.Name != "CustomerName" && charge.Name != "CustomerPhoneNumber")
                     {
                         string name = charge.Name;
                         var value = charge.GetValue(order, null);
@@ -137,7 +138,7 @@ namespace E_Commerce.DataLayerSQL
                 command.Parameters.Add(returnvalue);
                 foreach (var charge in payment.GetType().GetProperties())
                 {
-                    if (charge.Name != "PaymentId")
+                    if (charge.Name != "PaymentId" && charge.Name != "OrderPaymentDate" && charge.Name != "DeliveryChargeTitle")
                     {
                         string name = charge.Name;
                         var value = charge.GetValue(payment, null);
@@ -263,136 +264,136 @@ namespace E_Commerce.DataLayerSQL
 				}
 			}
 		}
-        //public List<DeliveryCharge> ViewAllDeliveryCharge()
-        //{
-        //    using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-        //    {
-        //        SqlCommand command = new SqlCommand(StoredProcedured.GetAllDeliveryCharge, connection);
-        //        command.CommandType = CommandType.StoredProcedure;
-        //        try
-        //        {
-        //            connection.Open();
-        //            SqlDataReader Datareader = command.ExecuteReader();
-        //            List<DeliveryCharge> deliverychargeList = new List<DeliveryCharge>();
-        //            deliverychargeList = UtilityManager.DataReaderMapToList<DeliveryCharge>(Datareader);
-        //            return deliverychargeList;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw new Exception("Exception Adding Data. " + ex.Message);
-        //        }
-        //        finally
-        //        {
-        //            connection.Close();
-        //        }
-        //    }
-        //}
-        //public List<DeliveryCharge> SearchDeliveryCost(string SearchKeyword)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-        //    {
-        //        SqlCommand command = new SqlCommand(StoredProcedured.SearchDeliveryCharge, connection);
-        //        command.CommandType = CommandType.StoredProcedure;
-        //        command.Parameters.Add(new SqlParameter("@DeliveryChargeTitle", SearchKeyword));
-        //        try
-        //        {
-        //            connection.Open();
-        //            SqlDataReader reader = command.ExecuteReader();
-        //            List<DeliveryCharge> deliverychargeList = new List<DeliveryCharge>();
-        //            deliverychargeList = UtilityManager.DataReaderMapToList<DeliveryCharge>(reader);
-        //            return deliverychargeList;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw new Exception("Exception Adding Data. " + ex.Message);
-        //        }
-        //        finally
-        //        {
-        //            connection.Close();
-        //        }
-        //    }
-        //}
-        //public bool DeleteDeliveryCharge(int deliverychargeid)
-        //{
-        //    bool IsDeleted = true;
-        //    using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-        //    {
-        //        SqlCommand command = new SqlCommand(StoredProcedured.DeleteDeliveryCharge, connection);
-        //        command.CommandType = CommandType.StoredProcedure;
-        //        command.Parameters.Add(new SqlParameter("@DeliveryChargeid", deliverychargeid));
-        //        try
-        //        {
-        //            connection.Open();
-        //            command.ExecuteNonQuery();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            IsDeleted = false;
-        //            throw new Exception("Exception Adding Data. " + ex.Message);
-        //        }
-        //        finally
-        //        {
-        //            connection.Close();
-        //        }
 
-        //        return IsDeleted;
-        //    }
-        //}
-        //public DeliveryCharge GetSingleDelivery(int deliverychargeid)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-        //    {
-        //        SqlCommand command = new SqlCommand(StoredProcedured.GetSingleDeliveryCharge, connection);
-        //        command.CommandType = CommandType.StoredProcedure;
-        //        command.Parameters.Add(new SqlParameter("@DeliveryChargeid", deliverychargeid));
-        //        try
-        //        {
-        //            connection.Open();
-        //            SqlDataReader reader = command.ExecuteReader();
-        //            DeliveryCharge charge = new DeliveryCharge();
-        //            charge = UtilityManager.DataReaderMap<DeliveryCharge>(reader);
-        //            return charge;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw new Exception("Exception Adding Data. " + ex.Message);
-        //        }
-        //        finally
-        //        {
-        //            connection.Close();
-        //        }
-        //    }
-        //}
-        //public bool UpdateDeliveryCharge(DeliveryCharge deliveryCharge)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-        //    {
-        //        bool updated = true;
-        //        SqlCommand command = new SqlCommand(StoredProcedured.UpdateDeliveryCharge, connection);
-        //        command.CommandType = CommandType.StoredProcedure;
-        //        foreach (var charge in deliveryCharge.GetType().GetProperties())
-        //        {
-        //            string name = charge.Name;
-        //            var value = charge.GetValue(deliveryCharge, null);
-        //            command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
-        //        }
-        //        try
-        //        {
-        //            connection.Open();
-        //            command.ExecuteNonQuery();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            updated = false;
-        //            throw new Exception("Exception Adding Data. " + ex.Message);
-        //        }
-        //        finally
-        //        {
-        //            connection.Close();
-        //        }
-        //        return updated;
-        //    }
-        //}
+        public List<OrderModel>  GetSIngleCustomerOrder(int CustomerId)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleCustomerOrder, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@CustomerID", CustomerId));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<OrderModel> OrderList = new List<OrderModel>();
+                    OrderList = UtilityManager.DataReaderMapToList<OrderModel>(reader);
+                    return OrderList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public bool DeleteOrder(int OrderId)
+        {
+            bool IsDeleted = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.DeleteOrder, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@OrderId", OrderId));
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    IsDeleted = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                return IsDeleted;
+            }
+        }
+        public bool DeleteShipment(int OrderId)
+        {
+            bool IsDeleted = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.ADeleteShipment, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@OrderId", OrderId));
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    IsDeleted = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                return IsDeleted;
+            }
+        }
+        public bool DeleteOrderItem(int OrderId)
+        {
+            bool IsDeleted = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.DeleteOrderItem, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@OrderId", OrderId));
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    IsDeleted = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                return IsDeleted;
+            }
+        }
+        public bool DeletePayment(int OrderId)
+        {
+            bool IsDeleted = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.DeletePayment, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@OrderId", OrderId));
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    IsDeleted = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                return IsDeleted;
+            }
+        }
 
     }
 }

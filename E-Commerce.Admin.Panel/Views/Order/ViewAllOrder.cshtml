@@ -1,0 +1,350 @@
+﻿@model E_Commerce.Model.AdminViewModel
+
+@{
+    ViewBag.Title = "ViewAllAdmin";
+    Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+    var i = 1;
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Admin List</h4>
+                <div class="table-responsive">
+                    @if (ViewData["Message"] != null)
+                    {
+                        <h5 class="confirmationmessage" style="color:red">@ViewData["Message"]</h5>
+                    }
+                    <div id="deleteallbutton" style="display:none;">
+                        <div class="">
+                            <a href="#" class="btn btn-danger checkconfirmation"> Delete All </a>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="mb-3" id="searchitem">
+                        <div class="">
+                            <input type="text" class="form-control searchitemid" id="searchitemcategory" placeholder="Search...." aria-describedby="emailHelp">
+                        </div>
+
+                        <br />
+                        <div class="pagination-sortingitem">
+                            <div>
+                                <select class="form-select" id="filteritem" aria-label="Default select example">
+                                    <option value="10" selected>10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="40">40</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class=""></div>
+                    </div>
+                    @using (Html.BeginForm("MultieDeleteEmail", "Contact", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <table class="table table-striped table-bordered zero-configuration">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Order ID</th>
+                                    <th>Customer Information</th>
+                                    <th>Shimpent Details</th>
+                                    <th>Delete</th>
+                                    <th>Update</th>
+                                    <th>Single Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var admin in Model.AdminList)
+                                {
+                                    <tr>
+                                        <td>
+                                            @i
+                                        </td>
+                                        <td>
+                                            @admin.AdminOfficialId
+                                        </td>
+                                        <td>
+                                            <img src="@admin.AdminProfilePic" width="100" height="100" alt="">
+                                        </td>
+                                        <td>
+                                            @admin.AdminName
+                                        </td>
+                                        <td>
+                                            @admin.TotalAppointment
+                                        </td>
+                                        <td>
+                                            @admin.UserTotalLogin
+                                        </td>
+                                        <td>
+                                            @admin.UserLastLogin
+                                        </td>
+                                        <td>
+                                            <button onclick="showmodal(@admin.AdminId,@admin.UserId)" class="btn btn-danger">Delete</button>
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Update", "GetSingleAdmin", new { Id = admin.AdminId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Update", "GetSingleAdmin", new { Id = admin.AdminId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                        </td>
+
+                                    </tr>
+                                    i++;
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    <div class="pagination-table-nav">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                @for (i = 1; i <= Model.totalpage; i++)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" onclick="showdata(@i)">@i</a>
+                                    </li>
+                                }
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="id01" class="modal">
+    <span class="close" title="Close Modal">×</span>
+    @using (Html.BeginForm("DeleteAdmin", "StaffSettings", FormMethod.Post, new { @class = "modal-content" }))
+    {
+        <div class="container">
+            <h1>Delete Category</h1>
+            <p>Are you sure you want to delete this Category?</p>
+            <input type="hidden" name="id" id="categoryid" />
+            <input type="hidden" name="userid" id="userid" />
+            <div class="clearfix">
+                <button type="button" id="close-CategoryDelete" , class="btn btn-danger">Cancel</button>
+                <input type="submit" value="Delete" class="btn btn-success" />
+            </div>
+        </div>
+    }
+</div>
+<script>
+    // Get the modal
+    $(document).ready(function () {
+        $('#open-CategoryDelete').click(function () {
+            /* $('#bookId').val($(this).data('id'));*/
+            var inputF = document.getElementById("categoryid");
+            let dataId = $(this).attr("data-id");
+            inputF.setAttribute('value', dataId);
+            /* document.getElementById("categoryid").innerHTML = dataId;*/
+            $('#id01').fadeIn();
+        });
+    });
+    $(document).ready(function () {
+        $('#close-CategoryDelete').click(function () {
+            $('#id01').hide();
+        });
+    });
+</script>
+<script>
+    function showmodal(n,m) {
+        document.getElementById('id01').style.display = 'block';
+        $("#categoryid").val(n);
+        $("#userid").val(m);
+    }
+    function closemenu() {
+        $("#id01").hide();
+    }
+    //Search
+    $("#searchitemcategory").keyup(function () {
+
+        var serachvalue = $("#searchitemcategory").val();
+
+        var showdata =
+        {
+            SearchKeyword: serachvalue
+        }
+        if (serachvalue != null) {
+            $.ajax({
+                url: "/StaffSettings/SearchdataAdmin",
+                Method: "POST",
+                data: showdata,
+                success: function (data) {
+                    $('.hide-row').css("display", "none");;
+                    data = JSON.parse(data);
+                    var serialno = 1;
+                    var element = "";
+                    $.each(data, function (i) {
+                        if (data[i].Updatemessage == 0) {
+                            element += `
+                 <tr class="hide-row multiedelete unreademail">
+                     <td>
+                        <input type="checkbox" class="multiedeleteitem" name="multidelete" value="${data[i].Emailid}">
+                    </td>
+                     <td>
+                        ${serialno}
+                    </td>
+
+                     <td>
+                       ${data[i].EmailSubject}
+                    </td>
+                    <td>
+                        ${data[i].Email}
+                    </td>
+                     <td>
+                      <span>Customer Full Name: ${data[i].CustomerFullName}</span>
+                          <span>Customer Email:${data[i].CustomerEmailAddress}</span>
+                    </td>
+                     <td>
+                        ${data[i].SentDate}
+                    </td>
+                    <td>
+                        <button id="open-CategoryDelete" data-toggle="modal" data-id="  ${data[i].Emailid}" class="btn btn-danger">Delete</button>
+                    </td>
+                    <td>
+                       <a class = "btn btn-success", data_toggle = "tooltip", data_placement = "top"  href="/ContactC/GetsingleEmail/${data[i].Emailid}">Read Email</a>
+
+                    </td>
+
+                </tr>
+                    `;
+                        }
+                        else {
+                            element += `
+               <tr class="hide-row multiedelete reademail">
+               <td>
+                        <input type="checkbox" class="multiedeleteitem" name="multidelete" value="${data[i].Emailid}">
+                    </td>
+                     <td>
+                        ${serialno}
+                    </td>
+
+                     <td>
+                       ${data[i].EmailSubject}
+                    </td>
+                    <td>
+                        ${data[i].Email}
+                    </td>
+                     <td>
+                      <span>Customer Full Name: ${data[i].CustomerFullName}</span>
+                          <span>Customer Email:${data[i].CustomerEmailAddress}</span>
+                    </td>
+                     <td>
+                        ${data[i].SentDate}
+                    </td>
+                    <td>
+                        <button id="open-CategoryDelete" data-toggle="modal" data-id="  ${data[i].Emailid}" class="btn btn-danger">Delete</button>
+                    </td>
+                    <td>
+                       <a class = "btn btn-success", data_toggle = "tooltip", data_placement = "top"  href="/ContactC/GetsingleEmail/${data[i].Emailid}">Read Email</a>
+
+                    </td>
+                </tr>
+                    `;
+                        }
+
+                        $("#table").append(element);
+                        serialno++;
+                        var element = "";
+                    });
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            })
+        }
+        else {
+            $('.hide-row').css("display", "block");;
+        }
+    });
+</script>
+
+<style>
+    .inputfield {
+        width: 100px;
+        height: 100px;
+    }
+
+    .title-addproduct {
+        text-align: center;
+        margin-bottom: 3%;
+        margin-top: 2%;
+    }
+
+    .form-validation {
+        padding: 0% 5%;
+    }
+
+    input#Product_ProductName {
+        padding: 1%;
+        width: 100%;
+    }
+
+    input#Product_ProductPrice {
+        padding: 1%;
+        width: 100%;
+    }
+
+    input#Product_TotalProduct {
+        padding: 1%;
+        width: 100%;
+    }
+
+    input.btn.btn-light {
+        padding: 1% 12%;
+        background-color: gainsboro;
+        margin-left: 95%;
+        margin-top: 5%;
+    }
+</style>
+<style>
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+        margin-left: 7%;
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 3% 3% 4% 2%;
+        border: 1px solid #888;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* margin-left: 0%;*/
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>
+

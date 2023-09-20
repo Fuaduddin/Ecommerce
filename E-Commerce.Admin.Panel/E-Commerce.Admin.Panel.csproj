@@ -5301,6 +5301,7 @@
     <Content Include="Views\AdminDashboard\ViewAllDueAssignment.cshtml" />
     <Content Include="Views\AdminDashboard\UpdateAssignment.cshtml" />
     <Content Include="Views\Customer\ViewAllCustomer.cshtml" />
+    <Content Include="Views\Order\ViewAllOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5312,7 +5313,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\E-Commerce.BusinessLayer\E-Commerce.BusinessLayer.csproj">

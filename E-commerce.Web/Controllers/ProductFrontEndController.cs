@@ -12,19 +12,23 @@ namespace E_commerce.Web.Controllers
     {
         // GET: ProductFrontEnd
         // Category Wise Product Page
-        //public ActionResult categoryproduct()
-        //{
-        //    return View("categoryproduct");
-        //}
         [HttpGet]
         public ActionResult categoryproduct(int id)
         {
             CustomerViewModel categoryproduct = new CustomerViewModel();
-            var productlist = GetAllCategoryWiseProduct();
-            categoryproduct.ProductList = productlist.Where(x=> x.CategoryId==id).ToList();
-            categoryproduct.SubCategoryList = SubCategoryManager.GetAllSelectedSubCategory(id);
-            //ViewData["categoryid"] = id;
-           // categoryproduct.CategoryList = CategoryManager.GetAllCategory();
+            if (id>0)
+            {
+                var productlist = GetAllCategoryWiseProduct();
+                categoryproduct.ProductList = productlist.Where(x => x.CategoryId == id).ToList();
+                categoryproduct.SubCategoryList = SubCategoryManager.GetAllSelectedSubCategory(id);
+                ViewBag.categoryID = id;
+            }
+           else
+            {
+                categoryproduct.ProductList = GetAllCategoryWiseProduct();
+                categoryproduct.SubCategoryList = SubCategoryManager.GetAllSelectedSubCategory(id);
+                ViewBag.categoryID = id;
+            }
             return View("categoryproduct", categoryproduct);
         }
         // Single Product Page
@@ -42,7 +46,7 @@ namespace E_commerce.Web.Controllers
         public ActionResult SortSearchProduct(int[]subcategory, int startingvalue, int endingvalue)
         {
             CustomerViewModel categoryproduct = new CustomerViewModel();
-            if (subcategory.Length>0)
+            if (subcategory != null)
             {
                 categoryproduct.ProductList = SortSearchProducts(subcategory,0,0);
             }
@@ -56,12 +60,12 @@ namespace E_commerce.Web.Controllers
         public List<ProductModel> SortSearchProducts(int[] subcategoryid, int startingvalueprice, int endingvalueprice)
         {
             List<ProductModel> productlist = new List<ProductModel>();
-
-            if(subcategoryid.Length>0 && startingvalueprice>0 && endingvalueprice>0)
+            int id= (int)ViewBag.categoryID;
+            if (subcategoryid.Length>0 && startingvalueprice>0 && endingvalueprice>0)
             {
                 foreach(var subcategory in subcategoryid)
                 {
-                    var getallpricesorted = ProductManager.GetAllProduct().Where(x => x.SubCategoryId == subcategory && x.ProductPrice >= startingvalueprice && x.ProductPrice <= endingvalueprice).ToList();
+                    var getallpricesorted = ProductManager.GetAllProduct().Where(x => x.SubCategoryId == subcategory && x.ProductPrice >= startingvalueprice && x.ProductPrice <= endingvalueprice && x.CategoryId==id).ToList();
                     foreach (var productitem in getallpricesorted)
                     {
                         ProductModel product = new ProductModel();
@@ -76,7 +80,7 @@ namespace E_commerce.Web.Controllers
                 {
                     endingvalueprice = startingvalueprice + 3000;
                 }
-                var getallpricesorted = ProductManager.GetAllProduct().Where(x => x.ProductPrice >= startingvalueprice && x.ProductPrice <= endingvalueprice).ToList();
+                var getallpricesorted = ProductManager.GetAllProduct().Where(x => x.ProductPrice >= startingvalueprice && x.ProductPrice <= endingvalueprice && x.CategoryId == id).ToList();
                 foreach(var productitem in getallpricesorted)
                 {
                     ProductModel product = new ProductModel();

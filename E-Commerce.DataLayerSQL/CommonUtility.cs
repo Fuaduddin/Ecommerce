@@ -195,6 +195,13 @@ namespace E_Commerce.Utility
         public static string DeleteFAQ = "SP_DeleteFAQ";
         public static string GetSingleFAQ = "SP_GetSingleFAQ";
 
+        // Customer DashBoard
+        public static string GetSingleCustomerOrder = "SP_GetSingleCustomerOrder";
+
+
+
+
+
         //Cart && Track Order && Payment && Order
         //public static string TrackOrder = "SP_TrackOrder";
         public static string AddNewOrder = "SP_AddNewOrder";
@@ -205,7 +212,11 @@ namespace E_Commerce.Utility
 		public static string GetSingleShipment = "SP_GetSingleShipment";
 		public static string GetSingleOrderItem = "SP_GetSingleOrderItem";
 		public static string GetSinglePayment = "SP_GetSinglePayment";
+        public static string DeleteOrder = "SP_DeleteOrder";
+        public static string ADeleteShipment = "SP_DeleteShipment";
+        public static string DeleteOrderItem = "SP_DeleteOrderItem";
+        public static string DeletePayment = "SP_DeletePayment";
 
-	}
+    }
 
 }

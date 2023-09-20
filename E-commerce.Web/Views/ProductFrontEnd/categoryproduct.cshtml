@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 ">
                     <div class="subcategory product-filter">
-                        <h4>Product filters</h4>
+                        <h4>Sub Category</h4>
                         @using (Html.BeginForm("SortSearchProduct", "ProductFrontEnd", FormMethod.Post, new { enctype = "multipart/form-data", @class = "login" }))
                         {
                             if (Model.SubCategoryList != null)
@@ -45,9 +45,9 @@
                         {
                            
                             <span class="starting-value" id="starting-value">$ 0</span>
-                            <input type="range" id="starting-valueprice" name="startingvalue" min="0" class="filter-range" onchange="updateTextInput()"> <br>
+                            <input type="range" id="starting-valueprice" name="startingvalue" min="0" max="100000000" value="0" class="filter-range" onchange="updateTextInput()"> <br>
                             <span class="ending-value" id="ending-value">$ 1000</span>
-                            <input type="range" id="ending-valueprice" name="endingvalue" min="0" class="filter-range" onchange="updateTextInput()"> <br>
+                            <input type="range" id="ending-valueprice" name="endingvalue" min="0" max="100000000" value="1000" class="filter-range" onchange="updateTextInput()"> <br>
                             <input type="submit">
                         }
                     </div>
@@ -84,17 +84,28 @@
     <!-- Boothstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script>
+        var startingvalue=1000;
         function updateTextInput() {
             debugger
-            var startingvalue = $("#starting-valueprice").val();
+            if (startingvalue > 1000) {
+                startingvalue = $("#starting-valueprice").val();
+            }
             var endingvalue = $("#ending-valueprice").val();
-            document.getElementById("starting-value").innerHTML = startingvalue.toString();
-            document.getElementById("ending-value").innerHTML = (startingvalue + endingvalue).toString();
+            document.getElementById("starting-value").innerHTML ="$"+ startingvalue.toString();
+            document.getElementById("ending-value").innerHTML = "$" + (parseInt(startingvalue) + parseInt(endingvalue)).toString();
+            document.getElementById("starting-valueprice").value = startingvalue;
+            document.getElementById("ending-valueprice").value = parseInt(startingvalue) + parseInt(endingvalue);
         }
+       
     </script>
     <style>
         .category-product {
             margin-top: 7%;
+        }
+        .trending-product-details h4 {
+            text-align: center;
+            font-size: 17px !important;
+            line-height: 20px !important;
         }
     </style>
 

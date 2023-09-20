@@ -23,6 +23,12 @@ namespace E_Commerce.BusinessLayer
             var chargeid = provider.GetSIngleOrder(order);
             return chargeid;
         }
+        public static bool DeleteOrder(int  orderID)
+        {
+            OrderSQLProvider provider = new OrderSQLProvider();
+            var chargeid = provider.DeleteOrder(orderID);
+            return chargeid;
+        }
         //Shipment
         public static long AddNewShipment(ShipmentModel shipment)
         {
@@ -36,11 +42,23 @@ namespace E_Commerce.BusinessLayer
             var chargeid = provider.GetSIngleShipment(order);
             return chargeid;
         }
+        public static bool DeleteShipment(int orderID)
+        {
+            OrderSQLProvider provider = new OrderSQLProvider();
+            var chargeid = provider.DeleteShipment(orderID);
+            return chargeid;
+        }
         // Order Item
         public static long AddNewOrderItem(OrderItemModel OrderItem)
         {
             OrderSQLProvider provider = new OrderSQLProvider();
             var chargeid = provider.AddNewOrderItem(OrderItem);
+            return chargeid;
+        }
+        public static bool DeleteOrderItem(int orderID)
+        {
+            OrderSQLProvider provider = new OrderSQLProvider();
+            var chargeid = provider.DeleteOrderItem(orderID);
             return chargeid;
         }
         public static List<OrderItemModel> GetSIngleOrderItem(int order)
@@ -62,8 +80,19 @@ namespace E_Commerce.BusinessLayer
             var chargeid = provider.GetSInglePayment(id);
             return chargeid;
         }
-
-
+        public static bool DeletePayment(int orderID)
+        {
+            OrderSQLProvider provider = new OrderSQLProvider();
+            var chargeid = provider.DeletePayment(orderID);
+            return chargeid;
+        }
+        // Get Signle Customer Wise Order
+        public static List<OrderModel> GetSIngleCustomerOrder(int CustomerID)
+        {
+            OrderSQLProvider provider = new OrderSQLProvider();
+            var chargeid = provider.GetSIngleCustomerOrder(CustomerID);
+            return chargeid;
+        }
 
         //public static List<DeliveryCharge> GetAllDeliveryCost()
         //{

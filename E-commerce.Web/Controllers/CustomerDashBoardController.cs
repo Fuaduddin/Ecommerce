@@ -15,46 +15,45 @@ namespace E_commerce.Web.Controllers
         public ActionResult DashBoard()
         {
             CustomerModel customer =(CustomerModel) Session["CustomerDetails"];
-            //SupplierModel supplier = (SupplierModel)Session["SupplierDetails"];
-            //SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
-            //supplierdetails.TotalCompleteAssng = DashBoardManager.GettotalCompleteAssing(supplier.SupplierId);
-            //supplierdetails.DueAssng = DashBoardManager.GettotalDueAssing(supplier.SupplierId);
-            //supplierdetails.TotalAssng = DashBoardManager.GettotalAssignAssing(supplier.SupplierId);
-            //return View("DashBoard", supplierdetails);
-            return View("DashBoard");
-        }
-        public ActionResult ViewRecentOrderDetails()
-        {
-            //SupplierModel supplier = (SupplierModel)Session["SupplierDetails"];
-            //SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
-            //supplierdetails.ViewSupplierAssignmentList = DashBoardManager.ViewAssignmentAssginment(supplier.SupplierId);
-            //return View("ViewAssignmentAssginment", supplierdetails);
-            return View();
+            CustomerViewModel customerorder = new CustomerViewModel();
+            customerorder.DashBoard = UserDashboardDetails(customer.CustomerId);
+            return View("DashBoard", customerorder);
         }
         public ActionResult ViewAllOrder()
         {
-            //SupplierModel supplier = (SupplierModel)Session["SupplierDetails"];
-            //SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
-            //supplierdetails.ViewSupplierAssignmentList = DashBoardManager.ViewAllCompleteAssignment(supplier.SupplierId);
-            //return View("ViewAllCompleteAssignment", supplierdetails);
-            return View();
-
+            CustomerViewModel customerorder= new CustomerViewModel();
+            List<CartModel> cart = new List<CartModel>();
+            CustomerModel customer = (CustomerModel)Session["CustomerDetails"];
+            var OrderList = OrderManager.GetSIngleCustomerOrder(customer.CustomerId);
+            foreach (var Order in OrderList) 
+            {
+                CartModel cartmodel = new CartModel();
+                cartmodel.Shipment = OrderManager.GetSIngleShipment(Order.OrderId);
+                cartmodel.Payment = OrderManager.GetSInglePayment(Order.OrderId);
+                cartmodel.OrderItem = OrderManager.GetSIngleOrderItem(Order.OrderId);
+                cartmodel.Order = Order;
+                cart.Add(cartmodel);
+            }
+            customerorder.CustomerWiseOrderList= cart;
+            return View("ViewAllOrder", customerorder);
         }
-        public ActionResult ViewAllRecentOrder()
+        public ActionResult CancleOrder(int id)
         {
-            //SupplierModel supplier = (SupplierModel)Session["SupplierDetails"];
-            //SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
-            //supplierdetails.ViewSupplierAssignmentList = DashBoardManager.ViewAllCompleteAssignment(supplier.SupplierId);
-            //return View("ViewAllCompleteAssignment", supplierdetails);
-            return View();
-
-        }
-        public ActionResult GetSingleOrderDeails(int id)
-        {
-            //SupplierandDeliveryManViewModel assignment = new SupplierandDeliveryManViewModel();
-            //assignment.UpdateAssignment = DashBoardManager.GetSingleSupplierAssing(id);
-            //return View("UpdateAssignment", assignment);
-            return View();
+            if(id>0)
+            {
+                if(OrderManager.DeleteShipment(id) && OrderManager.DeleteOrderItem(id) && OrderManager.DeletePayment(id))
+                {
+                    if(OrderManager.DeleteOrder(id))
+                    {
+                        ViewData["Message"] = "Your data have been deleted";
+                    }
+                    else
+                    {
+                        ViewData["Message"] = "!!!!!! Error !!!!!!!";
+                    }
+                }
+            }
+            return View("ViewAllOrder");
         }
         public ActionResult Logout()
         {
@@ -67,13 +66,12 @@ namespace E_commerce.Web.Controllers
         private DashBoardModel UserDashboardDetails(int CustomerID)
         {
             DashBoardModel dashboard = new DashBoardModel();
-
+            var allorders = OrderManager.GetSIngleCustomerOrder(CustomerID);
+            dashboard.TotalOrder= allorders.Count();
+            dashboard.TotalDueAssignment = allorders.Select(x=>x.OrderDeliveryUpdate==0).Count();
+            dashboard.TotalCompleteAssignment = allorders.Select(x => x.OrderDeliveryUpdate == 1).Count();
             return dashboard;
         }
-
-
-
-
-        }
     }
+}
 
