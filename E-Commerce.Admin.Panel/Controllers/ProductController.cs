@@ -119,22 +119,22 @@ namespace E_Commerce.Admin.Panel.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult GetAllProduct()
-      {
-        AdminViewModel product = new AdminViewModel();
-            product.ProductList = ProductManager.GetAllProduct();
-        return View("GetAllProduct",product);
-      }
+        {
+          AdminViewModel product = new AdminViewModel();
+           product.ProductList = ProductManager.GetAllProduct();
+          return View("GetAllProduct",product);
+         }
         [HttpGet]
-          public ActionResult GetSingleProduct(int id)
-          {
-             AdminViewModel product = new AdminViewModel();
-            if(id<0)
+        public ActionResult GetSingleProduct(int id)
+        {
+           AdminViewModel product = new AdminViewModel();
+            if(id>0)
             {
                 product.Product=ProductManager.GetSingleProduct(id);
                 product.CategoryList = CategoryManager.GetAllCategory();
             }
            return View("AddNewProduct", product);
-         }
+        }
         public ActionResult DeleteProduct(int id)
          {
             if (id > 0)
