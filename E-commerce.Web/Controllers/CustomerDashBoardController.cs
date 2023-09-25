@@ -72,6 +72,27 @@ namespace E_commerce.Web.Controllers
             dashboard.TotalCompleteAssignment = allorders.Select(x => x.OrderDeliveryUpdate == 1).Count();
             return dashboard;
         }
+
+        private int pagecount(int perpagedata)
+        {
+            IEnumerable<CartModel> category = CategoryManager.GetAllCategory();
+            return Convert.ToInt32(Math.Ceiling(category.Count() / (double)perpagedata));
+        }
+
+        private List<CartModel> perpageshowdata(int pageindex, int pagesize)
+        {
+            IEnumerable<CartModel> category = CategoryManager.GetAllCategory();
+            return category.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+
+        private JsonResult Getpaginatiotabledata(int pageindex, int pagesize)
+        {
+            AdminViewModel categorylist = new AdminViewModel();
+            categorylist.CategoryList = perpageshowdata(pageindex, pagesize);
+            categorylist.totalpage = pagecount(pagesize);
+            var result = JsonConvert.SerializeObject(categorylist);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }
 

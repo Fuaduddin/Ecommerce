@@ -13,12 +13,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Customer PANEL</title>
     <!-- Pignose Calender -->
-    <link href="~/Assests/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <link href="~/Assests/DashBoard/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
-    <link rel="stylesheet" href="~/Assests/plugins/chartist/css/chartist.min.css">
-    <link rel="stylesheet" href="~/Assests/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" href="~/Assests/DashBoard/plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="~/Assests/DashBoard/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
-    <link href="~/Assests/css/style.css" rel="stylesheet">
+    <link href="~/Assets/DashBoard/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -26,27 +26,26 @@
     <!--*******************
     Preloader start
     ********************-->
-    <div id="preloader">
-        <div class="loader">
-            <svg class="circular" viewBox="25 25 50 50">
-                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
-            </svg>
-        </div>
-    </div>
+    @*<div id="preloader">
+            <div class="loader">
+                <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+                </svg>
+            </div>
+        </div>*@
     <!--*******************
     Preloader end
     ********************-->
     <!--*******************
     User Details start
     ********************-->
-
-
     <!--*******************
     User Details End
      ********************-->
     <!--**********************************
         Sidebar start
     ***********************************-->
+ 
     <div class="nk-sidebar">
         <div class="userdetails">
             <div class="">
@@ -57,10 +56,9 @@
         </div>
         <div class="nk-nav-scroll">
             <ul class="metismenu" id="menu">
-                <li class="nav-label">Dashboard</li>
                 <li>
                     <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon-speedometer menu-icon"></i><span class="nav-text">Assignment Details</span>
+                        <i class="icon-speedometer menu-icon"></i><span class="nav-text">Order Details</span>
                     </a>
                     <ul aria-expanded="false">
                         <li>
@@ -88,6 +86,7 @@
         .userdetails {
             margin-left: 19%;
         }
+
         .rounded-circle {
             width: 200px;
             height: 200px;
@@ -98,32 +97,32 @@
             @RenderBody();
         </div>
     </div>
-    <script src="~/Assests/plugins/common/common.min.js"></script>
-    <script src="~/Assests/js/custom.min.js"></script>
-    <script src="~/Assests/js/settings.js"></script>
-    <script src="~/Assests/js/gleek.js"></script>
-    <script src="~/Assests/js/styleSwitcher.js"></script>
+    <script src="~/Assests/DashBoard/plugins/common/common.min.js"></script>
+    <script src="~/Assests/DashBoard/js/custom.min.js"></script>
+    <script src="~/Assests/DashBoard/js/settings.js"></script>
+    <script src="~/Assests/DashBoard/js/gleek.js"></script>
+    <script src="~/Assests/DashBoard/js/styleSwitcher.js"></script>
 
     <!-- Chartjs -->
-    <script src="~/Assests/plugins/chart.js/Chart.bundle.min.js"></script>
+    <script src="~/Assests/DashBoard/plugins/chart.js/Chart.bundle.min.js"></script>
     <!-- Circle progress -->
-    <script src="~/Assests/plugins/circle-progress/circle-progress.min.js"></script>
+    <script src="~/Assests/DashBoard/plugins/circle-progress/circle-progress.min.js"></script>
     <!-- Datamap -->
-    <script src="~/Assests/plugins/d3v3/index.js"></script>
-    <script src="~/Assests/plugins/topojson/topojson.min.js"></script>
-    <script src="~/Assests/plugins/datamaps/datamaps.world.min.js"></script>
+    <script src="~/Assests/DashBoard/plugins/d3v3/index.js"></script>
+    <script src="~/Assests/DashBoard/plugins/topojson/topojson.min.js"></script>
+    <script src="~/Assests/DashBoard/plugins/datamaps/datamaps.world.min.js"></script>
     <!-- Morrisjs -->
-    <script src="~/Assests/plugins/raphael/raphael.min.js"></script>
-    <script src="~/Assests/plugins/morris/morris.min.js"></script>
+    <script src="~/Assests/DashBoard/plugins/raphael/raphael.min.js"></script>
+    <script src="~/Assests/DashBoard/plugins/morris/morris.min.js"></script>
     <!-- Pignose Calender -->
-    <script src="~/Assests/plugins/moment/moment.min.js"></script>
-    <script src="~/Assests/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <script src="~/Assests/DashBoard/plugins/moment/moment.min.js"></script>
+    <script src="~/Assests/DashBoard/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
     <!-- ChartistJS -->
-    <script src="~/Assests/plugins/chartist/js/chartist.min.js"></script>
-    <script src="~/Assests/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-    <script src="~/Assests/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+    <script src="~/Assests/DashBoard/plugins/chartist/js/chartist.min.js"></script>
+    <script src="~/Assests/DashBoard/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+    <script src="~/Assests/DashBoard/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
-    <script src="~/Assests/js/dashboard/dashboard-1.js"></script>
+    <script src="~/Assests/DashBoard/js/dashboard/dashboard-1.js"></script>
 </body>
 
 </html>

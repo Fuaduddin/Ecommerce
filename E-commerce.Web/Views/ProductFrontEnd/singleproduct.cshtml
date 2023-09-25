@@ -1,7 +1,9 @@
-﻿@model E_Commerce.Model.CustomerViewModel
-    @{ 
-        Layout = "~/Views/Shared/Layout/_FrontEndLayout.cshtml";
-    }
+﻿@using E_Commerce.Utility;
+@model E_Commerce.Model.CustomerViewModel
+@{
+    ViewBag.Title = "singleproduct";
+    Layout = "~/Views/Shared/Layout/_FrontEndLayout.cshtml";
+}
 <head>
     <!-- Jquery CDN link -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -10,42 +12,314 @@
     <link rel="stylesheet" href="~/Assets/Own Css/index.css">
     <link rel="stylesheet" href="~/Assets/Own Css/SingleProductDetails.css">
 </head>
-<div class="col-lg-5 col-md-5 col-sm-12 details">
 
-    <div id="confiramtionmsg" style="display:none;">
-        <span>
-            Your Review havebeen added !!!
-        </span>
-    </div>
-    <h4 class="form-subtitle">Add a Review</h4>
-    <div class="rating-part">
-        <input class="input-item" type="hidden" id="product-id" value="">
-        <div class="rating-star">
-            <span class="fa fa-star ratingstaruser"></span>
-            <span class="fa fa-star ratingstaruser"></span>
-            <span class="fa fa-star ratingstaruser"></span>
-            <span class="fa fa-star ratingstaruser"></span>
-            <span class="fa fa-star ratingstaruser"></span>
-        </div>
-        <div class="comment">
-            <h6 class="comment-rating" id="comment-rating"></h6>
-            <input class="input-item" type="hidden" id="rating">
-        </div>
-    </div>
-    <form class="">
-        <div class="input-field">
-            <input class="input-item" type="text" id="name" placeholder="Your Full Name">
-        </div>
-        <div class="input-field">
-            <input class="input-item" type="email" id="email" placeholder="Your Email Address">
-        </div>
-        <div class="input-field">
-            <textarea class="teview-item" id="review" placeholder="Review"></textarea>
-        </div>
-        <button id="submit-button" class="review-button" value="submit">Submit Now</button>
-    </form>
+<!-- Single Product Details Start -->
+<section class="single-product-details">
+    <div class="container">
+        <div class="row">
+            <div class="product-detila">
+                <div class="primary-image">
+                    <img src="@(GlobalSettings.WebImageURL + Model.Product.ProductImage)" class="product-primary-image">
+                    <!-- <img src="" id="product-primary-image-filter" class="product-primary-image-filter"> -->
+                </div>
+                <div class="primary">
+                    <ul class="product-other-images slide-container">
+                        @if (Model.Imagegallery != null)
+                        {
 
-</div>
+                            var i = 0;
+                            foreach (var ImageGallery in Model.Imagegallery)
+                            {
+                                <li class="product-imageitem slide" id="product-@i" data-value="@i">
+                                    <img src="@(GlobalSettings.WebImageURL + ImageGallery.Images)" class="product-image-other" id="product-image-other">
+                                </li>
+                                i++;
+                            }
+
+                        }
+                    </ul>
+                </div>
+                <div class="product-details-item">
+                    <dikv class="filter-key column-gap-3">
+                        <span class="prev" onclick="workingslide(-1)">Previous</span>
+                        <span class="next" onclick="workingslide(1)">Next</span>
+                    </dikv>
+                    <div class="single-product-details-item">
+                        <h4 class="single-product-title">@Model.Product.ProductName</h4>
+                        <span class="single-product-price">$@Model.Product.ProductPrice</span>
+                        <ul class="">
+                            <li>
+                                Category: <span class=""> @Model.Product.CategoryName</span>
+                            </li>
+                            @if (Model.Product.ProductQuantity > 0)
+                            {
+                                <li>
+                                    Availibility: <span class="single-product-stock"> In Stock</span>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    Availibility: <span class="single-product-stock">Out of Stock</span>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                    <div class="single-product-details-item">
+                        <p class="single-product-details">
+                            @Model.Product.ProductDescription
+                        </p>
+                    </div>
+                    <div class="single-product-details-item-button">
+                        <div class="single-product-button">
+                            <span class="inumber-decrement" onclick="decrement()">- </span>
+                            <input class="input-number" id="input-number" type="number" value="1">
+                            <span class="number-increment" onclick="increment()">+</span>
+                        </div>
+                        <button class="single-product-cart-button" onclick="addtocart()"> <strong>+ ADD TO CART</strong></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="Product-full-details">
+    <div class="container">
+        <div class="row">
+            <div class="tab-filter-button col-md-12">
+                <button class="filter-button activebutton" onclick="showtabitems(this)" data-tab-details="product-description" id="Description">Description</button>
+                <button class="filter-button activebutton" onclick="showtabitems(this)" data-tab-details="product-specification" id="Specification">Specification</button>
+                <button class="filter-button activebutton" onclick="showtabitems(this)" data-tab-details="product-faq" id="FAQ">FAQ</button>
+                <button class="filter-button activebutton active-filter-button" onclick="showtabitems(this)" data-tab-details="product-reviews" id="Reviews">Reviews</button>
+            </div>
+            <div class="tab-bar-items">
+                <div class="hideshowitem" id="product-description">
+                    <div class="col-lg-12 col-md-12 col-sm-12 details">
+                        <p class="product-long-description">
+                            @Model.Product.ProductDescription
+                        </p>
+
+                    </div>
+                </div>
+                <div class="hideshowitem" id="product-specification">
+                    <div class="col-lg-12 col-md-12 col-sm-12 details">
+                        <table class="table table-striped product-details-table">
+                            <tbody>
+
+                                <tr>
+                                    <td>Product Color</td>
+                                    <td>@Model.Product.ProductColor</td>
+                                </tr>
+                                <tr>
+                                    <td>Product Depth</td>
+                                    <td>@Model.Product.ProductDepth</td>
+                                </tr>
+                                <tr>
+                                    <td>Product Freshness Duration</td>
+                                    <td>@Model.Product.ProductFreshnessDuration</td>
+                                </tr>
+                                <tr>
+                                    <td>Product Weight</td>
+                                    <td>@Model.Product.ProductWeight</td>
+                                </tr>
+                                <tr>
+                                    <td>Product Width</td>
+                                    <td>@Model.Product.ProductWidth</td>
+                                </tr>
+                                <tr>
+                                    <td>Larry</td>
+                                    <td>@Model.Product.ProductWidth</td>
+                                </tr>
+                                <tr>
+                                    <td>Product Height</td>
+                                    <td>@Model.Product.ProductHeight</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="hideshowitem" id="product-reviews">
+                    <div class="col-lg-7 col-md-7 col-sm-12 details">
+                        <div class="rating-details">
+                            <div class="total-rating-details">
+                                <div class="stars">
+                                    <div class="stardesign">
+                                        @for (double j = 0.0; j < Model.RatingDetails.AverageStarRating; j++)
+                                        {
+                                            <span class="fa fa-star checked"></span>
+                                        }
+                                    </div>
+                                    <h6 class="rating-details-title">@Model.RatingDetails.AverageStarRating average</h6>
+                                </div>
+                                <div class="total-review">
+                                    <i class="fas fa-user-tie"></i>
+                                    <h6 class="rating-details-title">@Model.RatingDetails.TotalCustomerRating reviews.</h6>
+                                </div>
+                            </div>
+                            <div class="single-total-review">
+                                <div class="side">
+                                    <div>5 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-5 text">
+                                            @Model.RatingDetails.TotalFiveStarRating
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div>@Model.RatingDetails.TotalFiveStarRatingCUstomer</div>
+                                </div>
+                                <div class="side">
+                                    <div>4 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-4 text">
+                                            @Model.RatingDetails.TotalFourStarRating
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div>@Model.RatingDetails.TotalFourStarRatingCUstomer</div>
+                                </div>
+                                <div class="side">
+                                    <div>3 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-3 text">
+                                            @Model.RatingDetails.TotalThreeStarRating
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div>@Model.RatingDetails.TotalThreeStarRatingCUstomer</div>
+                                </div>
+                                <div class="side">
+                                    <div>2 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-2 text">
+                                            @Model.RatingDetails.TotalTwoStarRating
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div>@Model.RatingDetails.TotalTwoStarRatingCUstomer</div>
+                                </div>
+                                <div class="side">
+                                    <div>1 star</div>
+                                </div>
+                                <div class="middle">
+                                    <div class="bar-container">
+                                        <div class="bar-1 text">
+                                            @Model.RatingDetails.TotalOneStarRating
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="side right">
+                                    <div>@Model.RatingDetails.TotalOneStarRatingCUstomer</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hideshowitem product-review">
+                            <ul class="product-reviews-details">
+                                @foreach (var customerReview in Model.ReviewList)
+                                {
+                                    var totalrating = 0;
+                                    <li>
+                                        <div class="review-details">
+                                            <div class="user-details">
+                                                <div class="customer-details">
+                                                    <h5>@customerReview.CustomerName</h5>
+                                                    @for (var n = 0; n > customerReview.TotalRating; n++)
+                                                    {
+                                                        <span class="fa fa-star checked"></span>
+                                                        totalrating++;
+                                                    }
+                                                    @if (totalrating < 5)
+                                                    {
+                                                        <span class="fa fa-star"></span>
+                                                    }
+
+                                                </div>
+                                            </div>
+                                            <p>
+                                                @customerReview.Review
+                                            </p>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-12 details">
+
+                        <div id="confiramtionmsg" style="display:none;">
+                            <span>
+                                Your Review havebeen added !!!
+                            </span>
+                        </div>
+                        <h4 class="form-subtitle">Add a Review</h4>
+                        <div class="rating-part">
+                            <input class="input-item" type="hidden" id="product-id" value="">
+                            <div class="rating-star">
+                                <span class="fa fa-star ratingstaruser"></span>
+                                <span class="fa fa-star ratingstaruser"></span>
+                                <span class="fa fa-star ratingstaruser"></span>
+                                <span class="fa fa-star ratingstaruser"></span>
+                                <span class="fa fa-star ratingstaruser"></span>
+                            </div>
+                            <div class="comment">
+                                <h6 class="comment-rating" id="comment-rating"></h6>
+                                <input class="input-item" type="hidden" id="rating">
+                            </div>
+                        </div>
+                        <form class="">
+                            <div class="input-field">
+                                <input class="input-item" type="text" id="name" placeholder="Your Full Name">
+                            </div>
+                            <div class="input-field">
+                                <input class="input-item" type="email" id="email" placeholder="Your Email Address">
+                            </div>
+                            <div class="input-field">
+                                <textarea class="teview-item" id="review" placeholder="Review"></textarea>
+                            </div>
+                            <button id="submit-button" class="review-button" value="submit">Submit Now</button>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="hideshowitem" id="product-faq">
+                    <h4 class="form-subtitle">Frequently Asked Question</h4>
+                    <div class="faq-items">
+                        @if (Model.FAQList != null)
+                        {
+                            foreach (var faq in Model.FAQList)
+                            {
+                                <div class="item">
+                                    <div class="faq-title">
+                                        <i class='fas fa-angle-double-right side-arrow'></i>
+                                        <i class='fas fa-angle-double-down side-arrow'></i>
+                                        <h4 class="faq-title">@faq.FAQQuestion</h4>
+                                    </div>
+                                    <p class="faq-detals">
+                                        @faq.FAQAns
+                                    </p>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <style>
     .single-product-details {
         margin-top: 7%;
@@ -128,8 +402,8 @@
         var Review =
         {
             Review: review,
-            ProductId: productId ,
-            TotalRating: totalRating ,
+            ProductId: productId,
+            TotalRating: totalRating,
             CustomerName: customerName,
             CustomerEmail: customerEmail
         }
@@ -139,9 +413,9 @@
             $.ajax({
                 url: "/ProductFrontEnd/SubmitReview",
                 Method: "POST",
-                 data: '{Review: ' + JSON.stringify(Review) + '}',
+                data: '{Review: ' + JSON.stringify(Review) + '}',
                 // data: {reviewvalue:review},
-               // data: Review,
+                // data: Review,
                 success: function (data) {
                     if (JSON.parse(data) == true) {
                         $('#confiramtionmsg').css("display", "block");

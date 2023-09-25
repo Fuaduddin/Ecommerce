@@ -32,14 +32,16 @@ namespace E_commerce.Web.Controllers
             return View("categoryproduct", categoryproduct);
         }
         // Single Product Page
+        [HttpGet]
         public ActionResult singleproduct()//int id)
         {
-
+            int id = 14;
             CustomerViewModel categoryproduct = new CustomerViewModel();
             categoryproduct.Review = new ReviewModel();
-            //var productlist = GetAllCategoryWiseProduct();
-            //categoryproduct.Product =(ProductModel)productlist.Where(x => x.ProductId == id).Take(1);
-            ///return View("singleproduct", categoryproduct);
+            categoryproduct.Product = ProductManager.GetSingleProduct(id);
+            categoryproduct.Imagegallery= ImageGalleryManager.GetSingleProductAllImage(id);
+            categoryproduct.FAQList = ContactManager.GetSingleProductAllFAQ(id);
+            categoryproduct.ReviewList = ContactManager.GetSingleProductReview(id);
             return View("singleproduct", categoryproduct);
         }
         [HttpPost]
