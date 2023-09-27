@@ -73,11 +73,10 @@ namespace E_Commerce.Model
     public class DeliveryManAssignmentModel 
 {
         [Key]
-        public int AssigentmentAppointmentId { get; set; }
-        public DateTime AssigentmentAppointmentDate { get; set; }
-        public DateTime AssigentmentFixedDate { get; set; }
-        public int AppointId { get; set; }
-        public int AdminId { get; set; }
+        public int AssignmentDeliveryId { get; set; }
+        public DateTime AssignDate { get; set; }
+        public int DeliveryManeID { get; set; }
+        public int OrderID { get; set; }
         public int AssigentmentUpdate { get; set; }
     }
 }

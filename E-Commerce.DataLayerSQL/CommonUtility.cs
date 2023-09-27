@@ -198,12 +198,17 @@ namespace E_Commerce.Utility
         // Customer DashBoard
         public static string GetSingleCustomerOrder = "SP_GetSingleCustomerOrder";
 
-
-
+        // Delivery Man Assignment
+        public static string AddNewAssignDeliveryMan = "SP_AddNewAssignDeliveryMan";
+        public static string DeleteAssignDeliveryMan = "SP_DeleteAssignDeliveryMan";
+        public static string UpdateAssignDeliveryMan = "SP_UpdateAssignDeliveryMan";
+        public static string GetAllAssignDeliveryMan = "SP_GetAllAssignDeliveryMan";
+        public static string GetSingleOrderDetails = "SP_GetSingleOrderDetails";
 
 
         //Cart && Track Order && Payment && Order
         //public static string TrackOrder = "SP_TrackOrder";
+        // Web 
         public static string AddNewOrder = "SP_AddNewOrder";
         public static string AddNewShipment = "SP_AddNewShipment";
         public static string AddNewOrderItem = "SP_AddNewOrderItem";
@@ -216,6 +221,10 @@ namespace E_Commerce.Utility
         public static string ADeleteShipment = "SP_DeleteShipment";
         public static string DeleteOrderItem = "SP_DeleteOrderItem";
         public static string DeletePayment = "SP_DeletePayment";
+
+
+        // Super Admin & Admin
+        public static string GetAllCustomerOrder = "SP_GetAllCustomerOrder";
 
     }
 

@@ -395,5 +395,55 @@ namespace E_Commerce.DataLayerSQL
             }
         }
 
+
+        public List<OrderModel> GetAllCustomerOrder()
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetAllCustomerOrder, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<OrderModel> OrderList = new List<OrderModel>();
+                    OrderList = UtilityManager.DataReaderMapToList<OrderModel>(reader);
+                    return OrderList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public OrderModel GetSingleOrderDetails(int OrderID)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleOrderDetails, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@OrderId", OrderID));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    OrderModel order = new OrderModel();
+                    order = UtilityManager.DataReaderMap<OrderModel>(reader);
+                    return order;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

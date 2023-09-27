@@ -28,8 +28,7 @@ namespace E_Commerce.Model
         public SupplierAssignmentModel SupplierAssignment { get; set; }
         public DeliveryManAssignmentModel DeliverymanAssignment { get; set; }
         public FAQModel FAQ { get; set; }
-
-
+        public CartModel Cart { get; set; }
 
         // All Model Lists
         public List<FAQModel> FAQList { get; set; }
@@ -53,9 +52,9 @@ namespace E_Commerce.Model
         public List<viewsubcategory> viewsubcategorydetails { get; set; }
         public List<viewZone> viewzone { get; set; }
         public List<CustomerModel> CustomerList { get; set; }
+        public List<CartModel> CustomerWiseOrderList { get; set; }
 
-
-
+        public List<OrderModel> CustomerOrderList { get; set; }
 
 
 

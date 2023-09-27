@@ -105,5 +105,38 @@ namespace E_Commerce.BusinessLayer
          var Categoriesd = provider.DeleteArea(categoryId);
          return Categoriesd;
       }
+
+
+        // Assignment Delivery Man
+        public static long AddNewAssignmentDeliveryMan(DeliveryManAssignmentModel DeliveryMan)
+        {
+            AssignmentAppointSQLProvider provider = new AssignmentAppointSQLProvider();
+            var chargeid = provider.AddNewAssignmentDeliveryMan(DeliveryMan);
+            return chargeid;
+        }
+        public static List<DeliveryManAssignmentModel> GetAllAssignmentDeliveryMan()
+        {
+            AssignmentAppointSQLProvider provider = new AssignmentAppointSQLProvider();
+            var chargeid = provider.GetAllAssignmentDeliveryMan();
+            return chargeid;
+        }
+        public static bool UpdateAssignmentDeliveryMan(DeliveryManAssignmentModel category)
+        {
+            AssignmentAppointSQLProvider provider = new AssignmentAppointSQLProvider();
+            var chargeid = provider.UpdateAssignmentDeliveryMan(category);
+            return chargeid;
+        }
+        public static DeliveryManAssignmentModel GetSingleAssignmentDeliveryMant(int categoryId)
+        {
+            AssignmentAppointSQLProvider provider = new AssignmentAppointSQLProvider();
+            var chargeid = provider.GetSingleAssignmentDeliveryMant(categoryId);
+            return chargeid;
+        }
+        public static bool DeleteAssignmentDeliveryMant(int categoryId)
+        {
+            AssignmentAppointSQLProvider provider = new AssignmentAppointSQLProvider();
+            var Categoriesd = provider.DeleteAssignmentDeliveryMant(categoryId);
+            return Categoriesd;
+        }
     }
 }

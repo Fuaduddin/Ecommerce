@@ -293,20 +293,63 @@ namespace E_Commerce.Admin.Panel.Controllers
             var result = JsonConvert.SerializeObject(categorylist);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
         // Assign Delivery Man
         public ActionResult AssignDeliveryMan(int Id)
         {
-            AdminViewModel assingadmin = new AdminViewModel();
-            assingadmin.Product = ProductManager.GetSingleProduct(Id);
-            assingadmin.DeliveryManeList = StaffSettingsManager.GetAllDeliveryMan();
-            assingadmin.DeliverymanAssignment = new DeliveryManAssignmentModel();
-            return View("AssignDeliveryMan");
+            AdminViewModel AssingDeliveryManAssignment = new AdminViewModel();
+            AssingDeliveryManAssignment.Cart.Order = OrderManager.GetSingleOrderDetails(Id);
+            AssingDeliveryManAssignment.Cart.OrderItem = OrderManager.GetSIngleOrderItem(Id);
+            AssingDeliveryManAssignment.Cart.Payment = OrderManager.GetSInglePayment(Id);
+            AssingDeliveryManAssignment.Cart.Shipment = OrderManager.GetSIngleShipment(Id);
+            AssingDeliveryManAssignment.viewzone = DeliverySettingsManager.GetAllZone();
+            return View("AssignDeliveryMan", AssingDeliveryManAssignment);
         }
         [HttpPost]
         public ActionResult AssignDeliveryMan(DeliveryManAssignmentModel assignment)
         {
-         
-            return View("AssignDeliveryMan");
+            if (assignment.AssignmentDeliveryId > 0)
+            {
+                if (AssignmentManager.UpdateAssignmentDeliveryMan(assignment))
+                {
+                    ViewData["Message"] = "Your data have been Updated";
+                }
+                else
+                {
+                    ViewData["Message"] = "!!!! Error !!!!!!";
+                }
+            }
+            else
+            {
+                if (AssignmentManager.AddNewAssignmentDeliveryMan(assignment) > 0)
+                {
+                    ViewData["Message"] = "Your data have been Added";
+                }
+                else
+                {
+                    ViewData["Message"] = "!!!! Error !!!!!!";
+                }
+            }
+            return View("ViewAssignDeliveryMan");
+        }
+        public ActionResult DeleteAssignDeliveryMan(int id)
+        {
+            AdminViewModel AssingDeliveryManAssignment = new AdminViewModel();
+            if (AssignmentManager.DeleteAssignmentDeliveryMant(id))
+            {
+                ViewData["Message"] = "Your data have been delete";
+            }
+            else
+            {
+                ViewData["Message"] = "!!!! Error !!!!!!";
+            }
+            return View("ViewAssignDeliveryMan");
+        }
+        public ActionResult ViewAssignDeliveryMan()
+        {
+            AdminViewModel AssingDeliveryManAssignment = new AdminViewModel();
+            AssingDeliveryManAssignment.DeliverymanAssignmentList = AssignmentManager.GetAllAssignmentDeliveryMan();
+            return View("AssignDeliveryMan", AssingDeliveryManAssignment);
         }
     }
 }

@@ -32,32 +32,32 @@ namespace E_commerce.Web.Controllers
             return View("categoryproduct", categoryproduct);
         }
         // Single Product Page
-        [HttpGet]
         public ActionResult singleproduct()//int id)
         {
+            CustomerViewModel Singleproduct = new CustomerViewModel();
             int id = 14;
-            CustomerViewModel categoryproduct = new CustomerViewModel();
-            categoryproduct.Review = new ReviewModel();
-            categoryproduct.Product = ProductManager.GetSingleProduct(id);
-            categoryproduct.Imagegallery= ImageGalleryManager.GetSingleProductAllImage(id);
-            categoryproduct.FAQList = ContactManager.GetSingleProductAllFAQ(id);
-            categoryproduct.ReviewList = ContactManager.GetSingleProductReview(id);
-            return View("singleproduct", categoryproduct);
+            Singleproduct.Product = ProductManager.GetSingleProduct(id);
+            Singleproduct.Imagegallery = ImageGalleryManager.GetSingleProductAllImage(id);
+            Singleproduct.FAQList = ContactManager.GetSingleProductAllFAQ(id);
+            Singleproduct.ReviewList = ContactManager.GetSingleProductReview(id);
+            Singleproduct.Review = new ReviewModel();
+            return View("singleproduct", Singleproduct);
+            //return View("singleproduct");
         }
         [HttpPost]
         public ActionResult SortSearchProduct(int[]subcategory, int startingvalue, int endingvalue)
         {
-            CustomerViewModel categoryproduct = new CustomerViewModel();
+            CustomerViewModel Sortproduct = new CustomerViewModel();
             if (subcategory != null)
             {
-                categoryproduct.ProductList = SortSearchProducts(subcategory,0,0);
+                Sortproduct.ProductList = SortSearchProducts(subcategory,0,0);
             }
             else
             {
                 subcategory = null;
-                categoryproduct.ProductList = SortSearchProducts(subcategory, startingvalue, endingvalue);
+                Sortproduct.ProductList = SortSearchProducts(subcategory, startingvalue, endingvalue);
             }
-            return View("categoryproduct", categoryproduct);
+            return View("categoryproduct", Sortproduct);
         }
         public List<ProductModel> SortSearchProducts(int[] subcategoryid, int startingvalueprice, int endingvalueprice)
         {

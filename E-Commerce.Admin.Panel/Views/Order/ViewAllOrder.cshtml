@@ -57,40 +57,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var admin in Model.AdminList)
+                                @foreach (var Order in Model.CustomerWiseOrderList)
                                 {
                                     <tr>
                                         <td>
                                             @i
                                         </td>
                                         <td>
-                                            @admin.AdminOfficialId
+                                            @Order.Order.OrderOfficialId
                                         </td>
                                         <td>
-                                            <img src="@admin.AdminProfilePic" width="100" height="100" alt="">
-                                        </td>
-                                        <td>
-                                            @admin.AdminName
-                                        </td>
-                                        <td>
-                                            @admin.TotalAppointment
-                                        </td>
-                                        <td>
-                                            @admin.UserTotalLogin
-                                        </td>
-                                        <td>
-                                            @admin.UserLastLogin
-                                        </td>
-                                        <td>
-                                            <button onclick="showmodal(@admin.AdminId,@admin.UserId)" class="btn btn-danger">Delete</button>
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Update", "GetSingleAdmin", new { Id = admin.AdminId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Update", "GetSingleAdmin", new { Id = admin.AdminId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                                        </td>
+                                            <span><i><b>Customer Name: </b></i></span> @Order.Order.CustomerName <br />
+                                            <span><i><b>Customer PhoneNumber: </b></i></span> @Order.Order.CustomerPhoneNumber <br />
 
+                                        </td>
+                                        <td>
+                                            <span><i><b>Zone: </b></i></span>  @Order.Shipment.DevisionName <br />
+                                            <span><i><b>Area: </b></i></span>  @Order.Shipment.PlaceName <br />
+                                            <span><i><b>Full Address: </b></i></span>  @Order.Shipment.ShipmentAddress <br />
+                                        </td>
+                                        <td>
+                                            <button onclick="showmodal(@Order.Order.OrderId)" class="btn btn-danger">Delete</button>
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Assign To Delivery Man", "AssignDeliveryMan", "Assignment", new { Id = @Order.Order.OrderId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                        </td>
                                     </tr>
                                     i++;
                                 }
@@ -118,13 +109,12 @@
 </div>
 <div id="id01" class="modal">
     <span class="close" title="Close Modal">×</span>
-    @using (Html.BeginForm("DeleteAdmin", "StaffSettings", FormMethod.Post, new { @class = "modal-content" }))
+    @using (Html.BeginForm("CancleOrder", "Order", FormMethod.Post, new { @class = "modal-content" }))
     {
         <div class="container">
-            <h1>Delete Category</h1>
-            <p>Are you sure you want to delete this Category?</p>
+            <h1>Cancle Order</h1>
+            <p>Are you sure you want to cancle this Order?</p>
             <input type="hidden" name="id" id="categoryid" />
-            <input type="hidden" name="userid" id="userid" />
             <div class="clearfix">
                 <button type="button" id="close-CategoryDelete" , class="btn btn-danger">Cancel</button>
                 <input type="submit" value="Delete" class="btn btn-success" />
@@ -154,7 +144,6 @@
     function showmodal(n,m) {
         document.getElementById('id01').style.display = 'block';
         $("#categoryid").val(n);
-        $("#userid").val(m);
     }
     function closemenu() {
         $("#id01").hide();

@@ -183,7 +183,7 @@ namespace E_Commerce.DataLayerSQL
                 }
             }
         }
-            public long AddNewAssignmentSupplier(SupplierAssignmentModel zone)
+        public long AddNewAssignmentSupplier(SupplierAssignmentModel zone)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
@@ -440,5 +440,152 @@ namespace E_Commerce.DataLayerSQL
                 return IsDeleted;
             }
         }
+
+        // Assignment Delivery Man
+        public long AddNewAssignmentDeliveryMan(DeliveryManAssignmentModel adminassing)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                long id = 0;
+                SqlCommand command = new SqlCommand(StoredProcedured.AddNewAppointmentAssignment, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlParameter returnvalue = new SqlParameter("@" + "AssigentmentAppointmentId", SqlDbType.Int);
+                returnvalue.Direction = ParameterDirection.Output;
+                command.Parameters.Add(returnvalue);
+                foreach (var charge in adminassing.GetType().GetProperties())
+                {
+                    if (charge.Name != "AssigentmentAppointmentId" && charge.Name != "AssigentmentFixedDate" && charge.Name != "AppointmentSubject" && charge.Name != "AppointmentMessage"
+                     && charge.Name != "AppointDate" && charge.Name != "CustomerName" && charge.Name != "CustomerPhoneNumber" && charge.Name != "CustomerEmail"
+                     && charge.Name != "AssingedUpdate" && charge.Name != "AdminName")
+                    {
+                        string name = charge.Name;
+                        var value = charge.GetValue(adminassing, null);
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    }
+                }
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    id = (int)command.Parameters["@AssigentmentAppointmentId"].Value;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                return id;
+            }
+        }
+        public List<DeliveryManAssignmentModel> GetAllAssignmentDeliveryMan()
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetAllAppointmentAssignment, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    connection.Open();
+                    SqlDataReader Datareader = command.ExecuteReader();
+                    List<AdminAssignmentModel> deliverychargeList = new List<AdminAssignmentModel>();
+                    deliverychargeList = UtilityManager.DataReaderMapToList<AdminAssignmentModel>(Datareader);
+                    return deliverychargeList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public bool DeleteAssignmentDeliveryMant(int deliverychargeid)
+        {
+            bool IsDeleted = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.DeleteAppointmentAssignment, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@AssigentmentAppointmentId", deliverychargeid));
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    IsDeleted = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                return IsDeleted;
+            }
+        }
+        public DeliveryManAssignmentModel GetSingleAssignmentDeliveryMant(int deliverychargeid)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleAppointmentAssignment, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@AssigentmentAppointmentId", deliverychargeid));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    AdminAssignmentModel charge = new AdminAssignmentModel();
+                    charge = UtilityManager.DataReaderMap<AdminAssignmentModel>(reader);
+                    return charge;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public bool UpdateAssignmentDeliveryMan(DeliveryManAssignmentModel deliveryCharge)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                bool updated = true;
+                SqlCommand command = new SqlCommand(StoredProcedured.UpdateAppointmentAssignment, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                foreach (var charge in deliveryCharge.GetType().GetProperties())
+                {
+                    string name = charge.Name;
+                    var value = charge.GetValue(deliveryCharge, null);
+                    command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                }
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    updated = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                return updated;
+            }
+        }
+
     }
 }

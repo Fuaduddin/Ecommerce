@@ -94,6 +94,21 @@ namespace E_Commerce.BusinessLayer
             return chargeid;
         }
 
+
+
+        // Super Admin & Admin
+        public static List<OrderModel> GetAllCustomerOrder()
+        {
+            OrderSQLProvider provider = new OrderSQLProvider();
+            var chargeid = provider.GetAllCustomerOrder();
+            return chargeid;
+        }
+        public static OrderModel GetSingleOrderDetails(int id)
+        {
+            OrderSQLProvider provider = new OrderSQLProvider();
+            var chargeid = provider.GetSingleOrderDetails(id);
+            return chargeid;
+        }
         //public static List<DeliveryCharge> GetAllDeliveryCost()
         //{
         //    DeliverySettingsSQLProvider provider = new DeliverySettingsSQLProvider();
