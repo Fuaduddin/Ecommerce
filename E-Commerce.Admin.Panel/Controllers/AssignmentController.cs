@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using E_Commerce.BusinessLayer;
@@ -350,6 +351,21 @@ namespace E_Commerce.Admin.Panel.Controllers
             AdminViewModel AssingDeliveryManAssignment = new AdminViewModel();
             AssingDeliveryManAssignment.DeliverymanAssignmentList = AssignmentManager.GetAllAssignmentDeliveryMan();
             return View("AssignDeliveryMan", AssingDeliveryManAssignment);
+        }
+        public JsonResult GetAreaList(int zoneid)
+        {
+            List<Area> Arealist = DeliverySettingsManager.GetAllArea();
+            var output = Arealist.Where(x => x.Placeid == zoneid).ToList();
+            string result = JsonConvert.SerializeObject(output);
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+        public JsonResult GetDeliveryManList(int areaid)
+        {
+            List<DeliveryManModel> DeliveryManlist = StaffSettingsManager.GetAllDeliveryMan();
+            var output = DeliveryManlist.Where(x => x.DeliveryManeAreaName == areaid).ToList();
+            string result = JsonConvert.SerializeObject(output);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -65,16 +65,5 @@ D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debu
 D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.CopyComplete
 D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.dll
 D:\Protfolios\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.pdb
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayerSQL.dll
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayerSQL.pdb
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayer.dll
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Model.dll
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Utility.dll
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.DataLayer.pdb
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Model.pdb
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\bin\Debug\E-Commerce.Utility.pdb
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.AssemblyReference.cache
 D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.CoreCompileInputs.cache
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.csproj.CopyComplete
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.dll
-D:\Protfolios\.NET PROJECTS\Official Projects\WebApplication1\E-Commerce.DataLayerSQL\obj\Debug\E-Commerce.DataLayerSQL.pdb

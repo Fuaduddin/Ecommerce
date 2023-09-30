@@ -6854,6 +6854,7 @@
     <Content Include="Assets\Own Css\contact.css" />
     <Content Include="Assets\Own Css\index.css" />
     <Content Include="Assets\Own Css\login.css" />
+    <Content Include="Assets\Own Css\Responsive.css" />
     <Content Include="Assets\Own Css\responsiveweb.css" />
     <Content Include="Assets\Own Css\SingleProductDetails.css" />
     <Content Include="Assets\webfonts\fa-brands-400.svg" />

@@ -78,5 +78,8 @@ namespace E_Commerce.Model
         public int DeliveryManeID { get; set; }
         public int OrderID { get; set; }
         public int AssigentmentUpdate { get; set; }
+        public string DeliveryManeName { get; set; }
+        public string DevisionName { get; set; }
+        public string PlaceName { get; set; }
     }
 }

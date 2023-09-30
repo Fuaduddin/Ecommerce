@@ -12,7 +12,7 @@ namespace E_Commerce.Model
         public ProductModel Product { get; set; }
         public SupplierAssignmentModel SupplierAssignment { get; set; }
         public ViewSupplierAssignmentModel UpdateAssignment { get; set; }
-        public CommonDashBoardModel dashboarddetails { get; set; }
+        public DashBoardModel dashboarddetails { get; set; }
 
         // All List Supplier and Delivery Man Dash Board
         public List<ViewSupplierAssignmentModel> ViewSupplierAssignmentList { get; set; }

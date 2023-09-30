@@ -14,27 +14,21 @@ namespace E_commerce.Web.Controllers
         // GET: CustomerDashBoard
         public ActionResult DashBoard()
         {
-            CustomerModel customer =(CustomerModel) Session["CustomerDetails"];
             CustomerViewModel customerorder = new CustomerViewModel();
+            var customer = GetCustomerDetails();
+            customerorder.totalpage = pagecount(10,0, customer.CustomerId);
+            var OrderItemList= perpageshowdata(1,10,0, customer.CustomerId);
+            customerorder.CustomerWiseOrderList = GetCart(OrderItemList);
             customerorder.DashBoard = UserDashboardDetails(customer.CustomerId);
             return View("DashBoard", customerorder);
         }
         public ActionResult ViewAllOrder()
         {
-            CustomerViewModel customerorder= new CustomerViewModel();
-            List<CartModel> cart = new List<CartModel>();
-            CustomerModel customer = (CustomerModel)Session["CustomerDetails"];
-            var OrderList = OrderManager.GetSIngleCustomerOrder(customer.CustomerId);
-            foreach (var Order in OrderList) 
-            {
-                CartModel cartmodel = new CartModel();
-                cartmodel.Shipment = OrderManager.GetSIngleShipment(Order.OrderId);
-                cartmodel.Payment = OrderManager.GetSInglePayment(Order.OrderId);
-                cartmodel.OrderItem = OrderManager.GetSIngleOrderItem(Order.OrderId);
-                cartmodel.Order = Order;
-                cart.Add(cartmodel);
-            }
-            customerorder.CustomerWiseOrderList= cart;
+            var customer = GetCustomerDetails();
+            CustomerViewModel customerorder = new CustomerViewModel();
+            customerorder.totalpage = pagecount(10, 0, customer.CustomerId);
+            var OrderItemList = perpageshowdata(1, 10, 0, customer.CustomerId);
+            customerorder.CustomerWiseOrderList = GetCart(OrderItemList);
             return View("ViewAllOrder", customerorder);
         }
         public ActionResult CancleOrder(int id)
@@ -73,25 +67,62 @@ namespace E_commerce.Web.Controllers
             return dashboard;
         }
 
-        private int pagecount(int perpagedata)
+        private int pagecount(int perpagedata, int OrderUpdate, int CustomerID)
         {
-            IEnumerable<CartModel> category = CategoryManager.GetAllCategory();
-            return Convert.ToInt32(Math.Ceiling(category.Count() / (double)perpagedata));
+            IEnumerable<OrderModel> OrderList = OrderManager.GetSIngleCustomerOrder(OrderUpdate);
+            return Convert.ToInt32(Math.Ceiling(OrderList.Select(x=>x.OrderDeliveryUpdate== OrderUpdate && x.CustomerID== CustomerID).Count() / (double)perpagedata));
         }
 
-        private List<CartModel> perpageshowdata(int pageindex, int pagesize)
+        private List<OrderModel> perpageshowdata(int pageindex, int pagesize, int OrderUpdate, int CustomerID )
         {
-            IEnumerable<CartModel> category = CategoryManager.GetAllCategory();
-            return category.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+            IEnumerable<OrderModel> OrderList = OrderManager.GetSIngleCustomerOrder(OrderUpdate);
+            return OrderList.Where(x=>x.OrderDeliveryUpdate== OrderUpdate && x.CustomerID == CustomerID).Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
         }
 
-        private JsonResult Getpaginatiotabledata(int pageindex, int pagesize)
+        private JsonResult Getpaginatiotabledata(int pageindex, int pagesize, int OrderUpdate, int CustomerID)
         {
-            AdminViewModel categorylist = new AdminViewModel();
-            categorylist.CategoryList = perpageshowdata(pageindex, pagesize);
-            categorylist.totalpage = pagecount(pagesize);
-            var result = JsonConvert.SerializeObject(categorylist);
+            CustomerViewModel OrderListitem = new CustomerViewModel();
+             var OrderItemList= perpageshowdata(pageindex, pagesize, OrderUpdate, CustomerID);
+            OrderListitem.CustomerWiseOrderList= GetCart(OrderItemList);
+            OrderListitem.totalpage = pagecount(pagesize, OrderUpdate, CustomerID);
+            var result = JsonConvert.SerializeObject(OrderListitem);
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        private JsonResult GetSingleOrderDetails(int OrderID)
+        {
+            CartModel cartmodel = new CartModel();
+           cartmodel.Shipment = OrderManager.GetSIngleShipment(OrderID);
+           cartmodel.Payment = OrderManager.GetSInglePayment(OrderID);
+           cartmodel.OrderItem = OrderManager.GetSIngleOrderItem(OrderID);
+           cartmodel.Order = OrderManager.GetSingleOrderDetails(OrderID); ;
+            var result = JsonConvert.SerializeObject(cartmodel);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        private JsonResult GetSearcOrder(string OrderOfficialID, int OrderUpdate)
+        {
+            CustomerViewModel OrderListitem = new CustomerViewModel();
+            var OrderItemList = OrderManager.GetAllCustomerOrder();
+            //OrderListitem.CustomerWiseOrderList = GetCart(OrderItemList.Where(x=>x.OrderDeliveryUpdate== OrderUpdate && x.CustomerID== && x.OrderOfficialId);
+            var result = JsonConvert.SerializeObject(OrderListitem);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        private List<CartModel> GetCart(List<OrderModel> OrderList)
+        {
+            List<CartModel> cart = new List<CartModel>();
+            foreach (var Order in OrderList)
+            {
+                CartModel cartmodel = new CartModel();
+                cartmodel.Shipment = OrderManager.GetSIngleShipment(Order.OrderId);
+                cartmodel.Payment = OrderManager.GetSInglePayment(Order.OrderId);
+                cartmodel.OrderItem = OrderManager.GetSIngleOrderItem(Order.OrderId);
+                cartmodel.Order = Order;
+                cart.Add(cartmodel);
+            }
+            return cart;
+        }
+        private CustomerModel GetCustomerDetails()
+        {
+            return  (CustomerModel)Session["CustomerDetails"];
         }
     }
 }

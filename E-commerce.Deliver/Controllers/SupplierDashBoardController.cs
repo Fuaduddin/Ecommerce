@@ -15,23 +15,19 @@ namespace E_commerce.Deliver.Controllers
         // GET: SupplierDashBoard
         public ActionResult DashBoard()
         {
-            SupplierModel supplier =(SupplierModel)Session["SupplierDetails"];
+            var supplier = GetSupplierDetails();
             SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
-            supplierdetails.dashboarddetails.TotalCompleteAssignment = DashBoardManager.GettotalCompleteAssing(supplier.SupplierId);
-            supplierdetails.dashboarddetails.TotalDueAssignment = DashBoardManager.GettotalDueAssing(supplier.SupplierId);
-            supplierdetails.dashboarddetails.TotalAssignment = DashBoardManager.GettotalAssignAssing(supplier.SupplierId);
+            supplierdetails.dashboarddetails = UserDashboardDetails(supplier.SupplierId);
             return View("DashBoard", supplierdetails);
         }
         public ActionResult ViewAssignmentAssginment()
         {
-            SupplierModel supplier = (SupplierModel)Session["SupplierDetails"];
-            SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
+           
             supplierdetails.ViewSupplierAssignmentList = DashBoardManager.ViewAssignmentAssginment(supplier.SupplierId);
             return View("ViewAssignmentAssginment", supplierdetails);
         }
         public ActionResult ViewAllCompleteAssignment()
         {
-            SupplierModel supplier = (SupplierModel)Session["SupplierDetails"];
             SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
             supplierdetails.ViewSupplierAssignmentList = DashBoardManager.ViewAllCompleteAssignment(supplier.SupplierId);
             return View("ViewAllCompleteAssignment", supplierdetails);
@@ -44,15 +40,15 @@ namespace E_commerce.Deliver.Controllers
         }
         public ActionResult UpdateAssignment()
         {
-            
+
             return View("UpdateAssignment");
         }
         [HttpPost]
         public ActionResult UpdateAssignment(SupplierandDeliveryManViewModel assignment)
         {
-            if(assignment.UpdateAssignment.AssignmentUpdate==0)
+            if (assignment.UpdateAssignment.AssignmentUpdate == 0)
             {
-                if (DashBoardManager.UpdateSupplierAssing(assignment.UpdateAssignment.AssigentmentSupplierId,0, assignment.UpdateAssignment.AssignmentTotalCost))
+                if (DashBoardManager.UpdateSupplierAssing(assignment.UpdateAssignment.AssigentmentSupplierId, 0, assignment.UpdateAssignment.AssignmentTotalCost))
                 {
                     ViewData["Message"] = "Your data have  been Updated";
                 }
@@ -63,7 +59,7 @@ namespace E_commerce.Deliver.Controllers
             }
             else
             {
- 
+
                 if (DashBoardManager.UpdateSupplierAssing(assignment.UpdateAssignment.AssigentmentSupplierId, 1, assignment.UpdateAssignment.AssignmentTotalCost))
                 {
                     ViewData["Message"] = "Your data have  been Updated";
@@ -77,10 +73,10 @@ namespace E_commerce.Deliver.Controllers
         }
         public ActionResult CancleAssignment(int id)
         {
-           var UpdateAssignment = DashBoardManager.GetSingleSupplierAssing(id);
-            if(UpdateAssignment.AssignmentUpdate == 0)
+            var UpdateAssignment = DashBoardManager.GetSingleSupplierAssing(id);
+            if (UpdateAssignment.AssignmentUpdate == 0)
             {
-                if (DashBoardManager.UpdateSupplierAssing(id, 3,0))
+                if (DashBoardManager.UpdateSupplierAssing(id, 3, 0))
                 {
                     ViewData["Message"] = "Your data have  been Updated";
                 }
@@ -99,6 +95,18 @@ namespace E_commerce.Deliver.Controllers
         {
             Session.Clear();
             return RedirectToAction("login", "login");
+        }
+        private SupplierModel GetSupplierDetails()
+        {
+            return (SupplierModel)Session["SupplierDetails"];
+        }
+        private DashBoardModel UserDashboardDetails(int SupplierID)
+        {
+            DashBoardModel dashboard = new DashBoardModel();
+            dashboard.TotalSupplierAssignment = DashBoardManager.GettotalCompleteAssing(SupplierID);
+            dashboard.TotalDueAssignment = DashBoardManager.GettotalDueAssing(SupplierID);
+            dashboard.TotalCompleteAssignment = DashBoardManager.GettotalAssignAssing(SupplierID);
+            return dashboard;
         }
     }
 }

@@ -164,7 +164,7 @@
                         {
                           
                             <div class="@(firstitem==0 ? "product-big background3" : "product-first background1")">
-                                <h4>Product 1</h4>
+                                <h4>@todayproduct.ProductName</h4>
                                 <img src="@(GlobalSettings.WebImageURL+todayproduct.ProductImage)" class="product-image">
                                 <div class="more-info-button-big" onmouseover="imagebackgrounddetails(@totalitem)" onmouseout="imagebackgrounddetailshide(@totalitem)">
                                     <div class="ellipse"></div>
@@ -183,7 +183,7 @@
                         @foreach (var todayproduct in Model.LetestProductList.Skip(5).Take(2))
                         {
                             <div class="@(firstitem==0 ? "product-first background1" : "product-big background4")">
-                                <h4>Product 1</h4>
+                                <h4>@todayproduct.ProductName</h4>
                                 <img src="@(GlobalSettings.WebImageURL+todayproduct.ProductImage)" class="product-image">
                                 <div class="more-info-button" onmouseover="imagebackgrounddetails(@totalitem)" onmouseout="imagebackgrounddetailshide(@totalitem)">
                                     <div class="ellipse"></div>
