@@ -29,6 +29,9 @@ namespace E_Commerce.Model
         public DeliveryManAssignmentModel DeliverymanAssignment { get; set; }
         public FAQModel FAQ { get; set; }
         public CartModel Cart { get; set; }
+        public OrderModel Order { get; set; }
+
+
 
         // All Model Lists
         public List<FAQModel> FAQList { get; set; }
@@ -55,7 +58,6 @@ namespace E_Commerce.Model
         public List<CartModel> CustomerWiseOrderList { get; set; }
 
         public List<OrderModel> CustomerOrderList { get; set; }
-
 
 
         //public RoleModel role { get; set; }

@@ -424,7 +424,7 @@ namespace E_Commerce.DataLayerSQL
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleOrderDetails, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.GetAllSingleOrder, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@OrderId", OrderID));
                 try

@@ -52,8 +52,8 @@
                                     <th>Customer Information</th>
                                     <th>Shimpent Details</th>
                                     <th>Delete</th>
-                                    <th>Update</th>
-                                    <th>Single Details</th>
+                                    <th>Assign To Delivery Man</th>
+                                    <th>Order Details</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -81,6 +81,9 @@
                                         </td>
                                         <td>
                                             @Html.ActionLink("Assign To Delivery Man", "AssignDeliveryMan", "Assignment", new { Id = @Order.Order.OrderId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Order Details", "AssignDeliveryMan", "Assignment", new { Id = @Order.Order.OrderId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
                                         </td>
                                     </tr>
                                     i++;

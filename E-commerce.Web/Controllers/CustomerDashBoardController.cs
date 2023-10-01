@@ -122,7 +122,7 @@ namespace E_commerce.Web.Controllers
         }
         private CustomerModel GetCustomerDetails()
         {
-            return  (CustomerModel)Session["CustomerDetails"];
+            return (CustomerModel)Session["CustomerDetails"];
         }
     }
 }

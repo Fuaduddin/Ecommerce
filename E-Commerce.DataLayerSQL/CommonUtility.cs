@@ -208,6 +208,7 @@ namespace E_Commerce.Utility
 
         //Cart && Track Order && Payment && Order
         //public static string TrackOrder = "SP_TrackOrder";
+        //public static string TrackOrder = "SP_TrackOrder";
         // Web 
         public static string AddNewOrder = "SP_AddNewOrder";
         public static string AddNewShipment = "SP_AddNewShipment";
@@ -221,11 +222,19 @@ namespace E_Commerce.Utility
         public static string ADeleteShipment = "SP_DeleteShipment";
         public static string DeleteOrderItem = "SP_DeleteOrderItem";
         public static string DeletePayment = "SP_DeletePayment";
+        
 
 
         // Super Admin & Admin
         public static string GetAllCustomerOrder = "SP_GetAllCustomerOrder";
+        public static string GetAllSingleOrder = "SP_GetAllSingleOrder";
 
+        // Assign Delivery Man
+        public static string AddNewDeliveryManAssign = "SP_AddNewDeliveryManAssign";
+        public static string DeleteDeliveryManAssign = "SP_DeleteDeliveryManAssign";
+        public static string UpdateDeliveryManAssign = "SP_UpdateDeliveryManAssign";
+        public static string GetSingleDeliveryManAssign = "SP_GetSingleDeliveryManAssign";
+        public static string GetAllDeliveryManAssign = "SP_GetAllDeliveryManAssign";
     }
 
 }

@@ -447,16 +447,14 @@ namespace E_Commerce.DataLayerSQL
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
                 long id = 0;
-                SqlCommand command = new SqlCommand(StoredProcedured.AddNewAppointmentAssignment, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.AddNewDeliveryManAssign, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 SqlParameter returnvalue = new SqlParameter("@" + "AssigentmentAppointmentId", SqlDbType.Int);
                 returnvalue.Direction = ParameterDirection.Output;
                 command.Parameters.Add(returnvalue);
                 foreach (var charge in adminassing.GetType().GetProperties())
                 {
-                    if (charge.Name != "AssigentmentAppointmentId" && charge.Name != "AssigentmentFixedDate" && charge.Name != "AppointmentSubject" && charge.Name != "AppointmentMessage"
-                     && charge.Name != "AppointDate" && charge.Name != "CustomerName" && charge.Name != "CustomerPhoneNumber" && charge.Name != "CustomerEmail"
-                     && charge.Name != "AssingedUpdate" && charge.Name != "AdminName")
+                    if (charge.Name != "DeliveryManeName" && charge.Name != "AssignmentDeliveryId" && charge.Name != "DevisionName" && charge.Name != "PlaceName" && charge.Name != "OrderOfficialId" && charge.Name != "ShipmentAddress" && charge.Name != "TotalPrice")
                     {
                         string name = charge.Name;
                         var value = charge.GetValue(adminassing, null);
@@ -485,14 +483,14 @@ namespace E_Commerce.DataLayerSQL
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoredProcedured.GetAllAppointmentAssignment, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.GetAllDeliveryManAssign, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 try
                 {
                     connection.Open();
                     SqlDataReader Datareader = command.ExecuteReader();
-                    List<AdminAssignmentModel> deliverychargeList = new List<AdminAssignmentModel>();
-                    deliverychargeList = UtilityManager.DataReaderMapToList<AdminAssignmentModel>(Datareader);
+                    List<DeliveryManAssignmentModel> deliverychargeList = new List<DeliveryManAssignmentModel>();
+                    deliverychargeList = UtilityManager.DataReaderMapToList<DeliveryManAssignmentModel>(Datareader);
                     return deliverychargeList;
                 }
                 catch (Exception ex)
@@ -510,7 +508,7 @@ namespace E_Commerce.DataLayerSQL
             bool IsDeleted = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoredProcedured.DeleteAppointmentAssignment, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.DeleteDeliveryManAssign, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@AssigentmentAppointmentId", deliverychargeid));
                 try
@@ -535,15 +533,15 @@ namespace E_Commerce.DataLayerSQL
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleAppointmentAssignment, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleDeliveryManAssign, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@AssigentmentAppointmentId", deliverychargeid));
                 try
                 {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    AdminAssignmentModel charge = new AdminAssignmentModel();
-                    charge = UtilityManager.DataReaderMap<AdminAssignmentModel>(reader);
+                    DeliveryManAssignmentModel charge = new DeliveryManAssignmentModel();
+                    charge = UtilityManager.DataReaderMap<DeliveryManAssignmentModel>(reader);
                     return charge;
                 }
                 catch (Exception ex)
@@ -561,13 +559,16 @@ namespace E_Commerce.DataLayerSQL
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
                 bool updated = true;
-                SqlCommand command = new SqlCommand(StoredProcedured.UpdateAppointmentAssignment, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.UpdateDeliveryManAssign, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 foreach (var charge in deliveryCharge.GetType().GetProperties())
                 {
-                    string name = charge.Name;
-                    var value = charge.GetValue(deliveryCharge, null);
-                    command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    if (charge.Name != "DeliveryManeName" && charge.Name != "AssignmentDeliveryId" && charge.Name != "DevisionName" && charge.Name != "PlaceName" && charge.Name != "OrderOfficialId" && charge.Name != "ShipmentAddress" && charge.Name != "TotalPrice")
+                    {
+                        string name = charge.Name;
+                        var value = charge.GetValue(deliveryCharge, null);
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    }
                 }
                 try
                 {

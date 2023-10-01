@@ -5302,6 +5302,7 @@
     <Content Include="Views\AdminDashboard\UpdateAssignment.cshtml" />
     <Content Include="Views\Customer\ViewAllCustomer.cshtml" />
     <Content Include="Views\Order\ViewAllOrder.cshtml" />
+    <Content Include="Views\Assignment\ViewAssignDeliveryMan.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

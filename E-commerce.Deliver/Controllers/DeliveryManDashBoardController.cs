@@ -17,7 +17,7 @@ namespace E_commerce.Deliver.Controllers
             DeliveryManModel deliveryman=(DeliveryManModel)Session["DeliveryManDetails"];
             var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
             SupplierandDeliveryManViewModel deliverymandetails = new SupplierandDeliveryManViewModel();
-            deliverymandetails.dashboarddetails = DashBoardDetails(deliveryman.DeliverManId);
+            deliverymandetails.Commondashboarddetails = DashBoardDetails(deliveryman.DeliverManId);
             deliverymandetails.DeliverymanAssignmentList = assigenments.Where(x=>x.DeliveryManeID==deliveryman.DeliverManId && x.AssigentmentUpdate==0).ToList();
             return View("DashBoard");
         }
@@ -26,7 +26,6 @@ namespace E_commerce.Deliver.Controllers
             DeliveryManModel deliveryman = (DeliveryManModel)Session["DeliveryManDetails"];
             var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
             SupplierandDeliveryManViewModel deliverymandetails = new SupplierandDeliveryManViewModel();
-            deliverymandetails.dashboarddetails = DashBoardDetails(deliveryman.DeliverManId);
             deliverymandetails.DeliverymanAssignmentList = assigenments.Where(x => x.DeliveryManeID == deliveryman.DeliverManId).ToList();
             return View("DashBoard");
         }
@@ -35,7 +34,6 @@ namespace E_commerce.Deliver.Controllers
             DeliveryManModel deliveryman = (DeliveryManModel)Session["DeliveryManDetails"];
             var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
             SupplierandDeliveryManViewModel deliverymandetails = new SupplierandDeliveryManViewModel();
-            deliverymandetails.dashboarddetails = DashBoardDetails(deliveryman.DeliverManId);
             deliverymandetails.DeliverymanAssignmentList = assigenments.Where(x => x.DeliveryManeID == deliveryman.DeliverManId && x.AssigentmentUpdate == 1).ToList();
             return View("DashBoard");
         }

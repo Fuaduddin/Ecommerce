@@ -47,13 +47,13 @@
     ***********************************-->
  
     <div class="nk-sidebar">
-        <div class="userdetails">
+        @*<div class="userdetails">
             <div class="">
                 <h4>@customer.CustomerName</h4>
                 <h4>@customer.UserName</h4>
                 <h4>@customer.CustomerPhoneNumber</h4>
             </div>
-        </div>
+        </div>*@
         <div class="nk-nav-scroll">
             <ul class="metismenu" id="menu">
                 <li>
@@ -68,7 +68,7 @@
                     </ul>
                     <ul aria-expanded="false">
                         <li>
-                            @Html.ActionLink("View All Orders", "ViewRecentOrderDetails", "CustomerDashBoard")
+                            @Html.ActionLink("View All Orders", "ViewAllOrder", "CustomerDashBoard")
                         </li>
                         <!-- <li><a href="./index-2.html">Home 2</a></li> -->
                     </ul>

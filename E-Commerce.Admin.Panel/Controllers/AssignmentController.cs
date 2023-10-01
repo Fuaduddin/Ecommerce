@@ -299,11 +299,15 @@ namespace E_Commerce.Admin.Panel.Controllers
         public ActionResult AssignDeliveryMan(int Id)
         {
             AdminViewModel AssingDeliveryManAssignment = new AdminViewModel();
+            AssingDeliveryManAssignment.Cart = new CartModel();
             AssingDeliveryManAssignment.Cart.Order = OrderManager.GetSingleOrderDetails(Id);
             AssingDeliveryManAssignment.Cart.OrderItem = OrderManager.GetSIngleOrderItem(Id);
             AssingDeliveryManAssignment.Cart.Payment = OrderManager.GetSInglePayment(Id);
             AssingDeliveryManAssignment.Cart.Shipment = OrderManager.GetSIngleShipment(Id);
             AssingDeliveryManAssignment.viewzone = DeliverySettingsManager.GetAllZone();
+            AssingDeliveryManAssignment.DeliverymanAssignment= new DeliveryManAssignmentModel();
+            AssingDeliveryManAssignment.areaList = DeliverySettingsManager.GetAllArea();
+            AssingDeliveryManAssignment.DeliveryManList = StaffSettingsManager.GetAllDeliveryMan();
             return View("AssignDeliveryMan", AssingDeliveryManAssignment);
         }
         [HttpPost]
@@ -366,6 +370,20 @@ namespace E_Commerce.Admin.Panel.Controllers
             var output = DeliveryManlist.Where(x => x.DeliveryManeAreaName == areaid).ToList();
             string result = JsonConvert.SerializeObject(output);
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        private List<CartModel> GetCart(List<OrderModel> OrderList)
+        {
+            List<CartModel> cart = new List<CartModel>();
+            foreach (var Order in OrderList)
+            {
+                CartModel cartmodel = new CartModel();
+                cartmodel.Shipment = OrderManager.GetSIngleShipment(Order.OrderId);
+                cartmodel.Payment = OrderManager.GetSInglePayment(Order.OrderId);
+                cartmodel.OrderItem = OrderManager.GetSIngleOrderItem(Order.OrderId);
+                cartmodel.Order = Order;
+                cart.Add(cartmodel);
+            }
+            return cart;
         }
     }
 }

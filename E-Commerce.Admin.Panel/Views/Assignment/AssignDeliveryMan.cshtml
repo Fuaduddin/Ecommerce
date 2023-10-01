@@ -5,7 +5,15 @@
     Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
     var i = 1;
 }
-
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
 @if (Model.Cart.Order != null && Model.Cart.OrderItem != null && Model.Cart.Shipment != null)
 {
     <section id="trackoderdetails">
@@ -43,8 +51,6 @@
                                                 @product.Quantity
                                             </td>
                                             <td>
-                                            </td>
-                                            <td>
                                                 @productprice
                                             </td>
                                         </tr>
@@ -52,6 +58,10 @@
 
                                 </tbody>
                             </table>
+                            <div class="">
+                                <h5>Customer Name: @Model.Cart.Order.CustomerName</h5>
+                                <h5>Customer Phone Number: @Model.Cart.Order.CustomerPhoneNumber</h5>
+                            </div>
                             <div class="">
                                 <h5>Zone Name: @Model.Cart.Shipment.DevisionName</h5>
                                 <h5>Area Name: @Model.Cart.Shipment.PlaceName</h5>
@@ -147,7 +157,6 @@
                             }
 
                         </center>
-                        }
                     </div>
                 }
             </center>
@@ -161,12 +170,14 @@
     $("#val-deliveryman").attr('disabled', 'disabled');
 
     $("#val-Zone").change(function () {
-            var categoryvalue = {
-                zoneid: $("#val-Zone").val()
-        }
-        $("#val-Area").removeAttribute("disabled");
+        debugger
+        var categoryvalue = {
+            zoneid: $("#val-Zone").val()
+        };
+        let area = document.getElementById("val-Area");
+        area.removeAttribute("disabled");
             $.ajax({
-                url: "/Assignment/GetSelectedArea",
+                url: "/Assignment/GetAreaList",
                 method: "Post",
                 data: categoryvalue,
                 success: function (data) {
@@ -185,9 +196,10 @@
         });
     $("#val-Area").change(function () {
         var categoryvalue = {
-            zoneid: $("#val-Area").val()
-        }
-        $("#val-deliveryman").removeAttribute("disabled");
+            areaid: $("#val-Area").val()
+        };
+        let deliveryman = document.getElementById("val-deliveryman");
+        deliveryman.removeAttribute("disabled");
         $.ajax({
             url: "/Assignment/GetDeliveryManList",
             method: "Post",
