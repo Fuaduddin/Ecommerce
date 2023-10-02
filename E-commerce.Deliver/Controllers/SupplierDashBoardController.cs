@@ -22,12 +22,14 @@ namespace E_commerce.Deliver.Controllers
         }
         public ActionResult ViewAssignmentAssginment()
         {
-           
+            var supplier = GetSupplierDetails();
+            SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
             supplierdetails.ViewSupplierAssignmentList = DashBoardManager.ViewAssignmentAssginment(supplier.SupplierId);
             return View("ViewAssignmentAssginment", supplierdetails);
         }
         public ActionResult ViewAllCompleteAssignment()
         {
+            var supplier = GetSupplierDetails();
             SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
             supplierdetails.ViewSupplierAssignmentList = DashBoardManager.ViewAllCompleteAssignment(supplier.SupplierId);
             return View("ViewAllCompleteAssignment", supplierdetails);

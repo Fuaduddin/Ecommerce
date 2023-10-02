@@ -14,7 +14,7 @@
                 <div class="banner_slider owl-carousel">
                     @if (Model.LetestProductList != null)
                     {
-                        foreach (var slider in Model.LetestProductList.Take(4))
+                        foreach (var slider in Model.LetestProductList.Take(4).OrderBy(x=>x.AddedDate))
                         {
                             <div class="single_banner_slider">
                                 <div class="row">
@@ -53,7 +53,7 @@
             @if (Model.CategoryList != null)
             {
 
-                foreach (var category in Model.CategoryList)
+                foreach (var category in Model.CategoryList.OrderBy(x => x.CategoryName))
                 {
 
                     <div class="category-details @(i < 5 ? "show" : "hide") " style="background-image: url(@(GlobalSettings.WebImageURL+ category.CategoryImage));">
@@ -141,7 +141,7 @@
                 {
 
                     <div class="product-item-list">
-                        @foreach (var todayproduct in Model.LetestProductList.Take(3))
+                        @foreach (var todayproduct in Model.LetestProductList.Take(3).OrderBy(x => x.AddedDate))
                         {
                             <div class="product-first background1">
                                 <h4>@todayproduct.ProductName</h4>

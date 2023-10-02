@@ -138,5 +138,11 @@ namespace E_Commerce.BusinessLayer
             var Categoriesd = provider.DeleteAssignmentDeliveryMant(categoryId);
             return Categoriesd;
         }
+        public static DeliveryManAssignmentModel GetDeliveryManWiseAssign(int categoryId)
+        {
+            AssignmentAppointSQLProvider provider = new AssignmentAppointSQLProvider();
+            var Categoriesd = provider.GetDeliveryManWiseAssign(categoryId);
+            return Categoriesd;
+        }
     }
 }

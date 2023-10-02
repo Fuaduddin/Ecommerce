@@ -80,37 +80,38 @@
                                                     @deliveryMan.OrderOfficialId
                                                 </td>
                                                 <td>
-                                                    <h5>Customer Name:  @deliveryMan.ccus</h5>
-                                                    <h5>Customer Phone Number:  @Model.DeliverymanAssignment.DevisionName </h5>
+                                                    <h5>Customer Name:  @deliveryMan.CustomerName</h5>
+                                                    <h5>Customer Phone Number:  @deliveryMan.CustomerPhoneNumber</h5>
                                                 </td>
                                                 <td>
-                                                    <h5>Customer Name:  @Model.DeliverymanAssignment.PlaceName </h5>
-                                                    <h5>Customer Phone Number:  @Model.DeliverymanAssignment.DevisionName </h5>
-                                                    <h5>Customer Phone Number:  @Model.DeliverymanAssignment.DevisionName </h5>
+                                                    <h5>Zone Name: @deliveryMan.PlaceName </h5>
+                                                    <h5>Area Name:   @deliveryMan.DevisionName </h5>
+                                                    <h5>Shipment  Address:  @deliveryMan.ShipmentAddress </h5>
                                                 </td>
                                                 <td>
-                                                    @supply.TotalAmount
+                                                    @deliveryMan.TotalPrice
                                                 </td>
-                                                <td>
-                                                    <span><b>Category Name:  @supply.CategoryName</b></span> <br />
-                                                    <span><i>Sub Category Name:  @supply.SubCategoryName</i></span> <br />
-                                                </td>
-                                                <td>
-                                                    <span><b>Supplier Name:  @supply.SupplierName</b></span> <br />
-                                                    <span><i>Total Cost:  @supply.AssignmentTotalCost</i></span> <br />
-                                                    <span><i>Issued Date:  @supply.AssignDate</i></span>
-                                                </td>
-                                                <td>
+                                                @if (deliveryMan.AssigentmentUpdate == 0)
+                                                {
                                                     <b>Pending</b>
+                                                }
+                                                else
+                                                {
+                                                    <b>Complete</b>
+                                                }
+                                                <td>
+                                                    @deliveryMan.AssignDate
                                                 </td>
                                                 <td>
-                                                    <a onclick="showmodal(@supply.AssigentmentSupplierId)" class="btn btn-danger">Delete</a>
                                                 </td>
                                                 <td>
-                                                    <a onclick="showreadmodal(@supply.AssigentmentSupplierId,@emailno)" class="btn btn-success">Read Email</a>
+                                                    <a onclick="showmodal(@deliveryMan.AssignmentDeliveryId)" class="btn btn-danger">Delete</a>
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink("Update", "GetSingleAssignAdmin", new { Id = supply.AssigentmentSupplierId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                                    <a onclick="showreadmodal(@deliveryMan.AssignmentDeliveryId,@emailno)" class="btn btn-success">Read Email</a>
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Update", "GetSingleAssignAdmin", new { Id = deliveryMan.AssignmentDeliveryId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
                                                 </td>
                                             </tr>
                                         }
@@ -118,7 +119,7 @@
                                         {
                                             <tr class="hide-row reademail">
                                                 <td>
-                                                    <input type="checkbox" class="multiedeleteitem" name="multidelete" value="@supply.AssigentmentSupplierId">
+                                                    <input type="checkbox" class="multiedeleteitem" name="multidelete" value="@deliveryMan.AssignmentDeliveryId">
                                                 </td>
                                                 <td>
                                                     @i

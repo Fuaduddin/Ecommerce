@@ -349,7 +349,7 @@ namespace E_Commerce.DataLayerSQL
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleCategory, connection);
+                SqlCommand command = new SqlCommand(StoredProcedured.GetSingleProductReview, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@ProductId", id));
                 try
@@ -581,7 +581,7 @@ namespace E_Commerce.DataLayerSQL
             {
                 SqlCommand command = new SqlCommand(StoredProcedured.GetSingleFAQ, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@FAQid", id));
+                command.Parameters.Add(new SqlParameter("@ProductId", id));
                 try
                 {
                     connection.Open();

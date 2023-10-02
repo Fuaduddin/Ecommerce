@@ -140,182 +140,192 @@
                         </table>
                     </div>
                 </div>
-                <div class="hideshowitem" id="product-reviews">
-                    <div class="col-lg-7 col-md-7 col-sm-12 details">
-                        <div class="rating-details">
-                            <div class="total-rating-details">
-                                <div class="stars">
-                                    <div class="stardesign">
-                                        @for (double j = 0.0; j < Model.RatingDetails.AverageStarRating; j++)
-                                        {
-                                            <span class="fa fa-star checked"></span>
-                                        }
-                                    </div>
-                                    <h6 class="rating-details-title">@Model.RatingDetails.AverageStarRating average</h6>
-                                </div>
-                                <div class="total-review">
-                                    <i class="fas fa-user-tie"></i>
-                                    <h6 class="rating-details-title">@Model.RatingDetails.TotalCustomerRating reviews.</h6>
-                                </div>
-                            </div>
-                            <div class="single-total-review">
-                                <div class="side">
-                                    <div>5 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-5 text">
-                                            @Model.RatingDetails.TotalFiveStarRating
+                @if (Model.RatingDetails != null && Model.RatingDetails.AverageStarRating > 0)
+                {
+                    <div class="hideshowitem" id="product-reviews">
+                        <div class="col-lg-7 col-md-7 col-sm-12 details">
+                            <div class="rating-details">
+                                <div class="total-rating-details">
+                                    <div class="stars">
+                                        <div class="stardesign">
+                                            @for (double j = 0.0; j < Model.RatingDetails.AverageStarRating; j++)
+                                            {
+                                                <span class="fa fa-star checked"></span>
+                                            }
                                         </div>
+                                        <h6 class="rating-details-title">@Model.RatingDetails.AverageStarRating average</h6>
+                                    </div>
+                                    <div class="total-review">
+                                        <i class="fas fa-user-tie"></i>
+                                        <h6 class="rating-details-title">@Model.RatingDetails.TotalCustomerRating reviews.</h6>
                                     </div>
                                 </div>
-                                <div class="side right">
-                                    <div>@Model.RatingDetails.TotalFiveStarRatingCUstomer</div>
-                                </div>
-                                <div class="side">
-                                    <div>4 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-4 text">
-                                            @Model.RatingDetails.TotalFourStarRating
-                                        </div>
+                                <div class="single-total-review">
+                                    <div class="side">
+                                        <div>5 star</div>
                                     </div>
-                                </div>
-                                <div class="side right">
-                                    <div>@Model.RatingDetails.TotalFourStarRatingCUstomer</div>
-                                </div>
-                                <div class="side">
-                                    <div>3 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-3 text">
-                                            @Model.RatingDetails.TotalThreeStarRating
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>@Model.RatingDetails.TotalThreeStarRatingCUstomer</div>
-                                </div>
-                                <div class="side">
-                                    <div>2 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-2 text">
-                                            @Model.RatingDetails.TotalTwoStarRating
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>@Model.RatingDetails.TotalTwoStarRatingCUstomer</div>
-                                </div>
-                                <div class="side">
-                                    <div>1 star</div>
-                                </div>
-                                <div class="middle">
-                                    <div class="bar-container">
-                                        <div class="bar-1 text">
-                                            @Model.RatingDetails.TotalOneStarRating
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="side right">
-                                    <div>@Model.RatingDetails.TotalOneStarRatingCUstomer</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hideshowitem product-review">
-                            <ul class="product-reviews-details">
-                                @foreach (var customerReview in Model.ReviewList)
-                                {
-                                    var totalrating = 0;
-                                    <li>
-                                        <div class="review-details">
-                                            <div class="user-details">
-                                                <div class="customer-details">
-                                                    <h5>@customerReview.CustomerName</h5>
-                                                    @for (var n = 0; n > customerReview.TotalRating; n++)
-                                                    {
-                                                        <span class="fa fa-star checked"></span>
-                                                        totalrating++;
-                                                    }
-                                                    @if (totalrating < 5)
-                                                    {
-                                                        <span class="fa fa-star"></span>
-                                                    }
-
-                                                </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-5 text">
+                                                @Model.RatingDetails.TotalFiveStarRating
                                             </div>
-                                            <p>
-                                                @customerReview.Review
-                                            </p>
                                         </div>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-md-5 col-sm-12 details">
-
-                        <div id="confiramtionmsg" style="display:none;">
-                            <span>
-                                Your Review havebeen added !!!
-                            </span>
-                        </div>
-                        <h4 class="form-subtitle">Add a Review</h4>
-                        <div class="rating-part">
-                            <input class="input-item" type="hidden" id="product-id" value="">
-                            <div class="rating-star">
-                                <span class="fa fa-star ratingstaruser"></span>
-                                <span class="fa fa-star ratingstaruser"></span>
-                                <span class="fa fa-star ratingstaruser"></span>
-                                <span class="fa fa-star ratingstaruser"></span>
-                                <span class="fa fa-star ratingstaruser"></span>
-                            </div>
-                            <div class="comment">
-                                <h6 class="comment-rating" id="comment-rating"></h6>
-                                <input class="input-item" type="hidden" id="rating">
-                            </div>
-                        </div>
-                        <form class="">
-                            <div class="input-field">
-                                <input class="input-item" type="text" id="name" placeholder="Your Full Name">
-                            </div>
-                            <div class="input-field">
-                                <input class="input-item" type="email" id="email" placeholder="Your Email Address">
-                            </div>
-                            <div class="input-field">
-                                <textarea class="teview-item" id="review" placeholder="Review"></textarea>
-                            </div>
-                            <button id="submit-button" class="review-button" value="submit">Submit Now</button>
-                        </form>
-
-                    </div>
-                </div>
-                <div class="hideshowitem" id="product-faq">
-                    <h4 class="form-subtitle">Frequently Asked Question</h4>
-                    <div class="faq-items">
-                        @if (Model.FAQList != null)
-                        {
-                            foreach (var faq in Model.FAQList)
-                            {
-                                <div class="item">
-                                    <div class="faq-title">
-                                        <i class='fas fa-angle-double-right side-arrow'></i>
-                                        <i class='fas fa-angle-double-down side-arrow'></i>
-                                        <h4 class="faq-title">@faq.FAQQuestion</h4>
                                     </div>
-                                    <p class="faq-detals">
-                                        @faq.FAQAns
-                                    </p>
+                                    <div class="side right">
+                                        <div>@Model.RatingDetails.TotalFiveStarRatingCUstomer</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>4 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-4 text">
+                                                @Model.RatingDetails.TotalFourStarRating
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>@Model.RatingDetails.TotalFourStarRatingCUstomer</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>3 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-3 text">
+                                                @Model.RatingDetails.TotalThreeStarRating
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>@Model.RatingDetails.TotalThreeStarRatingCUstomer</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>2 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-2 text">
+                                                @Model.RatingDetails.TotalTwoStarRating
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>@Model.RatingDetails.TotalTwoStarRatingCUstomer</div>
+                                    </div>
+                                    <div class="side">
+                                        <div>1 star</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-1 text">
+                                                @Model.RatingDetails.TotalOneStarRating
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>@Model.RatingDetails.TotalOneStarRatingCUstomer</div>
+                                    </div>
                                 </div>
-                            }
-                        }
+                            </div>
+                            <div class="hideshowitem product-review">
+                                <ul class="product-reviews-details">
+                                    @foreach (var customerReview in Model.ReviewList)
+                                    {
+                                        var totalrating = 0;
+                                        <li>
+                                            <div class="review-details">
+                                                <div class="user-details">
+                                                    <div class="customer-details">
+                                                        <h5>@customerReview.CustomerName</h5>
+                                                        @for (var n = 0; n > customerReview.TotalRating; n++)
+                                                        {
+                                                            <span class="fa fa-star checked"></span>
+                                                            totalrating++;
+                                                        }
+                                                        @if (totalrating < 5)
+                                                        {
+                                                            <span class="fa fa-star"></span>
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    @customerReview.Review
+                                                </p>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-12 details">
+
+                            <div id="confiramtionmsg" style="display:none;">
+                                <span>
+                                    Your Review havebeen added !!!
+                                </span>
+                            </div>
+                            <h4 class="form-subtitle">Add a Review</h4>
+                            <div class="rating-part">
+                                <input class="input-item" type="hidden" id="product-id" value="">
+                                <div class="rating-star">
+                                    <span class="fa fa-star ratingstaruser"></span>
+                                    <span class="fa fa-star ratingstaruser"></span>
+                                    <span class="fa fa-star ratingstaruser"></span>
+                                    <span class="fa fa-star ratingstaruser"></span>
+                                    <span class="fa fa-star ratingstaruser"></span>
+                                </div>
+                                <div class="comment">
+                                    <h6 class="comment-rating" id="comment-rating"></h6>
+                                    <input class="input-item" type="hidden" id="rating">
+                                </div>
+                            </div>
+                            <form class="">
+                                <div class="input-field">
+                                    <input class="input-item" type="text" id="name" placeholder="Your Full Name">
+                                </div>
+                                <div class="input-field">
+                                    <input class="input-item" type="email" id="email" placeholder="Your Email Address">
+                                </div>
+                                <div class="input-field">
+                                    <textarea class="teview-item" id="review" placeholder="Review"></textarea>
+                                </div>
+                                <button id="submit-button" class="review-button" value="submit">Submit Now</button>
+                            </form>
+
+                        </div>
                     </div>
+                }
+
+              
+                
+                @if(Model.FAQList.Count>0)
+            {
+<div class="hideshowitem" id="product-faq">
+    <h4 class="form-subtitle">Frequently Asked Question</h4>
+    <div class="faq-items">
+        @if (Model.FAQList != null)
+        {
+            foreach (var faq in Model.FAQList)
+            {
+                <div class="item">
+                    <div class="faq-title">
+                        <i class='fas fa-angle-double-right side-arrow'></i>
+                        <i class='fas fa-angle-double-down side-arrow'></i>
+                        <h4 class="faq-title">@faq.FAQQuestion</h4>
+                    </div>
+                    <p class="faq-detals">
+                        @faq.FAQAns
+                    </p>
                 </div>
+            }
+        }
+    </div>
+</div>
+            }
+                
             </div>
         </div>
     </div>

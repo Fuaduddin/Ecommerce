@@ -27,41 +27,54 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var order in Model.CustomerWiseOrderList)
+                            @if (Model.CustomerWiseOrderList.Count > 0)
+                            {
+                                foreach (var order in Model.CustomerWiseOrderList)
+                                {
+                                    <tr>
+                                        <td>
+                                            @i
+                                        </td>
+                                        <td>
+                                            @order.Order.OrderOfficialId
+                                        </td>
+                                        <td>
+                                            @order.Order.OrderAddedDate
+                                        </td>
+                                        <td>
+                                            @order.Order.TotalPrice
+                                        </td>
+                                        <td>
+                                            <span><i><b>Zone: </b></i></span>  @order.Shipment.DevisionName <br />
+                                            <span><i><b>Area: </b></i></span>  @order.Shipment.PlaceName <br />
+                                            <span><i><b>Full Address: </b></i></span>  @order.Shipment.ShipmentAddress <br />
+                                        </td>
+                                        <td>
+                                            <button onclick="showmodal(@order.Order.OrderId)" class="btn btn-danger">Delete</button>
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "CancleOrder", "CustomerDashBoard", new { Id = @order.Order.OrderId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Single Details", "GetSingleProduct", "Product", new { Id = @order.Order.OrderId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+                            }
+                            else
+
                             {
                                 <tr>
-                                    <td>
-                                        @i
-                                    </td>
-                                    <td>
-                                        @order.Order.OrderOfficialId
-                                    </td>
-                                    <td>
-                                        @order.Order.OrderAddedDate
-                                    </td>
-                                    <td>
-                                        @order.Order.TotalPrice
-                                    </td>
-                                    <td>
-                                        <span><i><b>Zone: </b></i></span>  @order.Shipment.DevisionName <br />
-                                        <span><i><b>Area: </b></i></span>  @order.Shipment.PlaceName <br />
-                                        <span><i><b>Full Address: </b></i></span>  @order.Shipment.ShipmentAddress <br />
-                                    </td>
-                                    <td>
-                                        <button onclick="showmodal(@order.Order.OrderId)" class="btn btn-danger">Delete</button>
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Delete", "CancleOrder", "CustomerDashBoard", new { Id = @order.Order.OrderId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Single Details", "GetSingleProduct", "Product", new { Id = @order.Order.OrderId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                    <td style="text-align: center">
+                                        <b style=" color: darkred">No Order Havebeen Placed Yet or No Order Is Pending</b>
                                     </td>
                                 </tr>
-                                i++;
                             }
+
                         </tbody>
                     </table>
-                    @*<div class="pagination-table-nav">
+                   <div class="pagination-table-nav">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                                 <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -74,7 +87,7 @@
                                 <li class="page-item"><a class="page-link" href="#">Next</a></li>
                             </ul>
                         </nav>
-                    </div>*@
+                    </div>
                 </div>
             </div>
         </div>

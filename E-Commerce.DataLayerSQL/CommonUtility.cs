@@ -44,7 +44,7 @@ namespace E_Commerce.Utility
         public static string GetSingleProduct = "SP_GetProduct";
         public static string GetAllProduct = "SP_GetAllProduct";
         public static string GetProductSearch = "Sp_GetSearchCategory";
-        
+
 
 
         // Image Gallery
@@ -71,7 +71,7 @@ namespace E_Commerce.Utility
         public static string GetAllZone = "Sp_GetAllZone";
         public static string GetSingleZoneAllArea = "Sp_GetSingleZoneAllArea";
         public static string SearchZone = "Sp_SearchZone";
-        
+
 
         // Area
         public static string AddArea = "Sp_AddNewArea";
@@ -99,7 +99,7 @@ namespace E_Commerce.Utility
         public static string DeleteSupplier = "SP_DeleteSupplier";
         public static string GetSingleSupplier = "SP_GetSingleSupplier";
         public static string GetAllSupplier = "SP_GetAllSupplier";
-       public static string GetSupplierSearch = "Sp_GetSupplier";
+        public static string GetSupplierSearch = "Sp_GetSupplier";
 
         // Admin  Details
         public static string AddNewAdmin = "SP_AddNewAdmin";
@@ -107,7 +107,7 @@ namespace E_Commerce.Utility
         public static string DeleteAdmin = "SP_DeleteAdmin";
         public static string GetSingleAdmin = "SP_GetSingleAdmin";
         public static string GetAllAdmin = "SP_GetAllAdmin";
-       public static string GetAdminSearch = "Sp_GetSearchAdmin";
+        public static string GetAdminSearch = "Sp_GetSearchAdmin";
 
         // Email
         public static string AddNewEmail = "SP_AddNewEmail";
@@ -127,7 +127,7 @@ namespace E_Commerce.Utility
         public static string GetAllReview = "SP_GetAllReview";
         public static string GetSingleProductReview = "Sp_GetSingleProductReview";
 
-  
+
         // Appointment
         public static string AddNewAppointment = "SP_AddNewAppointment";
         public static string UpdateAppointment = "SP_UpdateAppointment";
@@ -214,15 +214,15 @@ namespace E_Commerce.Utility
         public static string AddNewShipment = "SP_AddNewShipment";
         public static string AddNewOrderItem = "SP_AddNewOrderItem";
         public static string AddNewPayment = "SP_AddNewPayment";
-		public static string GetSingleOrder = "SP_GetSingleOrder";
-		public static string GetSingleShipment = "SP_GetSingleShipment";
-		public static string GetSingleOrderItem = "SP_GetSingleOrderItem";
-		public static string GetSinglePayment = "SP_GetSinglePayment";
+        public static string GetSingleOrder = "SP_GetSingleOrder";
+        public static string GetSingleShipment = "SP_GetSingleShipment";
+        public static string GetSingleOrderItem = "SP_GetSingleOrderItem";
+        public static string GetSinglePayment = "SP_GetSinglePayment";
         public static string DeleteOrder = "SP_DeleteOrder";
         public static string ADeleteShipment = "SP_DeleteShipment";
         public static string DeleteOrderItem = "SP_DeleteOrderItem";
         public static string DeletePayment = "SP_DeletePayment";
-        
+
 
 
         // Super Admin & Admin
@@ -235,6 +235,9 @@ namespace E_Commerce.Utility
         public static string UpdateDeliveryManAssign = "SP_UpdateDeliveryManAssign";
         public static string GetSingleDeliveryManAssign = "SP_GetSingleDeliveryManAssign";
         public static string GetAllDeliveryManAssign = "SP_GetAllDeliveryManAssign";
+
+        // Delivery Man DashBoard
+        public static string GetDeliveryManWiseAssign = "SP_GetDeliveryManWiseAssign";
     }
 
 }

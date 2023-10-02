@@ -14,7 +14,7 @@ namespace E_commerce.Deliver.Controllers
         // GET: DeliveryManDashBoard
         public ActionResult DashBoard()
         {
-            DeliveryManModel deliveryman=(DeliveryManModel)Session["DeliveryManDetails"];
+            var deliveryman = GetCustomerDetails();
             var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
             SupplierandDeliveryManViewModel deliverymandetails = new SupplierandDeliveryManViewModel();
             deliverymandetails.Commondashboarddetails = DashBoardDetails(deliveryman.DeliverManId);
@@ -23,7 +23,7 @@ namespace E_commerce.Deliver.Controllers
         }
         public ActionResult ViewAllAssignment()
         {
-            DeliveryManModel deliveryman = (DeliveryManModel)Session["DeliveryManDetails"];
+            var deliveryman = GetCustomerDetails();
             var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
             SupplierandDeliveryManViewModel deliverymandetails = new SupplierandDeliveryManViewModel();
             deliverymandetails.DeliverymanAssignmentList = assigenments.Where(x => x.DeliveryManeID == deliveryman.DeliverManId).ToList();
@@ -31,7 +31,7 @@ namespace E_commerce.Deliver.Controllers
         }
         public ActionResult ViewAllCompleteAssignment()
         {
-            DeliveryManModel deliveryman = (DeliveryManModel)Session["DeliveryManDetails"];
+            var deliveryman = GetCustomerDetails();
             var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
             SupplierandDeliveryManViewModel deliverymandetails = new SupplierandDeliveryManViewModel();
             deliverymandetails.DeliverymanAssignmentList = assigenments.Where(x => x.DeliveryManeID == deliveryman.DeliverManId && x.AssigentmentUpdate == 1).ToList();
@@ -52,6 +52,9 @@ namespace E_commerce.Deliver.Controllers
                 TotalAssignment = AssignmentDelivery.Select(x => x.DeliveryManeID == DeliveryManID).Count()
             };
         }
-
+        private DeliveryManModel GetCustomerDetails()
+        {
+            return (DeliveryManModel)Session["DeliveryManDetails"];
+        }
     }
 }

@@ -449,12 +449,14 @@ namespace E_Commerce.DataLayerSQL
                 long id = 0;
                 SqlCommand command = new SqlCommand(StoredProcedured.AddNewDeliveryManAssign, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                SqlParameter returnvalue = new SqlParameter("@" + "AssigentmentAppointmentId", SqlDbType.Int);
+                SqlParameter returnvalue = new SqlParameter("@" + "AssignmentDeliveryId", SqlDbType.Int);
                 returnvalue.Direction = ParameterDirection.Output;
                 command.Parameters.Add(returnvalue);
                 foreach (var charge in adminassing.GetType().GetProperties())
                 {
-                    if (charge.Name != "DeliveryManeName" && charge.Name != "AssignmentDeliveryId" && charge.Name != "DevisionName" && charge.Name != "PlaceName" && charge.Name != "OrderOfficialId" && charge.Name != "ShipmentAddress" && charge.Name != "TotalPrice")
+                    if (charge.Name != "DeliveryManeName" && charge.Name != "AssignmentDeliveryId" && charge.Name != "DevisionName" 
+                    && charge.Name != "PlaceName" && charge.Name != "OrderOfficialId" && charge.Name != "ShipmentAddress" 
+                    && charge.Name != "TotalPrice" && charge.Name != "CustomerName" && charge.Name != "CustomerPhoneNumber")
                     {
                         string name = charge.Name;
                         var value = charge.GetValue(adminassing, null);
@@ -465,7 +467,7 @@ namespace E_Commerce.DataLayerSQL
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
-                    id = (int)command.Parameters["@AssigentmentAppointmentId"].Value;
+                    id = (int)command.Parameters["@AssignmentDeliveryId"].Value;
                 }
                 catch (Exception ex)
                 {
@@ -510,7 +512,7 @@ namespace E_Commerce.DataLayerSQL
             {
                 SqlCommand command = new SqlCommand(StoredProcedured.DeleteDeliveryManAssign, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@AssigentmentAppointmentId", deliverychargeid));
+                command.Parameters.Add(new SqlParameter("@AssignmentDeliveryId", deliverychargeid));
                 try
                 {
                     connection.Open();
@@ -535,7 +537,7 @@ namespace E_Commerce.DataLayerSQL
             {
                 SqlCommand command = new SqlCommand(StoredProcedured.GetSingleDeliveryManAssign, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@AssigentmentAppointmentId", deliverychargeid));
+                command.Parameters.Add(new SqlParameter("@AssignmentDeliveryId", deliverychargeid));
                 try
                 {
                     connection.Open();
@@ -563,7 +565,9 @@ namespace E_Commerce.DataLayerSQL
                 command.CommandType = CommandType.StoredProcedure;
                 foreach (var charge in deliveryCharge.GetType().GetProperties())
                 {
-                    if (charge.Name != "DeliveryManeName" && charge.Name != "AssignmentDeliveryId" && charge.Name != "DevisionName" && charge.Name != "PlaceName" && charge.Name != "OrderOfficialId" && charge.Name != "ShipmentAddress" && charge.Name != "TotalPrice")
+                    if (charge.Name != "DeliveryManeName" && charge.Name != "AssignmentDeliveryId" && charge.Name != "DevisionName"
+                    && charge.Name != "PlaceName" && charge.Name != "OrderOfficialId" && charge.Name != "ShipmentAddress"
+                    && charge.Name != "TotalPrice" && charge.Name != "CustomerName" && charge.Name != "CustomerPhoneNumber")
                     {
                         string name = charge.Name;
                         var value = charge.GetValue(deliveryCharge, null);
@@ -587,6 +591,30 @@ namespace E_Commerce.DataLayerSQL
                 return updated;
             }
         }
-
+        public DeliveryManAssignmentModel GetDeliveryManWiseAssign(int deliverychargeid)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoredProcedured.GetDeliveryManWiseAssign, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@DeliveryManeID", deliverychargeid));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    DeliveryManAssignmentModel charge = new DeliveryManAssignmentModel();
+                    charge = UtilityManager.DataReaderMap<DeliveryManAssignmentModel>(reader);
+                    return charge;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

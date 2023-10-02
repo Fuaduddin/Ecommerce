@@ -32,17 +32,17 @@ namespace E_commerce.Web.Controllers
             return View("categoryproduct", categoryproduct);
         }
         // Single Product Page
-        public ActionResult singleproduct()//int id)
+        public ActionResult singleproduct(int id)
         {
             CustomerViewModel Singleproduct = new CustomerViewModel();
-            int id = 14;
+            Singleproduct.Product = new ProductModel();
             Singleproduct.Product = ProductManager.GetSingleProduct(id);
             Singleproduct.Imagegallery = ImageGalleryManager.GetSingleProductAllImage(id);
             Singleproduct.FAQList = ContactManager.GetSingleProductAllFAQ(id);
             Singleproduct.ReviewList = ContactManager.GetSingleProductReview(id);
+            Singleproduct.RatingDetails = GetProductWiseReview(Singleproduct.ReviewList);
             Singleproduct.Review = new ReviewModel();
             return View("singleproduct", Singleproduct);
-            //return View("singleproduct");
         }
         [HttpPost]
         public ActionResult SortSearchProduct(int[]subcategory, int startingvalue, int endingvalue)
@@ -116,6 +116,33 @@ namespace E_commerce.Web.Controllers
             List<ProductModel> productlist = new List<ProductModel>();
             productlist = ProductManager.GetAllProduct();
             return productlist;
+        }
+        private ReviewModelRatingDetails GetProductWiseReview( List<ReviewModel> Reviews)
+        {
+            ReviewModelRatingDetails ratingdetails = new ReviewModelRatingDetails();
+            var totalratings = ((5 * Reviews.Select(x => x.TotalRating == 5).ToList().Count())
+                + (4 * Reviews.Select(x => x.TotalRating == 4).ToList().Count()) + (3 * Reviews.Select(x => x.TotalRating == 3).ToList().Count())
+                + (3 * Reviews.Select(x => x.TotalRating == 3).ToList().Count()) + (2 * Reviews.Select(x => x.TotalRating == 2).ToList().Count())
+                + (1 * Reviews.Select(x => x.TotalRating == 1).ToList().Count()));
+            if (Reviews.Count > 0)
+            {
+                 ratingdetails = new ReviewModelRatingDetails
+                {
+                    TotalCustomerRating = Reviews.Count(),
+                    TotalFiveStarRating = Reviews.Select(x => x.TotalRating == 5).ToList().Count(),
+                    TotalFiveStarRatingCUstomer = Reviews.Select(x => x.TotalRating == 5).ToList().Count(),
+                    TotalFourStarRating = Reviews.Select(x => x.TotalRating == 4).ToList().Count(),
+                    TotalFourStarRatingCUstomer = Reviews.Select(x => x.TotalRating == 4).ToList().Count(),
+                    TotalThreeStarRating = Reviews.Select(x => x.TotalRating == 3).ToList().Count(),
+                    TotalThreeStarRatingCUstomer = Reviews.Select(x => x.TotalRating == 3).ToList().Count(),
+                    TotalTwoStarRating = Reviews.Select(x => x.TotalRating == 2).ToList().Count(),
+                    TotalTwoStarRatingCUstomer = Reviews.Select(x => x.TotalRating == 2).ToList().Count(),
+                    TotalOneStarRating = Reviews.Select(x => x.TotalRating == 1).ToList().Count(),
+                    TotalOneStarRatingCUstomer = Reviews.Select(x => x.TotalRating == 1).ToList().Count(),
+                    AverageStarRating = totalratings / Reviews.Count()
+                };
+            }
+            return ratingdetails;
         }
     }
 }

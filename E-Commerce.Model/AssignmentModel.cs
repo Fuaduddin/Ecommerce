@@ -84,5 +84,7 @@ namespace E_Commerce.Model
         public string OrderOfficialId { get; set; }
         public string ShipmentAddress { get; set; }
         public int TotalPrice { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerPhoneNumber { get; set; }
     }
 }
