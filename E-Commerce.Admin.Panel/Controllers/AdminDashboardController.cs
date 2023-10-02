@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 
 namespace E_Commerce.Admin.Panel.Controllers
 {
+    [Authorize]
     public class AdminDashboardController : Controller
     {
         // GET: AdminDashboard

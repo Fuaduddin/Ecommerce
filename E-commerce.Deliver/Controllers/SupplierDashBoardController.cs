@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 
 namespace E_commerce.Deliver.Controllers
 {
+    [Authorize]
     public class SupplierDashBoardController : Controller
     {
         // GET: SupplierDashBoard

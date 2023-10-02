@@ -21,13 +21,13 @@ namespace E_commerce.Web.Controllers
                 var productlist = GetAllCategoryWiseProduct();
                 categoryproduct.ProductList = productlist.Where(x => x.CategoryId == id).ToList();
                 categoryproduct.SubCategoryList = SubCategoryManager.GetAllSelectedSubCategory(id);
-                ViewBag.categoryID = id;
+                ViewData["CategoryID"]  = id;
             }
            else
             {
                 categoryproduct.ProductList = GetAllCategoryWiseProduct();
                 categoryproduct.SubCategoryList = SubCategoryManager.GetAllSelectedSubCategory(id);
-                ViewBag.categoryID = id;
+                ViewData["CategoryID"] = id;
             }
             return View("categoryproduct", categoryproduct);
         }
@@ -62,7 +62,7 @@ namespace E_commerce.Web.Controllers
         public List<ProductModel> SortSearchProducts(int[] subcategoryid, int startingvalueprice, int endingvalueprice)
         {
             List<ProductModel> productlist = new List<ProductModel>();
-            int id= (int)ViewBag.categoryID;
+            int id = (int)ViewData["CategoryID"];
             if (subcategoryid.Length>0 && startingvalueprice>0 && endingvalueprice>0)
             {
                 foreach(var subcategory in subcategoryid)

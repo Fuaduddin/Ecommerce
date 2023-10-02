@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 
 namespace E_Commerce.Admin.Panel.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         // GET: Category

@@ -18,15 +18,16 @@ namespace E_commerce.Web.Controllers
             cart.viewzoneList = DeliverySettingsManager.GetAllZone();
             cart.PaymentMethodList = DeliverySettingsManager.GetAllDeliveryCost();
             cart.areaList = DeliverySettingsManager.GetAllArea();
-            cart.Customer= (CustomerModel)Session["CustomerDetails"];
+            cart.Customer= GetCustomerDetails();
             cart.Cart = new CartModel();
             return View(cart);
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult cart(CartModel cart,int [] Productitem, int [] Quantityitem, int[] ProductPriceitem)
         {
-            CustomerModel customer = (CustomerModel)Session["CustomerDetails"];
+            CustomerModel customer = GetCustomerDetails();
             cart.Order.OrderDeliveryUpdate = 0;
             cart.Order.OrderOfficialId = Guid.NewGuid().ToString();
             var customerid = (CustomerModel)Session["CustomerDetails"];
@@ -91,6 +92,10 @@ namespace E_commerce.Web.Controllers
             arealist = DeliverySettingsManager.GetSingleZoneAllArea(zoneid);
             var result = JsonConvert.SerializeObject(arealist);
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        private CustomerModel GetCustomerDetails()
+        {
+            return (CustomerModel)Session["CustomerDetails"];
         }
     }
 }
