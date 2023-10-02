@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace E_Commerce.Admin.Panel.Controllers
 {
+    [Authorize]
     public class StaffSettingsController : Controller
     {
         // GET: StaffSettings

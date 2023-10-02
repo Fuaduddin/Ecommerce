@@ -8,6 +8,7 @@ namespace E_Commerce.Admin.Panel.Controllers
 {
     public class SuperAdminDashboardController : Controller
     {
+        [Authorize]
         // GET: SuperAdminDashboard
         public ActionResult DashBoard()
         {

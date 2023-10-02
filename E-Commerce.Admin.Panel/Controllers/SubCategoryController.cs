@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 
 namespace E_Commerce.Admin.Panel.Controllers
 {
+    [Authorize]
     public class SubCategoryController : Controller
     {
         // GET: SubCategory

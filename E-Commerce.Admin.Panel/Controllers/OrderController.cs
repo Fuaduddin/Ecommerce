@@ -8,6 +8,7 @@ using E_Commerce.Model;
 
 namespace E_Commerce.Admin.Panel.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         // GET: Order

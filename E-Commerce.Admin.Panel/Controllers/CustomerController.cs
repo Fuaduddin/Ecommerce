@@ -9,8 +9,10 @@ using Newtonsoft.Json;
 
 namespace E_Commerce.Admin.Panel.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
+
         // GET: Customer
         public ActionResult ViewAllCustomer()
         {
