@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace E_Commerce.Admin.Panel.Controllers
 {
-    [Authorize]
+     [Authorize]
     public class CategoryController : Controller
     {
         // GET: Category
@@ -19,7 +19,6 @@ namespace E_Commerce.Admin.Panel.Controllers
         {
             AdminViewModel category = new AdminViewModel();
             category.Category = new CategoryModel();
-           // IEnumerable<CategoryModel> categorylist= CategoryManager.GetAllCategory();
            category.CategoryList = perpageshowdata(1,10);
            category.totalpage = pagecount(10);
            category.CategoryList = CategoryManager.GetAllCategory();

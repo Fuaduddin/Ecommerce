@@ -6,9 +6,10 @@ using System.Web.Mvc;
 
 namespace E_Commerce.Admin.Panel.Controllers
 {
+    [Authorize]
     public class SuperAdminDashboardController : Controller
     {
-        [Authorize]
+        
         // GET: SuperAdminDashboard
         public ActionResult DashBoard()
         {

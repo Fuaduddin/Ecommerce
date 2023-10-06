@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace E_Commerce.Admin.Panel.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class ContactController : Controller
     {
         // GET: Contact
@@ -17,7 +18,8 @@ namespace E_Commerce.Admin.Panel.Controllers
         public ActionResult ViewAllEmail()
         {
             AdminViewModel email= new AdminViewModel();
-            email.EmailList = ContactManager.GetAllEmail();
+            email.EmailList = perpageshowdata(1, 10);
+            email.totalpage = pagecount(10);
             return View("ViewAllEmail",email);
         }
         public ActionResult DeleteEmail(int id)
@@ -83,12 +85,31 @@ namespace E_Commerce.Admin.Panel.Controllers
             var result = JsonConvert.SerializeObject(emaillist);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
+        public int pagecount(int perpagedata)
+        {
+            IEnumerable<EmailModel> EmailList = ContactManager.GetAllEmail();
+            return Convert.ToInt32(Math.Ceiling(EmailList.Count() / (double)perpagedata));
+        }
+        public List<EmailModel> perpageshowdata(int pageindex, int pagesize)
+        {
+            IEnumerable<EmailModel> EmailList = ContactManager.GetAllEmail();
+            return EmailList.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        public JsonResult Getpaginatiotabledata(int pageindex, int pagesize)
+        {
+            AdminViewModel EmailList = new AdminViewModel();
+            EmailList.EmailList = perpageshowdata(pageindex, pagesize);
+            EmailList.totalpage = pagecount(pagesize);
+            var EmailListitem = JsonConvert.SerializeObject(EmailList);
+            return Json(EmailListitem, JsonRequestBehavior.AllowGet);
+        }
+       
         // Appointment
         public ActionResult UpdateAppointment()
         {
             AdminViewModel AppointmentList = new AdminViewModel();
-            AppointmentList.AppointmentList = ContactManager.GetAllAppointment();
+            AppointmentList.AppointmentList = perpageshowdataAppointment(1,10);
+            AppointmentList.totalpage=pagecount(10);
             return View("ViewAllAppointment", AppointmentList);
         }
         public ActionResult ViewAllAppointment()
@@ -115,10 +136,8 @@ namespace E_Commerce.Admin.Panel.Controllers
         {
             AdminViewModel Appointment = new AdminViewModel();
             Appointment.Appointment = ContactManager.GetSingleAppointment(id);
-           // Appointment.Admin=
             return View("UpdateAppointment", Appointment);
         }
-
         public JsonResult GetsingleAppointmentitem(int id)
         {
             int checkedid = 1;
@@ -131,7 +150,38 @@ namespace E_Commerce.Admin.Panel.Controllers
             var result = JsonConvert.SerializeObject(email);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
+        //public JsonResult SearchAppointment(string SearchKeyword)
+        //{
+        //    List<AppointmentModel> emaillistitem = new List<AppointmentModel>();
+        //    emaillistitem = ContactManager.SearchEmail(SearchKeyword);
+        //    var result = JsonConvert.SerializeObject(emaillistitem);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
+        //public JsonResult Filtermail(int SearchKeyword)
+        //{
+        //    List<EmailModel> emaillist = new List<EmailModel>();
+        //    emaillist = ContactManager.FilterEmail(SearchKeyword);
+        //    var result = JsonConvert.SerializeObject(emaillist);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
+        public int pagecountAppointment(int perpagedata)
+        {
+            IEnumerable<AppointmentModel> AppointmentList = ContactManager.GetAllAppointment();
+            return Convert.ToInt32(Math.Ceiling(AppointmentList.Count() / (double)perpagedata));
+        }
+        public List<AppointmentModel> perpageshowdataAppointment(int pageindex, int pagesize)
+        {
+            IEnumerable<AppointmentModel> AppointmentList = ContactManager.GetAllAppointment();
+            return AppointmentList.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        public JsonResult GetpaginatiotabledataAppointment(int pageindex, int pagesize)
+        {
+            AdminViewModel AppointmentList = new AdminViewModel();
+            AppointmentList.EmailList = perpageshowdata(pageindex, pagesize);
+            AppointmentList.totalpage = pagecount(pagesize);
+            var AppointmentListitem = JsonConvert.SerializeObject(AppointmentList);
+            return Json(AppointmentListitem, JsonRequestBehavior.AllowGet);
+        }
         // Review
         public ActionResult ViewAllReview()
         {
