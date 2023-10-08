@@ -31,6 +31,27 @@ namespace E_commerce.Web.Controllers
             }
             return View("categoryproduct", categoryproduct);
         }
+        public int pagecountCategoryProduct(int perpagedata, int DeliveryManID)
+        {
+            var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
+            List<DeliveryManAssignmentModel> AppointmentList = assigenments.Where(x => x.DeliveryManeID == DeliveryManID && x.AssigentmentUpdate == 0).ToList();
+            return Convert.ToInt32(Math.Ceiling(AppointmentList.Count() / (double)perpagedata));
+        }
+        public List<DeliveryManAssignmentModel> perpageshowdataCategoryWoseProduct(int pageindex, int pagesize, int DeliveryManID)
+        {
+            var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
+            List<DeliveryManAssignmentModel> AppointmentList = assigenments.Where(x => x.DeliveryManeID == DeliveryManID && x.AssigentmentUpdate == 0).ToList();
+            return AppointmentList.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        public JsonResult GetpaginatiotabledataCategoryWiseProduct(int pageindex, int pagesize)
+        {
+            AdminViewModel AppointmentList = new AdminViewModel();
+            var DeliveryManAssngDetails = GetCustomerDetails();
+            AppointmentList.DeliverymanAssignmentList = perpageshowdataDeliveryManDueAssng(pageindex, pagesize, DeliveryManAssngDetails.DeliverManId);
+            AppointmentList.totalpage = pagecountDeliveryManDueAssng(pagesize, DeliveryManAssngDetails.DeliverManId);
+            var AppointmentListitem = JsonConvert.SerializeObject(AppointmentList);
+            return Json(AppointmentListitem, JsonRequestBehavior.AllowGet);
+        }
         // Single Product Page
         public ActionResult singleproduct(int id)
         {

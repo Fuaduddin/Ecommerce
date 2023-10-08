@@ -19,21 +19,17 @@ namespace E_commerce.Deliver.Controllers
             var supplier = GetSupplierDetails();
             SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
             supplierdetails.dashboarddetails = UserDashboardDetails(supplier.SupplierId);
+            supplierdetails.totalpage = pagecountSupplierDueAssng(10, supplier.SupplierId);
+            supplierdetails.ViewSupplierAssignmentList = perpageshowdataSupplierDueAssng(1,10, supplier.SupplierId);
             return View("DashBoard", supplierdetails);
         }
         public ActionResult ViewAssignmentAssginment()
         {
             var supplier = GetSupplierDetails();
             SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
-            supplierdetails.ViewSupplierAssignmentList = DashBoardManager.ViewAssignmentAssginment(supplier.SupplierId);
+            supplierdetails.totalpage = pagecountSupplierCompleteAssng(10, supplier.SupplierId);
+            supplierdetails.ViewSupplierAssignmentList = perpageshowdataSupplierCompleteAssng(1, 10, supplier.SupplierId);
             return View("ViewAssignmentAssginment", supplierdetails);
-        }
-        public ActionResult ViewAllCompleteAssignment()
-        {
-            var supplier = GetSupplierDetails();
-            SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
-            supplierdetails.ViewSupplierAssignmentList = DashBoardManager.ViewAllCompleteAssignment(supplier.SupplierId);
-            return View("ViewAllCompleteAssignment", supplierdetails);
         }
         public ActionResult GetSingleAssignment(int id)
         {
@@ -110,6 +106,45 @@ namespace E_commerce.Deliver.Controllers
             dashboard.TotalDueAssignment = DashBoardManager.GettotalDueAssing(SupplierID);
             dashboard.TotalCompleteAssignment = DashBoardManager.GettotalAssignAssing(SupplierID);
             return dashboard;
+        }
+
+        public int pagecountSupplierDueAssng(int perpagedata, int SupllierID)
+        {
+            IEnumerable<ViewSupplierAssignmentModel> AppointmentList = DashBoardManager.ViewAssignmentAssginment(SupllierID);
+            return Convert.ToInt32(Math.Ceiling(AppointmentList.Count() / (double)perpagedata));
+        }
+        public List<ViewSupplierAssignmentModel> perpageshowdataSupplierDueAssng(int pageindex, int pagesize,int SupllierID)
+        {
+            IEnumerable<ViewSupplierAssignmentModel> AppointmentList = DashBoardManager.ViewAssignmentAssginment(SupllierID);
+            return AppointmentList.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        public JsonResult GetpaginatiotabledataSupplierDueAssng(int pageindex, int pagesize)
+        {
+            AdminViewModel AppointmentList = new AdminViewModel();
+            var SupplierDetails = GetSupplierDetails();
+            AppointmentList.ViewSupplierAssignmentList = perpageshowdataSupplierDueAssng(pageindex, pagesize, SupplierDetails.SupplierId);
+            AppointmentList.totalpage = pagecountSupplierDueAssng(pagesize, SupplierDetails.SupplierId);
+            var AppointmentListitem = JsonConvert.SerializeObject(AppointmentList);
+            return Json(AppointmentListitem, JsonRequestBehavior.AllowGet);
+        }
+        public int pagecountSupplierCompleteAssng(int perpagedata, int SupllierID)
+        {
+            IEnumerable<ViewSupplierAssignmentModel> AppointmentList = DashBoardManager.ViewAssignmentAssginment(SupllierID);
+            return Convert.ToInt32(Math.Ceiling(AppointmentList.Count() / (double)perpagedata));
+        }
+        public List<ViewSupplierAssignmentModel> perpageshowdataSupplierCompleteAssng(int pageindex, int pagesize, int SupllierID)
+        {
+            IEnumerable<ViewSupplierAssignmentModel> AppointmentList = DashBoardManager.ViewAssignmentAssginment(SupllierID);
+            return AppointmentList.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        public JsonResult GetpaginatiotabledataCompleteAssng(int pageindex, int pagesize)
+        {
+            AdminViewModel AppointmentList = new AdminViewModel();
+            var SupplierDetails = GetSupplierDetails();
+            AppointmentList.ViewSupplierAssignmentList = perpageshowdataSupplierDueAssng(pageindex, pagesize, SupplierDetails.SupplierId);
+            AppointmentList.totalpage = pagecountSupplierDueAssng(pagesize, SupplierDetails.SupplierId);
+            var AppointmentListitem = JsonConvert.SerializeObject(AppointmentList);
+            return Json(AppointmentListitem, JsonRequestBehavior.AllowGet);
         }
     }
 }

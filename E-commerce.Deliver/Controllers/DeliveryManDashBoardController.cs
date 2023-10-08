@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,24 +20,18 @@ namespace E_commerce.Deliver.Controllers
             var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
             SupplierandDeliveryManViewModel deliverymandetails = new SupplierandDeliveryManViewModel();
             deliverymandetails.Commondashboarddetails = DashBoardDetails(deliveryman.DeliverManId);
-            deliverymandetails.DeliverymanAssignmentList = assigenments.Where(x=>x.DeliveryManeID==deliveryman.DeliverManId && x.AssigentmentUpdate==0).ToList();
+            deliverymandetails.DeliverymanAssignmentList = perpageshowdataDeliveryManDueAssng(1,10, deliveryman.DeliverManId);
+            deliverymandetails.totalpage = pagecountDeliveryManDueAssng(10, deliveryman.DeliverManId);
             return View("DashBoard");
         }
         public ActionResult ViewAllAssignment()
         {
             var deliveryman = GetCustomerDetails();
-            var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
             SupplierandDeliveryManViewModel deliverymandetails = new SupplierandDeliveryManViewModel();
-            deliverymandetails.DeliverymanAssignmentList = assigenments.Where(x => x.DeliveryManeID == deliveryman.DeliverManId).ToList();
-            return View("DashBoard");
-        }
-        public ActionResult ViewAllCompleteAssignment()
-        {
-            var deliveryman = GetCustomerDetails();
-            var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
-            SupplierandDeliveryManViewModel deliverymandetails = new SupplierandDeliveryManViewModel();
-            deliverymandetails.DeliverymanAssignmentList = assigenments.Where(x => x.DeliveryManeID == deliveryman.DeliverManId && x.AssigentmentUpdate == 1).ToList();
-            return View("DashBoard");
+            deliverymandetails.Commondashboarddetails = DashBoardDetails(deliveryman.DeliverManId);
+            deliverymandetails.DeliverymanAssignmentList = perpageshowdataDeliveryManCompleteAssng(1, 10, deliveryman.DeliverManId);
+            deliverymandetails.totalpage = pagecountDeliveryManCompleteAssng(10, deliveryman.DeliverManId);
+            return View("ViewAllAssignment");
         }
         public ActionResult Logout()
         {
@@ -56,6 +51,48 @@ namespace E_commerce.Deliver.Controllers
         private DeliveryManModel GetCustomerDetails()
         {
             return (DeliveryManModel)Session["DeliveryManDetails"];
+        }
+        public int pagecountDeliveryManDueAssng(int perpagedata, int DeliveryManID)
+        {
+            var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
+            List<DeliveryManAssignmentModel> AppointmentList = assigenments.Where(x => x.DeliveryManeID == DeliveryManID && x.AssigentmentUpdate == 0).ToList();
+            return Convert.ToInt32(Math.Ceiling(AppointmentList.Count() / (double)perpagedata));
+        }
+        public List<DeliveryManAssignmentModel> perpageshowdataDeliveryManDueAssng(int pageindex, int pagesize, int DeliveryManID)
+        {
+            var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
+            List<DeliveryManAssignmentModel> AppointmentList = assigenments.Where(x => x.DeliveryManeID == DeliveryManID && x.AssigentmentUpdate == 0).ToList();
+            return AppointmentList.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        public JsonResult GetpaginatiotabledataDeliveryManDueAssng(int pageindex, int pagesize)
+        {
+            AdminViewModel AppointmentList = new AdminViewModel();
+            var DeliveryManAssngDetails = GetCustomerDetails();
+            AppointmentList.DeliverymanAssignmentList = perpageshowdataDeliveryManDueAssng(pageindex, pagesize, DeliveryManAssngDetails.DeliverManId);
+            AppointmentList.totalpage = pagecountDeliveryManDueAssng(pagesize, DeliveryManAssngDetails.DeliverManId);
+            var AppointmentListitem = JsonConvert.SerializeObject(AppointmentList);
+            return Json(AppointmentListitem, JsonRequestBehavior.AllowGet);
+        }
+        public int pagecountDeliveryManCompleteAssng(int perpagedata, int DeliveryManID)
+        {
+            var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
+            List<DeliveryManAssignmentModel> AppointmentList = assigenments.Where(x => x.DeliveryManeID == DeliveryManID && x.AssigentmentUpdate == 1).ToList();
+            return Convert.ToInt32(Math.Ceiling(AppointmentList.Count() / (double)perpagedata));
+        }
+        public List<DeliveryManAssignmentModel> perpageshowdataDeliveryManCompleteAssng(int pageindex, int pagesize, int DeliveryManID)
+        {
+            var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
+            List<DeliveryManAssignmentModel> AppointmentList = assigenments.Where(x => x.DeliveryManeID == DeliveryManID && x.AssigentmentUpdate == 1).ToList();
+            return AppointmentList.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        public JsonResult GetpaginatiotabledataCompleteAssng(int pageindex, int pagesize)
+        {
+            AdminViewModel AppointmentList = new AdminViewModel();
+            var DeliveryManAssngDetails = GetCustomerDetails();
+            AppointmentList.DeliverymanAssignmentList = perpageshowdataDeliveryManCompleteAssng(pageindex, pagesize, DeliveryManAssngDetails.DeliverManId);
+            AppointmentList.totalpage = pagecountDeliveryManCompleteAssng(pagesize, DeliveryManAssngDetails.DeliverManId);
+            var AppointmentListitem = JsonConvert.SerializeObject(AppointmentList);
+            return Json(AppointmentListitem, JsonRequestBehavior.AllowGet);
         }
     }
 }

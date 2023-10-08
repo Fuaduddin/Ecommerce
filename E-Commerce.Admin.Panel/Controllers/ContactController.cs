@@ -105,17 +105,11 @@ namespace E_Commerce.Admin.Panel.Controllers
         }
        
         // Appointment
-        public ActionResult UpdateAppointment()
-        {
-            AdminViewModel AppointmentList = new AdminViewModel();
-            AppointmentList.AppointmentList = perpageshowdataAppointment(1,10);
-            AppointmentList.totalpage=pagecount(10);
-            return View("ViewAllAppointment", AppointmentList);
-        }
         public ActionResult ViewAllAppointment()
         {
             AdminViewModel AppointmentList = new AdminViewModel();
-            AppointmentList.AppointmentList = ContactManager.GetAllAppointment();
+            AppointmentList.AppointmentList = perpageshowdataAppointment(1, 10);
+            AppointmentList.totalpage = pagecount(10);
             return View("ViewAllAppointment", AppointmentList);
         }
         public ActionResult DeleteAppointment(int id)
@@ -186,7 +180,8 @@ namespace E_Commerce.Admin.Panel.Controllers
         public ActionResult ViewAllReview()
         {
             AdminViewModel review = new AdminViewModel();
-            review.ReviewList = ContactManager.GetAllReview();
+            review.totalpage = pagecountReview(10);
+            review.ReviewList = perpageshowdataReview(1,10);
             return View("ViewAllReview", review);
         }
         public ActionResult DeleteReview(int id)
@@ -202,6 +197,24 @@ namespace E_Commerce.Admin.Panel.Controllers
             }
             review.ReviewList = ContactManager.GetAllReview();
             return View("ViewAllEmail", review);
+        }
+        public int pagecountReview(int perpagedata)
+        {
+            IEnumerable<ReviewModel> AppointmentList = ContactManager.GetAllReview();
+            return Convert.ToInt32(Math.Ceiling(AppointmentList.Count() / (double)perpagedata));
+        }
+        public List<ReviewModel> perpageshowdataReview(int pageindex, int pagesize)
+        {
+            IEnumerable<ReviewModel> AppointmentList = ContactManager.GetAllReview();
+            return AppointmentList.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        public JsonResult GetpaginatiotabledataReview(int pageindex, int pagesize)
+        {
+            AdminViewModel AppointmentList = new AdminViewModel();
+            AppointmentList.ReviewList = perpageshowdataReview(pageindex, pagesize);
+            AppointmentList.totalpage = pagecountReview(pagesize);
+            var AppointmentListitem = JsonConvert.SerializeObject(AppointmentList);
+            return Json(AppointmentListitem, JsonRequestBehavior.AllowGet);
         }
     }
 }
