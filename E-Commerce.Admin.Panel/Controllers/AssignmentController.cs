@@ -170,6 +170,7 @@ namespace E_Commerce.Admin.Panel.Controllers
                 assignment.SupplierAssignment.ProductId = product.ProductId;
                 assignment.SupplierAssignment.AssignDate = DateTime.Now;
                 assignment.SupplierAssignment.AssignmentUpdate = 0;
+                assignment.SupplierAssignment.AssignmentOfficialID= Guid.NewGuid().ToString();
                 if (AssignmentManager.AddNewAssignmentSupplier(assignment.SupplierAssignment) > 0)
                 {
                     ViewData["Message"] = "Your data have  been Updated";
@@ -327,6 +328,7 @@ namespace E_Commerce.Admin.Panel.Controllers
             }
             else
             {
+                assignment.AssignmentOfficialID = Guid.NewGuid().ToString();
                 if (AssignmentManager.AddNewAssignmentDeliveryMan(assignment) > 0)
                 {
                     ViewData["Message"] = "Your data have been Added";

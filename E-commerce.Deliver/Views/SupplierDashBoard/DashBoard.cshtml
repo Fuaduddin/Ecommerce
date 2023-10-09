@@ -2,6 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_DeliveryManLayout.cshtml";
+    var i = 1;
 }
 <head>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -37,7 +38,7 @@
                             <i class='fas fa-toolbox' style='font-size:36px'></i>
                         </div>
                         <div>
-                            <h6>Total:@Model.dashboarddetails.TotalAssignment</h6>
+                            <h6>Total:@Model.dashboarddetails.TotalAppointment</h6>
                         </div>
                     </div>
                 </div>
@@ -100,6 +101,7 @@
                                         <tr>
                                             <th> <input type="checkbox" id="multiedelete"></th>
                                             <th>No</th>
+                                            <th>Assignment ID</th>
                                             <th>Product ID</th>
                                             <th>Product</th>
                                             <th>Product Name</th>
@@ -123,6 +125,9 @@
                                                 </td>
                                                 <td>
                                                     @i
+                                                </td>
+                                                <td>
+                                                    @supply.AssignmentOfficialID
                                                 </td>
                                                 <td>
                                                     @supply.ProdcutItemId
@@ -282,6 +287,91 @@
             $("#deleteallbutton").css("display", "none");
         }
     })
+    $("#searchitemcategory").keyup(function () {
+
+        var serachvalue = $("#searchitemcategory").val();
+
+        var showdata =
+        {
+            SearchKeyword: serachvalue
+        }
+        if (serachvalue != null) {
+            $.ajax({
+                url: "/SupplierDashBoard/SearchdataSupplierDueAssignm",
+                Method: "POST",
+                data: showdata,
+                success: function (data) {
+                    $('.hide-row').empty();
+                    data = JSON.parse(data);
+                    var serialno = pagesize + 1;
+                    var element = ""
+                    $.each(data, function (i) {
+                        element += `
+                     <tr class="hide-row">
+     <td>
+         <input type="checkbox" class="multiedeleteitem" name="multidelete" value=" ${data[i].AssigentmentSupplierId}">
+     </td>
+     <td>
+        ${serialno}
+     </td>
+           <td>
+         ${data[i].AssignmentOfficialID}
+      </td>
+     <td>
+         ${data[i].ProdcutItemId}
+     </td>
+     <td>
+         <img src="${data[i].ProductImage}" width="100" height="100" alt="">
+     </td>
+     <td>
+        ${data[i].ProductName}
+     </td>
+     <td>
+         ${data[i].ProductDescription}
+     </td>
+     <td>
+         ${data[i].TotalAmount}
+     </td>
+     <td>
+         <span><b>Category Name:${data[i].CategoryName}</b></span> <br />
+         <span><i>Sub Category Name:${data[i].SubCategoryName} </i></span> <br />
+     </td>
+     <td>
+         <span><b>Supplier Name: ${data[i].SupplierName}</b></span> <br />
+         <span><i>Total Cost:${data[i].AssignmentTotalCost}</i></span> <br />
+         <span><i>Issued Date: ${data[i].AssignDate}</i></span>
+     </td>
+     <td>
+         <b>Pending</b>
+     </td>
+     <td>
+         <a onclick="showmodal( ${data[i].AssigentmentSupplierId})" class="btn btn-danger">Cancel</a>
+     </td>
+     <td>
+         <a onclick="showreadmodal( ${data[i].AssigentmentSupplierId})" class="btn btn-success">Assingment Completed</a>
+     </td>
+     <td>
+      <a href="/SupplierDashBoard/UpdateAssignment/${data[i].AssigentmentSupplierId}" class="btn btn-success">Assingment Completed</a>
+
+     </td>
+ </tr>
+                        `;
+                        $("#table").append(element);
+                        serialno++;
+                        var element = "";
+                    });
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            })
+
+        }
+        else {
+            $('.hide-row').css("display", "block");;
+        }
+    });
 </script>
 <script>
     // Get the modal
@@ -350,29 +440,54 @@
                 var element = ""
                 $.each(data, function (i) {
                     element += `
-                    <tr class="hide-row">
-                         <td>
-                            ${serialno}
-                        </td>
-                         <td>
-                           <img src="${data[i].CategoryImage}" width="100" height="100" alt="">
-                        </td>
-                         <td>
-                           ${data[i].CategoryName}
-                        </td>
-                        <td>
-                            ${data[i].CategoryDescription}
-                        </td>
-                        <td>
-                            <button id="open-CategoryDelete" data-toggle="modal" data-id="  ${data[i].CategoryId}" class="btn btn-danger">Delete</button>
-                        </td>
-                        <td>
-                            Html.ActionLink("Update", "GetSingleCategory", new { Id =  data[i].CategoryId }, new { title = "Edit Item", class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                        </td>
-                         <td>
-                          <button id="myBtn" class = "btn btn-success" onclick="finddata(${data[i].CategoryId})">Category Details</button>
-                        </td>
-                    </tr>
+                     <tr class="hide-row">
+     <td>
+         <input type="checkbox" class="multiedeleteitem" name="multidelete" value=" ${data[i].AssigentmentSupplierId}">
+     </td>
+     <td>
+        ${serialno}
+     </td>
+           <td>
+    ${data[i].AssignmentOfficialID}
+ </td>
+     <td>
+         ${data[i].ProdcutItemId}
+     </td>
+     <td>
+         <img src="${data[i].ProductImage}" width="100" height="100" alt="">
+     </td>
+     <td>
+        ${data[i].ProductName}
+     </td>
+     <td>
+         ${data[i].ProductDescription}
+     </td>
+     <td>
+         ${data[i].TotalAmount}
+     </td>
+     <td>
+         <span><b>Category Name:${data[i].CategoryName}</b></span> <br />
+         <span><i>Sub Category Name:${data[i].SubCategoryName} </i></span> <br />
+     </td>
+     <td>
+         <span><b>Supplier Name: ${data[i].SupplierName}</b></span> <br />
+         <span><i>Total Cost:${data[i].AssignmentTotalCost}</i></span> <br />
+         <span><i>Issued Date: ${data[i].AssignDate}</i></span>
+     </td>
+     <td>
+         <b>Pending</b>
+     </td>
+     <td>
+         <a onclick="showmodal( ${data[i].AssigentmentSupplierId})" class="btn btn-danger">Cancel</a>
+     </td>
+     <td>
+         <a onclick="showreadmodal( ${data[i].AssigentmentSupplierId})" class="btn btn-success">Assingment Completed</a>
+     </td>
+     <td>
+      <a href="/SupplierDashBoard/UpdateAssignment/${data[i].AssigentmentSupplierId}" class="btn btn-success">Assingment Completed</a>
+        
+     </td>
+ </tr>
                         `;
                     $("#table").append(element);
                     serialno++;

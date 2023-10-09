@@ -39,8 +39,24 @@ namespace E_commerce.Deliver.Controllers
         }
         public ActionResult UpdateAssignment()
         {
-
             return View("UpdateAssignment");
+        }
+        public ActionResult AssignmentCompleteConfirmation(int id)
+        {
+            if()
+            {
+                ViewData["Message"] = "Your data have  been Updated";
+            }
+            else
+            {
+                ViewData["Message"] = "Your data have not been Updated";
+            }
+            var supplier = GetSupplierDetails();
+            SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
+            supplierdetails.dashboarddetails = UserDashboardDetails(supplier.SupplierId);
+            supplierdetails.totalpage = pagecountSupplierDueAssng(10, supplier.SupplierId);
+            supplierdetails.ViewSupplierAssignmentList = perpageshowdataSupplierDueAssng(1, 10, supplier.SupplierId);
+            return View("DashBoard", supplierdetails);
         }
         [HttpPost]
         public ActionResult UpdateAssignment(SupplierandDeliveryManViewModel assignment)
@@ -141,10 +157,28 @@ namespace E_commerce.Deliver.Controllers
         {
             AdminViewModel AppointmentList = new AdminViewModel();
             var SupplierDetails = GetSupplierDetails();
-            AppointmentList.ViewSupplierAssignmentList = perpageshowdataSupplierDueAssng(pageindex, pagesize, SupplierDetails.SupplierId);
-            AppointmentList.totalpage = pagecountSupplierDueAssng(pagesize, SupplierDetails.SupplierId);
+            AppointmentList.ViewSupplierAssignmentList = perpageshowdataSupplierCompleteAssng(pageindex, pagesize, SupplierDetails.SupplierId);
+            AppointmentList.totalpage = pagecountSupplierCompleteAssng(pagesize, SupplierDetails.SupplierId);
             var AppointmentListitem = JsonConvert.SerializeObject(AppointmentList);
             return Json(AppointmentListitem, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchdataSupplierDueAssignm(string serachvalue)
+        {
+            var SupplierDetails = GetSupplierDetails();
+            List<ViewSupplierAssignmentModel> Assignmentlist = DashBoardManager.ViewAssignmentAssginment(SupplierDetails.SupplierId);
+            var filterresult = Assignmentlist.Where(x => x.AssignmentUpdate == 0);
+            var searchresult = filterresult.Select(x => x.AssignmentOfficialID.Concat(serachvalue)).ToList();
+            var result = JsonConvert.SerializeObject(searchresult);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchdataSupplierCompleteAssignm(string serachvalue)
+        {
+            var SupplierDetails = GetSupplierDetails();
+            List<ViewSupplierAssignmentModel> Assignmentlist = DashBoardManager.ViewAssignmentAssginment(SupplierDetails.SupplierId);
+            var filterresult = Assignmentlist.Where(x => x.AssignmentUpdate == 1);
+            var searchresult = filterresult.Select(x => x.AssignmentOfficialID.Concat(serachvalue)).ToList();
+            var result = JsonConvert.SerializeObject(searchresult);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -32,6 +32,7 @@
                     <!-- One "tab" for each step in the form: -->
             <div class="tab">
                 @Html.HiddenFor(Model => Model.Product.ProductId)
+                @Html.HiddenFor(Model => Model.SupplierAssignment.AssignmentOfficialID)
                 <b>Product Details</b>
                 <p>
                     <label class="text-field"><b>Product ID</b></label>

@@ -14,6 +14,7 @@ namespace E_Commerce.Model
     public class ViewSupplierAssignmentModel
     {
         public int AssigentmentSupplierId { get; set; }
+        public string AssignmentOfficialID { get; set; }
         public DateTime AssignDate { get; set; }
         public int ProductId { get; set; }
         public int SupplierId { get; set; }
@@ -47,6 +48,7 @@ namespace E_Commerce.Model
         public int TotalAmount { get; set; }
         public int AssignmentUpdate { get; set; }
         public int AssignmentTotalCost { get; set; }
+        public string AssignmentOfficialID { get; set; }
 
     }
     public class AdminAssignmentModel
@@ -86,5 +88,6 @@ namespace E_Commerce.Model
         public int TotalPrice { get; set; }
         public string CustomerName { get; set; }
         public string CustomerPhoneNumber { get; set; }
+        public string AssignmentOfficialID { get; set; }
     }
 }
