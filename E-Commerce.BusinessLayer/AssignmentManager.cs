@@ -144,5 +144,20 @@ namespace E_Commerce.BusinessLayer
             var Categoriesd = provider.GetDeliveryManWiseAssign(categoryId);
             return Categoriesd;
         }
+
+        // Supplier and DeliveryMan Assignment Update
+        public static bool UpdateSupplierAssignmentDetails(int AssignmentID, int AssngUpdate)
+        {
+            AssignmentAppointSQLProvider provider = new AssignmentAppointSQLProvider();
+            var Categoriesd = provider.UpdateSupplierAssignmentDetails(categoryId);
+            return Categoriesd;
+        }
+        // Supplier and DeliveryMan Assignment Update
+        public static bool UpdateProductAmount(int categoryId)
+        {
+            AssignmentAppointSQLProvider provider = new AssignmentAppointSQLProvider();
+            var Categoriesd = provider.UpdateSupplierAssignmentDetails(categoryId);
+            return Categoriesd;
+        }
     }
 }

@@ -223,7 +223,9 @@ namespace E_Commerce.Utility
         public static string DeleteOrderItem = "SP_DeleteOrderItem";
         public static string DeletePayment = "SP_DeletePayment";
 
-
+        public static string UpdateOrder = "SP_UpdateOrder";
+        public static string UpdateShipment = "SP_UpdateShipment";
+        public static string UpdatePayment = "SP_UpdatePayment";
 
         // Super Admin & Admin
         public static string GetAllCustomerOrder = "SP_GetAllCustomerOrder";
@@ -238,6 +240,15 @@ namespace E_Commerce.Utility
 
         // Delivery Man DashBoard
         public static string GetDeliveryManWiseAssign = "SP_GetDeliveryManWiseAssign";
+
+
+        // Suplier and DeliveryMan Assignment Update
+        public static string UpdateSupplierAssignmentUpdate = "SP_UpdateSupplierAssignmentUpdate";
+        public static string UpdateDeliveryManAssignmentUpdate = "SP_UpdateDeliveryManAssignmentUpdate";
+        public static string UpdateProductAmount = "SP_UpdateProductAmount";
+        //public static string UpdateDeliveryManAssign = "SP_UpdateDeliveryManAssign";
+        //public static string GetSingleDeliveryManAssign = "SP_GetSingleDeliveryManAssign";
+        //public static string GetAllDeliveryManAssign = "SP_GetAllDeliveryManAssign";
     }
 
 }

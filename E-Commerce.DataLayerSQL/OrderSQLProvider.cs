@@ -395,7 +395,6 @@ namespace E_Commerce.DataLayerSQL
             }
         }
 
-
         public List<OrderModel> GetAllCustomerOrder()
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
@@ -443,6 +442,109 @@ namespace E_Commerce.DataLayerSQL
                 {
                     connection.Close();
                 }
+            }
+        }
+
+
+        // Update
+        public bool CompleteOrder(OrderModel Order)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                bool updated = true;
+                SqlCommand command = new SqlCommand(StoredProcedured.UpdateOrder, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                foreach (var charge in Order.GetType().GetProperties())
+                {
+                    if (charge.Name != "CustomerName" && charge.Name != "CustomerPhoneNumber")
+                    {
+                        string name = charge.Name;
+                        var value = charge.GetValue(Order, null);
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    }
+                }
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    updated = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                return updated;
+            }
+        }
+        public bool CompletePayment(Payment Payment)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                bool updated = true;
+                SqlCommand command = new SqlCommand(StoredProcedured.UpdatePayment, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                foreach (var charge in Payment.GetType().GetProperties())
+                {
+                    if (charge.Name != "OrderPaymentDate" && charge.Name != "DeliveryChargeTitle")
+                    {
+                        string name = charge.Name;
+                        var value = charge.GetValue(Payment, null);
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    }
+                }
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    updated = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                return updated;
+            }
+        }
+        public bool CompleteShipment(ShipmentModel Shipment)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                bool updated = true;
+                SqlCommand command = new SqlCommand(StoredProcedured.UpdateShipment, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                foreach (var charge in Shipment.GetType().GetProperties())
+                {
+                    if (charge.Name != "ShipmentItemPickedUpDate"
+                    && charge.Name != "PlaceName" && charge.Name != "DevisionName")
+                    {
+                        string name = charge.Name;
+                        var value = charge.GetValue(Shipment, null);
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    }
+                }
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    updated = false;
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                return updated;
             }
         }
     }

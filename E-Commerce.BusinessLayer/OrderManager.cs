@@ -109,6 +109,30 @@ namespace E_Commerce.BusinessLayer
             var chargeid = provider.GetSingleOrderDetails(id);
             return chargeid;
         }
+
+
+        /// Complete Order Update
+        
+        public static bool CompleteOrder(OrderModel Order)
+        {
+            OrderSQLProvider provider = new OrderSQLProvider();
+            var chargeid = provider.CompleteOrder(Order);
+            return chargeid;
+        }
+        public static bool CompletePayment(Payment payment)
+        {
+            OrderSQLProvider provider = new OrderSQLProvider();
+            var chargeid = provider.CompletePayment(payment);
+            return chargeid;
+        }
+        public static bool CompleteShipment(ShipmentModel shipment)
+        {
+            OrderSQLProvider provider = new OrderSQLProvider();
+            var chargeid = provider.CompleteShipment(shipment);
+            return chargeid;
+        }
+
+
         //public static List<DeliveryCharge> GetAllDeliveryCost()
         //{
         //    DeliverySettingsSQLProvider provider = new DeliverySettingsSQLProvider();

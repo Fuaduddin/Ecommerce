@@ -110,8 +110,8 @@
                                             <th>Category & SUbcategory</th>
                                             <th>Assignment Details</th>
                                             <th>Status</th>
-                                            <th>Update</th>
                                             <th>Cancel</th>
+                                            <th>Complete</th>
                                             <th>Assignment Details</th>
                                         </tr>
                                     </thead>
@@ -163,8 +163,10 @@
                                                     <a onclick="showreadmodal(@supply.AssigentmentSupplierId)" class="btn btn-success">Assingment Completed</a>
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink("Update", "GetSingleAssignment", new { Id = supply.AssigentmentSupplierId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                                    @Html.ActionLink("Complete", "AssignmentCompleteConfirmation", new { Id = supply.AssigentmentSupplierId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
                                                 </td>
+
+
                                             </tr>
 
                                         }

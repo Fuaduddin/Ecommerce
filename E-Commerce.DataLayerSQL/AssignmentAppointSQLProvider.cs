@@ -616,5 +616,8 @@ namespace E_Commerce.DataLayerSQL
                 }
             }
         }
+
+
+        // Supplier and DeliveryMan Assignment Update
     }
 }

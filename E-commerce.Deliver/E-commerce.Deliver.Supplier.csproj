@@ -5268,7 +5268,6 @@
     <Content Include="Views\SupplierDashBoard\ViewAssignmentAssginment.cshtml" />
     <Content Include="Views\SupplierDashBoard\UpdateAssignment.cshtml" />
     <Content Include="Views\DeliveryManDashBoard\ViewAllCompleteAssignment.cshtml" />
-    <Content Include="Views\DeliveryManDashBoard\ViewAssignmentAssginment.cshtml" />
     <Content Include="Views\DeliveryManDashBoard\GetSingleOrderDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

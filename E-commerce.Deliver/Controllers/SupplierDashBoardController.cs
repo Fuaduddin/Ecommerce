@@ -37,19 +37,40 @@ namespace E_commerce.Deliver.Controllers
             assignment.UpdateAssignment = DashBoardManager.GetSingleSupplierAssing(id);
             return View("UpdateAssignment", assignment);
         }
-        public ActionResult UpdateAssignment()
-        {
-            return View("UpdateAssignment");
-        }
+        //public ActionResult CompleteAssignment(int id)
+        //{
+        //    if(id>0)
+        //    {
+        //        var supllierAssignment=AssignmentManager.GetSingleAssignmentSupplier()
+        //    }
+        //    else
+        //    {
+        //        ViewData["Message"] = "Your data have not been Updated";
+        //    }
+        //    return View("DashBoard");
+        //}
         public ActionResult AssignmentCompleteConfirmation(int id)
         {
-            if()
+            if(id>0)
             {
-                ViewData["Message"] = "Your data have  been Updated";
-            }
-            else
-            {
-                ViewData["Message"] = "Your data have not been Updated";
+                if (AssignmentManager.UpdateSupplierAssignmentDetails(id, 1))
+                {
+                    var AssignmentDetails = DashBoardManager.GetSingleSupplierAssing(id);
+                    var productdetails = ProductManager.GetSingleProduct(AssignmentDetails.ProductId);
+                    productdetails.ProductQuantity = productdetails.ProductQuantity + AssignmentDetails.ProductQuantity;
+                    if(ProductManager.UpdateProduct(productdetails))
+                    {
+                        ViewData["Message"] = "Your data have  been Updated";
+                    }
+                    else
+                    {
+                        ViewData["Message"] = "Your data have not been Updated";
+                    }
+                }
+                else
+                {
+                    ViewData["Message"] = "Your data have not been Updated";
+                }
             }
             var supplier = GetSupplierDetails();
             SupplierandDeliveryManViewModel supplierdetails = new SupplierandDeliveryManViewModel();
