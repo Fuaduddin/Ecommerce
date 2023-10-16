@@ -130,9 +130,9 @@
                                                     <span><i>Official ID:  @Deliveryman.</i></span> <br />
                                                 </td>
                                                 <td>
-                                                    <span><b>Order ID:  @Deliveryman.SupplierName</b></span> <br />
-                                                    <span><i>Customer Name:  @Deliveryman.AssignmentTotalCost</i></span> <br />
-                                                    <span><i>Address:  @Deliveryman.AssignDate</i></span>
+                                                    <span><b>Order ID:  @Deliveryman.OrderOfficialId</b></span> <br />
+                                                    <span><i>Customer Name:  @Deliveryman.CustomerName</i></span> <br />
+                                                    <span><i>Customer Name:  @Deliveryman.CustomerPhoneNumber</i></span> <br />
                                                 </td>
                                                 <td>
                                                     @Deliveryman.AssignDate
@@ -141,13 +141,13 @@
                                                     <b>Pending</b>
                                                 </td>
                                                 <td>
-                                                    <a onclick="showmodal(@supply.AssigentmentSupplierId)" class="btn btn-danger">Cancel</a>
+                                                    <a onclick="showmodal(@Deliveryman.AssignmentDeliveryId)" class="btn btn-danger">Cancel</a>
                                                 </td>
                                                 <td>
-                                                    <a onclick="showreadmodal(@supply.AssigentmentSupplierId)" class="btn btn-success">Assingment Completed</a>
+                                                    <a onclick="showreadmodal(@Deliveryman.AssignmentDeliveryId)" class="btn btn-success">Assingment Completed</a>
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink("Update", "GetSingleAssignment", new { Id = supply.AssigentmentSupplierId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                                    @Html.ActionLink("Update", "GetSingleAssignment", new { Id = Deliveryman.AssignmentDeliveryId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
                                                 </td>
                                             </tr>
 
@@ -178,7 +178,7 @@
     </div>
     <div id="id01" class="modal">
         <span class="close" title="Close Modal">×</span>
-        @using (Html.BeginForm("CancleAssignment", "SupplierDashBoard", FormMethod.Post, new { @class = "modal-content" }))
+        @using (Html.BeginForm("CancleAssignment", "DeliveryManDashBoard", FormMethod.Post, new { @class = "modal-content" }))
         {
             <div class="container">
                 <h1>Delete Email</h1>

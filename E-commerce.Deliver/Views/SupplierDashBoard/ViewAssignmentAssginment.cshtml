@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "ViewAllCompleteAssignment";
-    Layout = "~/Views/Shared/_DeliveryManLayout.cshtml";
+    Layout = "~/Views/Shared/_SupplierLayout.cshtml";
     var i = 1;
 }
 
@@ -47,71 +47,52 @@
                                         <th> <input type="checkbox" id="multiedelete"></th>
                                         <th>No</th>
                                         <th>Assignment ID</th>
-                                        <th>Product ID</th>
-                                        <th>Product</th>
-                                        <th>Product Name</th>
-                                        <th>Product Description</th>
-                                        <th>Total Amount Order</th>
-                                        <th>Category & SUbcategory</th>
-                                        <th>Assignment Details</th>
-                                        <th>Status</th>
+                                        <th>Delivery Man Details</th>
+                                        <th>Order Details</th>
+                                        <th>Assignment Date</th>
                                         <th>Update</th>
                                         <th>Cancel</th>
                                         <th>Assignment Details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var supply in Model.ViewSupplierAssignmentList)
+                                    @foreach (var Deliveryman in Model.DeliverymanAssignmentList)
                                     {
 
                                         <tr class="hide-row">
                                             <td>
-                                                <input type="checkbox" class="multiedeleteitem" name="multidelete" value="@supply.AssigentmentSupplierId">
+                                                <input type="checkbox" class="multiedeleteitem" name="multidelete" value="@Deliveryman.AssignmentDeliveryId">
                                             </td>
                                             <td>
                                                 @i
                                             </td>
                                             <td>
-                                                @supply.AssignmentOfficialID
+                                                @Deliveryman.AssignmentOfficialID
                                             </td>
                                             <td>
-                                                @supply.ProdcutItemId
+                                                <img src="@Deliveryman." width="100" height="100" alt=""><br />
+                                                <span><b>Delivery Name:  @Deliveryman.DeliveryManeName</b></span> <br />
+                                                <span><i>Official ID:  @Deliveryman.</i></span> <br />
                                             </td>
                                             <td>
-                                                <img src="@supply.ProductImage" width="100" height="100" alt="">
+                                                <span><b>Order ID:  @Deliveryman.OrderOfficialId</b></span> <br />
+                                                <span><i>Customer Name:  @Deliveryman.CustomerName</i></span> <br />
+                                                <span><i>Customer Name:  @Deliveryman.CustomerPhoneNumber</i></span> <br />
                                             </td>
                                             <td>
-                                                @supply.ProductName
-                                            </td>
-                                            <td>
-                                                @supply.ProductDescription
-                                            </td>
-                                            <td>
-                                                @supply.TotalAmount
-                                            </td>
-                                            <td>
-                                                <span><b>Category Name:  @supply.CategoryName</b></span> <br />
-                                                <span><i>Sub Category Name:  @supply.SubCategoryName</i></span> <br />
-                                            </td>
-                                            <td>
-                                                <span><b>Supplier Name:  @supply.SupplierName</b></span> <br />
-                                                <span><i>Total Cost:  @supply.AssignmentTotalCost</i></span> <br />
-                                                <span><i>Issued Date:  @supply.AssignDate</i></span>
+                                                @Deliveryman.AssignDate
                                             </td>
                                             <td>
                                                 <b>Pending</b>
                                             </td>
                                             <td>
-                                                <a onclick="showmodal(@supply.AssigentmentSupplierId)" class="btn btn-danger">Cancel</a>
+                                                <a onclick="showmodal(@Deliveryman.AssignmentDeliveryId)" class="btn btn-danger">Cancel</a>
                                             </td>
                                             <td>
-                                                <a onclick="showreadmodal(@supply.AssigentmentSupplierId)" class="btn btn-success">Assingment Completed</a>
+                                                <a onclick="showreadmodal(@Deliveryman.AssignmentDeliveryId)" class="btn btn-success">Assingment Completed</a>
                                             </td>
                                             <td>
-                                                @Html.ActionLink("Update", "GetSingleAssignment", new { Id = supply.AssigentmentSupplierId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                                            </td>
-                                            <td>
-                                                @Html.ActionLink("Complete", "AssignmentCompleteConfirmation", new { Id = supply.AssigentmentSupplierId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                                @Html.ActionLink("Update", "GetSingleAssignment", new { Id = Deliveryman.AssignmentDeliveryId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
                                             </td>
                                         </tr>
 
@@ -142,7 +123,7 @@
 </div>
 <div id="id01" class="modal">
     <span class="close" title="Close Modal">×</span>
-    @using (Html.BeginForm("CancleAssignment", "SupplierDashBoard", FormMethod.Post, new { @class = "modal-content" }))
+    @using (Html.BeginForm("CancleAssignment", "DeliveryManDashBoard", FormMethod.Post, new { @class = "modal-content" }))
     {
         <div class="container">
             <h1>Delete Email</h1>
@@ -173,7 +154,7 @@
 </div>
 <script>
 
-    function showreadmodal(id,read) {
+    function showreadmodal(id, read) {
         $("#myModal").css("display", "block");
         $(".hide-row").eq(read).removeClass("unreademail");
         $(".hide-row").eq(read).addClass("reademail");
@@ -187,10 +168,10 @@
             success: function (data) {
 
                 data = JSON.parse(data);
-                $("#customername").text("Customer Full Name: "+data.CustomerFullName);
-                $("#Subject").text("Subject: "+data.EmailSubject);
+                $("#customername").text("Customer Full Name: " + data.CustomerFullName);
+                $("#Subject").text("Subject: " + data.EmailSubject);
                 $("#email").text(data.Email);
-                $("#customeremail").text("Customer Email: "+data.CustomerEmailAddress);
+                $("#customeremail").text("Customer Email: " + data.CustomerEmailAddress);
             },
             error: function () {
                 alert('Failed to receive the Data');
@@ -234,6 +215,91 @@
             $("#deleteallbutton").css("display", "none");
         }
     })
+    $("#searchitemcategory").keyup(function () {
+
+        var serachvalue = $("#searchitemcategory").val();
+
+        var showdata =
+        {
+            SearchKeyword: serachvalue
+        }
+        if (serachvalue != null) {
+            $.ajax({
+                url: "/SupplierDashBoard/SearchdataSupplierDueAssignm",
+                Method: "POST",
+                data: showdata,
+                success: function (data) {
+                    $('.hide-row').empty();
+                    data = JSON.parse(data);
+                    var serialno = pagesize + 1;
+                    var element = ""
+                    $.each(data, function (i) {
+                        element += `
+                     <tr class="hide-row">
+     <td>
+         <input type="checkbox" class="multiedeleteitem" name="multidelete" value=" ${data[i].AssigentmentSupplierId}">
+     </td>
+     <td>
+        ${serialno}
+     </td>
+           <td>
+         ${data[i].AssignmentOfficialID}
+      </td>
+     <td>
+         ${data[i].ProdcutItemId}
+     </td>
+     <td>
+         <img src="${data[i].ProductImage}" width="100" height="100" alt="">
+     </td>
+     <td>
+        ${data[i].ProductName}
+     </td>
+     <td>
+         ${data[i].ProductDescription}
+     </td>
+     <td>
+         ${data[i].TotalAmount}
+     </td>
+     <td>
+         <span><b>Category Name:${data[i].CategoryName}</b></span> <br />
+         <span><i>Sub Category Name:${data[i].SubCategoryName} </i></span> <br />
+     </td>
+     <td>
+         <span><b>Supplier Name: ${data[i].SupplierName}</b></span> <br />
+         <span><i>Total Cost:${data[i].AssignmentTotalCost}</i></span> <br />
+         <span><i>Issued Date: ${data[i].AssignDate}</i></span>
+     </td>
+     <td>
+         <b>Pending</b>
+     </td>
+     <td>
+         <a onclick="showmodal( ${data[i].AssigentmentSupplierId})" class="btn btn-danger">Cancel</a>
+     </td>
+     <td>
+         <a onclick="showreadmodal( ${data[i].AssigentmentSupplierId})" class="btn btn-success">Assingment Completed</a>
+     </td>
+     <td>
+      <a href="/SupplierDashBoard/UpdateAssignment/${data[i].AssigentmentSupplierId}" class="btn btn-success">Assingment Completed</a>
+
+     </td>
+ </tr>
+                        `;
+                        $("#table").append(element);
+                        serialno++;
+                        var element = "";
+                    });
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            })
+
+        }
+        else {
+            $('.hide-row').css("display", "block");;
+        }
+    });
 </script>
 <script>
     // Get the modal
@@ -267,102 +333,15 @@
         }
     }
 </script>
-<script>
-    function showdata(n) {
-        //  var name = $("#sub-category-name").val();
-        //  var oppotionvalue = $("#category-id").val();
-        //  var oppotiontext = $("#category-id").text();
-        pageindex = n;
-        var showdata =
-        {
-            pageindex: pageindex,
-            pagesize: pagesize
-        }
-        showdataview(showdata);
-    }
-    function showdataview(showdata) {
-        $.ajax({
-            url: "/SupplierDashBoard/GetpaginatiotabledataCompleteAssng",
-            Method: "POST",
-            data: showdata,
-            success: function (data) {
-                $('.hide-row').empty();
-                data = JSON.parse(data);
-                var serialno = pagesize + 1;
-                var element = ""
-                $.each(data, function (i) {
-                    element += `
-                    <tr class="hide-row">
-    <td>
-        <input type="checkbox" class="multiedeleteitem" name="multidelete" value=" ${data[i].AssigentmentSupplierId}">
-    </td>
-    <td>
-       ${serialno}
-    </td>
-          <td>
-    ${data[i].AssignmentOfficialID}
- </td>
-    <td>
-        ${data[i].ProdcutItemId}
-    </td>
-    <td>
-        <img src="${data[i].ProductImage}" width="100" height="100" alt="">
-    </td>
-    <td>
-       ${data[i].ProductName}
-    </td>
-    <td>
-        ${data[i].ProductDescription}
-    </td>
-    <td>
-        ${data[i].TotalAmount}
-    </td>
-    <td>
-        <span><b>Category Name:${data[i].CategoryName}</b></span> <br />
-        <span><i>Sub Category Name:${data[i].SubCategoryName} </i></span> <br />
-    </td>
-    <td>
-        <span><b>Supplier Name: ${data[i].SupplierName}</b></span> <br />
-        <span><i>Total Cost:${data[i].AssignmentTotalCost}</i></span> <br />
-        <span><i>Issued Date: ${data[i].AssignDate}</i></span>
-    </td>
-    <td>
-        <b>Pending</b>
-    </td>
-    <td>
-        <a onclick="showmodal( ${data[i].AssigentmentSupplierId})" class="btn btn-danger">Cancel</a>
-    </td>
-    <td>
-        <a onclick="showreadmodal( ${data[i].AssigentmentSupplierId})" class="btn btn-success">Assingment Completed</a>
-    </td>
-    <td>
-     <a href="/SupplierDashBoard/UpdateAssignment/${data[i].AssigentmentSupplierId}" class="btn btn-success">Assingment Completed</a>
-       
-    </td>
-</tr>
-                       `;
-                    $("#table").append(element);
-                    serialno++;
-                    var element = "";
-                });
-            },
-            error: function () {
-                alert('Failed to receive the Data');
-                console.log('Failed ');
-            }
-        })
-    }
-</script>
+
 <script>
     var pageindex = 1;
     var pagesize = 10;
-    function showmodal(n)
-    {
+    function showmodal(n) {
         document.getElementById('id01').style.display = 'block';
         $("#categoryid").val(n)
     }
-    function closemenu()
-    {
+    function closemenu() {
         $("#id01").hide();
     }
     function showdata(n) {
@@ -379,7 +358,7 @@
     }
     function showdataview(showdata) {
         $.ajax({
-            url: "/SupplierDashBoard/SearchdataSupplierCompleteAssignm",
+            url: "/SupplierDashBoard/GetpaginatiotabledataSupplierDueAssng",
             Method: "POST",
             data: showdata,
             success: function (data) {
@@ -434,7 +413,7 @@
      </td>
      <td>
       <a href="/SupplierDashBoard/UpdateAssignment/${data[i].AssigentmentSupplierId}" class="btn btn-success">Assingment Completed</a>
-        
+
      </td>
  </tr>
                         `;
@@ -639,6 +618,91 @@
             text-decoration: none;
             cursor: pointer;
         }
+</style>
+<style>
+    .completeassng {
+        background-color: lightgreen;
+        border: 1px solid lightgreen;
+        border-radius: 10px;
+        width: 250px;
+        height: 150px;
+    }
+
+    .Todayassng {
+        background-color: lightblue;
+        border: 1px solid lightblue;
+        border-radius: 10px;
+        width: 250px;
+        height: 150px;
+    }
+
+    .Dueassng {
+        background-color: lightcoral;
+        border: 1px solid lightcoral;
+        border-radius: 10px;
+        width: 250px;
+        height: 150px;
+    }
+
+    .details {
+        margin-top: 10%;
+        padding: 9% 9% 9% 9%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        gap: 3%;
+    }
+
+    .totalheading {
+        text-align: center;
+        font-size: 18px;
+        line-height: 15px;
+        color: white;
+        margin-top: 6%;
+    }
+</style>
+
+<style>
+    .completeassng {
+        background-color: lightgreen;
+        border: 1px solid lightgreen;
+        border-radius: 10px;
+        width: 250px;
+        height: 150px;
+    }
+
+    .Todayassng {
+        background-color: lightblue;
+        border: 1px solid lightblue;
+        border-radius: 10px;
+        width: 250px;
+        height: 150px;
+    }
+
+    .Dueassng {
+        background-color: lightcoral;
+        border: 1px solid lightcoral;
+        border-radius: 10px;
+        width: 250px;
+        height: 150px;
+    }
+
+    .details {
+        margin-top: 10%;
+        padding: 9% 9% 9% 9%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        gap: 3%;
+    }
+
+    .totalheading {
+        text-align: center;
+        font-size: 18px;
+        line-height: 15px;
+        color: white;
+        margin-top: 6%;
+    }
 </style>
 
 
