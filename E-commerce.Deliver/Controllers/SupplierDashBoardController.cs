@@ -37,28 +37,15 @@ namespace E_commerce.Deliver.Controllers
             assignment.UpdateAssignment = DashBoardManager.GetSingleSupplierAssing(id);
             return View("UpdateAssignment", assignment);
         }
-        //public ActionResult CompleteAssignment(int id)
-        //{
-        //    if(id>0)
-        //    {
-        //        var supllierAssignment=AssignmentManager.GetSingleAssignmentSupplier()
-        //    }
-        //    else
-        //    {
-        //        ViewData["Message"] = "Your data have not been Updated";
-        //    }
-        //    return View("DashBoard");
-        //}
         public ActionResult AssignmentCompleteConfirmation(int id)
         {
             if(id>0)
             {
-                if (AssignmentManager.UpdateSupplierAssignmentDetails(id, 1))
+                if (UpdateProductQuantity(id))
                 {
                     var AssignmentDetails = DashBoardManager.GetSingleSupplierAssing(id);
-                    var productdetails = ProductManager.GetSingleProduct(AssignmentDetails.ProductId);
-                    productdetails.ProductQuantity = productdetails.ProductQuantity + AssignmentDetails.ProductQuantity;
-                    if(ProductManager.UpdateProduct(productdetails))
+                    AssignmentDetails.AssignmentUpdate = 1;
+                    if(DashBoardManager.UpdateSupplierAssing(AssignmentDetails.AssigentmentSupplierId, 1, AssignmentDetails.AssignmentTotalCost))
                     {
                         ViewData["Message"] = "Your data have  been Updated";
                     }
@@ -143,8 +130,22 @@ namespace E_commerce.Deliver.Controllers
             dashboard.TotalDueAssignment = DashBoardManager.GettotalDueAssing(SupplierID);
             dashboard.TotalCompleteAssignment = DashBoardManager.GettotalAssignAssing(SupplierID);
             return dashboard;
+        } 
+        private bool UpdateProductQuantity(int AssignmentID)
+        {
+            bool updated = true;
+            try
+            {
+                var AssignmentDetails = DashBoardManager.GetSingleSupplierAssing(AssignmentID);
+                var productdetails = ProductManager.GetSingleProduct(AssignmentDetails.ProductId);
+                productdetails.ProductQuantity = productdetails.ProductQuantity + AssignmentDetails.ProductQuantity;
+            }
+            catch (Exception ex)
+            {
+                updated=false;
+            }
+            return updated;
         }
-
         public int pagecountSupplierDueAssng(int perpagedata, int SupllierID)
         {
             IEnumerable<ViewSupplierAssignmentModel> AppointmentList = DashBoardManager.ViewAssignmentAssginment(SupllierID);

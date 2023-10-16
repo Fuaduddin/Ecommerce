@@ -618,6 +618,43 @@ namespace E_Commerce.DataLayerSQL
         }
 
 
-        // Supplier and DeliveryMan Assignment Update
-    }
+        //// Supplier and DeliveryMan Assignment Update
+        //public bool UpdateAssignmentSupplierUpdate(ViewSupplierAssignmentModel supplier)
+        //{
+        //    using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+        //    {
+        //        bool updated = true;
+        //        SqlCommand command = new SqlCommand(StoredProcedured.UpdateSupplierAssign, connection);
+        //        command.CommandType = CommandType.StoredProcedure;
+        //        foreach (var charge in supplier.GetType().GetProperties())
+        //        {
+        //            if (charge.Name != "ProdcutItemId" && charge.Name != "ProductImage" && charge.Name != "ProductName"
+        //             && charge.Name != "ProductDescription" && charge.Name != "ProductQuantity" && charge.Name != "ProductPrice"
+        //             && charge.Name != "ProductWidth" && charge.Name != "ProductHeight" && charge.Name != "ProductWeight"
+        //             && charge.Name != "ProductColor" && charge.Name != "ProductDepth" && charge.Name != "ProductFreshnessDuration"
+        //             && charge.Name != "SubCategoryId" && charge.Name != "SubCategoryName" && charge.Name != "CategoryName" && charge.Name != "SupplierName")
+        //            {
+        //                string name = charge.Name;
+        //                var value = charge.GetValue(supplier, null);
+        //                command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+        //            }
+        //        }
+        //        try
+        //        {
+        //            connection.Open();
+        //            command.ExecuteNonQuery();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            updated = false;
+        //            throw new Exception("Exception Adding Data. " + ex.Message);
+        //        }
+        //        finally
+        //        {
+        //            connection.Close();
+        //        }
+        //        return updated;
+        //    }
+        //    }
+        }
 }

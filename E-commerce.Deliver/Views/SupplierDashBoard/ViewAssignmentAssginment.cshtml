@@ -225,7 +225,7 @@
         }
         if (serachvalue != null) {
             $.ajax({
-                url: "/SupplierDashBoard/SearchdataSupplierDueAssignm",
+                url: "/SupplierDashBoard/SearchdataSupplierCompleteAssignm",
                 Method: "POST",
                 data: showdata,
                 success: function (data) {
@@ -358,7 +358,7 @@
     }
     function showdataview(showdata) {
         $.ajax({
-            url: "/SupplierDashBoard/GetpaginatiotabledataSupplierDueAssng",
+            url: "/SupplierDashBoard/GetpaginatiotabledataCompleteAssng",
             Method: "POST",
             data: showdata,
             success: function (data) {

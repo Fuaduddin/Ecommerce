@@ -37,9 +37,14 @@ namespace E_commerce.Deliver.Controllers
                 if (GetCartFullDetailsUpdate(id))
                 {
                     var AssignmentDetails = AssignmentManager.GetSingleAssignmentDeliveryMant(id);
+                    AssignmentDetails.AssigentmentUpdate = 1;
                     if(AssignmentManager.UpdateAssignmentDeliveryMan(AssignmentDetails))
                     {
                         ViewData["Message"] = "Your data have  been Updated";
+                    }
+                    else
+                    {
+                        ViewData["Message"] = "Your data have not been Updated";
                     }
                 }
                 else

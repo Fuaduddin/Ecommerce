@@ -146,18 +146,18 @@ namespace E_Commerce.BusinessLayer
         }
 
         // Supplier and DeliveryMan Assignment Update
-        public static bool UpdateSupplierAssignmentDetails(int AssignmentID, int AssngUpdate)
-        {
-            AssignmentAppointSQLProvider provider = new AssignmentAppointSQLProvider();
-            var Categoriesd = provider.UpdateSupplierAssignmentDetails(categoryId);
-            return Categoriesd;
-        }
+        //public static bool UpdateSupplierAssignmentDetails(ViewSupplierAssignmentModel Supplier)
+        //{
+        //    AssignmentAppointSQLProvider provider = new AssignmentAppointSQLProvider();
+        //    var Categoriesd = provider.UpdateAssignmentSupplierUpdate(Supplier);
+        //    return Categoriesd;
+        //}
         // Supplier and DeliveryMan Assignment Update
-        public static bool UpdateProductAmount(int categoryId)
-        {
-            AssignmentAppointSQLProvider provider = new AssignmentAppointSQLProvider();
-            var Categoriesd = provider.UpdateSupplierAssignmentDetails(categoryId);
-            return Categoriesd;
-        }
+        //public static bool UpdateProductAmount(int categoryId)
+        //{
+        //    AssignmentAppointSQLProvider provider = new AssignmentAppointSQLProvider();
+        //    var Categoriesd = provider.UpdateSupplierAssignmentDetails(categoryId);
+        //    return Categoriesd;
+        //}
     }
 }

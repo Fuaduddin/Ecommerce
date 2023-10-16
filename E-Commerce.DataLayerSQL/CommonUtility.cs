@@ -246,7 +246,7 @@ namespace E_Commerce.Utility
         public static string UpdateSupplierAssignmentUpdate = "SP_UpdateSupplierAssignmentUpdate";
         public static string UpdateDeliveryManAssignmentUpdate = "SP_UpdateDeliveryManAssignmentUpdate";
         public static string UpdateProductAmount = "SP_UpdateProductAmount";
-        //public static string UpdateDeliveryManAssign = "SP_UpdateDeliveryManAssign";
+        public static string UpdateSupplierAssign = "SP_UpdateSupplierAssign";
         //public static string GetSingleDeliveryManAssign = "SP_GetSingleDeliveryManAssign";
         //public static string GetAllDeliveryManAssign = "SP_GetAllDeliveryManAssign";
     }
