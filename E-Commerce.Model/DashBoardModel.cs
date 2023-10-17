@@ -18,10 +18,18 @@ namespace E_Commerce.Model
         public int TotalDeliveryMan { get; set; }
         public int TotalCustomer { get; set; }
         public int TotalAppointment { get; set; }
+        public int TotalDueAppointment { get; set; }
+        public int TotalCompleteAppointment { get; set; }
         public int TotalSupplierAssignment { get; set; }
         public int TotalDeliveryManAssignment { get; set; }
+        public int TotalDeliveryManDueAssignment { get; set; }
+        public int TotalDeliveryManCompleteAssignment { get; set; }
         public int TotalPayment { get; set; }
+        public int TotalDuePayment { get; set; }
+        public int TotalCompletePayment { get; set; }
         public int TotalCancelOrder{ get; set; }
+        public int TotalCompleteOrder { get; set; }
+        public int TotalDueOrder { get; set; }
         public CommonDashBoardModel Common { get; set; }
     }
     public class CommonDashBoardModel

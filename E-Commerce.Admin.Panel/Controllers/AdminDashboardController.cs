@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using E_Commerce.BusinessLayer;
 using E_Commerce.Model;
 using Newtonsoft.Json;
+using E_Commerce.Admin.Panel.GlobalDashBoardSettings;
 
 namespace E_Commerce.Admin.Panel.Controllers
 {
@@ -16,22 +17,21 @@ namespace E_Commerce.Admin.Panel.Controllers
         // GET: AdminDashboard
         public ActionResult DashBoard()
         {
-            var admindetails = Admindetails();
-            var dashboarddetails = GetAdminDashBoardDetails(admindetails.AdminId);
+            AdminViewModel DashBoard= new AdminViewModel();
+            DashBoard.DashBoard = GlobalDashBoardSettingsModel.DashboardInformation();
+            DashBoard.DashBoard.Common = GetAdminDashBoardDetails();
             return View("DashBoard");
         }
         public ActionResult ViewAllCompleteAssignment()
         {
             AdminViewModel adminAllCompleteAssignmentlist = new AdminViewModel();
-            var admindetails = Admindetails();
-            adminAllCompleteAssignmentlist.AdminAssignmentList = GetAllAssingmentDetails(admindetails.AdminId, 1);
+            adminAllCompleteAssignmentlist.AdminAssignmentList = GetAllAssingmentDetails(1);
             return View("ViewAllCompleteAssignment", adminAllCompleteAssignmentlist);
         }
         public ActionResult ViewAllDueAssignment()
         {
             AdminViewModel adminAllCompleteAssignmentlist = new AdminViewModel();
-            var admindetails = Admindetails();
-            adminAllCompleteAssignmentlist.AdminAssignmentList = GetAllAssingmentDetails(admindetails.AdminId, 0);
+            adminAllCompleteAssignmentlist.AdminAssignmentList = GetAllAssingmentDetails(0);
             return View("ViewAllDueAssignment", adminAllCompleteAssignmentlist);
         }
         public ActionResult GetSingleAssignment(int id)
@@ -41,8 +41,20 @@ namespace E_Commerce.Admin.Panel.Controllers
             adminAllCompleteAssignmentlist.AdminAssignment = (AdminAssignmentModel)(adminAllCompleteAssignmentlist.AdminAssignmentList.Where(x => x.AssigentmentAppointmentId == id).ToList())[0];
             return View("UpdateAssignment", adminAllCompleteAssignmentlist);
         }
-        public ActionResult UpdateAssignment()
+        public ActionResult UpdateAssignment(int id)
         {
+            if(id>0)
+            {
+                var AssignmentDetails=AssignmentManager.GetSingleAssignmentAppointment(id);
+                if(DashBoardManager.UpdateAdminAppointment(AssignmentDetails.AdminId, 1, AssignmentDetails.AssigentmentFixedDate))
+                {
+                    ViewData["Message"] = "Your data have been Updated";
+                }
+                else
+                {
+                    ViewData["Message"] = "!!!! Error !!!!!!";
+                }
+            }
             return View("UpdateAssignment");
         }
         [HttpPost]
@@ -113,10 +125,11 @@ namespace E_Commerce.Admin.Panel.Controllers
             }
             return isSent;
         }
-        private List<AdminAssignmentModel> GetAllAssingmentDetails(int id, int update)
+        private List<AdminAssignmentModel> GetAllAssingmentDetails(int update)
         {
+            var admindetails = Admindetails();
             var adminassingmentlist = AssignmentManager.GetAllAssignmentAppointment();
-           return adminassingmentlist.Where(x => x.AdminId == id && x.AssingedUpdate == update).ToList();
+           return adminassingmentlist.Where(x => x.AdminId == admindetails.AdminId && x.AssingedUpdate == update).ToList();
         }
         private AdminModel Admindetails()
         {
@@ -134,14 +147,16 @@ namespace E_Commerce.Admin.Panel.Controllers
                 "has been confirmed with"+ AppoinmentWIth+"on"+AppointmentDate;
             
         }
-        private DashBoardModel GetAdminDashBoardDetails(int id)
+        private CommonDashBoardModel GetAdminDashBoardDetails()
         {
-            DashBoardModel dashboard = new DashBoardModel();
-            if (id > 0)
+            var admindetails = Admindetails();
+            var AppointmentList = AssignmentManager.GetAllAssignmentAppointment();
+            return new CommonDashBoardModel()
             {
-
-            }
-            return dashboard;
+                TotalAssignment= AppointmentList.Select(x=>x.AdminId==admindetails.AdminId).Count(),
+                TotalCompleteAssignment= AppointmentList.Select(x => x.AdminId == admindetails.AdminId && x.AssigentmentUpdate==1).Count(),
+                TotalDueAssignment= AppointmentList.Select(x => x.AdminId == admindetails.AdminId && x.AssigentmentUpdate == 0).Count()
+            };
         }
         public ActionResult Logout()
         {

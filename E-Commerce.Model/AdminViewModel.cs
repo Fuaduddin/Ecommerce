@@ -30,7 +30,7 @@ namespace E_Commerce.Model
         public FAQModel FAQ { get; set; }
         public CartModel Cart { get; set; }
         public OrderModel Order { get; set; }
-
+        public DashBoardModel DashBoard { get; set; }
 
 
         // All Model Lists

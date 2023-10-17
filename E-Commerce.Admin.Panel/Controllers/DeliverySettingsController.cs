@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace E_Commerce.Admin.Panel.Controllers
 {
-    [Authorize]
+  //  [Authorize]
     public class DeliverySettingsController : Controller
     {
         // GET: Delivery

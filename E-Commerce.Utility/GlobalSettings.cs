@@ -9,8 +9,8 @@ namespace E_Commerce.Utility
     public class GlobalSettings
     {
         public static string WebImageURL = "https://localhost:44338";
-        public static string SuperAdminandAdminImageURL = "";
-        public static string SupllierandDeliveryManImageURL = "";
+        //public static string SuperAdminandAdminImageURL = "";
+        public static string SupllierandDeliveryManImageURL = "https://localhost:44338/";
         public static string DateFormat = "";
     }
 }
