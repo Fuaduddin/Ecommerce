@@ -34,7 +34,7 @@
                                 @Html.ValidationMessageFor(Model => Model.deliverycharge.DeliveryChargeTitle)
                             </div>
                         </div>
-                        @if (Model.deliverycharge.PreviousDeliveryChargeAmount > 0 && Model.deliverycharge.DeliveryChargeid >0)
+                        @if (Model.deliverycharge.PreviousDeliveryChargeAmount > 0 && Model.deliverycharge.DeliveryChargeid > 0 && Model.deliverycharge.PreviousDeliveryChargeAmount != 0)
                         {
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">
@@ -154,7 +154,7 @@
 
                                         </td>
                                         <td>
-                                            <button onclick="showmodal(@deliverycharge.DeliveryChargeid)" class="btn btn-danger">Delete</button>
+                                            <button onclick="showmodal(@deliverycharge.DeliveryChargeid)" type="button" class="btn btn-danger">Delete</button>
                                         </td>
                                         <td>
                                             @Html.ActionLink("Update", "GetSingleDeliveryChargeDeliveryCost", new { Id = deliverycharge.DeliveryChargeid }, new { title = "Edit Item", @class = "btn btn-success", @data_toggle = "tooltip", @data_placement = "top" })

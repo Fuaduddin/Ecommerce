@@ -38,11 +38,6 @@ namespace E_Commerce.Admin.Panel.Controllers
                 {
                     ViewData["Message"] = "Your data have not been Updated";
                 }
-                //AdminViewModel deliverycharge = new AdminViewModel();
-                //deliverycharge.deliverychargeList = perpageshowdata(1, 10);
-                //deliverycharge.totalpage = pagecount(10);
-                //deliverycharge.deliverycharge = new DeliveryCharge();
-                //return View("AddDeliveryCost", deliverycharge);
             }
             else
             {
@@ -55,12 +50,6 @@ namespace E_Commerce.Admin.Panel.Controllers
                 {
                     ViewData["Message"] = "Your data have not been Added";
                 }
-                    //AdminViewModel deliverycharge = new AdminViewModel();
-                    //deliverycharge.deliverychargeList = perpageshowdata(1, 10);
-                    //deliverycharge.totalpage = pagecount(10);
-                    //charge.deliverycharge.PreviousDeliveryChargeAmount = 0;
-                    //deliverycharge.deliverycharge = new DeliveryCharge();
-                    //return View("AddDeliveryCost", deliverycharge);
             }
             AdminViewModel deliverycharge = new AdminViewModel();
             deliverycharge.deliverychargeList = perpageshowdata(1, 10);
@@ -68,7 +57,6 @@ namespace E_Commerce.Admin.Panel.Controllers
             charge.deliverycharge.PreviousDeliveryChargeAmount = 0;
             deliverycharge.deliverycharge = new DeliveryCharge();
             return View("AddDeliveryCost", deliverycharge);
-
         }
         public ActionResult Multiedelete(int[] multidelete)
         {
@@ -85,16 +73,10 @@ namespace E_Commerce.Admin.Panel.Controllers
             if(multidelete.Length==i)
             {
                 ViewData["Message"] = "Your data have  been Deleted";
-                //delivery.deliverychargeList = perpageshowdata(1, 10);
-                //delivery.totalpage = pagecount(10);
-                //delivery.deliverycharge = new DeliveryCharge();
             }
             else
             {
                 ViewData["Message"] = "Your data have not been Deleted";
-                //delivery.deliverychargeList = perpageshowdata(1, 10);
-                //delivery.totalpage = pagecount(10);
-                //delivery.deliverycharge = new DeliveryCharge();
             }
             delivery.deliverychargeList = perpageshowdata(1, 10);
             delivery.totalpage = pagecount(10);
@@ -106,18 +88,10 @@ namespace E_Commerce.Admin.Panel.Controllers
             if (DeliverySettingsManager.DeleteDeliveryCost(id))
             {
                 ViewData["Message"] = "Your data have been Deleted";
-                //AdminViewModel deliverycharge = new AdminViewModel();
-                //deliverycharge.deliverychargeList = perpageshowdata(1, 10);
-                //deliverycharge.totalpage = pagecount(10);
-                //return View("AddDeliveryCost", deliverycharge);
             }
             else
             {
                 ViewData["Message"] = "Your data have not been Deleted";
-                //AdminViewModel deliverycharge = new AdminViewModel();
-                //deliverycharge.deliverychargeList = perpageshowdata(1, 10);
-                //deliverycharge.totalpage = pagecount(10);
-                //return View("AddDeliveryCost", deliverycharge);
             }
             AdminViewModel deliverycharge = new AdminViewModel();
             deliverycharge.deliverychargeList = perpageshowdata(1, 10);
@@ -179,43 +153,23 @@ namespace E_Commerce.Admin.Panel.Controllers
                 {
                     ViewData["Message"] = "Your data have been Updated";
                     ModelState.Clear();
-                    //zoneitem.zone = new Zone();
-                    //zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
-                    //zoneitem.totalpage = pagecountzone(10);
-                    //zoneitem.viewzone = perpageshowdatazone(1, 10);
                 }
                 else
                 {
                     ViewData["Message"] = "Your data have not been Updated";
-                    //ModelState.Clear();
-                    //zoneitem.zone = new Zone();
-                    //zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
-                    //zoneitem.totalpage = pagecountzone(10);
-                    //zoneitem.viewzone = perpageshowdatazone(1, 10);
                 }
             }
             else
             {
                 zone.PlaceName = division;
-               // AdminViewModel zoneitem = new AdminViewModel();
                 if (DeliverySettingsManager.AddNewZone(zone) > 0)
                 {
                     ViewData["Message"] = "Your data have  been Added";
-                    //ModelState.Clear();
-                    //zoneitem.zone = new Zone();
-                    //zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
-                    //zoneitem.totalpage = pagecountzone(10);
-                    //zoneitem.viewzone = perpageshowdatazone(1, 10);
                     ModelState.Clear();
                 }
                 else
                 {
                     ViewData["Message"] = "Your data have not been Added";
-                    //ModelState.Clear();
-                    //zoneitem.zone = new Zone();
-                    //zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
-                    //zoneitem.totalpage = pagecountzone(10);
-                    //zoneitem.viewzone = perpageshowdatazone(1, 10);
                 }
             }
             AdminViewModel zoneitem = new AdminViewModel();
@@ -241,14 +195,10 @@ namespace E_Commerce.Admin.Panel.Controllers
             if(multidelete.Length==i)
             {
                 ViewData["Message"] = "Your data have  been Deleted";
-                //delivery.deliverychargeList = perpageshowdata(1, 10);
-                //delivery.totalpage = pagecount(10);
             }
            else
             {
                 ViewData["Message"] = "Your data have not been Deleted";
-                //delivery.deliverychargeList = perpageshowdata(1, 10);
-                //delivery.totalpage = pagecount(10);
             }
             delivery.deliverychargeList = perpageshowdata(1, 10);
             delivery.totalpage = pagecount(10);
@@ -260,16 +210,10 @@ namespace E_Commerce.Admin.Panel.Controllers
             if(DeliverySettingsManager.DeleteZone(id))
             {
                 ViewData["Message"] = "Your data have  been Deleted";
-                //zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
-                //zoneitem.totalpage = pagecountzone(10);
-                //zoneitem.viewzone = perpageshowdatazone(1, 10);
             }
             else
             {
                 ViewData["Message"] = "Your data have not been Deleted";
-                //zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
-                //zoneitem.totalpage = pagecountzone(10);
-                //zoneitem.viewzone = perpageshowdatazone(1, 10);
             }
             zoneitem.deliverychargeList = DeliverySettingsManager.GetAllDeliveryCost();
             zoneitem.totalpage = pagecountzone(10);
@@ -322,23 +266,14 @@ namespace E_Commerce.Admin.Panel.Controllers
         [HttpPost]
         public ActionResult AddArea(Area area, string districts)
         {
-            //area.DevisionName = districts;
-            //AdminViewModel areaitem = new AdminViewModel();
             if(DeliverySettingsManager.AddNewArea(area)>0)
             {
                 ViewData["Message"] = "Your data have been Added";
                 ModelState.Clear();
-                //areaitem.areaList = perpageshowdataarea(1, 10);
-                //areaitem.totalpage = pagecountarea(10);
-                //areaitem.viewzone = DeliverySettingsManager.GetAllZone();
             }
             else
             {
                 ViewData["Message"] = "Your data have not been Added";
-                //ModelState.Clear();
-                //areaitem.areaList = perpageshowdataarea(1, 10);
-                //areaitem.totalpage = pagecountarea(10);
-                //areaitem.viewzone = DeliverySettingsManager.GetAllZone();
             }
             area.DevisionName = districts;
             AdminViewModel areaitem = new AdminViewModel();
@@ -362,14 +297,10 @@ namespace E_Commerce.Admin.Panel.Controllers
             if(multidelete.Length==i)
             {
                 ViewData["Message"] = "Your data have been Deleted";
-                //delivery.deliverychargeList = perpageshowdata(1, 10);
-                //delivery.totalpage = pagecount(10);
             }
             else
             {
                 ViewData["Message"] = "Your data have not been Deleted";
-                //delivery.deliverychargeList = perpageshowdata(1, 10);
-                //delivery.totalpage = pagecount(10);
             }
             delivery.deliverychargeList = perpageshowdata(1, 10);
             delivery.totalpage = pagecount(10);
@@ -377,20 +308,13 @@ namespace E_Commerce.Admin.Panel.Controllers
         }
         public ActionResult DeleteArea(int id)
           {
-            //AdminViewModel areaitem = new AdminViewModel();
             if(DeliverySettingsManager.DeleteArea(id))
             {
                 ViewData["Message"] = "Your data have been Deleted";
-                //areaitem.areaList = perpageshowdataarea(1, 10);
-                //areaitem.totalpage = pagecountarea(10);
-                //areaitem.viewzone = DeliverySettingsManager.GetAllZone();
             }
             else
             {
                 ViewData["Message"] = "Your data have not been Deleted";
-                //areaitem.areaList = perpageshowdataarea(1, 10);
-                //areaitem.totalpage = pagecountarea(10);
-                //areaitem.viewzone = DeliverySettingsManager.GetAllZone();
             }
             AdminViewModel areaitem = new AdminViewModel();
             areaitem.areaList = perpageshowdataarea(1, 10);

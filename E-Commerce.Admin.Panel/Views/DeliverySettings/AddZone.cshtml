@@ -154,13 +154,13 @@
                                             @zone.DeliveryChargeAmount
                                         </td>
                                         <td>
-                                            <button onclick="showmodal(@zone.Placeid)" class="btn btn-danger">Delete</button>
+                                            <button onclick="showmodal(@zone.Placeid)"  type="button" class="btn btn-danger">Delete</button>
                                         </td>
                                         <td>
                                             @Html.ActionLink("Update", "GetsingleZone", new { Id = zone.Placeid }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
                                         </td>
                                         <td>
-                                            <button id="myBtn" class="btn btn-success" onclick="finddata(@zone.Placeid)">Zone Details</button>
+                                            <button id="myBtn" class="btn btn-success"  type="button" onclick="finddata(@zone.Placeid)">Zone Details</button>
                                         </td>
                                     </tr>
                                     i++;
