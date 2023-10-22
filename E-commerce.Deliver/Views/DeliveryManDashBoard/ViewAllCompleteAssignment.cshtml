@@ -47,71 +47,47 @@
                                         <th> <input type="checkbox" id="multiedelete"></th>
                                         <th>No</th>
                                         <th>Assignment ID</th>
-                                        <th>Product ID</th>
-                                        <th>Product</th>
-                                        <th>Product Name</th>
-                                        <th>Product Description</th>
-                                        <th>Total Amount Order</th>
-                                        <th>Category & SUbcategory</th>
-                                        <th>Assignment Details</th>
-                                        <th>Status</th>
-                                        <th>Update</th>
-                                        <th>Cancel</th>
+                                        <th>Order ID</th>
+                                        <th>Customer Name</th>
+                                        <th>Customer Contact Information</th>
+                                        <th>Customer Address</th>
+                                        
                                         <th>Assignment Details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var supply in Model.ViewSupplierAssignmentList)
+                                    @foreach (var deliveryman in Model.DeliverymanAssignmentList)
                                     {
 
                                         <tr class="hide-row">
                                             <td>
-                                                <input type="checkbox" class="multiedeleteitem" name="multidelete" value="@supply.AssigentmentSupplierId">
+                                                <input type="checkbox" class="multiedeleteitem" name="multidelete" value="@deliveryman.AssignmentDeliveryId">
                                             </td>
                                             <td>
                                                 @i
                                             </td>
                                             <td>
-                                                @supply.AssignmentOfficialID
+                                                @deliveryman.AssignmentOfficialID
                                             </td>
                                             <td>
-                                                @supply.ProdcutItemId
+                                                @deliveryman.OrderOfficialId
                                             </td>
                                             <td>
-                                                <img src="@supply.ProductImage" width="100" height="100" alt="">
+                                                @deliveryman.CustomerName
                                             </td>
                                             <td>
-                                                @supply.ProductName
+                                                <span><b><i>Customer Phone Number:  @deliveryman.CustomerPhoneNumber</i></b></span>
+
                                             </td>
                                             <td>
-                                                @supply.ProductDescription
+                                                <span><b><i>Customer Address:  @deliveryman.ShipmentAddress</i></b></span>
+                                                <span><b><i>Customer Division Name:  @deliveryman.DevisionName</i></b></span>
+                                                <span><b><i>Customer Phone Number:  @deliveryman.PlaceName</i></b></span>
+
                                             </td>
+                  
                                             <td>
-                                                @supply.TotalAmount
-                                            </td>
-                                            <td>
-                                                <span><b>Category Name:  @supply.CategoryName</b></span> <br />
-                                                <span><i>Sub Category Name:  @supply.SubCategoryName</i></span> <br />
-                                            </td>
-                                            <td>
-                                                <span><b>Supplier Name:  @supply.SupplierName</b></span> <br />
-                                                <span><i>Total Cost:  @supply.AssignmentTotalCost</i></span> <br />
-                                                <span><i>Issued Date:  @supply.AssignDate</i></span>
-                                            </td>
-                                            <td>
-                                                <b>Pending</b>
-                                            </td>
-                                            <td>
-                                                <a onclick="showmodal(@supply.AssigentmentSupplierId)" class="btn btn-danger">Cancel</a>
-                                            </td>
-                                            <td>
-                                                <a onclick="showreadmodal(@supply.AssigentmentSupplierId)" class="btn btn-success">Assingment Completed</a>
-                                            </td>
-                                            <td>
-                                                @Html.ActionLink("Update", "GetSingleAssignment", new { Id = supply.AssigentmentSupplierId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                                            </td>
-                                            <td>
-                                                @Html.ActionLink("Complete", "AssignmentCompleteConfirmation", new { Id = supply.AssigentmentSupplierId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                                <a onclick="showmodal(@deliveryman.AssignmentDeliveryId)" class="btn btn-danger">Cancel</a>
                                             </td>
                                         </tr>
 
@@ -139,21 +115,6 @@
             </div>
         </div>
     </div>
-</div>
-<div id="id01" class="modal">
-    <span class="close" title="Close Modal">×</span>
-    @using (Html.BeginForm("CancleAssignment", "SupplierDashBoard", FormMethod.Post, new { @class = "modal-content" }))
-    {
-        <div class="container">
-            <h1>Delete Email</h1>
-            <p>Are you sure you want to Cancle this Assignment?</p>
-            <input type="hidden" name="id" id="categoryid" />
-            <div class="clearfix">
-                <button type="button" id="close-CategoryDelete" , onclick="closemenu()" class="btn btn-danger">Cancel</button>
-                <input type="submit" value="Delete" class="btn btn-success" />
-            </div>
-        </div>
-    }
 </div>
 <!-- The Modal -->
 <div id="myModal" class="modal" style="display: none">
@@ -282,7 +243,7 @@
     }
     function showdataview(showdata) {
         $.ajax({
-            url: "/SupplierDashBoard/GetpaginatiotabledataCompleteAssng",
+            url: "/DeliveryManDashBoard/GetpaginatiotabledataCompleteAssng",
             Method: "POST",
             data: showdata,
             success: function (data) {
@@ -292,54 +253,37 @@
                 var element = ""
                 $.each(data, function (i) {
                     element += `
-                    <tr class="hide-row">
-    <td>
-        <input type="checkbox" class="multiedeleteitem" name="multidelete" value=" ${data[i].AssigentmentSupplierId}">
-    </td>
-    <td>
-       ${serialno}
-    </td>
-          <td>
-    ${data[i].AssignmentOfficialID}
- </td>
-    <td>
-        ${data[i].ProdcutItemId}
-    </td>
-    <td>
-        <img src="${data[i].ProductImage}" width="100" height="100" alt="">
-    </td>
-    <td>
-       ${data[i].ProductName}
-    </td>
-    <td>
-        ${data[i].ProductDescription}
-    </td>
-    <td>
-        ${data[i].TotalAmount}
-    </td>
-    <td>
-        <span><b>Category Name:${data[i].CategoryName}</b></span> <br />
-        <span><i>Sub Category Name:${data[i].SubCategoryName} </i></span> <br />
-    </td>
-    <td>
-        <span><b>Supplier Name: ${data[i].SupplierName}</b></span> <br />
-        <span><i>Total Cost:${data[i].AssignmentTotalCost}</i></span> <br />
-        <span><i>Issued Date: ${data[i].AssignDate}</i></span>
-    </td>
-    <td>
-        <b>Pending</b>
-    </td>
-    <td>
-        <a onclick="showmodal( ${data[i].AssigentmentSupplierId})" class="btn btn-danger">Cancel</a>
-    </td>
-    <td>
-        <a onclick="showreadmodal( ${data[i].AssigentmentSupplierId})" class="btn btn-success">Assingment Completed</a>
-    </td>
-    <td>
-     <a href="/SupplierDashBoard/UpdateAssignment/${data[i].AssigentmentSupplierId}" class="btn btn-success">Assingment Completed</a>
+                         <tr class="hide-row">
+        <td>
+            <input type="checkbox" class="multiedeleteitem" name="multidelete" value="${data[i].AssignmentDeliveryId}">
+        </td>
+        <td>
+            ${serialno}
+        </td>
+        <td>
+            ${data[i].AssignmentOfficialID}
+        </td>
+        <td>
+           ${data[i].OrderOfficialId}
+        </td>
+        <td>
+            ${data[i].CustomerName}
+        </td>
+        <td>
+            <span><b><i>Customer Phone Number:  ${data[i].CustomerPhoneNumber}</i></b></span>
 
-    </td>
-</tr>
+        </td>
+        <td>
+            <span><b><i>Customer Address:  ${data[i].ShipmentAddress}s</i></b></span>
+            <span><b><i>Customer Division Name:  ${data[i].DevisionName}</i></b></span>
+            <span><b><i>Customer Phone Number:  ${data[i].PlaceName}</i></b></span>
+
+        </td>
+        
+        <td>
+            <a onclick="showmodal(${data[i].AssignmentDeliveryId})" class="btn btn-danger">Cancel</a>
+        </td>
+    </tr>
                        `;
                     $("#table").append(element);
                     serialno++;
@@ -377,78 +321,74 @@
         }
         showdataview(showdata);
     }
-    function showdataview(showdata) {
-        $.ajax({
-            url: "/SupplierDashBoard/SearchdataSupplierCompleteAssignm",
-            Method: "POST",
-            data: showdata,
-            success: function (data) {
-                $('.hide-row').empty();
-                data = JSON.parse(data);
-                var serialno = pagesize + 1;
-                var element = ""
-                $.each(data, function (i) {
-                    element += `
-                     <tr class="hide-row">
-     <td>
-         <input type="checkbox" class="multiedeleteitem" name="multidelete" value=" ${data[i].AssigentmentSupplierId}">
-     </td>
-     <td>
-        ${serialno}
-     </td>
-           <td>
-    ${data[i].AssignmentOfficialID}
- </td>
-     <td>
-         ${data[i].ProdcutItemId}
-     </td>
-     <td>
-         <img src="${data[i].ProductImage}" width="100" height="100" alt="">
-     </td>
-     <td>
-        ${data[i].ProductName}
-     </td>
-     <td>
-         ${data[i].ProductDescription}
-     </td>
-     <td>
-         ${data[i].TotalAmount}
-     </td>
-     <td>
-         <span><b>Category Name:${data[i].CategoryName}</b></span> <br />
-         <span><i>Sub Category Name:${data[i].SubCategoryName} </i></span> <br />
-     </td>
-     <td>
-         <span><b>Supplier Name: ${data[i].SupplierName}</b></span> <br />
-         <span><i>Total Cost:${data[i].AssignmentTotalCost}</i></span> <br />
-         <span><i>Issued Date: ${data[i].AssignDate}</i></span>
-     </td>
-     <td>
-         <b>Pending</b>
-     </td>
-     <td>
-         <a onclick="showmodal( ${data[i].AssigentmentSupplierId})" class="btn btn-danger">Cancel</a>
-     </td>
-     <td>
-         <a onclick="showreadmodal( ${data[i].AssigentmentSupplierId})" class="btn btn-success">Assingment Completed</a>
-     </td>
-     <td>
-      <a href="/SupplierDashBoard/UpdateAssignment/${data[i].AssigentmentSupplierId}" class="btn btn-success">Assingment Completed</a>
-
-     </td>
- </tr>
-                        `;
-                    $("#table").append(element);
-                    serialno++;
+    f        $("#searchitemcategory").keyup(function () {
+        $(".hide-row-search").empty();
+        var serachvalue = $("#searchitemcategory").val();
+        var showdata =
+        {
+            serachvalue: serachvalue
+        }
+        if (serachvalue != "") {
+            $.ajax({
+                url: "/DeliveryManDashBoard/SearchdataDeliveryManCompleteAssignm",
+                Method: "POST",
+                data: showdata,
+                success: function (data) {
+                    // $('.hide-row').css("display", "none");
+                    $('.hide-row').hide();
+                    data = JSON.parse(data);
+                    console.log(data);
+                    var serialno = 1;
                     var element = "";
-                });
-            },
-            error: function () {
-                alert('Failed to receive the Data');
-                console.log('Failed ');
-            }
-        })
-    }
+                    var pageserial = "";
+                    $.each(data, function (i) {
+                        serialno = i + 1;
+                        element += `
+                         <tr class="hide-row">
+        <td>
+            <input type="checkbox" class="multiedeleteitem" name="multidelete" value="${data[i].AssignmentDeliveryId}">
+        </td>
+        <td>
+            ${serialno}
+        </td>
+        <td>
+            ${data[i].AssignmentOfficialID}
+        </td>
+        <td>
+           ${data[i].OrderOfficialId}
+        </td>
+        <td>
+            ${data[i].CustomerName}
+        </td>
+        <td>
+            <span><b><i>Customer Phone Number:  ${data[i].CustomerPhoneNumber}</i></b></span>
+
+        </td>
+        <td>
+            <span><b><i>Customer Address:  ${data[i].ShipmentAddress}s</i></b></span>
+            <span><b><i>Customer Division Name:  ${data[i].DevisionName}</i></b></span>
+            <span><b><i>Customer Phone Number:  ${data[i].PlaceName}</i></b></span>
+
+        </td>
+
+        <td>
+            <a onclick="showmodal(${data[i].AssignmentDeliveryId})" class="btn btn-danger">Cancel</a>
+        </td>
+    </tr>
+                 `;
+                        $("#table").append(element);
+                        serialno++;
+                        var element = "";
+                    });
+
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            })
+        }
+    });
 </script>
 
 

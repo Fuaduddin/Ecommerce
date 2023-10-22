@@ -5315,6 +5315,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Partial View\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\E-Commerce.BusinessLayer\E-Commerce.BusinessLayer.csproj">

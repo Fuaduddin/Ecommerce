@@ -189,7 +189,7 @@ namespace E_commerce.Deliver.Controllers
             var SupplierDetails = GetSupplierDetails();
             List<ViewSupplierAssignmentModel> Assignmentlist = DashBoardManager.ViewAssignmentAssginment(SupplierDetails.SupplierId);
             var filterresult = Assignmentlist.Where(x => x.AssignmentUpdate == 0);
-            var searchresult = filterresult.Select(x => x.AssignmentOfficialID.Concat(serachvalue)).ToList();
+            var searchresult = filterresult.Select(x => x.AssignmentOfficialID.Contains(serachvalue)).ToList();
             var result = JsonConvert.SerializeObject(searchresult);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
@@ -198,7 +198,7 @@ namespace E_commerce.Deliver.Controllers
             var SupplierDetails = GetSupplierDetails();
             List<ViewSupplierAssignmentModel> Assignmentlist = DashBoardManager.ViewAssignmentAssginment(SupplierDetails.SupplierId);
             var filterresult = Assignmentlist.Where(x => x.AssignmentUpdate == 1);
-            var searchresult = filterresult.Select(x => x.AssignmentOfficialID.Concat(serachvalue)).ToList();
+            var searchresult = filterresult.Select(x => x.AssignmentOfficialID.Contains(serachvalue)).ToList();
             var result = JsonConvert.SerializeObject(searchresult);
             return Json(result, JsonRequestBehavior.AllowGet);
         }

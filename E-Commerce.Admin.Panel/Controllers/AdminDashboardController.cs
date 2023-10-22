@@ -25,13 +25,15 @@ namespace E_Commerce.Admin.Panel.Controllers
         public ActionResult ViewAllCompleteAssignment()
         {
             AdminViewModel adminAllCompleteAssignmentlist = new AdminViewModel();
-            adminAllCompleteAssignmentlist.AdminAssignmentList = GetAllAssingmentDetails(1);
+            adminAllCompleteAssignmentlist.AdminAssignmentList = perpageshowdataAdminCompleteAssng(1,10);
+            adminAllCompleteAssignmentlist.totalpage = pagecountAdminCompleteAssng(10);
             return View("ViewAllCompleteAssignment", adminAllCompleteAssignmentlist);
         }
         public ActionResult ViewAllDueAssignment()
         {
             AdminViewModel adminAllCompleteAssignmentlist = new AdminViewModel();
-            adminAllCompleteAssignmentlist.AdminAssignmentList = GetAllAssingmentDetails(0);
+            adminAllCompleteAssignmentlist.AdminAssignmentList = perpageshowdataAdminDueAssng(1, 10);
+            adminAllCompleteAssignmentlist.totalpage = pagecountAdminDueAssng(10);
             return View("ViewAllDueAssignment", adminAllCompleteAssignmentlist);
         }
         public ActionResult GetSingleAssignment(int id)
@@ -90,6 +92,30 @@ namespace E_Commerce.Admin.Panel.Controllers
             }
             return View("UpdateAssignment");
         }
+        public ActionResult MultieDeleteAssignment(int[] multidelete)
+        {
+            int i = 0;
+            if (multidelete.Count()> 0)
+            {
+                
+                var Assignemnts = AssignmentManager.GetAllAssignmentAppointment();
+                foreach (int id in multidelete)
+                {
+                    var Assignmentdetails= (AdminAssignmentModel)(Assignemnts.Where(x => x.AssigentmentAppointmentId == id).ToList())[0];
+                    DashBoardManager.UpdateAdminAppointment(Assignmentdetails.AdminId, 2, Assignmentdetails.AssigentmentFixedDate);
+                    i++;
+                }
+            }
+            if(multidelete.Count()==i)
+            {
+                ViewData["Message"] = "Your data have  been Updated";
+            }
+            else
+            {
+                ViewData["Message"] = "Your data have  not been Updated";
+            }
+            return View("ViewAllDueAssignment");
+        }
         public JsonResult GetAssigmentDetails(int assignmentid)
         {
             AdminAssignmentModel AdminAssignment = new AdminAssignmentModel();
@@ -98,6 +124,11 @@ namespace E_Commerce.Admin.Panel.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("login", "login");
+        }
         // Email Sent Code Start
         private bool SendingMail(string Emailbody,string CustomerEmail)
         {
@@ -140,12 +171,12 @@ namespace E_Commerce.Admin.Panel.Controllers
             }
             return admin;
         }
-        private string EMailBody(string CustomerName,string AppointmentSubject,string AppoinmentWIth,string AppointmentDate)
+        private string EMailBody(string CustomerName, string AppointmentSubject, string AppoinmentWIth, string AppointmentDate)
         {
             string Emailbody = "";
-            return  Emailbody = "Hi Mr/Mrs"+ CustomerName+"Your Appointment Subject:"+AppointmentSubject+
-                "has been confirmed with"+ AppoinmentWIth+"on"+AppointmentDate;
-            
+            return Emailbody = "Hi Mr/Mrs" + CustomerName + "Your Appointment Subject:" + AppointmentSubject +
+                "has been confirmed with" + AppoinmentWIth + "on" + AppointmentDate;
+
         }
         private CommonDashBoardModel GetAdminDashBoardDetails()
         {
@@ -153,15 +184,78 @@ namespace E_Commerce.Admin.Panel.Controllers
             var AppointmentList = AssignmentManager.GetAllAssignmentAppointment();
             return new CommonDashBoardModel()
             {
-                TotalAssignment= AppointmentList.Select(x=>x.AdminId==admindetails.AdminId).Count(),
-                TotalCompleteAssignment= AppointmentList.Select(x => x.AdminId == admindetails.AdminId && x.AssigentmentUpdate==1).Count(),
-                TotalDueAssignment= AppointmentList.Select(x => x.AdminId == admindetails.AdminId && x.AssigentmentUpdate == 0).Count()
+                TotalAssignment = AppointmentList.Select(x => x.AdminId == admindetails.AdminId).Count(),
+                TotalCompleteAssignment = AppointmentList.Select(x => x.AdminId == admindetails.AdminId && x.AssigentmentUpdate == 1).Count(),
+                TotalDueAssignment = AppointmentList.Select(x => x.AdminId == admindetails.AdminId && x.AssigentmentUpdate == 0).Count()
             };
         }
-        public ActionResult Logout()
+
+
+        // Other Feauture
+        public int pagecountAdminDueAssng(int perpagedata)
         {
-            Session.Clear();
-            return RedirectToAction("login", "login");
+            var AdminDetails = Admindetails();
+            var assigenments = AssignmentManager.GetAllAssignmentAppointment();
+            List<AdminAssignmentModel> AppointmentList = assigenments.Where(x => x.AdminId == AdminDetails.AdminId && x.AssigentmentUpdate == 0).ToList();
+            return Convert.ToInt32(Math.Ceiling(AppointmentList.Count() / (double)perpagedata));
+        }
+        public List<AdminAssignmentModel> perpageshowdataAdminDueAssng(int pageindex, int pagesize)
+        {
+            var AdminDetails = Admindetails();
+            var assigenments = AssignmentManager.GetAllAssignmentAppointment();
+            List<AdminAssignmentModel> AppointmentList = assigenments.Where(x => x.AdminId == AdminDetails.AdminId && x.AssigentmentUpdate == 0).ToList();
+            return AppointmentList.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        public JsonResult GetpaginatiotabledataAdminDueAssng(int pageindex, int pagesize)
+        {
+            AdminViewModel AppointmentList = new AdminViewModel();
+            AppointmentList.AdminAssignmentList = perpageshowdataAdminDueAssng(pageindex, pagesize);
+            AppointmentList.totalpage = pagecountAdminDueAssng(pagesize);
+            var AppointmentListitem = JsonConvert.SerializeObject(AppointmentList);
+            return Json(AppointmentListitem, JsonRequestBehavior.AllowGet);
+        }
+        public int pagecountAdminCompleteAssng(int perpagedata)
+        {
+            var AdminDetails = Admindetails();
+            var assigenments = AssignmentManager.GetAllAssignmentAppointment();
+            List<AdminAssignmentModel> AppointmentList = assigenments.Where(x => x.AdminId == AdminDetails.AdminId && x.AssigentmentUpdate == 1).ToList();
+            return Convert.ToInt32(Math.Ceiling(AppointmentList.Count() / (double)perpagedata));
+        }
+        public List<AdminAssignmentModel> perpageshowdataAdminCompleteAssng(int pageindex, int pagesize)
+        {
+            var AdminDetails = Admindetails();
+            var assigenments = AssignmentManager.GetAllAssignmentAppointment();
+            List<AdminAssignmentModel> AppointmentList = assigenments.Where(x => x.AdminId == AdminDetails.AdminId && x.AssigentmentUpdate == 0).ToList();
+            return AppointmentList.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        public JsonResult GetpaginatiotabledataCompleteAssng(int pageindex, int pagesize)
+        {
+            AdminViewModel AppointmentList = new AdminViewModel();
+            AppointmentList.AdminAssignmentList = perpageshowdataAdminCompleteAssng(pageindex, pagesize);
+            AppointmentList.totalpage = pagecountAdminCompleteAssng(pagesize);
+            var AppointmentListitem = JsonConvert.SerializeObject(AppointmentList);
+            return Json(AppointmentListitem, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SearchdataAdminDueAssignm(string serachvalue)
+        {
+            var AdminDetails = Admindetails();
+            var assigenments = AssignmentManager.GetAllAssignmentAppointment();
+            List<AdminAssignmentModel> AppointmentList = assigenments.Where(x => x.AdminId == AdminDetails.AdminId && x.AssigentmentUpdate == 0).ToList();
+            var filterresult = AppointmentList.Where(x => x.AssigentmentUpdate == 0);
+            var searchresult = filterresult.Select(x => x.CustomerName.Contains(serachvalue) || x.CustomerEmail.Contains(serachvalue) || x.CustomerPhoneNumber.Contains(serachvalue)).ToList();
+            var result = JsonConvert.SerializeObject(searchresult);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchdataAdminCompleteAssignm(string serachvalue)
+        {
+            var AdminDetails = Admindetails();
+            var assigenments = AssignmentManager.GetAllAssignmentAppointment();
+            List<AdminAssignmentModel> AppointmentList = assigenments.Where(x => x.AdminId == AdminDetails.AdminId && x.AssigentmentUpdate == 0).ToList();
+            var filterresult = AppointmentList.Where(x => x.AssigentmentUpdate == 1);
+            var searchresult = filterresult.Select(x => x.CustomerName.Contains(serachvalue) || x.CustomerEmail.Contains(serachvalue) || x.CustomerPhoneNumber.Contains(serachvalue)).ToList();
+            var result = JsonConvert.SerializeObject(searchresult);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

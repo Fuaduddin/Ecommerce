@@ -28,7 +28,7 @@
                         {
                             <h5 class="confirmationmessage" style="color:red">@ViewData["Message"]</h5>
                         }
-                        @using (Html.BeginForm("MultieDeleteEmail", "Contact", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("MultieDeleteAssignment", "AdminDashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <div id="deleteallbutton" style="display:none;">
                                 <div class="">
@@ -70,37 +70,37 @@
                                     @foreach (var email in Model.AdminAssignmentList)
                                     {
 
-                                    <tr class="hide-row unreademail">
-                                        <td>
-                                            <input type="checkbox" class="multiedeleteitem" name="multidelete" value="@email.AssigentmentAppointmentId">
-                                        </td>
-                                        <td>
-                                            @i
-                                        </td>
-                                        <td>
-                                            @email.AppointmentSubject
-                                        </td>
-                                        <td>
-                                            @email.AppointmentMessage
-                                        </td>
-                                        <td>
-                                            @email.AppointDate
-                                        </td>
-                                        <td>
-                                            <span><b>Customer Full Name:  @email.CustomerName</b></span> <br />
-                                            <span><i>Customer Phone Number:  @email.CustomerPhoneNumber</i></span> <br />
-                                            <span><i>Customer Email:  @email.CustomerEmail</i></span>
-                                        </td>
-                                        <td>
-                                            @email.AssigentmentFixedDate
-                                        </td>
-                                        <td>
-                                            <a onclick="showreadmodal(@email.AssigentmentAppointmentId)" class="btn btn-success">Read Email</a>
-                                        </td>
-                                        <td>
-                                            <a onclick="showreadmodal(@email.AssigentmentAppointmentId,@emailno)" class="btn btn-success">Read Email</a>
-                                        </td>
-                                    </tr>
+                                        <tr class="hide-row unreademail">
+                                            <td>
+                                                <input type="checkbox" class="multiedeleteitem" name="multidelete" value="@email.AssigentmentAppointmentId">
+                                            </td>
+                                            <td>
+                                                @i
+                                            </td>
+                                            <td>
+                                                @email.AppointmentSubject
+                                            </td>
+                                            <td>
+                                                @email.AppointmentMessage
+                                            </td>
+                                            <td>
+                                                @email.AppointDate
+                                            </td>
+                                            <td>
+                                                <span><b>Customer Full Name:  @email.CustomerName</b></span> <br />
+                                                <span><i>Customer Phone Number:  @email.CustomerPhoneNumber</i></span> <br />
+                                                <span><i>Customer Email:  @email.CustomerEmail</i></span>
+                                            </td>
+                                            <td>
+                                                @email.AssigentmentFixedDate
+                                            </td>
+                                            <td>
+                                                <a onclick="showreadmodal(@email.AssigentmentAppointmentId)" class="btn btn-success">Read Email</a>
+                                            </td>
+                                            <td>
+                                                <a onclick="showreadmodal(@email.AssigentmentAppointmentId,@emailno)" class="btn btn-success">Read Email</a>
+                                            </td>
+                                        </tr>
 
                                     }
                                 </tbody>
@@ -129,12 +129,12 @@
 </div>
 <div id="id01" class="modal">
     <span class="close" title="Close Modal">×</span>
-    @using (Html.BeginForm("DeleteEmail", "Contact", FormMethod.Post, new { @class = "modal-content" }))
+    @using (Html.BeginForm("MultieDeleteAssignment", "AdminDashboard", FormMethod.Post, new { @class = "modal-content" }))
     {
         <div class="container">
             <h1>Delete Email</h1>
             <p>Are you sure you want to delete this Area?</p>
-            <input type="hidden" name="id" id="categoryid" />
+            <input type="hidden" name="multidelete" id="categoryid" />
             <div class="clearfix">
                 <button type="button" id="close-CategoryDelete" , onclick="closemenu()" class="btn btn-danger">Cancel</button>
                 <input type="submit" value="Delete" class="btn btn-success" />
@@ -276,7 +276,7 @@
     }
     function showdataview(showdata) {
         $.ajax({
-            url: "/Category/Getpaginatiotabledata",
+            url: "/AdminDashboard/GetpaginatiotabledataAdminDueAssng",
             Method: "POST",
             data: showdata,
             success: function (data) {
@@ -287,40 +287,112 @@
                 $.each(data, function (i) {
                     element += `
                 <tr class="hide-row">
+                          <td>
+               <input type="checkbox" class="multiedeleteitem" name="multidelete" value="${data[i].AssigentmentAppointmentId}">
+             </td>
                      <td>
                         ${serialno}
                     </td>
+
+                         <td>
+                           ${data[i].AppointmentSubject}
+                        </td>
+                        <td>
+                            ${data[i].AppointmentMessage}
+                        </td>
+                                  <td>
+            ${data[i].AppointDate}
+         </td>
+         <td>
+              <span><i>Customer Phone Number:  ${data[i].CustomerPhoneNumber}</i></span> <br />
+             <span><i>Customer Email:  ${data[i].CustomerEmail}</i></span>
+                <span><b>Customer Full Name:  ${data[i].CustomerName}</b></span> <br />
+         </td>
+             <td>
+        ${data[i].AssigentmentFixedDate}
+    </td>
+                        <td>
+                           <a onclick="showreadmodal(@ ${data[i].AssigentmentAppointmentId})" class="btn btn-success">Assignemnt Details</a>
+                        </td>
+                    </tr>
+                        `;
+                        $("#table").append(element);
+                        serialno++;
+                        var element = "";
+                    });
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            })
+    }
+    $("#searchitemcategory").keyup(function () {
+        $(".hide-row-search").empty();
+        var serachvalue = $("#searchitemcategory").val();
+        var showdata =
+        {
+            serachvalue: serachvalue
+        }
+        if (serachvalue != "") {
+            $.ajax({
+                url: "/AdminDashboard/SearchdataAdminCompleteAssignm",
+                Method: "POST",
+                data: showdata,
+                success: function (data) {
+                    // $('.hide-row').css("display", "none");
+                    $('.hide-row').hide();
+                    data = JSON.parse(data);
+                    console.log(data);
+                    var serialno = 1;
+                    var element = "";
+                    var pageserial = "";
+                    $.each(data, function (i) {
+                        serialno = i + 1;
+                        element += `
+            <tr class="hide-row">
+                      <td>
+           <input type="checkbox" class="multiedeleteitem" name="multidelete" value="${data[i].AssigentmentAppointmentId}">
+         </td>
+                 <td>
+                    ${serialno}
+                </td>
+
                      <td>
-                       <img src="${data[i].CategoryImage}" width="100" height="100" alt="">
-                    </td>
-                     <td>
-                       ${data[i].CategoryName}
+                       ${data[i].AppointmentSubject}
                     </td>
                     <td>
-                        ${data[i].CategoryDescription}
+                        ${data[i].AppointmentMessage}
                     </td>
+                              <td>
+        ${data[i].AppointDate}
+     </td>
+     <td>
+          <span><i>Customer Phone Number:  ${data[i].CustomerPhoneNumber}</i></span> <br />
+         <span><i>Customer Email:  ${data[i].CustomerEmail}</i></span>
+            <span><b>Customer Full Name:  ${data[i].CustomerName}</b></span> <br />
+     </td>
+         <td>
+    ${data[i].AssigentmentFixedDate}
+</td>
                     <td>
-                        <button id="open-CategoryDelete" data-toggle="modal" data-id="  ${data[i].CategoryId}" class="btn btn-danger">Delete</button>
-                    </td>
-                    <td>
-                        Html.ActionLink("Update", "GetSingleCategory", new { Id =  data[i].CategoryId }, new { title = "Edit Item", class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                    </td>
-                     <td>
-                      <button id="myBtn" class = "btn btn-success" onclick="finddata(${data[i].CategoryId})">Category Details</button>
+                       <a onclick="showreadmodal(@ ${data[i].AssigentmentAppointmentId})" class="btn btn-success">Assignemnt Details</a>
                     </td>
                 </tr>
-                    `;
-                    $("#table").append(element);
-                    serialno++;
-                    var element = "";
-                });
-            },
-            error: function () {
-                alert('Failed to receive the Data');
-                console.log('Failed ');
-            }
-        })
-    }
+                 `;
+                        $("#table").append(element);
+                        serialno++;
+                        var element = "";
+                    });
+
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            })
+        }
+    });
 </script>
 
 

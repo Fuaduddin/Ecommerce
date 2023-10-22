@@ -247,12 +247,6 @@ namespace E_Commerce.Admin.Panel.Controllers
             var result = JsonConvert.SerializeObject(deliverychargelist);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult SearchZone(string SearchKeyword)
-        {
-            List<DeliveryCharge> categorylist = DeliverySettingsManager.SearchDeliveryCost(SearchKeyword);
-            var result = JsonConvert.SerializeObject(categorylist);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
         //area
         public ActionResult AddArea()
         {
@@ -343,11 +337,12 @@ namespace E_Commerce.Admin.Panel.Controllers
             var result = JsonConvert.SerializeObject(arealist);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        //public JsonResult Searchdatarea(string serachvalue)
-        //{
-        //    List<Area> categorylist = DeliverySettingsManager.se(serachvalue);
-        //    var result = JsonConvert.SerializeObject(categorylist);
-        //    return Json(result, JsonRequestBehavior.AllowGet);
-        //}
+        public JsonResult Searchdatarea(string serachvalue)
+        {
+            List<Area> categorylist = DeliverySettingsManager.GetAllArea();
+            var searchresult = categorylist.Where(x=>x.DevisionName.Contains(serachvalue));
+            var result = JsonConvert.SerializeObject(searchresult);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -178,5 +178,24 @@ namespace E_commerce.Deliver.Controllers
             var AppointmentListitem = JsonConvert.SerializeObject(AppointmentList);
             return Json(AppointmentListitem, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult SearchdataDeliveryManDueAssignm(string serachvalue)
+        {
+            var DeliveryManAssngDetails = GetCustomerDetails();
+            var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
+            var filterresult = assigenments.Where(x => x.AssigentmentUpdate == 0);
+            var searchresult = filterresult.Select(x => x.AssignmentOfficialID.Contains(serachvalue)).ToList();
+            var result = JsonConvert.SerializeObject(searchresult);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchdataDeliveryManCompleteAssignm(string serachvalue)
+        {
+            var DeliveryManAssngDetails = GetCustomerDetails();
+            var assigenments = AssignmentManager.GetAllAssignmentDeliveryMan();
+            var filterresult = assigenments.Where(x => x.AssigentmentUpdate == 0);
+            var searchresult = filterresult.Select(x => x.AssignmentOfficialID.Contains(serachvalue)).ToList();
+            var result = JsonConvert.SerializeObject(searchresult);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

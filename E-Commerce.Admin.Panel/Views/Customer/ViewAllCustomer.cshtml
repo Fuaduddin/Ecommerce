@@ -99,7 +99,7 @@
                             </tbody>
                         </table>
                     }
-                    @*<div class="pagination-table-nav">
+                    <div class="pagination-table-nav">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                                 <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -112,7 +112,7 @@
                                 <li class="page-item"><a class="page-link" href="#">Next</a></li>
                             </ul>
                         </nav>
-                    </div>*@
+                    </div>
                 </div>
             </div>
         </div>
@@ -172,7 +172,7 @@
         }
         if (serachvalue != null) {
             $.ajax({
-                url: "/StaffSettings/SearchdataAdmin",
+                url: "/Customer/SearchdataCustomer",
                 Method: "POST",
                 data: showdata,
                 success: function (data) {
@@ -181,73 +181,41 @@
                     var serialno = 1;
                     var element = "";
                     $.each(data, function (i) {
-                        if (data[i].Updatemessage == 0) {
                             element += `
-                 <tr class="hide-row multiedelete unreademail">
-                     <td>
-                        <input type="checkbox" class="multiedeleteitem" name="multidelete" value="${data[i].Emailid}">
-                    </td>
-                     <td>
-                        ${serialno}
-                    </td>
+       <tr>
+        <td>
+            ${serialno}
+        </td>
+        <td>
+           ${data[i].CustomerName}
+        </td>
+        <td>
+            <span><i><b>Zone: </b></i></span>  ${data[i].DevisionName} <br />
+            <span><i><b>Area: </b></i></span>  ${data[i].PlaceName} <br />
+            <span><i><b>Full Address: </b></i></span>  ${data[i].CustomerAddress} <br />
+        </td>
+        <td>
+            <span><i><b>Phone Number: </b></i></span> ${data[i].CustomerPhoneNumber}
+        </td>
+        <td>
+            <span><i><b>User Name: </b></i></span> ${data[i].UserName} <br />
+            <span><i><b>Password: </b></i></span> ${data[i].UserPassword} <br />
+        </td>
+        <td>
+           ${data[i].UserTotalLogin}
+        </td>
+        <td>
+            ${data[i].UserLastLogin}
+        </td>
+        <td>
+            <button onclick="showmodal(${data[i].CustomerId},${data[i].UserId})" class="btn btn-danger">Delete</button>
+        </td>
+        <td>
+           <a class="btn btn-success" href="/Customer/GetSingleAdmin/${data[i].CustomerId}">Update</a>
+        </td>
 
-                     <td>
-                       ${data[i].EmailSubject}
-                    </td>
-                    <td>
-                        ${data[i].Email}
-                    </td>
-                     <td>
-                      <span>Customer Full Name: ${data[i].CustomerFullName}</span>
-                          <span>Customer Email:${data[i].CustomerEmailAddress}</span>
-                    </td>
-                     <td>
-                        ${data[i].SentDate}
-                    </td>
-                    <td>
-                        <button id="open-CategoryDelete" data-toggle="modal" data-id="  ${data[i].Emailid}" class="btn btn-danger">Delete</button>
-                    </td>
-                    <td>
-                       <a class = "btn btn-success", data_toggle = "tooltip", data_placement = "top"  href="/ContactC/GetsingleEmail/${data[i].Emailid}">Read Email</a>
-
-                    </td>
-
-                </tr>
+    </tr>
                     `;
-                        }
-                        else {
-                            element += `
-               <tr class="hide-row multiedelete reademail">
-               <td>
-                        <input type="checkbox" class="multiedeleteitem" name="multidelete" value="${data[i].Emailid}">
-                    </td>
-                     <td>
-                        ${serialno}
-                    </td>
-
-                     <td>
-                       ${data[i].EmailSubject}
-                    </td>
-                    <td>
-                        ${data[i].Email}
-                    </td>
-                     <td>
-                      <span>Customer Full Name: ${data[i].CustomerFullName}</span>
-                          <span>Customer Email:${data[i].CustomerEmailAddress}</span>
-                    </td>
-                     <td>
-                        ${data[i].SentDate}
-                    </td>
-                    <td>
-                        <button id="open-CategoryDelete" data-toggle="modal" data-id="  ${data[i].Emailid}" class="btn btn-danger">Delete</button>
-                    </td>
-                    <td>
-                       <a class = "btn btn-success", data_toggle = "tooltip", data_placement = "top"  href="/ContactC/GetsingleEmail/${data[i].Emailid}">Read Email</a>
-
-                    </td>
-                </tr>
-                    `;
-                        }
 
                         $("#table").append(element);
                         serialno++;
@@ -264,6 +232,63 @@
             $('.hide-row').css("display", "block");;
         }
     });
+    function showdataview(showdata) {
+    $.ajax({
+        url: "/Customer/GetpaginatiotabledataCustomer",
+        Method: "POST",
+        data: showdata,
+        success: function (data) {
+            $('.hide-row').empty();
+            data = JSON.parse(data);
+            var serialno = pagesize + 1;
+            var element = ""
+            $.each(data, function (i) {
+                element += `
+                      <tr>
+        <td>
+            ${serialno}
+        </td>
+        <td>
+           ${data[i].CustomerName}
+        </td>
+        <td>
+            <span><i><b>Zone: </b></i></span>  ${data[i].DevisionName} <br />
+            <span><i><b>Area: </b></i></span>  ${data[i].PlaceName} <br />
+            <span><i><b>Full Address: </b></i></span>  ${data[i].CustomerAddress} <br />
+        </td>
+        <td>
+            <span><i><b>Phone Number: </b></i></span> ${data[i].CustomerPhoneNumber}
+        </td>
+        <td>
+            <span><i><b>User Name: </b></i></span> ${data[i].UserName} <br />
+            <span><i><b>Password: </b></i></span> ${data[i].UserPassword} <br />
+        </td>
+        <td>
+           ${data[i].UserTotalLogin}
+        </td>
+        <td>
+            ${data[i].UserLastLogin}
+        </td>
+        <td>
+            <button onclick="showmodal(${data[i].CustomerId},${data[i].UserId})" class="btn btn-danger">Delete</button>
+        </td>   
+        <td>
+           <a class="btn btn-success" href="/Customer/GetSingleAdmin/${data[i].CustomerId}">Update</a>
+        </td>
+
+    </tr>
+                    `;
+                    $("#table").append(element);
+                    serialno++;
+                    var element = "";
+                });
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        })
+}
 </script>
 
 <style>
