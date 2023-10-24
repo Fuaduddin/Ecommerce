@@ -1,8 +1,10 @@
 ﻿@model E_Commerce.Model.SupplierandDeliveryManViewModel
+@using E_Commerce.Utility;
 
 @{
     ViewBag.Title = "UpdateAssignment";
     Layout = "~/Views/Shared/_SupplierLayout.cshtml";
+
 }
 
 <head>
@@ -30,7 +32,7 @@
                 {
                     <h1> Supplier Assignment Details</h1>
                     <!-- One "tab" for each step in the form: -->
-                    @Html.HiddenFor(Model=>Model.UpdateAssignment.AssigentmentSupplierId)
+                    @Html.HiddenFor(Model => Model.UpdateAssignment.AssigentmentSupplierId)
                     <div class="tab">
                         <b>Product Details</b>
                         <p>
@@ -43,7 +45,7 @@
                             @Model.UpdateAssignment.ProductDescription
                         </p>
                         <p>
-                            <img src="@Model.UpdateAssignment.ProductImage" class="new-contact__img" alt="" width="100" height="100">
+                            <img src="@(GlobalSettings.SupllierandDeliveryManImageURL+Model.UpdateAssignment.ProductImage)" class="new-contact__img" alt="" width="100" height="100">
                         </p>
                     </div>
                     <div class="tab">
@@ -91,31 +93,31 @@
                         </div>
                     </div>
                     <div class="tab">
-                        @if (Model.UpdateAssignment.AssignmentUpdate == 0 && Model.UpdateAssignment.AssignmentTotalCost<=0)
+                        @if (Model.UpdateAssignment.AssignmentUpdate == 0 && Model.UpdateAssignment.AssignmentTotalCost <= 0)
                         {
                             <b>Total Cost:</b>
                             <div class="d-flex justify-content-around">
-                                @Html.TextBoxFor(Model => Model.UpdateAssignment.AssignmentTotalCost, new { @class = "form-control", type="number", @placeholder = "Price" })
+                                @Html.TextBoxFor(Model => Model.UpdateAssignment.AssignmentTotalCost, new { @class = "form-control", type = "number", @placeholder = "Price" })
                                 @Html.ValidationMessageFor(Model => Model.UpdateAssignment.AssignmentTotalCost)
 
                             </div>
                         }
                         else
                         {
-                        <p>Total Cost: @Model.UpdateAssignment.AssignmentTotalCost </p> <br />
+                            <p>Total Cost: @Model.UpdateAssignment.AssignmentTotalCost </p> <br />
                             <b>Complete Assingment and Payment is Completed</b>
-                            @Html.RadioButtonFor(Model=> Model.UpdateAssignment.AssignmentUpdate,1)
+                            @Html.RadioButtonFor(Model => Model.UpdateAssignment.AssignmentUpdate, 1)
                         }
 
                     </div>
-                   
-                        <div>
-                            <div style="float:right;">
-                                <input type="submit" id="submitbutton" value="Update" class="btn btn-light" />
-                            </div>
+
+                    <div>
+                        <div style="float:right;">
+                            <input type="submit" id="submitbutton" value="Update" class="btn btn-light" />
                         </div>
-                    
-                 
+                    </div>
+
+
                 }
             </center>
         </div>

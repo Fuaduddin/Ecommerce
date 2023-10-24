@@ -1,5 +1,5 @@
 ﻿@model E_Commerce.Model.SupplierandDeliveryManViewModel
-
+@using E_Commerce.Utility;
 @{
     ViewBag.Title = "ViewAllCompleteAssignment";
     Layout = "~/Views/Shared/_SupplierLayout.cshtml";
@@ -47,52 +47,53 @@
                                         <th> <input type="checkbox" id="multiedelete"></th>
                                         <th>No</th>
                                         <th>Assignment ID</th>
-                                        <th>Delivery Man Details</th>
-                                        <th>Order Details</th>
+                                        <th>Product Details</th>
+                                        <th>Assignment Details</th>
                                         <th>Assignment Date</th>
                                         <th>Update</th>
                                         <th>Cancel</th>
-                                        <th>Assignment Details</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var Deliveryman in Model.DeliverymanAssignmentList)
+                                    @foreach (var Supplier in Model.ViewSupplierAssignmentList)
                                     {
 
                                         <tr class="hide-row">
                                             <td>
-                                                <input type="checkbox" class="multiedeleteitem" name="multidelete" value="@Deliveryman.AssignmentDeliveryId">
+                                                <input type="checkbox" class="multiedeleteitem" name="multidelete" value="@Supplier.AssigentmentSupplierId">
                                             </td>
                                             <td>
                                                 @i
                                             </td>
                                             <td>
-                                                @Deliveryman.AssignmentOfficialID
+                                                @Supplier.AssignmentOfficialID
                                             </td>
                                             <td>
-                                                <img src="@Deliveryman." width="100" height="100" alt=""><br />
-                                                <span><b>Delivery Name:  @Deliveryman.DeliveryManeName</b></span> <br />
-                                                <span><i>Official ID:  @Deliveryman.</i></span> <br />
+                                                <img src="@(GlobalSettings.SupllierandDeliveryManImageURL + Supplier.ProductImage)" width="100" height="100" alt=""><br />
+                                                <span><b>Product Name:  @Supplier.ProductName</b></span> <br />
+                                                <span><i>Category Name:  @Supplier.CategoryName</i></span> <br />
+                                                <span><i>SubCategory Name:  @Supplier.SubCategoryName</i></span> <br />
                                             </td>
                                             <td>
-                                                <span><b>Order ID:  @Deliveryman.OrderOfficialId</b></span> <br />
-                                                <span><i>Customer Name:  @Deliveryman.CustomerName</i></span> <br />
-                                                <span><i>Customer Name:  @Deliveryman.CustomerPhoneNumber</i></span> <br />
+                                                <span><b>Total Quantity:  @Supplier.TotalAmount</b></span> <br />
+                                                <span><i>Total Amount:  @Supplier.AssignmentTotalCost</i></span> <br />
+                             
                                             </td>
                                             <td>
-                                                @Deliveryman.AssignDate
+                                                @Supplier.AssignDate
                                             </td>
                                             <td>
                                                 <b>Pending</b>
                                             </td>
                                             <td>
-                                                <a onclick="showmodal(@Deliveryman.AssignmentDeliveryId)" class="btn btn-danger">Cancel</a>
+                                                <a onclick="showmodal(@Supplier.AssigentmentSupplierId)" class="btn btn-danger">Cancel</a>
                                             </td>
                                             <td>
-                                                <a onclick="showreadmodal(@Deliveryman.AssignmentDeliveryId)" class="btn btn-success">Assingment Completed</a>
+                                                <a onclick="showreadmodal(@Supplier.AssigentmentSupplierId)" class="btn btn-success">Assingment Completed</a>
                                             </td>
                                             <td>
-                                                @Html.ActionLink("Update", "GetSingleAssignment", new { Id = Deliveryman.AssignmentDeliveryId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                                @Html.ActionLink("Update", "GetSingleAssignment", new { Id = Supplier.AssigentmentSupplierId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
                                             </td>
                                         </tr>
 
@@ -123,7 +124,7 @@
 </div>
 <div id="id01" class="modal">
     <span class="close" title="Close Modal">×</span>
-    @using (Html.BeginForm("CancleAssignment", "DeliveryManDashBoard", FormMethod.Post, new { @class = "modal-content" }))
+    @using (Html.BeginForm("CancleAssignment", "SupplierDashBoard", FormMethod.Post, new { @class = "modal-content" }))
     {
         <div class="container">
             <h1>Delete Email</h1>

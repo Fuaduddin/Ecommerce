@@ -16,6 +16,19 @@
                     {
                         <h5 class="confirmationmessage" style="color:red">@ViewData["Message"]</h5>
                     }
+                    <div class="mb-3" id="searchitem">
+                        <div class="">
+                            <input type="text" class="form-control searchitemid" id="searchitemcategory" placeholder="Search...." aria-describedby="emailHelp">
+                        </div>
+                        <div class="">
+                            <select class="form-select" id="filteritem" aria-label="Default select example">
+                                <option value="10" selected>10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                            </select>
+                        </div>
+                    </div>
                     <table class="table table-striped table-bordered zero-configuration">
                         <thead>
                             <tr>
@@ -34,41 +47,41 @@
                         <tbody>
                             @foreach (var deliveryman in Model.DeliveryManeList)
                             {
-                            <tr>
-                                <td>
-                                    @i
-                                </td>
-                                <td>
-                                    @deliveryman.DeliveryManeOfficialId
-                                </td>
-                                <td>
-                                    <img src="@deliveryman.DeliveryManeProfilePic" width="100" height="100" alt="">
-                                </td>
-                                <td>
-                                    @deliveryman.DevisionName
-                                </td>
-                                <td>
-                                    @deliveryman.TotalAssignmentComplete
-                                </td>
-                                <td>
-                                    @deliveryman.UserTotalLogin
-                                </td>
-                                <td>
-                                    @deliveryman.UserLastLogin
-                                </td>
-                                <td>
-                                    <button onclick="showmodal(@deliveryman.DeliverManId,@deliveryman.UserId)" class="btn btn-danger">Delete</button>
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Update", "GetSingleSupplier", new { Id = deliveryman.DeliverManId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Update", "GetSingleSubCategory", new { Id = deliveryman.DeliverManId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Update", "GetSingleSubCategory", new { Id = deliveryman.DeliverManId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        @i
+                                    </td>
+                                    <td>
+                                        @deliveryman.DeliveryManeOfficialId
+                                    </td>
+                                    <td>
+                                        <img src="@deliveryman.DeliveryManeProfilePic" width="100" height="100" alt="">
+                                    </td>
+                                    <td>
+                                        @deliveryman.DevisionName
+                                    </td>
+                                    <td>
+                                        @deliveryman.TotalAssignmentComplete
+                                    </td>
+                                    <td>
+                                        @deliveryman.UserTotalLogin
+                                    </td>
+                                    <td>
+                                        @deliveryman.UserLastLogin
+                                    </td>
+                                    <td>
+                                        <button onclick="showmodal(@deliveryman.DeliverManId,@deliveryman.UserId)" class="btn btn-danger">Delete</button>
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Update", "GetSingleSupplier", new { Id = deliveryman.DeliverManId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Update", "GetSingleSubCategory", new { Id = deliveryman.DeliverManId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Update", "GetSingleSubCategory", new { Id = deliveryman.DeliverManId }, new { title = "Edit Item", @class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                                    </td>
+                                </tr>
                                 i++;
                             }
                         </tbody>
@@ -134,6 +147,53 @@
     }
     function closemenu() {
         $("#id01").hide();
+    }
+    function showdataview(showdata) {
+        $.ajax({
+            url: "/StaffSettings/GetpaginatiotabledataDeliveryMan",
+            Method: "POST",
+            data: showdata,
+            success: function (data) {
+                $('.hide-row').empty();
+                data = JSON.parse(data);
+                var serialno = pagesize + 1;
+                var element = ""
+                $.each(data, function (i) {
+                    element += `
+             <tr class="hide-row">
+                  <td>
+                     ${serialno}
+                 </td>
+                  <td>
+                    <img src="${data[i].CategoryImage}" width="100" height="100" alt="">
+                 </td>
+                  <td>
+                    ${data[i].CategoryName}
+                 </td>
+                 <td>
+                     ${data[i].CategoryDescription}
+                 </td>
+                 <td>
+                     <button id="open-CategoryDelete" data-toggle="modal" data-id="  ${data[i].CategoryId}" class="btn btn-danger">Delete</button>
+                 </td>
+                 <td>
+                     Html.ActionLink("Update", "GetSingleCategory", new { Id =  data[i].CategoryId }, new { title = "Edit Item", class = "btn btn-success", data_toggle = "tooltip", data_placement = "top" })
+                 </td>
+                  <td>
+                   <button id="myBtn" class = "btn btn-success" onclick="finddata(${data[i].CategoryId})">Category Details</button>
+                 </td>
+             </tr>
+                 `;
+                    $("#table").append(element);
+                    serialno++;
+                    var element = "";
+                });
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        })
     }
 </script>
 <style>

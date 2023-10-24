@@ -120,11 +120,24 @@ namespace E_Commerce.Admin.Panel.Controllers
             string result = JsonConvert.SerializeObject(categorylist);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult SearchdataDeliveryMan(string serachvalue)
+        // Other Feauture
+        public int pagecountDeliveryMan(int perpagedata)
         {
-            List<CategoryModel> categorylist = CategoryManager.SearchCategory(serachvalue);
-            var result = JsonConvert.SerializeObject(categorylist);
-            return Json(result, JsonRequestBehavior.AllowGet);
+            var DeliveryMan = StaffSettingsManager.GetAllDeliveryMan();
+            return Convert.ToInt32(Math.Ceiling(DeliveryMan.Count() / (double)perpagedata));
+        }
+        public List<DeliveryManModel> perpageshowdataDeliveryMan(int pageindex, int pagesize)
+        {
+            var DeliveryMan = StaffSettingsManager.GetAllDeliveryMan();
+            return DeliveryMan.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        public JsonResult GetpaginatiotabledataDeliveryMan(int pageindex, int pagesize)
+        {
+            AdminViewModel DeliveryManList = new AdminViewModel();
+            DeliveryManList.DeliveryManeList = perpageshowdataDeliveryMan(pageindex, pagesize);
+            DeliveryManList.totalpage = pagecountDeliveryMan(pagesize);
+            var AppointmentListitem = JsonConvert.SerializeObject(DeliveryManList);
+            return Json(AppointmentListitem, JsonRequestBehavior.AllowGet);
         }
         // supplier
         public ActionResult AddNewSupplier()

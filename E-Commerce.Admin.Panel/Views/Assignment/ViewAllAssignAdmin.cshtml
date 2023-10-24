@@ -366,7 +366,7 @@
     }
     function showdataview(showdata) {
         $.ajax({
-            url: "/Category/Getpaginatiotabledata",
+            url: "/Assignment/Getpaginatiotabledataadmin",
             Method: "POST",
             data: showdata,
             success: function (data) {
@@ -411,6 +411,72 @@
             }
         })
     }
+        $("#searchitemcategory").keyup(function () {
+        $(".hide-row-search").empty();
+        var serachvalue = $("#searchitemcategory").val();
+        var showdata =
+        {
+            serachvalue: serachvalue
+        }
+        if (serachvalue != "") {
+            $.ajax({
+                url: "/AdminDashboard/SearchdataAdminCompleteAssignm",
+                Method: "POST",
+                data: showdata,
+                success: function (data) {
+                    // $('.hide-row').css("display", "none");
+                    $('.hide-row').hide();
+                    data = JSON.parse(data);
+                    console.log(data);
+                    var serialno = 1;
+                    var element = "";
+                    var pageserial = "";
+                    $.each(data, function (i) {
+                        serialno = i + 1;
+                        element += `
+            <tr class="hide-row">
+                      <td>
+           <input type="checkbox" class="multiedeleteitem" name="multidelete" value="${data[i].AssigentmentAppointmentId}">
+         </td>
+                 <td>
+                    ${serialno}
+                </td>
+
+                     <td>
+                       ${data[i].AppointmentSubject}
+                    </td>
+                    <td>
+                        ${data[i].AppointmentMessage}
+                    </td>
+                              <td>
+        ${data[i].AppointDate}
+     </td>
+     <td>
+          <span><i>Customer Phone Number:  ${data[i].CustomerPhoneNumber}</i></span> <br />
+         <span><i>Customer Email:  ${data[i].CustomerEmail}</i></span>
+            <span><b>Customer Full Name:  ${data[i].CustomerName}</b></span> <br />
+     </td>
+         <td>
+    ${data[i].AssigentmentFixedDate}
+</td>
+                    <td>
+                       <a onclick="showreadmodal(@ ${data[i].AssigentmentAppointmentId})" class="btn btn-success">Assignemnt Details</a>
+                    </td>
+                </tr>
+                 `;
+                        $("#table").append(element);
+                        serialno++;
+                        var element = "";
+                    });
+
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            })
+        }
+    });
 </script>
 
 
